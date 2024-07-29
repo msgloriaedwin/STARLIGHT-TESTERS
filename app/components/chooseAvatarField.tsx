@@ -69,6 +69,12 @@ export function ChooseAvatarField({ setAvatarUrl }: AvatarChooseFieldProps) {
                     }
                 </div>
             </ScrollArea>
+            <Button
+              type="submit"
+              className="w-full my-4 bg-[#FFD43B] hover:bg-[#FFC107] text-black font-semibold py-2 rounded-md"
+            >
+              Save Changes
+            </Button>
         </div>
     )
 }
