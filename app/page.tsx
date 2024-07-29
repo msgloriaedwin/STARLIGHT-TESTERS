@@ -1,5 +1,11 @@
-import Image from "next/image";
+import ForgotPasswordForm from "./components/forms/forgotPasswordForm/forgotPassword";
+import Slider from "./components/slider";
 
 export default function Home() {
-  return <main></main>;
+  return <main>
+    <Slider mode="volume"/>
+      <ForgotPasswordForm/>
+      
+
+  </main>;
 }
