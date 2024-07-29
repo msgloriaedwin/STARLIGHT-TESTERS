@@ -1,8 +1,7 @@
 import React from 'react'
-import  Image from 'next/image'
+import Image from 'next/image'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Skeleton } from '@/components/ui/skeleton'
-
 
 const avatarsUrl = [
     "https://s3-alpha-sig.figma.com/img/40fe/e60b/a7bf73eaffd830005b1726220e8b6ecc?Expires=1722816000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=kXOUcUQZoQuZQRMhcTorv-CZCTY8Zw5VcG0MDJxWHA7XS-obzQor87eVEqSGCj9bCiu-PlO5MKeK7QR31v9x4Xo6Sz2EYQQ0WH0Y4AsDsv21JsR~15cZUCjQ~CtSZU5LShpwxdFT~IEqg7NmBU94OsgUIX5uaKV4OkQb5B-Q67C32e6QdRqDD6u3H~yRkXVkRsimn6SCGOjJRqrhynqiG4hrs5zZ6JqqPylJOMxINLa01iuRPcqDSwaVGROULdcqc8ivDO1YCy5lle~Gmp-wYrTAOgth4fAraWdV8BDu~vFDHAC6q5emAWWD~6R7KssoTCoADsfdZnShydZhFW3ieg",
@@ -23,24 +22,28 @@ interface AvatarChooseFieldProps {
     setAvatarUrl: (avatar: string) => void
 }
 
-export  function AvatarChooseField({setAvatarUrl}: AvatarChooseFieldProps) {
-    
+export function AvatarChooseField({ setAvatarUrl }: AvatarChooseFieldProps) {
+
     const handleAvatarClick = (avatar: string) => {
         setAvatarUrl(avatar)
     }
-  
+
     return (
-    <div className='grid place-items-center grid-cols-4  gap-4   m-auto w-[512px] h-[396px] p-8 rounded-[8px] border-1/2  bg-[#ACE8FF]'>
-        {
-            avatarsUrl.map((avatar, index) => (
-                <Avatar className=' h-[100px] w-[100px] cursor-pointer transition-all hover:scale-110'
-                onClick={() => handleAvatarClick(avatar)}
-                >
-                    <AvatarImage src={avatar} alt={`avatar-${index}`}/>
-                    <AvatarFallback><Skeleton className=' w-full h-full'/></AvatarFallback>
-                </Avatar>
-            ))
-        }
-    </div>
-  )
+        <div className='grid place-items-center grid-cols-4 gap-4 m-auto w-[512px] h-[396px] p-8 rounded-[8px] border-1/2 bg-[#ACE8FF]'>
+            {
+                avatarsUrl.map((avatar, index) => (
+                    <Avatar
+                        key={index} 
+                        className='h-[100px] w-[100px] cursor-pointer transition-all hover:scale-110'
+                        onClick={() => handleAvatarClick(avatar)}
+                    >
+                        <AvatarImage src={avatar} alt={`avatar-${index}`} />
+                        <AvatarFallback>
+                            <Skeleton className='w-full h-full' />
+                        </AvatarFallback>
+                    </Avatar>
+                ))
+            }
+        </div>
+    )
 }
