@@ -1,6 +1,5 @@
 import React from "react";
-import RBCustomSlider from "@/app/components/slider";
-import RBCustomSliderDocPage from "@/app/components/slider/sliderDocs";
+import RBCustomSlider from ".";
 
 type Props = {};
 
