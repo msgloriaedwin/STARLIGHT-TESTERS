@@ -8,17 +8,23 @@ interface InputFieldProps extends InputProps {
   error?: string | React.ReactNode;
   label?: string;
   helperText?: string | React.ReactNode;
+  labelClassName?: string;
+  errorClassName?: string;
+  helperTextClassName?: string;
 }
 
 const RBInput: React.FC<InputFieldProps> = ({
   error,
   label,
   helperText,
+  labelClassName,
+  errorClassName,
+  helperTextClassName,
   ...rest
 }) => {
   return (
     <div className="my-4 space-y-2">
-      {label && <RBInputLabel label={label} />}
+      {label && <RBInputLabel label={label} className={labelClassName} />}
 
       <Input
         {...rest}
@@ -26,9 +32,16 @@ const RBInput: React.FC<InputFieldProps> = ({
         aria-invalid={!!error}
       />
 
-      {error && <RBInputErrorMessage error={error} />}
+      {error && (
+        <RBInputErrorMessage error={error} className={errorClassName} />
+      )}
 
-      {helperText && <RBInputHelperText helperText={helperText} />}
+      {helperText && (
+        <RBInputHelperText
+          helperText={helperText}
+          className={helperTextClassName}
+        />
+      )}
     </div>
   );
 };

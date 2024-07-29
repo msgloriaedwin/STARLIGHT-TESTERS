@@ -1,9 +1,10 @@
+type Props = { label: string; className?: string };
 
-type Props = { label: string };
-
-function RBInputLabel({ label }: Props) {
+function RBInputLabel({ label, className = "" }: Props) {
   return (
-    <div className="mb-1  text-[#00222E] font-dm-sans text-base font-normal not-italic">
+    <div
+      className={`mb-1 text-[#00222E] font-dm-sans text-base font-normal not-italic ${className}`}
+    >
       {label}
     </div>
   );
