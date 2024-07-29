@@ -1,15 +1,10 @@
-import Image from "next/image";
-import Navbar from "./components/navbars/Navbar";
-import { Menu } from "lucide-react";
-import logo from "../app/components/navbars/asset/bingo_logo.png"
-import SignUpNavbar from "./components/navbars/custom-navbars/signUpNavbar";
-import LandingPageNavbar from "./components/navbars/custom-navbars/LandingPageNavbar";
+import ForgotPasswordForm from "./components/forms/forgotPasswordForm/forgotPassword";
+import Slider from "./components/slider";
 
 export default function Home() {
-  return (
-    <main className="bg-[#F7EEE7]">
-      <LandingPageNavbar />
-      
-    </main>
-  )
+  return <main>
+    <Slider mode="volume" />
+    <Slider mode="level" />
+    <ForgotPasswordForm />
+  </main>;
 }
