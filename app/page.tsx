@@ -1,13 +1,18 @@
+"use client"
+
+import React, { useState } from "react";
+// import { ChooseAvatarField } from "./components/chooseAvatarField/chooseAvatarField";
 import ForgotPasswordForm from "./components/forms/forgotPasswordForm/forgotPassword";
-import CardSelectionNavbar from "./components/navbars/custom-navbars/CardSelectionNavbar";
-import LandingPageNavbar from "./components/navbars/custom-navbars/LandingPageNavbar";
-import SignUpNavbar from "./components/navbars/custom-navbars/signUpNavbar";
+import OtpComponent from "./components/otp/otpcomponent";
 import Slider from "./components/slider";
 
 export default function Home() {
+
   return <main>
-    <Slider mode="volume" />
-    <Slider mode="level" />
-    <ForgotPasswordForm />
+    <div className="flex justify-center bg-[#f7EEE7] items-center py-10 px-2">
+      <OtpComponent email="amin***@gmail.com"/>
+    </div>
+    <Slider mode="volume"/>
+      <ForgotPasswordForm/>
   </main>;
 }
