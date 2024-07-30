@@ -12,24 +12,24 @@ const Footer = () => {
           </div>
           <div className="box">
             <p className="link_name">Company</p>
-            <p className='link_para pt-6'><a href="#">About</a></p>
-            <p className='link_para pt-4'><a href="#">Contact</a></p>
+            <p className='link_para pt-6'>About</p>
+            <p className='link_para pt-4'>Contact</p>
           </div>
           <div className="box">
             <p className="link_name">Resources</p>
-            <p className='link_para pt-6'><a href="#">How to play</a></p>
-            <p className='link_para pt-4'><a href="#">Community</a></p>
+            <p className='link_para pt-6'>How to play</p>
+            <p className='link_para pt-4'>Community</p>
           </div>
           <div className="box">
-            <p className="link_name">Legal</p>
-            <p className='link_para pt-6'><a href="#">Privacy Policy</a></p>
-            <p className='link_para pt-4'><a href="#">Terms of Service</a></p>
+            <p className="link_name legal">Legal</p>
+            <p className='link_para pt-6'>Privacy Policy</p>
+            <p className='link_para pt-4'>Terms of Service</p>
           </div>
           <div className="media-icons">
-            <a href="">
+            <a href="" className='mr-2'>
               <Image src='/assets/icons/XLogo.svg' alt='twitter link' width={24} height={24}/>
             </a>
-            <a href="">
+            <a href="" className='mr-2'>
               <Image src='/assets/icons/Instagram Icon.svg' alt='instagram link' width={24} height={24}/>
             </a>
             <a href="">
@@ -37,9 +37,13 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className='copyright-box flex items-center justify-between'>
-          <span className="copyright_text">&#169; Remote Bingo LTD.</span>
-          <span className="copyright_text">English (UK)</span>
+        <div className='copyright-box flex justify-between'>
+          <div>
+            <span className="copyright_text">&#169; Remote Bingo LTD.</span>
+          </div>
+          <div>
+            <span className="copyright_text">English (UK)</span>
+          </div>
         </div>
       </div>
     </footer>

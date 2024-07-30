@@ -12,7 +12,6 @@ footer .content{
 }
 footer .content .top{
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 .media-icons{
@@ -21,7 +20,6 @@ footer .content .top{
 .media-icons a{
     height: 44px;
     width: 44px;
-    margin-left: 8px;
     background: var(--Primary-A-300, #82DCFF);
     border-radius: 8px;
     display: flex;
@@ -50,6 +48,9 @@ footer .content .top{
     font-weight: 400;
     line-height: normal;
 }
+/* .link_para a{
+    text-decoration: none;
+} */
 .copyright-box{
     margin-top: 16px;
     padding-top: 16px;
@@ -65,55 +66,61 @@ footer .content .top{
     line-height: normal;
 }
 
+/* Media queries for responsiveness */
 
-
-/* 
-@media (max-width: 900px){
-    .content .top .media-icons{
-        margin-top: 16px;
-    }
+/* Screens smaller than 900px */
+@media (max-width: 900px) {
     footer .content {
-        width: 40%;
-        margin-top: 10px;
+        padding: 24px 40px;
     }
 }
-@media (max-width: 700px){
-    footer{
-        position: relative;
-    } 
-    .content .top .media-icons a{
-        height: 35px;
-        width: 35px;
-        font-size: 14px;
-        line-height: 35px;
-    }
-    footer .content .box{
-        width: calc(100% / 3 - 10px);
-    }
-    footer .content {
-        width: 60%;
-    }
-    .bottom-details .bottom_text span,
-    .bottom-details .bottom_text a{
-        font-size: 12px;
-    } 
-}
-*/
 
-@media (max-width: 520px){
-    footer::before{
-        top: 145px;
+/* Screens smaller than 700px */
+@media (max-width: 700px) {
+    footer .content {
+        padding: 24px;
     }
-    footer .content .top{
-       flex-direction: column;
+
+    footer .content .top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
-    .content .top .media-icons{
-        margin-top: 16px;
+
+    .box {
+        margin-bottom: 32px;
+        text-align: center;
     }
-    footer .content .box{
-        width: calc(100% / 2 - 10px);
+    .legal{
+        text-align: center;
     }
-    footer .content{
-        width: 100%;
+    .logo{
+        padding-bottom: 32px;
+    }
+
+    .media-icons {
+        justify-content: center;
+    }
+}
+
+/* Screens smaller than 520px */
+@media (max-width: 520px) {
+    footer .content {
+        padding: 24px;
+    }
+
+    footer .content .top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .box {
+        margin-bottom: 32px;
+        text-align: center;
+    }
+
+    .media-icons {
+        justify-content: center;
     }
 }
