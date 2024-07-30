@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+footer{
+    position: fixed;
+    background: var(--Backgriund-Linear, linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%));
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+footer .content{
+    padding: 24px 80px;
+}
+footer .content .top{
+    display: flex;
+    justify-content: space-between;
+}
+.media-icons{
+    display: flex;
+}
+.media-icons a{
+    height: 44px;
+    width: 44px;
+    background: var(--Primary-A-300, #82DCFF);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+.link_name{
+    color: var(--Primary-A-500, #00A8E8);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+
+}
+.link_para{
+    color: var(--Primary-A-700, #00658B);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.copyright-box{
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--Neutral-200, #E2E2E2);;
+}
+.copyright_text{
+    color: var(--Neutral-500, #9F9F9F);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Media queries for responsiveness */
+/* Screens smaller than 900px */
+@media (max-width: 900px) {
+    footer .content {
+        padding: 24px 40px;
+    }
+}
+
+/* Screens smaller than 700px */
+@media (max-width: 700px) {
+    footer .content {
+        padding: 24px;
+    }
+
+    footer .content .top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .box {
+        margin-bottom: 32px;
+        text-align: center;
+    }
+    .legal{
+        text-align: center;
+    }
+    .logo{
+        padding-bottom: 32px;
+    }
+
+    .media-icons {
+        justify-content: center;
+    }
+}
+
+/* Screens smaller than 520px */
+@media (max-width: 520px) {
+    footer .content {
+        padding: 24px;
+    }
+
+    footer .content .top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .box {
+        margin-bottom: 32px;
+        text-align: center;
+    }
+
+    .media-icons {
+        justify-content: center;
+    }
+}

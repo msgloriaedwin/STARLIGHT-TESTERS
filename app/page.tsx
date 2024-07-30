@@ -6,10 +6,7 @@ import ForgotPasswordForm from "./components/forms/forgotPasswordForm/forgotPass
 import OtpComponent from "./components/otp/otpcomponent";
 import Slider from "./components/slider";
 import PasswordResetForm from "./components/passwordResetForm/passwordResetForm";
-import GameMaster from "./components/gameMaster/gameMaster";
-import { GameMasterBingo } from "./components/gameMaster/gameMaster";
-import { GameMasterHalf } from "./components/gameMaster/gameMaster";
-import { GameMasterLeft } from "./components/gameMaster/gameMaster";
+import Footer from "./components/footer/footer";
 
 export default function Home() {
   const onSubmit = (data: any) => {
@@ -27,12 +24,7 @@ export default function Home() {
       <div className="flex justify-center py-10 px-2 ">
         <PasswordResetForm link="/" onSubmit={onSubmit} />
       </div>
-      <div className="flex justify-center p-4">
-        <GameMaster />
-        <GameMasterBingo />
-        <GameMasterLeft />
-        <GameMasterHalf />
-      </div>
+      <Footer />
     </main>
   );
 }
