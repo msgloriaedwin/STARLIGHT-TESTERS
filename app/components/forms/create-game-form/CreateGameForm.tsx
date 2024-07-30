@@ -147,14 +147,14 @@ const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel
-                    htmlFor="teamName"
+                    htmlFor="prizeValue"
                     className="font-normal text-[0.6rem] max-sm:leading-3 sm:text-[1rem]"
                   >
                     Prize Value 🏆
                   </FormLabel>
                   <FormControl>
                     <Input
-                      id="teamName"
+                      id="prizeValue"
                       placeholder="Name Prize"
                       {...field}
                       className="border border-[#00222E] focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
