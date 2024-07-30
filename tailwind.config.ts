@@ -7,7 +7,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -18,6 +18,21 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        "gradient_to_l": "linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)"
+      },
+      boxShadow: {
+        "custom-inset": "2px 2px 0px 0px rgba(255, 255, 255, 0.4) inset, -4px -4px 0px 0px rgba(0, 0, 0, 0.32) inset",
+      },
+      fontSize: {
+        "huge": "70px",
+        "large": "50px",
+        "big": "48px",
+        "heading": "36px",
+        "medium": "34px",
+        "small": "16px",
+        "extra-small": "14px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -27,6 +42,36 @@ const config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          bg: "#f7EEE7",
+        },
+        yellow: {
+          main: "#FFDD00",
+        },
+        grey: {
+          main: "#c5c5c5",
+        },
+        green: {
+          main: "#4CAF50",
+          "dirty-green": "#AEDCB0"
+        },
+        form: {
+          main: "#FAFAFA",
+          blue: "#ACE8FF"
+        },
+        button: {
+          main: "#FFDD00",
+          "light-main": "#FFF08C",
+          "dark-blue": "#00658B",
+          "dark-blue-text": "#D5F3FF",
+          "light-blue": "#82DCFF",
+          "light-blue-text": "#000000",
+          neutral: "#FFFDFD",
+          danger: "#FF3355"
+        },
+        textColor: {
+          main: "#00658B",
+          neutral: "#9F9F9F",
+          black: "#272626",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -51,7 +96,13 @@ const config = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+          bg: "#00A8E8",
+          yellow: "#FFEB66",
+          iconColor: "#F7EEE7",
         },
+      },
+      borderColor: {
+        primaryBlue: "#00A8E8"
       },
       borderRadius: {
         lg: "var(--radius)",
