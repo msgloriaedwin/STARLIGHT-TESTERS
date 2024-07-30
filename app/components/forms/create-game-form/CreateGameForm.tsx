@@ -85,7 +85,7 @@ const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
                     >
                       Bingo Type
                     </FormLabel>
-                    <div className="flex flex-col sm:flex-row justify-between gap-3">
+                    <div className="flex flex-row justify-between gap-3">
                       <Button
                         className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-[#FFF08C] border border-[#00222E] text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 hover:bg-yellow-300`}
                         onClick={() => field.onChange("numbers")}
