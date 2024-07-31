@@ -50,7 +50,7 @@ export default function Home() {
       <div className="flex justify-center py-10 px-2 ">
         <PasswordResetForm link="/" onSubmit={onSubmit} />
       </div>
-        <Footer/>
+      <Footer />
     </main>
   );
 }
