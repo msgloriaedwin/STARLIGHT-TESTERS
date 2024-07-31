@@ -29,7 +29,7 @@ const inputFields: InputField[] = [
   },
 ];
 
-const page = () => {
+const InputContainer = () => {
   return (
     <div className="p-4 space-y-4">
       {inputFields.map((field, index) => (
@@ -48,4 +48,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default InputContainer;
