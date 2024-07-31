@@ -49,10 +49,7 @@ const ForgotPasswordForm: React.FC = () => {
             </Button>
           </form>
           <div className="text-center mt-4">
-            <a
-              href="#"
-              className="text-sm text-blue-600 hover:underline"
-            >
+            <a href="#" className="text-sm text-[#00222E] hover:underline">
               Back to Sign In
             </a>
           </div>
