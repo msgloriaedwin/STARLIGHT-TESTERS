@@ -4,10 +4,11 @@ import { cva } from "class-variance-authority";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "danger" | "primaryOutline";
   size?: "small" | "medium" | "large";
-  icon?: React.ReactNode; // Add this prop for the icon
-  isLoading?: boolean; // Add this prop for loading state
+  icon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  isLoading?: boolean;
   children: React.ReactNode;
-  className?: string; // Add this prop for additional custom styles
+  className?: string;
 }
 
 // Define the class variants using cva
@@ -17,11 +18,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-[#00658B] border border-[#00658B] text-[#D5F3FF] shadow-[2px_2px_0px_0px_rgba(255,_255,_255,_0.40)_inset,_-4px_-4px_0px_0px_rgba(0,_0,_0,_0.32)_inset] hover:bg-[#004c66]",
+          "bg-button-dark-blue border border-[#00658B] text-[#D5F3FF] shadow-custom-inset hover:bg-[#004c66]",
         secondary:
-          "bg-[#FD0] border-2 border-[#665800] text-[#332C00] shadow-[2px_2px_0px_0px_rgba(255,_255,_255,_0.40)_inset,_-4px_-4px_0px_0px_rgba(0,_0,_0,_0.32)_inset] hover:bg-[#e5c800]",
+          "bg-button-main border-2 border-[#665800] text-[#332C00] shadow-custom-inset hover:bg-[#e5c800]",
         danger:
-          "bg-[#F35] border-2 border-[#FF8CB3] text-[#FAFAFA] shadow-[2px_2px_0px_0px_rgba(255,_255,_255,_0.40)_inset,_-4px_-4px_0px_0px_rgba(0,_0,_0,_0.32)_inset] hover:bg-[#d14b5e]",
+          "bg-button-danger border-2 border-[#FF8CB3] text-[#FAFAFA] shadow-custom-inset hover:bg-[#d14b5e]",
         primaryOutline:
           "bg-transparent border-2 border-[#00658B] text-[#00658B] shadow-none hover:bg-[#00658B33]",
       },
@@ -43,6 +44,7 @@ const RBButton = ({
   size = "medium",
   children,
   icon,
+  rightIcon,
   isLoading = false,
   className,
   disabled,
@@ -67,6 +69,9 @@ const RBButton = ({
         <>
           {icon && <span className="flex items-center">{icon}</span>}
           {children}
+          {rightIcon && (
+            <span className="flex items-center ml-2">{rightIcon}</span>
+          )}
         </>
       )}
     </button>
