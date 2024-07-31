@@ -118,14 +118,14 @@ const RBCustomSlider = ({
             </div>
           )}
         </div>
-        {mode === "volume" && (
+        {/* {mode === "volume" && (
           <span
             className={`font-medium text-lg ${valueClassName}`}
             style={{ color: theme?.valueColor }}
           >
             {getLabel}
           </span>
-        )}
+        )} */}
       </div>
     </div>
   );
