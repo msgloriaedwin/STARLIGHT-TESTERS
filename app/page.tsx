@@ -2,8 +2,8 @@ import React from 'react'
 
 const LandingPage = () => {
   return (
-    <main>
+    <div>
       This is Landing Page
-    </main>
+    </div>
   );
 }
