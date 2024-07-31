@@ -34,12 +34,12 @@ const GameCard = ({value, onCardActivate}: GameCardProps) => {
               </div>
               {
                 isCardActive 
-                ? <Image className="z-[99] absolute top-[-0.6rem] right-[-0.6rem] w-6 md:w-7" src="./tick-circle.svg" alt="green circle tick image" width="30" height="30"/> 
+                ? <Image className="z-[2] absolute top-[-0.6rem] right-[-0.6rem] w-6 md:w-7" src="./tick-circle.svg" alt="green circle tick image" width="30" height="30"/> 
                 : ""
               }
             </div>
           :
-          <div className={` cursor-pointer md:max-w-16 max-w-10 w-full max-h-14 md:max-h-20 relative rounded-tl rounded-tr-none rounded-br rounded-bl-none  box-border overflow-hidden shrink-0 flex flex-col items-center justify-center py-[1.5rem] md:py-[1.3rem] px-[0.4rem] md:px-[0.7rem] text-center text-[1.8rem] md:text-[3rem] border-b-[3px] border-solid border-primaryBlue border-l-[3px] bg-form-blue text-transaprent`}>
+          <div className={`cursor-pointer md:max-w-16 max-w-10 w-full max-h-14 md:max-h-20 relative rounded-tl rounded-tr-none rounded-br rounded-bl-none  box-border overflow-hidden shrink-0 flex flex-col items-center justify-center py-[1.5rem] md:py-[1.3rem] px-[0.4rem] md:px-[0.7rem] text-center text-[1.8rem] md:text-[3rem] border-b-[3px] border-solid border-primaryBlue border-l-[3px] bg-form-blue text-transaprent`}>
             <Image src="./add-card.svg" alt="Add card Button" width={60} height={60}/>
           </div>
         }
