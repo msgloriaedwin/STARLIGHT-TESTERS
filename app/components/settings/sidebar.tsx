@@ -58,7 +58,7 @@ export function SidebarComp() {
        </aside>
 
       {/* DESKTOP SIDEBAR */}
-        <aside className="hidden  md:w-[25%] lg:w-[23%] md:flex flex-col gap-y-10 items-center pt-16 h-screen border-r border-r-[#D4D4D4]  py-4 px-7">
+        <aside className="hidden  md:w-[25%] lg:w-[23%] md:flex flex-col gap-y-10 items-center pt-16 h-screen bg-[#F7EEE7] border-r border-r-[#D4D4D4]  py-4 px-7">
           <ul>
             {links.map((link) => (
               <li key={link.href}>
