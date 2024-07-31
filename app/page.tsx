@@ -39,7 +39,7 @@ export default function Home() {
         <OtpComponent email='amin***@gmail.com' />
       </div>
 
-      <div className='flex items-center justify-center min-h-screen bg-gray-100'>
+      <div className='flex items-center justify-center h-60 bg-gray-100'>
         <button
           className='bg-blue-500 text-white py-2 px-4 rounded'
           onClick={handleOpenModal}
