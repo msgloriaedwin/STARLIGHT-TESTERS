@@ -97,7 +97,7 @@ export default function Home() {
       </div>
 
       <div className="flex justify-center my-12">
-      <Player username="Olajumoke" avatar="/assets/images/modalpic1.png"/>
+      <Player username="Olajumoke" avatar="/assets/images/avatar-1.png"/>
         <MessageBubble  message="pretend i said something funny(i did)" alignment="left"/>
       </div>
 
