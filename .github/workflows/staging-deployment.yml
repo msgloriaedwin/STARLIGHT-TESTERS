@@ -47,5 +47,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd staging/bingofe
+            cd bingofe/staging/bingo_fe
             ./scripts/staging_deploy.sh
