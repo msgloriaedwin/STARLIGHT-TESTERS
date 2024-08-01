@@ -1,0 +1,1 @@
+<!-- Add all game setup pages here such as create game, join game here -->
