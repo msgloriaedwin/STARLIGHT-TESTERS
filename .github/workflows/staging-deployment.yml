@@ -32,7 +32,7 @@ jobs:
         with:
           file: docker/staging/Dockerfile
           push: true
-          tags: tella1234/starlight_fe:staging
+          tags: hngtechie/bingofe:staging
 
   deploy_to_staging:
     needs: build_and_push
@@ -47,5 +47,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd staging/bingo_fe
+            cd staging/bingofe
             ./scripts/staging_deploy.sh
