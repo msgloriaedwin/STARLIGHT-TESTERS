@@ -21,6 +21,18 @@ const players = [
   { name: "Farrell", score: "4/5", imageUrl: "/assets/images/modalpic2.png" },
 ];
 
+
+const avatars = [
+  "/assets/images/avatar-1.png",
+  "/assets/images/avatar-2.png",
+  "/assets/images/avatar-3.png",
+  "/assets/images/avatar-4.png",
+  "/assets/images/avatar-5.png",
+  "/assets/images/avatar-6.png",
+  "/assets/images/avatar-3.png",
+  "/assets/images/avatar-2.png",
+]
+
 export default function Home() {
   const onSubmit = (data: any) => {
     console.log(data, "data");
@@ -75,7 +87,7 @@ export default function Home() {
       </div>
 
       <div className="flex justify-center my-6">
-        <CreateGameForm />
+        <CreateGameForm avatars={avatars}/>
       </div>
       <div className="flex justify-center my-6">
         <ToggleControl />
