@@ -13,6 +13,7 @@ import { ToggleControl } from "./components/ToggleControl/ToggleControl";
 import GameCustomizeNavBar from "./components/navbars/custom-navbars/GameCustomizeNavBar";
 import LandingPageNavbar from "./components/navbars/custom-navbars/LandingPageNavbar";
 import GameCardSelection from "./components/gamecardselection/gamecardselection";
+import GameCard from "./components/game-card/GameCard";
 
 const players = [
   { name: "Precious", score: "3/5", imageUrl: "/assets/images/modalpic1.png" },
@@ -88,6 +89,13 @@ export default function Home() {
         <PasswordResetForm link="/" onSubmit={onSubmit} />
       </div>
       <GameCardSelection />
+      <div className="flex gap-3 justify-center">
+        <GameCard value={12}/>
+        <GameCard value={'B'}/>
+        <GameCard/>
+        <GameCard value={1}/>
+        <GameCard value={32}/>
+      </div>
       <Footer />
     </main>
   );
