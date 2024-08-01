@@ -1,0 +1,7 @@
+services:
+  frontend:
+    image: tella1234/starlight_fe:prod
+    ports:
+      - 6102:3000
+    volumes:
+      - ../../.env:/app/.env
