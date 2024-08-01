@@ -48,7 +48,6 @@ export default function Home() {
     setIsModalOpen(false);
   };
 
-
   return (
     <main className="bg-body">
       <LandingPageNavbar
@@ -57,13 +56,13 @@ export default function Home() {
         handleHowToPlayClick={handleHowToPlayClick}
         handleShowMenu={handleShowMenu}
       />
-      <div className='flex justify-center bg-[#f7EEE7] items-center py-10 px-2'>
-        <OtpComponent email='amin***@gmail.com' />
+      <div className="flex justify-center bg-[#f7EEE7] items-center py-10 px-2">
+        <OtpComponent email="amin***@gmail.com" />
       </div>
 
-      <div className='flex items-center justify-center h-60'>
+      <div className="flex items-center justify-center h-60">
         <button
-          className='bg-blue-500 shadow-custom-inset text-white py-2 px-4 rounded'
+          className="bg-blue-500 shadow-custom-inset text-white py-2 px-4 rounded"
           onClick={handleOpenModal}
         >
           Show Game Over Modal
@@ -75,16 +74,18 @@ export default function Home() {
         />
       </div>
 
-      <div className='flex justify-center my-6'>
+      <div className="flex justify-center my-6">
         <CreateGameForm />
       </div>
-      <div className='flex justify-center my-6'><ToggleControl /></div>
+      <div className="flex justify-center my-6">
+        <ToggleControl />
+      </div>
 
-      <Slider mode='volume' />
-      <Slider mode='level' className="mt-14" />
+      <Slider mode="volume" />
+      <Slider mode="level" className="mt-14" />
       <ForgotPasswordForm />
-      <div className='flex justify-center py-10 px-2 '>
-        <PasswordResetForm link='/' onSubmit={onSubmit} />
+      <div className="flex justify-center py-10 px-2 ">
+        <PasswordResetForm link="/" onSubmit={onSubmit} />
       </div>
       <GameCardSelection />
       <Footer />
