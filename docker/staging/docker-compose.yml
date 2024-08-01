@@ -1,0 +1,7 @@
+services:
+  frontend:
+    image: tella1234/starlight_fe:staging
+    ports:
+      - 6100:3000
+    volumes:
+      - ../../.env:/app/.env
