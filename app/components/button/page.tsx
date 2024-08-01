@@ -1,6 +1,13 @@
 "use client";
 import React from "react";
-import { Info } from "lucide-react";
+import {
+  ArrowBigLeft,
+  ArrowLeft,
+  ChevronDown,
+  Info,
+  LucideLink,
+  User,
+} from "lucide-react";
 import ButtonDocs from "./ButtonDocs";
 import RBButton from "./button";
 
@@ -19,11 +26,34 @@ const page = (props: Props) => {
       >
         Hello, How are you
       </RBButton>
+      <RBButton
+        icon={<Info />}
+        rightIcon={<LucideLink />}
+        onClick={() => console.log("first")}
+        variant={"primary"}
+      >
+        Hello, How are you
+      </RBButton>
+      <RBButton
+        icon={<User />}
+        rightIcon={<ChevronDown />}
+        onClick={() => console.log("first")}
+        variant={"primary"}
+      >
+        Stephen
+      </RBButton>
       <RBButton onClick={() => console.log("first")} variant={"secondary"}>
         Hello, How are you
       </RBButton>
       <RBButton onClick={() => console.log("first")} variant={"primaryOutline"}>
         Hello, How are you
+      </RBButton>
+      <RBButton
+        icon={<ArrowLeft />}
+        onClick={() => console.log("first")}
+        variant={"primaryOutline"}
+      >
+        Back
       </RBButton>
 
       <ButtonDocs />
