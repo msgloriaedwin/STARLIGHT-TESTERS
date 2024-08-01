@@ -22,7 +22,7 @@ const formSchema = z.object({
   teamName: z.string().min(1, { message: "Team Name is required" }),
   bingoType: z.enum(["numbers", "alphabets"]),
   prizeValue: z.string().min(1, { message: "Prize value is required" }),
-  avatar: z.string().optional()
+  avatar: z.string()
 });
 
 type FormData = z.infer<typeof formSchema>;
