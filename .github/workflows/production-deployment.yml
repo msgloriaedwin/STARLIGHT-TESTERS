@@ -47,5 +47,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd prod/bingofe
+            cd bingofe/prod/bingo_fe
             ./scripts/production_deploy.sh
