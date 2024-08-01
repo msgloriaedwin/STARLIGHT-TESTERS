@@ -19,5 +19,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd dev/bingo_fe
+            cd dev/bingofe
             ./scripts/dev_deploy.sh
