@@ -14,6 +14,8 @@ import GameCustomizeNavBar from "./components/navbars/custom-navbars/GameCustomi
 import LandingPageNavbar from "./components/navbars/custom-navbars/LandingPageNavbar";
 import GameCardSelection from "./components/gamecardselection/gamecardselection";
 import GameCard from "./components/game-card/GameCard";
+import MessageBubble from "./components/messageBubble/MessageBubble";
+import Player from "./components/player/Player";
 
 const players = [
   { name: "Precious", score: "3/5", imageUrl: "/assets/images/modalpic1.png" },
@@ -93,6 +95,11 @@ export default function Home() {
       </div>
       <div className="flex justify-center my-6">
         <ToggleControl />
+      </div>
+
+      <div className="flex justify-center my-12">
+      <Player username="Olajumoke" avatar="/assets/images/avatar-1.png"/>
+        <MessageBubble  message="pretend i said something funny(i did)" alignment="left"/>
       </div>
 
       <Slider mode="volume" />
