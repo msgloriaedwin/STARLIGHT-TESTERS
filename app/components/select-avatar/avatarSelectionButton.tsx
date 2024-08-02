@@ -1,46 +1,57 @@
 "use client";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
+import React from "react";
+import Image from "next/image";
+import { Check } from "lucide-react";
 
 interface AvatarSelectionProps {
-  avatars: string[];
-  onSelect: (avatar: string) => void;
+  imgSrc: string;
+  isSelected: boolean;
+  onClick: () => void;
+  size?: number; // Optional prop to customize the size
+  borderColor?: string; // Optional prop to customize the border color
+  selectedBgColor?: string; // Optional prop to customize the background color when selected
+  checkIconColor?: string; // Optional prop to customize the check icon color
 }
 
-const AvatarSelection: React.FC<AvatarSelectionProps> = ({
-  avatars,
-  onSelect,
-}) => {
-  const [selectedAvatar, setSelectedAvatar] = useState<string | null>(null);
-
-  const handleSelect = (avatar: string) => {
-    setSelectedAvatar(avatar);
-    onSelect(avatar);
-  };
-
+const AvatarSelection = ({
+  imgSrc,
+  isSelected,
+  onClick,
+  size = 60, // Default size
+  borderColor = "#00658B", // Default border color
+  selectedBgColor = "#00658B", // Default background color when selected
+  checkIconColor = "#00435D", // Default check icon color
+}: AvatarSelectionProps) => {
   return (
-    <div className="p-4 bg-blue-50 border border-gray-300 rounded-md">
-      <div className="mb-4 font-bold text-lg">Select avatar</div>
-      <div className="grid grid-cols-5 gap-4">
-        {avatars.map((avatar, index) => (
-          <Button
-            key={index}
-            onClick={() => handleSelect(avatar)}
-            className={`flex justify-center items-center w-full p-2 rounded-full transition duration-200 ${
-              selectedAvatar === avatar
-                ? "border-2 border-teal-500"
-                : "border-2 border-transparent"
-            } hover:border-teal-500`}
-          >
-            <Avatar className="w-20 h-20">
-              <AvatarImage src={avatar} alt={`Avatar ${index + 1}`} />
-              <AvatarFallback>?</AvatarFallback>
-            </Avatar>
-          </Button>
-        ))}
+    <button
+      className={`flex justify-center items-center relative p-1 rounded-[8px] border ${
+        isSelected ? "bg-[#00435D]" : ""
+      } focus:outline-none`}
+      onClick={onClick}
+      style={{
+        width: size,
+        height: size,
+        borderColor: borderColor,
+      }}
+    >
+      <div className="relative" style={{ width: size - 5, height: size - 5 }}>
+        <Image
+          src={imgSrc}
+          alt="User"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-full"
+        />
       </div>
-    </div>
+      {isSelected && (
+        <div
+          className="absolute top-0 right-0 bg-white rounded-full p-1 flex justify-center items-center"
+          style={{ width: size / 5, height: size / 5 }}
+        >
+          <Check className="w-full h-full" style={{ color: checkIconColor }} />
+        </div>
+      )}
+    </button>
   );
 };
 
