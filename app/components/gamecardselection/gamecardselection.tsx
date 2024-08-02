@@ -64,7 +64,7 @@ export default function GameCardSelection() {
                   const columnIndex = (index % 12) + 1; 
                   return (
                     <div key={index} className={`${columnIndex % 2 === 0 ? 'relative top-[-30px]' : ''} h-fit flex justify-center items-center py-[13px]`}>
-                      <p className='text-[#404040] text-[24px] font-[700] leading-[33.6px] text-center'>{info}</p>
+                      <p className='text-[#404040] cursor-pointer text-[24px] font-[700] leading-[33.6px] text-center'>{info}</p>
                     </div> 
                   )
                 })

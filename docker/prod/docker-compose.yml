@@ -1,0 +1,7 @@
+services:
+  frontend:
+    image: hngtechie/bingofe:prod
+    ports:
+      - 6102:3000
+    volumes:
+      - ../../.env:/app/.env
