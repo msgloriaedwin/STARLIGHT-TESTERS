@@ -67,6 +67,7 @@ export default function Home() {
         onLogin={onLogin}
         onSignup={onSignUp}
       />
+      
       <div className="flex justify-center bg-[#f7EEE7] items-center py-10 px-2">
         <OtpComponent email="amin***@gmail.com" />
       </div>
