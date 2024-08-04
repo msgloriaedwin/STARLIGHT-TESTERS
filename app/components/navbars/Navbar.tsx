@@ -1,13 +1,15 @@
 import React from 'react'
+import { Menu } from 'lucide-react'
 
 type NavbarProp = {
     className?: string,
+    // userImageUrl?: string,
     children: React.ReactNode,
 }
 
 const Navbar = ({ className, children }: NavbarProp) => {
     return (
-        <div className={`${className} shadow-sm flex items-center w-full md:bg-navbar px-4 md:px-20 py-6`}>
+        <div className={`${className} flex items-center w-full bg-transparent md:bg-navbar px-4 md:px-20 py-6`}>
             {children}
         </div>
     )
