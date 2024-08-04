@@ -65,12 +65,10 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-body">
+    <main className="bg-body pt-[95px]">
       <LandingPageNavbar
         onLogin={onLogin}
         onSignup={onSignUp}
-        handleHowToPlayClick={handleHowToPlayClick}
-        handleShowMenu={handleShowMenu}
       />
       <div className="flex justify-center bg-[#f7EEE7] items-center py-10 px-2">
         <OtpComponent email="amin***@gmail.com" />
