@@ -10,6 +10,7 @@ import Footer from "./components/footer/footer";
 import GameOverModal from "./components/GameOverModal/GameOverModal";
 import CreateGameForm from "./components/forms/create-game-form/CreateGameForm";
 import { ToggleControl } from "./components/ToggleControl/ToggleControl";
+import GameCustomizeNavBar from "./components/navbars/custom-navbars/GameCustomizeNavBar";
 import LandingPageNavbar from "./components/navbars/custom-navbars/LandingPageNavbar";
 import GameCardSelection from "./components/gamecardselection/gamecardselection";
 import GameCard from "./components/game-card/GameCard";
@@ -50,20 +51,27 @@ export default function Home() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+  const handleShowMenu = () => {
+    setIsModalOpen(false);
+  };
   const onSignUp = () => {
     setIsModalOpen(false);
   };
   const onLogin = () => {
     setIsModalOpen(false);
   };
+  const handleHowToPlayClick = () => {
+    setIsModalOpen(false);
+  };
 
   return (
-    <main className="bg-body pt-[100px] overflow-x-hidden">
+    <main className="bg-body">
       <LandingPageNavbar
         onLogin={onLogin}
         onSignup={onSignUp}
+        handleHowToPlayClick={handleHowToPlayClick}
+        handleShowMenu={handleShowMenu}
       />
-
       <div className="flex justify-center bg-[#f7EEE7] items-center py-10 px-2">
         <OtpComponent email="amin***@gmail.com" />
       </div>
