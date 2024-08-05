@@ -153,23 +153,13 @@ export default function Home() {
             />
           </div>
 
-          <Slider mode="volume" />
-          <Slider mode="level" className="mt-14" />
-          <ForgotPasswordForm />
-          <div className="flex justify-center py-10 px-2 ">
-            <PasswordResetForm link="/" onSubmit={onSubmit} />
-          </div>
-          <GameCardSelection />
-          <div className="flex gap-3 justify-center">
-            <GameCard value={12} />
-            <GameCard value={"B"} />
-            <GameCard />
-            <GameCard value={1} />
-            <GameCard value={32} />
-          </div>
-        </main>
-      </main>
-
+      <Slider mode="volume" />
+      <Slider mode="level" className="mt-14" />
+      <ForgotPasswordForm />
+      <div className="flex justify-center py-10 px-2 ">
+        <PasswordResetForm link="/" onSubmit={onSubmit} />
+      </div>
+      <GameCardSelection />
       <Footer />
     </main>
   );
