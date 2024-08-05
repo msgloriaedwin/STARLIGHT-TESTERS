@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,16 +16,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import AvatarSelector from "./AvatarSelector";
 
 const formSchema = z.object({
   teamName: z.string().min(1, { message: "Team Name is required" }),
   bingoType: z.enum(["numbers", "alphabets"]),
   prizeValue: z.string().min(1, { message: "Prize value is required" }),
+  avatar: z.string(),
 });
 
 type FormData = z.infer<typeof formSchema>;
 
-const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
+const CreateGameForm = ({
+  avatars,
+  className,
+}: {
+  avatars: string[];
+  className?: string;
+}) => {
+  const [selectedAvatar, setSelectedAvatar] = useState<string>(avatars[0]);
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
@@ -33,12 +44,17 @@ const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
     console.log(data);
   };
 
+  const handleAvatarSelect = (avatar: string) => {
+    setSelectedAvatar(avatar);
+    form.setValue("avatar", avatar);
+  };
+
   return (
-    <section className={cn("max-w-[39rem]",className)}>
+    <section className={cn("max-w-[39rem]", className)}>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleFormSubmit)}
-          className="bg-[#ACE8FF] p-[0.9rem] sm:p-6 rounded-[0.45rem] sm:rounded-[0.75rem] max-sm:border-[#00A8E8] max-sm:border-l-[0.11rem] max-sm:border-b-[0.11rem] flex flex-col gap-[0.9rem] sm:gap-6"
+          className="bg-form-blue p-[0.9rem] sm:p-6 rounded-[0.45rem] sm:rounded-[0.75rem] max-sm:border-primary-500 max-sm:border-l-[0.11rem] max-sm:border-b-[0.11rem] flex flex-col gap-[0.9rem] sm:gap-6"
         >
           <div>
             <FormField
@@ -57,12 +73,12 @@ const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
                       id="teamName"
                       placeholder="Team Name"
                       {...field}
-                      className="border border-[#00222E] focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
+                      className="border border-primary-900 focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
                       required
                     />
                   </FormControl>
                   {form.formState.errors && (
-                    <FormMessage className="text-#00222e">
+                    <FormMessage className="text-primary-900">
                       {form.formState.errors.teamName?.message}
                     </FormMessage>
                   )}
@@ -87,11 +103,11 @@ const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
                     </FormLabel>
                     <div className="flex flex-row justify-between gap-3">
                       <Button
-                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-[#FFF08C] border border-[#00222E] text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 hover:bg-yellow-300`}
+                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-button-light-main border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 hover:bg-yellow-300`}
                         onClick={() => field.onChange("numbers")}
                       >
                         <Image
-                          src={"/icons/numbers.svg"}
+                          src={"assets/icons/numbers.svg"}
                           alt="alphabet group icons"
                           height={24}
                           width={24}
@@ -101,7 +117,7 @@ const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
                         {field.value === "numbers" && (
                           <div className="absolute top-1 right-1">
                             <Image
-                              src={"/icons/Check.svg"}
+                              src={"assets/icons/Check.svg"}
                               alt="Selected"
                               width={16}
                               height={16}
@@ -111,11 +127,11 @@ const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
                       </Button>
 
                       <Button
-                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-[#D5F3FF] border border-[#00222E] text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 hover:bg-blue-200`}
+                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-button-dark-blue-text border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 hover:bg-blue-200`}
                         onClick={() => field.onChange("alphabets")}
                       >
                         <Image
-                          src={"/icons/alphabetss.svg"}
+                          src={"assets/icons/alphabetss.svg"}
                           alt="alphabet group icons"
                           height={24}
                           width={24}
@@ -125,7 +141,7 @@ const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
                         {field.value === "alphabets" && (
                           <div className="absolute top-1 right-1">
                             <Image
-                              src={"/icons/Check.svg"}
+                              src={"assets/icons/Check.svg"}
                               alt="Selected"
                               width={16}
                               height={16}
@@ -140,6 +156,12 @@ const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
             />
           </div>
 
+          <AvatarSelector
+            avatars={avatars}
+            selectedAvatar={selectedAvatar}
+            onAvatarSelect={handleAvatarSelect}
+          />
+
           <div>
             <FormField
               control={form.control}
@@ -150,19 +172,19 @@ const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
                     htmlFor="prizeValue"
                     className="font-normal text-[0.6rem] max-sm:leading-3 sm:text-[1rem]"
                   >
-                    Prize Value 🏆
+                    What&apos;s the Prize? 🏆
                   </FormLabel>
                   <FormControl>
                     <Input
                       id="prizeValue"
                       placeholder="Name Prize"
                       {...field}
-                      className="border border-[#00222E] focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
+                      className="border border-primary-900 focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
                       required
                     />
                   </FormControl>
                   {form.formState.errors && (
-                    <FormMessage className="text-#00222e">
+                    <FormMessage className="text-primary-900">
                       {form.formState.errors.prizeValue?.message}
                     </FormMessage>
                   )}
@@ -173,7 +195,7 @@ const CreateGameForm: React.FC = ({ className }: { className?: string }) => {
 
           <Button
             type="submit"
-            className="w-full sm:h-14 rounded-[0.5rem] bg-[#00658B] text-[#D5F3FF] p-2 border border-[#00A8E8] shadow-[2px_2px_0px_0px_rgba(255,255,255,0.40)_inset,-4px_-4px_0px_0px_rgba(0,0,0,0.32)_inset] hover:filter hover:brightness-125"
+            className="w-full sm:h-14 rounded-[0.5rem] bg-button-dark-blue text-button-dark-blue-text p-2 border border-primary-500 shadow-custom-inset hover:filter hover:brightness-125"
           >
             Save & Continue
           </Button>

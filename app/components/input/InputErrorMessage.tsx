@@ -8,7 +8,7 @@ function RBInputErrorMessage({ error, className = "" }: Props) {
   if (!error) return <></>;
 
   return (
-    <div className={`flex gap-1 items-center text-red-500 ${className}`}>
+    <div className={`flex gap-1 items-center text-error ${className}`}>
       <CircleAlert className="w-4 h-4" aria-hidden="true" />
       <span className="text-sm" role="alert">
         {error}
