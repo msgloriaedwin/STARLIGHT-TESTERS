@@ -1,17 +1,10 @@
-'use client'
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { DM_Sans } from 'next/font/google';
-import { Jua } from 'next/font/google';
 import GameCard from '../game-card/GameCard';
 
 const dm_sans = DM_Sans({
   weight: ["700"],
-  subsets: ["latin"]
-});
-
-const jua = Jua({
-  weight: ["400"],
   subsets: ["latin"]
 });
 
@@ -33,6 +26,7 @@ const formatNumber = (number: number): string => {
 export default function GameCardSelection() {
   const [numberArray, setNumberArray] = useState<(number | string)[]>([]);
   const [hiddenNumbersArray, setHiddenNumbersArray] = useState<string[]>([]);
+  const [revealedIndices, setRevealedIndices] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const initialNumbers = generateUniqueRandomNumbers(36, 1, 99);
@@ -41,21 +35,18 @@ export default function GameCardSelection() {
   }, []);
 
   const revealNumber = (numberIndex: number) => {
-    if (hiddenNumbersArray[numberIndex] === '') {
-      if (numberArray.length > 0) {
-        const randomIndex = Math.floor(Math.random() * numberArray.length);
-        const randomNumber = numberArray[randomIndex] as number;
+    if (numberArray[numberIndex] === ' ') {
+      return; 
+    }
+    const numberToReveal = numberArray[numberIndex] as number;
+    const emptyIndex = hiddenNumbersArray.findIndex(item => item === '');
 
-        const updatedNumberArray = numberArray.map((num, index) =>
-          index === randomIndex ? ' ' : num
-        );
+    if (emptyIndex !== -1) {
+      const updatedHiddenNumbersArray = [...hiddenNumbersArray];
+      updatedHiddenNumbersArray[emptyIndex] = formatNumber(numberToReveal);
 
-        const updatedHiddenNumbersArray = [...hiddenNumbersArray];
-        updatedHiddenNumbersArray[numberIndex] = formatNumber(randomNumber);
-
-        setNumberArray(updatedNumberArray);
-        setHiddenNumbersArray(updatedHiddenNumbersArray);
-      }
+      setHiddenNumbersArray(updatedHiddenNumbersArray);
+      setRevealedIndices(prev => new Set(prev).add(numberIndex));
     }
   };
 
@@ -68,9 +59,16 @@ export default function GameCardSelection() {
             {
               numberArray.map((info, index) => {
                 const columnIndex = (index % 12) + 1;
+                const isRevealed = revealedIndices.has(index);
                 return (
-                  <button type='button' onClick={() => revealNumber(index)} key={index} className={`${columnIndex % 2 === 0 ? 'relative top-[-30px]' : ''} h-fit flex justify-center items-center py-[13px]`}>
-                    <p className='text-[#404040] cursor-pointer text-[16px] md:text-[24px] font-[700] leading-[33.6px] text-center'>{info === ' ' ? ' ' : formatNumber(typeof info === 'number' ? info : 0)}</p>
+                  <button
+                    type='button'
+                    onClick={() => revealNumber(index)}
+                    key={index}
+                    className={`w-[27.7px] md:w-[40px] h-[41.5px] md:h-[60px] ${columnIndex % 2 === 0 ? 'relative top-[-30px]' : ''} h-fit flex justify-center items-center ${isRevealed ? 'border-l-[3px] border-b-[3px] bg-[#D9D9D9] border-[#A8AEB6] rounded-tl-[4px] rounded-br-[4px] shadow[-4px_4px_2px_0px_rgba(180,_180,_180,_0.24)]' : ''}`}>
+                    <p className='text-[#404040] cursor-pointer text-[16px] md:text-[24px] font-[700] leading-[33.6px] text-center'>
+                      {formatNumber(info as number)}
+                    </p>
                   </button>
                 )
               })
@@ -84,7 +82,10 @@ export default function GameCardSelection() {
               {
                 hiddenNumbersArray.map((info, index) => {
                   return (
-                    <GameCard key={index} value={info} />
+                    <GameCard 
+                      key={index} 
+                      value={info} 
+                    />
                   )
                 })
               }
