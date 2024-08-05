@@ -29,8 +29,8 @@ const RBCustomSlider = ({
   labelClassName,
   valueClassName,
   theme = {
-    labelColor: "#00222E",
-    valueColor: "#00222E",
+    labelColor: "primary-900",
+    valueColor: "primary-900",
   },
 }: ToggleableSliderProps) => {
   const [value, setValue] = useState<number[]>(initialValue);

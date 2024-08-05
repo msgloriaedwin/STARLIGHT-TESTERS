@@ -21,7 +21,7 @@ const OtpComponent: React.FC<OtpComponentProps> = ({ email }) => {
   };
 
   return (
-    <div className="bg-[#F7EEE7] w-fit text-[#00222E] text-center">
+    <div className="bg-[#F7EEE7] w-fit text-primary-900 text-center">
       <h2 className="text-2xl xl:text-3xl mb-2 leading-[130%]">Password Reset</h2>
       <p className="mb-10 xl:text-lg text-sm">We have sent a code to {email}</p>
       <p className="mb-4 xl:text-lg text-sm">Enter password reset code here</p>
@@ -29,7 +29,7 @@ const OtpComponent: React.FC<OtpComponentProps> = ({ email }) => {
       <p className="mb-10 mt-4 xl:text-lg text-sm">
         <span>Didn’t receive a code?</span>{" "}
         <span
-          className={`ml-1 text-[#00658B] cursor-pointer ${resendLoading ? 'opacity-50' : ''}`}
+          className={`ml-1 text-primary-700 cursor-pointer ${resendLoading ? 'opacity-50' : ''}`}
           onClick={!resendLoading ? handleResendOtp : undefined}
         >
           {resendLoading ? 'Resending...' : 'Resend'}
@@ -38,7 +38,7 @@ const OtpComponent: React.FC<OtpComponentProps> = ({ email }) => {
       <Button
         onClick={handleOtpSubmit}
         color="primary"
-        className="shadow-[inset_2px_2px_0px_0px_rgba(255,255,255,0.4),_inset_-4px_-4px_0px_0px_rgba(0,0,0,0.32)] bg-[#FD0] hover:bg-[#FD0] border-1 border-[#665800] w-full rounded-md"
+        className="shadow-[inset_2px_2px_0px_0px_rgba(255,255,255,0.4),_inset_-4px_-4px_0px_0px_rgba(0,0,0,0.32)] bg-[#FD0] hover:bg-[#FD0] border-1 border-yellow-800 w-full rounded-md"
       >
         Verify
       </Button>

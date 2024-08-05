@@ -45,7 +45,7 @@ const GameCustomizeNavBar = ({ handleShareGameLink, handleGoBack }: PageProps) =
         </button> : ""}
         <div className="md:flex hidden items-center gap-4">
           <button onClick={() => router.back()} className="flex items-center border rounded-[8px] gap-[.5em] border-textColor-main justify-center py-2 px-4 outline-1">
-            <span><ArrowLeft color="#00658b " /></span>
+            <span><ArrowLeft color="primary-700" /></span>
             <span className="text-textColor-main">Back</span>
           </button>
         </div>
@@ -59,7 +59,7 @@ const GameCustomizeNavBar = ({ handleShareGameLink, handleGoBack }: PageProps) =
               <span>?</span>
             </button>
             <div className="flex flex-col gap-1 relative">
-              <button onClick={handleDisplayFriends} className="flex relative items-center gap-1 bg-[#00658B] shadow-custom-inset rounded-[8px] gap[.5em] text-[#D5F3FF] justify-center py-[10px] px-4 outline-1">
+              <button onClick={handleDisplayFriends} className="flex relative items-center gap-1 bg-primary-700 shadow-custom-inset rounded-[8px] gap[.5em] text-primary-100 justify-center py-[10px] px-4 outline-1">
                 <span><UserRound /></span>
                 <span>Friends</span>
                 <span>{showFriends === true ? <ChevronUp /> : <ChevronDown />}</span>
@@ -75,7 +75,7 @@ const GameCustomizeNavBar = ({ handleShareGameLink, handleGoBack }: PageProps) =
         <button onClick={(e) => {
           e.preventDefault()
           handleShowMenu()
-        }} className="flex md:hidden shadow-custom-inset items-center bg-[#00658B] border rounded-[8px] gap-[.5em] border-[#00658B] text-white justify-center py-[12px] md:py-[10px] px-4 outline-1">
+        }} className="flex md:hidden shadow-custom-inset items-center bg-primary-700 border rounded-[8px] gap-[.5em] border-primary-700 text-white justify-center py-[12px] md:py-[10px] px-4 outline-1">
           <Menu />
         </button>
       </Navbar>
@@ -83,7 +83,7 @@ const GameCustomizeNavBar = ({ handleShareGameLink, handleGoBack }: PageProps) =
         <div className="flex flex-col gap-4">
           <p onClick={handleHowToPlayClick} className="text-textColor-main self-center cursor-pointer flex">How to play</p>
           <div className="flex flex-col gap-4 relative">
-            <button onClick={handleDisplayFriends} className="flex relative items-center gap-1 bg-[#00658B] shadow-custom-inset rounded-[8px] gap[.5em] text-[#D5F3FF] justify-center py-[10px] px-4 outline-1">
+            <button onClick={handleDisplayFriends} className="flex relative items-center gap-1 bg-primary-700 shadow-custom-inset rounded-[8px] gap[.5em] text-primary-100 justify-center py-[10px] px-4 outline-1">
               <span><UserRound /></span>
               <span>Friends</span>
               <span>{showFriends === true ? <ChevronUp /> : <ChevronDown />}</span>

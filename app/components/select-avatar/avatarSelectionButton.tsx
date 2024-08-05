@@ -18,14 +18,14 @@ const AvatarSelection = ({
   isSelected,
   onClick,
   size = 60, // Default size
-  borderColor = "#00658B", // Default border color
-  selectedBgColor = "#00658B", // Default background color when selected
-  checkIconColor = "#00435D", // Default check icon color
+  borderColor = "primary-700", // Default border color
+  selectedBgColor = "primary-700", // Default background color when selected
+  checkIconColor = "primary-800", // Default check icon color
 }: AvatarSelectionProps) => {
   return (
     <button
       className={`flex justify-center items-center relative p-1 rounded-[8px] border ${
-        isSelected ? "bg-[#00435D]" : ""
+        isSelected ? "bg-primary-800" : ""
       } focus:outline-none`}
       onClick={onClick}
       style={{
