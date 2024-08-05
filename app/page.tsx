@@ -107,13 +107,6 @@ export default function Home() {
         <PasswordResetForm link="/" onSubmit={onSubmit} />
       </div>
       <GameCardSelection />
-      <div className="flex gap-3 justify-center">
-        <GameCard value={12}/>
-        <GameCard value={'B'}/>
-        <GameCard/>
-        <GameCard value={1}/>
-        <GameCard value={32}/>
-      </div>
       <Footer />
     </main>
   );
