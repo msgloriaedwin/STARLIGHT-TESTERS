@@ -1,10 +1,10 @@
-name: Staging Deployment
+name: Production Deployment
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - staging
+      - main
     paths-ignore:
       - .github/workflows/**
 
@@ -30,22 +30,22 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          file: docker/staging/Dockerfile
+          file: docker/prod/Dockerfile
           push: true
-          tags: hngtechie/bingofe:staging
+          tags: hngtechie/bingofe:prod
 
-  deploy_to_staging:
+  deploy_to_production:
     needs: build_and_push
     if: github.event.repository.fork == false
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to staging environment
+      - name: Deploy to production environment
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd bingofe/staging/bingo_fe
-            ./scripts/staging_deploy.sh
+            cd bingofe/prod/bingo_fe
+            ./scripts/production_deploy.sh

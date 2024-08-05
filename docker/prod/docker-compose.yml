@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: tella1234/starlight_fe:prod
+    image: hngtechie/bingofe:prod
     ports:
       - 6102:3000
     volumes:

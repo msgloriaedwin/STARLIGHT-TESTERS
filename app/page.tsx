@@ -13,6 +13,9 @@ import { ToggleControl } from "./components/ToggleControl/ToggleControl";
 import GameCustomizeNavBar from "./components/navbars/custom-navbars/GameCustomizeNavBar";
 import LandingPageNavbar from "./components/navbars/custom-navbars/LandingPageNavbar";
 import GameCardSelection from "./components/gamecardselection/gamecardselection";
+import GameCard from "./components/game-card/GameCard";
+import MessageBubble from "./components/messageBubble/MessageBubble";
+import Player from "./components/player/Player";
 
 const players = [
   { name: "Precious", score: "3/5", imageUrl: "/assets/images/modalpic1.png" },
@@ -20,6 +23,18 @@ const players = [
   { name: "Sandra", score: "5/5", imageUrl: "/assets/images/modalpic4.png" },
   { name: "Farrell", score: "4/5", imageUrl: "/assets/images/modalpic2.png" },
 ];
+
+
+const avatars = [
+  "/assets/images/avatar-1.png",
+  "/assets/images/avatar-2.png",
+  "/assets/images/avatar-3.png",
+  "/assets/images/avatar-4.png",
+  "/assets/images/avatar-5.png",
+  "/assets/images/avatar-6.png",
+  "/assets/images/avatar-3.png",
+  "/assets/images/avatar-2.png",
+]
 
 export default function Home() {
   const onSubmit = (data: any) => {
@@ -75,10 +90,15 @@ export default function Home() {
       </div>
 
       <div className="flex justify-center my-6">
-        <CreateGameForm />
+        <CreateGameForm avatars={avatars}/>
       </div>
       <div className="flex justify-center my-6">
         <ToggleControl />
+      </div>
+
+      <div className="flex justify-center my-12">
+      <Player username="Olajumoke" avatar="/assets/images/avatar-1.png"/>
+        <MessageBubble  message="pretend i said something funny(i did)" alignment="left"/>
       </div>
 
       <Slider mode="volume" />
