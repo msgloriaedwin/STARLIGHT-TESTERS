@@ -9,10 +9,6 @@ import Image from "next/image";
 import Link from "next/link";
 import DeleteLogoutNavbar from "@/app/components/navbars/custom-navbars/DeleteLogoutNavbar";
 
-interface LoginPageProps {
-  onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
-}
-
 const loginSchema = z.object({
   username: z.string().min(1, "Username is required"),
   password: z.string().min(8, "Password must be at least 8 characters long"),
@@ -20,12 +16,16 @@ const loginSchema = z.object({
 
 type FormData = z.infer<typeof loginSchema>;
 
+interface LoginPageProps {
+  onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
+}
+
 const LoginPage: FC<LoginPageProps> = ({ onSubmit }) => {
   const [formData, setFormData] = useState<FormData>({
     username: "",
     password: "",
   });
-  const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -52,7 +52,7 @@ const LoginPage: FC<LoginPageProps> = ({ onSubmit }) => {
   const validateForm = () => {
     const result = loginSchema.safeParse(formData);
     if (!result.success) {
-      const newErrors: Partial<FormData> = {};
+      const newErrors: Partial<Record<keyof FormData, string>> = {};
       result.error.errors.forEach((err) => {
         if (err.path[0] === "username") newErrors.username = err.message;
         if (err.path[0] === "password") newErrors.password = err.message;
@@ -67,9 +67,9 @@ const LoginPage: FC<LoginPageProps> = ({ onSubmit }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-    }
-    if (onSubmit) {
-      onSubmit(e);
+      if (onSubmit) {
+        onSubmit(e);
+      }
     }
   };
 
