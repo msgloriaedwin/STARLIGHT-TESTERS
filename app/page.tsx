@@ -1,27 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-// import { ChooseAvatarField } from "./components/chooseAvatarField/chooseAvatarField";
-import ForgotPasswordForm from "./components/forms/forgotPasswordForm/forgotPassword";
-import OtpComponent from "./components/otp/otpcomponent";
-import Slider from "./components/slider";
-import PasswordResetForm from "./components/passwordResetForm/passwordResetForm";
-import Footer from "./components/footer/footer";
-import GameOverModal from "./components/GameOverModal/GameOverModal";
-import CreateGameForm from "./components/forms/create-game-form/CreateGameForm";
-import { ToggleControl } from "./components/ToggleControl/ToggleControl";
-import GameCustomizeNavBar from "./components/navbars/custom-navbars/GameCustomizeNavBar";
 import LandingPageNavbar from "./components/navbars/custom-navbars/LandingPageNavbar";
-import GameCardSelection from "./components/gamecardselection/gamecardselection";
-import GameCard from "./components/game-card/GameCard";
-import MessageBubble from "./components/messageBubble/MessageBubble";
-import Player from "./components/player/Player";
-import ColorScheme from "./components/guides/colorscheme";
-import ChatInput from "./components/chatbox";
-import SampleButtons from "./components/button/page";
-import GettingStarted from "./components/guides/getting-started";
-import { ChevronDownCircle, ChevronRight } from "lucide-react";
-import Navbar from "./components/navbars/Navbar";
 import CustomButton from "./components/button/custombutton";
 import Image from "next/image";
 import logo from "../public/assets/images/Remote Bingo Logo.svg";
