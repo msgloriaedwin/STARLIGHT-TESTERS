@@ -54,7 +54,7 @@ const CreateGameForm = ({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleFormSubmit)}
-          className="bg-form-blue p-[0.9rem] sm:p-6 rounded-[0.45rem] sm:rounded-[0.75rem] max-sm:border-[#00A8E8] max-sm:border-l-[0.11rem] max-sm:border-b-[0.11rem] flex flex-col gap-[0.9rem] sm:gap-6"
+          className="bg-form-blue p-[0.9rem] sm:p-6 rounded-[0.45rem] sm:rounded-[0.75rem] max-sm:border-primary-500 max-sm:border-l-[0.11rem] max-sm:border-b-[0.11rem] flex flex-col gap-[0.9rem] sm:gap-6"
         >
           <div>
             <FormField
@@ -73,12 +73,12 @@ const CreateGameForm = ({
                       id="teamName"
                       placeholder="Team Name"
                       {...field}
-                      className="border border-[#00222E] focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
+                      className="border border-primary-900 focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
                       required
                     />
                   </FormControl>
                   {form.formState.errors && (
-                    <FormMessage className="text-[#00222E]">
+                    <FormMessage className="text-primary-900">
                       {form.formState.errors.teamName?.message}
                     </FormMessage>
                   )}
@@ -103,7 +103,7 @@ const CreateGameForm = ({
                     </FormLabel>
                     <div className="flex flex-row justify-between gap-3">
                       <Button
-                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-button-light-main border border-[#00222E] text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 hover:bg-yellow-300`}
+                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-button-light-main border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 hover:bg-yellow-300`}
                         onClick={() => field.onChange("numbers")}
                       >
                         <Image
@@ -127,7 +127,7 @@ const CreateGameForm = ({
                       </Button>
 
                       <Button
-                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-button-dark-blue-text border border-[#00222E] text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 hover:bg-blue-200`}
+                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-button-dark-blue-text border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 hover:bg-blue-200`}
                         onClick={() => field.onChange("alphabets")}
                       >
                         <Image
@@ -179,12 +179,12 @@ const CreateGameForm = ({
                       id="prizeValue"
                       placeholder="Name Prize"
                       {...field}
-                      className="border border-[#00222E] focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
+                      className="border border-primary-900 focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
                       required
                     />
                   </FormControl>
                   {form.formState.errors && (
-                    <FormMessage className="text-[#00222E]">
+                    <FormMessage className="text-primary-900">
                       {form.formState.errors.prizeValue?.message}
                     </FormMessage>
                   )}
@@ -195,7 +195,7 @@ const CreateGameForm = ({
 
           <Button
             type="submit"
-            className="w-full sm:h-14 rounded-[0.5rem] bg-button-dark-blue text-button-dark-blue-text p-2 border border-[#00A8E8] shadow-custom-inset hover:filter hover:brightness-125"
+            className="w-full sm:h-14 rounded-[0.5rem] bg-button-dark-blue text-button-dark-blue-text p-2 border border-primary-500 shadow-custom-inset hover:filter hover:brightness-125"
           >
             Save & Continue
           </Button>

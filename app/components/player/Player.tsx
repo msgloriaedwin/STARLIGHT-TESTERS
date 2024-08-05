@@ -87,7 +87,7 @@ const Player: React.FC<PlayerProps> = ({
                 <p className="text-[1.25rem] text-button-dark-blue leading-[1.5rem] text-center">
                   Wins!
                 </p>
-                <div className="flex items-center gap-2 py-[0.28rem] px-[0.35rem] border-[0.036rem] border-[#7F7F7F] rounded-[0.22rem]">
+                <div className="flex items-center gap-2 py-[0.28rem] px-[0.35rem] border-[0.036rem] border-neutral-600 rounded-[0.22rem]">
                   <Image
                     src={"assets/icons/trophy-icon.svg"}
                     alt="trophy image"

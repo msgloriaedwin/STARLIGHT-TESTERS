@@ -5,10 +5,14 @@ import GameCard from '../game-card/GameCard';
 
 const dm_sans = DM_Sans({
   weight: ["700"],
-  subsets: ["latin"]
+  subsets: ["latin"],
 });
 
-const generateUniqueRandomNumbers = (count: number, min: number, max: number): number[] => {
+const generateUniqueRandomNumbers = (
+  count: number,
+  min: number,
+  max: number
+): number[] => {
   const uniqueNumbers = new Set<number>();
 
   while (uniqueNumbers.size < count) {

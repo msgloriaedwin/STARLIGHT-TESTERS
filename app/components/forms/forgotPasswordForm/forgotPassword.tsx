@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import CustomButton from "../../button/custombutton";
 
 const ForgotPasswordForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -41,15 +42,12 @@ const ForgotPasswordForm: React.FC = () => {
                 required
               />
             </div>
-            <Button
-              type="submit"
-              className="w-full bg-[#FFD43B] hover:bg-[#FFC107] text-black font-semibold py-2 rounded-md"
-            >
+            <CustomButton className="w-full border-none" type="submit">
               Reset Password
-            </Button>
+            </CustomButton>
           </form>
           <div className="text-center mt-4">
-            <a href="#" className="text-sm text-[#00222E] hover:underline">
+            <a href="#" className="text-sm text-primary-900 hover:underline">
               Back to Sign In
             </a>
           </div>

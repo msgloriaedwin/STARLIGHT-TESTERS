@@ -43,7 +43,7 @@
 
 //     return (
 //         <div className=' text-center flex flex-col justify-center '>
-//             <h1 className=' m-3 text-3xl text-[#00222E]'>Choose Your avatar</h1>
+//             <h1 className=' m-3 text-3xl text-primary-900'>Choose Your avatar</h1>
 //             <ScrollArea className='w-[512px] h-[396px] m-auto'>
 //                 <div
 //                     className='avatar grid  place-items-center  grid-cols-4 gap-4 p-8 rounded-[8px] border-1/2  bg-[#F1FBFF]'
