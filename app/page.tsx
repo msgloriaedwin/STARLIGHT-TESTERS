@@ -32,8 +32,9 @@ const avatars = [
   "/assets/images/avatar-4.png",
   "/assets/images/avatar-5.png",
   "/assets/images/avatar-6.png",
-  "/assets/images/avatar-3.png",
-  "/assets/images/avatar-2.png",
+  "/assets/images/avatar-7.png",
+  "/assets/images/avatar-8.png",
+  "/assets/images/avatar-9.png",
 ]
 
 export default function Home() {
@@ -64,12 +65,10 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-body">
+    <main className="bg-body pt-[95px]">
       <LandingPageNavbar
         onLogin={onLogin}
         onSignup={onSignUp}
-        handleHowToPlayClick={handleHowToPlayClick}
-        handleShowMenu={handleShowMenu}
       />
       <div className="flex justify-center bg-[#f7EEE7] items-center py-10 px-2">
         <OtpComponent email="amin***@gmail.com" />

@@ -22,15 +22,19 @@ const formSchema = z.object({
   teamName: z.string().min(1, { message: "Team Name is required" }),
   bingoType: z.enum(["numbers", "alphabets"]),
   prizeValue: z.string().min(1, { message: "Prize value is required" }),
-  avatar: z.string()
+  avatar: z.string(),
 });
 
 type FormData = z.infer<typeof formSchema>;
 
-const CreateGameForm = ({avatars, className }: { avatars: string[], className?: string }) => {
-
+const CreateGameForm = ({
+  avatars,
+  className,
+}: {
+  avatars: string[];
+  className?: string;
+}) => {
   const [selectedAvatar, setSelectedAvatar] = useState<string>(avatars[0]);
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -39,22 +43,14 @@ const CreateGameForm = ({avatars, className }: { avatars: string[], className?: 
   const handleFormSubmit = (data: FormData) => {
     console.log(data);
   };
-  
+
   const handleAvatarSelect = (avatar: string) => {
     setSelectedAvatar(avatar);
     form.setValue("avatar", avatar);
-  }
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, avatars.length - 1));
-  }
-
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0))
-  }
+  };
 
   return (
-    <section className={cn("max-w-[39rem]",className)}>
+    <section className={cn("max-w-[39rem]", className)}>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleFormSubmit)}
@@ -160,14 +156,10 @@ const CreateGameForm = ({avatars, className }: { avatars: string[], className?: 
             />
           </div>
 
-         {/* Avatar Selection */}
-         <AvatarSelector
+          <AvatarSelector
             avatars={avatars}
             selectedAvatar={selectedAvatar}
-            currentIndex={currentIndex}
             onAvatarSelect={handleAvatarSelect}
-            onNext={handleNext}
-            onPrevious={handlePrevious}
           />
 
           <div>

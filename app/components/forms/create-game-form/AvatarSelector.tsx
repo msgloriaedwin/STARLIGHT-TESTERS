@@ -1,24 +1,41 @@
-import React from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { FormLabel } from "@/components/ui/form";
 
 interface AvatarSelectorProps {
   avatars: string[];
   selectedAvatar: string;
-  currentIndex: number;
   onAvatarSelect: (avatar: string) => void;
-  onNext: () => void;
-  onPrevious: () => void;
 }
 
 const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   avatars,
   selectedAvatar,
-  currentIndex,
   onAvatarSelect,
-  onNext,
-  onPrevious,
 }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      Math.min(prevIndex + 5, avatars.length - 5)
+    );
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) => Math.max(prevIndex - 5, 0));
+  };
+  
+  useEffect(() => {
+    if(carouselRef.current){
+      const avatarWidth = carouselRef.current.scrollWidth / avatars.length;
+      carouselRef.current.scrollTo({
+        left: currentIndex * avatarWidth,
+        behavior: "smooth"
+      })
+    }
+  }, [currentIndex, avatars.length])
+
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
@@ -27,7 +44,7 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
         </FormLabel>
         <div className="flex gap-[0.1875rem]">
           <button
-            onClick={onPrevious}
+            onClick={handlePrevious}
             disabled={currentIndex === 0}
             className="focus:outline-none"
           >
@@ -43,7 +60,7 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
             />
           </button>
           <button
-            onClick={onNext}
+            onClick={handleNext}
             disabled={currentIndex + 5 >= avatars.length}
             className="focus:outline-none"
           >
@@ -60,7 +77,7 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
           </button>
         </div>
       </div>
-      <div className="flex gap-2 sm:gap-4 overflow-x-auto">
+      <div ref={carouselRef} className="flex gap-2 sm:gap-4 overflow-x-auto scroll-smooth">
         {avatars.slice(currentIndex, currentIndex + 5).map((avatar) => (
           <div
             key={avatar}
@@ -94,4 +111,4 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   );
 };
 
-export default AvatarSelector;
+export default AvatarSelector
