@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, FC} from "react";
+import React, { useState, FC } from "react";
 import { z } from "zod";
 import RBInput from "@/app/components/input";
 import FormCard from "@/app/components/formcard/formCard";
@@ -20,7 +20,7 @@ const loginSchema = z.object({
 
 type FormData = z.infer<typeof loginSchema>;
 
-const LoginPage:FC<LoginPageProps> = ({ onSubmit }) => {
+const LoginPage: FC<LoginPageProps> = ({ onSubmit }) => {
   const [formData, setFormData] = useState<FormData>({
     username: "",
     password: "",
@@ -67,7 +67,6 @@ const LoginPage:FC<LoginPageProps> = ({ onSubmit }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-     
     }
     if (onSubmit) {
       onSubmit(e);
@@ -76,58 +75,74 @@ const LoginPage:FC<LoginPageProps> = ({ onSubmit }) => {
 
   return (
     <>
-    <DeleteLogoutNavbar/>
-    <div className='bg-body flex justify-center items-center h-screen bg-gray-100'>
-      <FormCard variant='primary' size='lg'>
-        <form onSubmit={handleSubmit} className='space-y-4'>
-          <RBInput
-            label='Enter username'
-            placeholder='Your username'
-            name='username'
-            value={formData.username}
-            error={errors.username}
-            onChange={handleChange}
-          />
-          <RBInput
-            label='Enter Password'
-            type='password'
-            placeholder='Password'
-            name='password'
-            value={formData.password}
-            error={errors.password}
-            helperText=''
-            onChange={handleChange}
-          />
-          <Link href={'/auth/login'} className="text-primary-400 flex justify-end">Forgot Password?</Link>
-          <CustomButton size={"lg"} className='w-full' type="submit">
-            Login
-          </CustomButton>
-
-          <section className='social-auth'>
-            <Link href={'/auth/login'} className='w-full flex justify-center p-3 border rounded-md border-solid'>
-              <Image
-                src={"/assets/icons/google.svg"}
-                alt=''
-                height={24}
-                width={24}
-              />{" "}
-              Sign in with Google
+      <DeleteLogoutNavbar />
+      <div className='bg-body flex justify-center items-center h-screen bg-gray-100'>
+        <FormCard variant='primary' size='lg'>
+          <form onSubmit={handleSubmit} className='space-y-4'>
+            <RBInput
+              label='Enter username'
+              placeholder='Your username'
+              name='username'
+              value={formData.username}
+              error={errors.username}
+              onChange={handleChange}
+            />
+            <RBInput
+              label='Enter Password'
+              type='password'
+              placeholder='Password'
+              name='password'
+              value={formData.password}
+              error={errors.password}
+              helperText=''
+              onChange={handleChange}
+            />
+            <Link
+              href={"/auth/login"}
+              className='text-primary-400 flex justify-end'
+            >
+              Forgot Password?
             </Link>
+            <CustomButton size={"lg"} className='w-full' type='submit'>
+              Login
+            </CustomButton>
 
-            <Link href={'/auth/login'} className='w-full mt-3 flex justify-center p-3 border rounded-md border-solid cursor-pointer'>
-              <Image
-                src={"/assets/icons/facebook2.svg"}
-                alt=''
-                height={24}
-                width={24}
-              />{" "}
-              Sign in with Facebook
-            </Link>
-          </section>
-          <p className="text-center">Don't have an account? <Link href="/auth/login" className="text-primary-400">Sign Up</Link></p>
-        </form>
-      </FormCard>
-    </div>
+            <section className='social-auth'>
+              <Link
+                href={"/auth/login"}
+                className='w-full flex justify-center p-3 border rounded-md border-solid'
+              >
+                <Image
+                  src={"/assets/icons/google.svg"}
+                  alt=''
+                  height={24}
+                  width={24}
+                />{" "}
+                Sign in with Google
+              </Link>
+
+              <Link
+                href={"/auth/login"}
+                className='w-full mt-3 flex justify-center p-3 border rounded-md border-solid cursor-pointer'
+              >
+                <Image
+                  src={"/assets/icons/facebook2.svg"}
+                  alt=''
+                  height={24}
+                  width={24}
+                />{" "}
+                Sign in with Facebook
+              </Link>
+            </section>
+            <p className='text-center'>
+              Don&apos;t have an account?{" "}
+              <Link href='/auth/login' className='text-primary-400'>
+                Sign Up
+              </Link>
+            </p>
+          </form>
+        </FormCard>
+      </div>
     </>
   );
 };
