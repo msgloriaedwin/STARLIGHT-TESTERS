@@ -69,7 +69,7 @@ const SignUpNavbar = ({ onLogin }: { onLogin: () => void }) => {
           <div className="flex flex-col gap-4">
             <button
               onClick={() => onLogin()}
-              className="bg-[#FAD02C] w-[100%] shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
+              className="bg-primary-yellow-700 w-[100%] shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
             >
               Login
             </button>

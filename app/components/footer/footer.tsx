@@ -34,7 +34,7 @@ const Footer = () => {
           <div className="flex justify-center md:justify-start">
             <a
               href=""
-              className="h-11 w-11 bg-[#82dcff] rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out mr-2"
+              className="h-11 w-11 bg-primary-300 rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out mr-2"
             >
               <Image
                 src="/assets/icons/XLogo.svg"
@@ -45,7 +45,7 @@ const Footer = () => {
             </a>
             <a
               href=""
-              className="h-11 w-11 bg-[#82dcff] rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out mr-2"
+              className="h-11 w-11 bg-primary-300 rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out mr-2"
             >
               <Image
                 src="/assets/icons/Instagram Icon.svg"
@@ -56,7 +56,7 @@ const Footer = () => {
             </a>
             <a
               href=""
-              className="h-11 w-11 bg-[#82dcff] rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out"
+              className="h-11 w-11 bg-primary-300 rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out"
             >
               <Image
                 src="/assets/icons/facebook.svg"
