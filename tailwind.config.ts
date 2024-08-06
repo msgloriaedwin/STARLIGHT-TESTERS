@@ -44,6 +44,20 @@ const config = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           bg: "#f7EEE7",
+          A: {
+            "200":"#ACE8FF",
+            "300": "#82DCFF",
+            "500":"#00A8E8",
+            "600":"#0086BA",
+            "800":"#00435D",
+          },
+          B: {
+            "100":"#FFFAD9",
+            "400": "#FF9A7A",
+            "401": "#FAD02C",
+            "600": "#CCB100",
+          }
+         
         },
         yellow: {
           main: "#FFDD00",
@@ -77,6 +91,10 @@ const config = {
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          B: {
+            "400": "#FF9A7A",
+            "800": "#741C00",
+          }
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
