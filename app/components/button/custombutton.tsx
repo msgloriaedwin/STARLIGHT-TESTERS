@@ -10,7 +10,6 @@ import {
 } from "react";
 import { Button } from "@/components/ui/button";
 
-// Align Variant and Size types with those used in "@/components/ui/button"
 type Variant =
   | "default"
   | "primary"
