@@ -7,24 +7,8 @@
 # **Changes Proposed**
 
 ## **What were you told to do?**
-- Implement a login page with form validation.
-- Ensure the page supports user authentication through a form and social login options.
-- Provide feedback and error messages based on user input.
 
 ## **What did you do?**
-- **Created `LoginPage` Component**:
-  - Implemented a login form with username and password fields.
-  - Added form validation using Zod schema for username and password fields.
-  - Included social login options for Google and Facebook.
-  - Added a "Forgot Password?" link and a "Sign Up" link for users who do not have an account.
-- **UI Enhancements**:
-  - Styled the login page with responsive design considerations.
-  - Incorporated a custom button and input components for a consistent look and feel.
-- **Error Handling**:
-  - Implemented validation error messages for empty fields or invalid input.
-  - Ensured error messages are cleared when valid input is provided.
-
----
 
 # **Check List**
 
@@ -47,12 +31,5 @@
 # **Tests**
 
 ## **Tested Scenarios**
-- **Rendering**:
-  - Verified that all initial elements (input fields, social login options) are displayed correctly.
-- **Validation**:
-  - Checked that validation errors are shown when the form is submitted with empty fields.
-  - Confirmed that error messages are removed when valid input is provided.
-- **Form Submission**:
-  - Ensured that form submission is handled correctly when all inputs are valid.
 
 **Tests written using Testing Library and Vitest.**

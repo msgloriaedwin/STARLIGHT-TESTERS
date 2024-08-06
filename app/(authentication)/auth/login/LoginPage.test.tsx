@@ -1,7 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import LoginPage from "./page";
+import { useRouter } from 'next/navigation';
+
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: vi.fn(),
+  }),
+}));
 
 describe("LoginPage", () => {
   it("renders the login page and displays initial elements", () => {
@@ -18,7 +25,7 @@ describe("LoginPage", () => {
     const user = userEvent.setup();
     render(<LoginPage />);
 
-    await user.click(screen.getByText("Login"));
+    await user.click(screen.getByText("Log in"));
 
     expect(screen.getByText("Username is required")).toBeInTheDocument();
     expect(screen.getByText("Password must be at least 8 characters long")).toBeInTheDocument();
@@ -31,7 +38,7 @@ describe("LoginPage", () => {
     await user.type(screen.getByPlaceholderText("Your username"), "testuser");
     await user.type(screen.getByPlaceholderText("Password"), "password123");
 
-    await user.click(screen.getByText("Login"));
+    await user.click(screen.getByText("Log in"));
 
     expect(screen.queryByText("Username is required")).not.toBeInTheDocument();
     expect(screen.queryByText("Password must be at least 8 characters long")).not.toBeInTheDocument();
@@ -44,9 +51,10 @@ describe("LoginPage", () => {
     await user.type(screen.getByPlaceholderText("Your username"), "testuser");
     await user.type(screen.getByPlaceholderText("Password"), "password123");
 
-    await user.click(screen.getByText("Login"));
+    const consoleSpy = vi.spyOn(console, 'log');
 
-    // Check for the log message
-    expect(console.log).toHaveBeenCalledWith("Form submitted successfully!");
+    await user.click(screen.getByText("Log in"));
+
+    expect(consoleSpy).toHaveBeenCalledWith("Form submitted successfully!");
   });
 });

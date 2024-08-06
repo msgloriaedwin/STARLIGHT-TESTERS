@@ -52,7 +52,6 @@ const Guide = () => {
   };
 
   const onSubmit = (data: any) => {
-    console.log(data, "data");
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -81,7 +80,6 @@ const Guide = () => {
   const toggleNav = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     isOpen === false ? setIsOpen(true) : setIsOpen(false);
-    console.log("clicked", isOpen);
   };
   return (
     <main className="flex min-h-screen flex-col  justify-between py-5 px-5 lg:px-20">
@@ -136,7 +134,6 @@ const Guide = () => {
         <div className="flex justify-center my-6">
           <ToggleControl />
         </div>
-
         <div className="flex justify-center my-12">
           <Player username="Olajumoke" avatar="/assets/images/avatar-1.png" />
           <MessageBubble

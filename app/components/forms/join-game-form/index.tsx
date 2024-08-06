@@ -40,7 +40,6 @@ const JoinGameForm = ({
   });
 
   const handleFormSubmit = (data: FormData) => {
-    console.log(data);
   };
 
   const handleAvatarSelect = (avatar: string) => {
@@ -51,7 +50,7 @@ const JoinGameForm = ({
   return (
     <section className="max-w-[39rem]">
       <h3 className="font-[700] text-[50px] text-center  mb-[37px] hidden md:block">
-        Create Game
+        Join Game
       </h3>
 
       <div className={cn(" bg-primary-300 rounded-[12px]", className)}>

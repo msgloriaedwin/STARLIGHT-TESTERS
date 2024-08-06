@@ -15,7 +15,6 @@ const ChatInput: React.FC = () => {
 
   const handleSend = () => {
     if (message.trim()) {
-      console.log("Text and Emoji:", message);
       setMessage("");
     }
   };
