@@ -1,10 +1,16 @@
+"use client";
 import { ArrowLeft, Menu } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function DeleteLogoutNavbar() {
+  const router = useRouter();
   return (
     <nav className="bg-white px-4 h-16 py-3 flex items-center justify-center relative">
-      <button className="text-neutral-700 flex items-center border border-neutral-700 rounded-md absolute left-4 lg:left-10 top-3 px-3 py-1.5">
+      <button
+        onClick={() => router.back()}
+        className="text-neutral-700 flex items-center border border-neutral-700 rounded-md absolute left-4 lg:left-10 top-3 px-3 py-1.5"
+      >
         <ArrowLeft className="mr-2 h-4 w-4" /> Back
       </button>
       <div className="hidden md:flex items-center justify-center">
