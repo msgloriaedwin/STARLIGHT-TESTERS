@@ -81,6 +81,7 @@ const LoginPage: FC = () => {
               value={formData.username}
               error={errors.username}
               onChange={handleChange}
+              className="p-4"
             />
             <RBInput
               label='Enter Password'
@@ -91,6 +92,7 @@ const LoginPage: FC = () => {
               error={errors.password}
               helperText=''
               onChange={handleChange}
+              className="p-4"
             />
             <Link
               href={"/auth/forgot-password"}
@@ -105,7 +107,7 @@ const LoginPage: FC = () => {
             <section className='social-auth'>
               <Link
                 href={"/auth/login"}
-                className='w-full flex justify-center p-3 border rounded-md border-[#C5C5C5]'
+                className='w-full flex justify-center p-4 border rounded-md border-[#C5C5C5]'
               >
                 <Image
                   src={"/assets/icons/google.svg"}
@@ -119,7 +121,7 @@ const LoginPage: FC = () => {
 
               <Link
                 href={"/auth/login"}
-                className='w-full mt-3 flex justify-center p-3 border rounded-md border-[#C5C5C5]'
+                className='w-full mt-3 flex justify-center p-4 border rounded-md border-[#C5C5C5]'
               >
                 <Image
                   src={"/assets/icons/facebook2.svg"}
