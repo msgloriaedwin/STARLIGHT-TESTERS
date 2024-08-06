@@ -63,7 +63,7 @@ const LoginPage: FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-      // Form submission logic here
+      
       console.log("Form submitted successfully!");
     }
   };
@@ -93,43 +93,45 @@ const LoginPage: FC = () => {
               onChange={handleChange}
             />
             <Link
-              href={"/auth/login"}
+              href={"/auth/forgot-password"}
               className='text-primary-400 flex justify-end'
             >
               Forgot Password?
             </Link>
-            <CustomButton size={"lg"} className='w-full' type='submit'>
-              Login
+            <CustomButton size={"lg"} className='w-full p-6' type='submit'>
+              Log in
             </CustomButton>
 
             <section className='social-auth'>
               <Link
                 href={"/auth/login"}
-                className='w-full flex justify-center p-3 border rounded-md border-solid'
+                className='w-full flex justify-center p-3 border rounded-md border-[#C5C5C5]'
               >
                 <Image
                   src={"/assets/icons/google.svg"}
                   alt='Google logo'
                   height={24}
                   width={24}
+                  className="mr-3"
                 />{" "}
                 Sign in with Google
               </Link>
 
               <Link
                 href={"/auth/login"}
-                className='w-full mt-3 flex justify-center p-3 border rounded-md border-solid cursor-pointer'
+                className='w-full mt-3 flex justify-center p-3 border rounded-md border-[#C5C5C5]'
               >
                 <Image
                   src={"/assets/icons/facebook2.svg"}
                   alt='Facebook logo'
                   height={24}
                   width={24}
+                  className="mr-3"
                 />{" "}
                 Sign in with Facebook
               </Link>
             </section>
-            <p className='text-center'>
+            <p className='text-center text-sm md:text-base'>
               Don&apos;t have an account?{" "}
               <Link href='/auth/login' className='text-primary-400'>
                 Sign Up
