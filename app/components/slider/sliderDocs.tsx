@@ -79,11 +79,9 @@ import RBCustomSlider from "@/components/UI/justTesting";
 
 const ExamplePage = () => {
   const handleVolumeChange = (newValue: number[]) => {
-    console.log("Volume changed to:", newValue[0]);
   };
 
   const handleLevelChange = (newValue: number[]) => {
-    console.log("Level set to:", newValue[0]);
   };
 
   return (

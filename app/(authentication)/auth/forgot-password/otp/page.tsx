@@ -28,7 +28,6 @@ const OtpComponent: React.FC = () => {
 
   const handleOtpSubmit = () => {
     const otpValue = otp.join("");
-    console.log("OTP submitted:", otpValue);
     
     if (otpValue) {
       router.push("/auth/forgot-password/new-password");

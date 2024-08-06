@@ -64,7 +64,6 @@ const LoginPage: FC = () => {
     e.preventDefault();
     if (validateForm()) {
       
-      console.log("Form submitted successfully!");
     }
   };
 
