@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { FormLabel } from "@/components/ui/form";
 
 interface AvatarSelectorProps {
-  avatars: string[];
-  selectedAvatar: string;
-  onAvatarSelect: (avatar: string) => void;
+  avatars: StaticImageData[];
+  selectedAvatar: StaticImageData;
+  onAvatarSelect: (avatar: StaticImageData) => void;
 }
 
 const AvatarSelector: React.FC<AvatarSelectorProps> = ({
@@ -17,24 +17,22 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      Math.min(prevIndex + 5, avatars.length - 5)
-    );
+    setCurrentIndex((prevIndex) => Math.min(prevIndex + 5, avatars.length - 5));
   };
 
   const handlePrevious = () => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 5, 0));
   };
-  
+
   useEffect(() => {
-    if(carouselRef.current){
+    if (carouselRef.current) {
       const avatarWidth = carouselRef.current.scrollWidth / avatars.length;
       carouselRef.current.scrollTo({
         left: currentIndex * avatarWidth,
-        behavior: "smooth"
-      })
+        behavior: "smooth",
+      });
     }
-  }, [currentIndex, avatars.length])
+  }, [currentIndex, avatars.length]);
 
   return (
     <div>
@@ -77,12 +75,15 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
           </button>
         </div>
       </div>
-      <div ref={carouselRef} className="flex gap-2 sm:gap-4 overflow-x-auto scroll-smooth">
+      <div
+        ref={carouselRef}
+        className="flex gap-2 sm:gap-4 overflow-x-auto scroll-smooth"
+      >
         {avatars.slice(currentIndex, currentIndex + 5).map((avatar) => (
           <div
-            key={avatar}
+            key={avatar.src}
             className={`relative flex items-center justify-center p-1 border border-button-dark-blue rounded-lg w-[3.875rem] h-[3.875rem] sm:w-24 sm:h-24 ${
-              selectedAvatar === avatar ? "bg-button-dark-blue" : ""
+              selectedAvatar.src === avatar.src ? "bg-button-dark-blue" : ""
             }`}
             onClick={() => onAvatarSelect(avatar)}
           >
@@ -111,4 +112,4 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   );
 };
 
-export default AvatarSelector
+export default AvatarSelector;

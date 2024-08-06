@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
 import AvatarSelector from "./AvatarSelector";
 
@@ -27,26 +27,34 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const CreateGameForm = ({
+interface CreateGameFormProps {
+  avatars: StaticImageData[];
+  className?: string;
+  onSubmit?: (data: FormData) => void;
+}
+
+const CreateGameForm: React.FC<CreateGameFormProps> = ({
   avatars,
   className,
-}: {
-  avatars: string[];
-  className?: string;
+  onSubmit,
 }) => {
-  const [selectedAvatar, setSelectedAvatar] = useState<string>(avatars[0]);
-
+  const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
+    avatars[0]
+  );
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
   const handleFormSubmit = (data: FormData) => {
     console.log(data);
+    if (onSubmit) {
+      onSubmit(data);
+    }
   };
 
-  const handleAvatarSelect = (avatar: string) => {
+  const handleAvatarSelect = (avatar: StaticImageData) => {
     setSelectedAvatar(avatar);
-    form.setValue("avatar", avatar);
+    form.setValue("avatar", avatar.src);
   };
 
   return (

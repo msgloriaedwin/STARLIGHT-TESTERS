@@ -7,6 +7,9 @@ import Image from "next/image";
 import logo from "../public/assets/images/Remote Bingo Logo.svg";
 import { useRouter } from "next/navigation";
 
+import Avatar1 from "../public/assets/images/avatar-1.png";
+import Avatar2 from "../public/assets/images/avatar-2.png";
+
 export default function Home() {
   const router = useRouter();
 
@@ -27,6 +30,8 @@ export default function Home() {
   const onLogin = () => {
     setIsModalOpen(false);
   };
+
+  const avatars = [Avatar1, Avatar2];
 
   return (
     <main className="bg-body pt-[95px]">
