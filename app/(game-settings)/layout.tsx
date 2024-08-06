@@ -15,7 +15,7 @@ export default function SettingsLayout({
        <div className="md:flex gap-3 bg-primary min-h-screen !bg-[#F7EEE7]">
 
        <SidebarComp />
-         <div className="w-full md:w-3/4 md:!ml-[350px] pt-20">
+         <div className="w-full md:w-3/4 md:!ml-[200px] lg:!ml-auto pt-20">
             {children}
          </div>
        </div>

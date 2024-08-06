@@ -18,7 +18,7 @@ export function SidebarComp() {
   const linkClasses = (href:string) =>
     `block py-2 text-[1rem] mb-3 md:mb-7  whitespace-nowrap text-left pr-20 pl-4 md:pr-10 lg:pr-20 rounded-lg sm:rounded-md   ${
       path === href
-        ? " font-medium text-button-dark-blue bg-button-dark-blue-text  pr-20  md:pr-10 lg:pr-20   transition-all duration-300 ease-in delay-200 pl-4 rounded-md border border-[#00A8E8]"
+        ? " font-medium text-primary-700 bg-primary-100  pr-20  md:pr-10 lg:pr-20   transition-all duration-300 ease-in delay-200 pl-4 rounded-md border border-[#00A8E8]"
         : "text-[#5F5F5F]"
     }`;
 
@@ -61,7 +61,7 @@ export function SidebarComp() {
                    width={17}
                    height={17} 
                     />Logout</li>
-                 <li className='text-error mt-5'>Delete Account</li></div>
+                 <li className='text-error mt-5 whitespace-nowrap'>Delete Account</li></div>
             </ul>
             
           </SheetContent>
@@ -85,7 +85,7 @@ export function SidebarComp() {
             ))}
              
           </ul>
-         <ul className='flex pl-10 flex-col gap-y-10'>
+         <ul className='flex lg:pl-10 flex-col gap-y-10'>
            <li className='text-neutral-700 flex items-center gap-x-3'>
            <Image 
              src='/assets/icons/logout.svg'
@@ -93,7 +93,7 @@ export function SidebarComp() {
              width={17}
              height={17} 
               />Logout</li>
-           <li className='text-error'>Delete Account</li>
+           <li className='text-error whitespace-nowrap'>Delete Account</li>
          </ul>
             </div>
         </aside>

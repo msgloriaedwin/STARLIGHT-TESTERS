@@ -20,9 +20,11 @@ export default function HomeHero(){
   return (
     <div>
       <Layout>
+      <main className="bg-body">
        <LandingPageNavbar onLogin={onLogin} onSignup={onSignUp} />
       <Hero/>
       <Footer />
+           </main>
         </Layout>
     </div>
   )
