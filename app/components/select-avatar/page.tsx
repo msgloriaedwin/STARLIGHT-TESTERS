@@ -28,8 +28,7 @@ const page = () => {
   
 
   const handleAvatarSelect = (imgSrc: string) => {
-    console.log("Selected Avatar:", imgSrc);
-    // You can perform additional actions here, such as updating the state or making an API call
+    
   };
   return (
     <div className="space-x-3">
@@ -37,7 +36,7 @@ const page = () => {
       
         avatars={avatars}
         label="Select Your Avatar"
-        itemsPerPage={5} // Number of avatars to show per page
+        itemsPerPage={5}
         onAvatarSelect={handleAvatarSelect}
       />
     </div>

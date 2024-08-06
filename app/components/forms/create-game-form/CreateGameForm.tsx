@@ -41,7 +41,6 @@ const CreateGameForm = ({
   });
 
   const handleFormSubmit = (data: FormData) => {
-    console.log(data);
   };
 
   const handleAvatarSelect = (avatar: string) => {

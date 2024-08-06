@@ -24,8 +24,7 @@ const AlphabethGameScreenNavbar = ({
     menuIsOpen === false ? setMenuIsOpen(true) : setMenuIsOpen(false);
   };
   const handleHowToPlayClick = () => {
-    //handle form display
-    console.log("clicked how to play");
+    
   };
   const handleDisplayFriends = () => {
     setShowFriends(!showFriends);

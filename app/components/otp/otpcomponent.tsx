@@ -13,11 +13,11 @@ const OtpComponent: React.FC<OtpComponentProps> = ({ email }) => {
 
   const handleOtpSubmit = () => {
     const otpValue = otp.join("");
-    console.log("OTP submitted:", otpValue);
+   
   };
 
   const handleResendOtp = () => {
-    console.log("Resend OTP clicked");
+   
   };
 
   return (

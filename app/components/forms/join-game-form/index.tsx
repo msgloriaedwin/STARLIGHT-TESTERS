@@ -40,7 +40,6 @@ const JoinGameForm = ({
   });
 
   const handleFormSubmit = (data: FormData) => {
-    console.log(data);
   };
 
   const handleAvatarSelect = (avatar: string) => {
