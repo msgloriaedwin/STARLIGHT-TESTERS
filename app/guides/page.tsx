@@ -18,6 +18,15 @@ import PasswordResetForm from "../components/passwordResetForm/passwordResetForm
 import GameCardSelection from "../components/gamecardselection/gamecardselection";
 import Footer from "../components/footer/footer";
 import LandingPageNavbar from "../components/navbars/custom-navbars/LandingPageNavbar";
+import Avatar1 from "../../public/assets/images/avatar-1.png";
+import Avatar2 from "../../public/assets/images/avatar-2.png";
+import Avatar3 from "../../public/assets/images/avatar-3.png";
+import Avatar4 from "../../public/assets/images/avatar-4.png";
+import Avatar5 from "../../public/assets/images/avatar-5.png";
+import Avatar6 from "../../public/assets/images/avatar-6.png";
+import Avatar7 from "../../public/assets/images/avatar-7.png";
+import Avatar8 from "../../public/assets/images/avatar-8.png";
+import Avatar9 from "../../public/assets/images/avatar-9.png";
 
 const players = [
   { name: "Precious", score: "3/5", imageUrl: "/assets/images/modalpic1.png" },
@@ -27,15 +36,15 @@ const players = [
 ];
 
 const avatars = [
-  "/assets/images/avatar-1.png",
-  "/assets/images/avatar-2.png",
-  "/assets/images/avatar-3.png",
-  "/assets/images/avatar-4.png",
-  "/assets/images/avatar-5.png",
-  "/assets/images/avatar-6.png",
-  "/assets/images/avatar-7.png",
-  "/assets/images/avatar-8.png",
-  "/assets/images/avatar-9.png",
+  Avatar1,
+  Avatar2,
+  Avatar3,
+  Avatar4,
+  Avatar5,
+  Avatar6,
+  Avatar7,
+  Avatar8,
+  Avatar9,
 ];
 
 const Guide = () => {
@@ -51,8 +60,7 @@ const Guide = () => {
     );
   };
 
-  const onSubmit = (data: any) => {
-  };
+  const onSubmit = (data: any) => {};
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
