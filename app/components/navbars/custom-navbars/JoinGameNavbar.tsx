@@ -78,7 +78,6 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
           <div className="hidden md:flex gap-2 ">
             <CustomButton
               onClick={() => {
-                console.log("Copy link");
               }}
               variant="subtle"
               isRightIconVisible={true}
@@ -133,7 +132,6 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
               <CustomButton
                 size={"lg"}
                 onClick={() => {
-                  console.log("Copy link");
                 }}
                 variant="subtle"
                 isRightIconVisible={true}

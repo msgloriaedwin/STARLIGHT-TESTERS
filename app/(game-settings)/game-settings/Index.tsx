@@ -18,12 +18,6 @@ const Index: React.FC = () => {
 
     const handleFormSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log('Form Submitted:', {
-            difficulty,
-            notifications,
-            soundEffects,
-        });
-
         setIsModalOpen(true)
     };
 
