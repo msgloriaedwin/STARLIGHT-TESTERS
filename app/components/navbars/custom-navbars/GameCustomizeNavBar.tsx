@@ -32,10 +32,7 @@ const GameCustomizeNavBar = ({
   const handleShowMenu = () => {
     menuIsOpen === false ? setMenuIsOpen(true) : setMenuIsOpen(false);
   };
-  const handleHowToPlayClick = () => {
-    //handle form display
-    console.log("clicked how to play");
-  };
+  const handleHowToPlayClick = () => {};
   const handleDisplayFriends = () => {
     setShowFriends(!showFriends);
   };

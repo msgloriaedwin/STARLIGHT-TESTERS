@@ -28,7 +28,6 @@ const OtpComponent: React.FC = () => {
 
   const handleOtpSubmit = () => {
     const otpValue = otp.join("");
-    console.log("OTP submitted:", otpValue);
     
     if (otpValue) {
       router.push("/auth/forgot-password/new-password");
@@ -49,7 +48,7 @@ const OtpComponent: React.FC = () => {
     <>
     <ForgotPasswordNavbar/>
       <div className='bg-body h-screen flex justify-center items-center'>
-        <div className='bg-[#F7EEE7] w-fit text-primary-900 text-center'>
+        <div className='] w-fit text-primary-900 text-center'>
           <h2 className='text-2xl xl:text-3xl mb-2 leading-[130%]'>
             Password Reset
           </h2>

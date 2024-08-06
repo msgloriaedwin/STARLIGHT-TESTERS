@@ -8,16 +8,12 @@ export default function SampleButtons() {
   //create the following functions
   //onLogin, onSignup, handleHowToPlayClick, handleShowMenu
   const onLogin = () => {
-    console.log("Login function called");
   };
   const onSignup = () => {
-    console.log("Login function called");
   };
   const handleHowToPlayClick = () => {
-    console.log("Login function called");
   };
   const handleShowMenu = () => {
-    console.log("Login function called");
   };
 
   return (
