@@ -50,12 +50,6 @@ const CreateGamePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-body">
-      <GameCustomizeNavBar
-        handleShowMenu={() => {}}
-        handleGoBack={handleGoBack}
-        handleShareGameLink={handleShareGameLink}
-        handleHowToPlayClick={handleHowToPlayClick}
-      />
       <main className="container mx-auto px-4 pt-24 pb-8">
         <h1 className="text-4xl font-bold text-center mt-6 mb-6 text-primary-900">
           Create Game
