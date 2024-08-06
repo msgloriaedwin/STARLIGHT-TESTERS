@@ -4,6 +4,7 @@ import logo from "../asset/bingo_logo.png";
 import user from "../asset/user.png";
 import Navbar from "../Navbar";
 import { Menu } from "lucide-react";
+import Link from "next/link";
 
 type PageProps = {
   onLogin: () => void;
@@ -42,12 +43,13 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
             How to play
           </p>
           <div className="flex gap-4 items-center">
-            <button
+
+            <Link href={'/auth/login'}
               onClick={() => onLogin()}
               className="bg-primary-yellow-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
             >
               Login
-            </button>
+            </Link>
             <button
               onClick={() => onSignup()}
               className="bg-primary-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
