@@ -55,6 +55,7 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
               </CustomButton>
            
             </Link>
+
             <Link
               href={"/auth/signup"}
               onClick={() => onSignup()}
