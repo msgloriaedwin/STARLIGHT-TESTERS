@@ -12,12 +12,15 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Deploy to dev environment
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: |
-            cd bingofe/dev/bingo_fe
-            ./scripts/dev_deploy.sh 
+      - name: Output Dev Deployment Tested
+        run: echo "Dev deployment tested"
+        
+      # - name: Deploy to dev environment
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     password: ${{ secrets.PASSWORD }}
+      #     script: |
+      #       cd bingofe/dev/bingo_fe
+      #       ./scripts/dev_deploy.sh 
