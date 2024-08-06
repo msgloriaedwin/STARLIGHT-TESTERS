@@ -74,7 +74,7 @@ const OtpComponent: React.FC = () => {
           <Button
             onClick={handleOtpSubmit}
             color='primary'
-            className='shadow-[inset_2px_2px_0px_0px_rgba(255,255,255,0.4),_inset_-4px_-4px_0px_0px_rgba(0,0,0,0.32)] bg-[#FD0] hover:bg-[#FD0] border-1 border-yellow-800 w-full rounded-md p-7'
+            className='shadow-[inset_2px_2px_0px_0px_rgba(255,255,255,0.4),_inset_-4px_-4px_0px_0px_rgba(0,0,0,0.32)] bg-[#FD0] hover:bg-[#FD0] border-1 border-yellow-800 w-full rounded-md p-7 text-base md:text-lg'
           >
             Verify
           </Button>
