@@ -22,7 +22,7 @@ const Page = () => {
     avatar9,
   ];
   return (
-    <section className="h-screen w-screen bg-body overflow-y-scroll">
+    <section className="bg-body">
       <div className="flex items-center justify-center">
         <JoinGameForm avatars={avatars} />
       </div>
