@@ -10,10 +10,9 @@ import { defaultEmoji } from "./data";
 
 // Dynamically import the EmojiPicker with SSR disabled
 const EmojiPicker = dynamic(() => import("emoji-picker-react"), { ssr: false });
-
 const ChatInput: React.FC = () => {
   const [showPicker, setShowPicker] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("😂");
+  const [message, setMessage] = useState<string>("");
 
   const handleSend = () => {
     if (message.trim()) {
