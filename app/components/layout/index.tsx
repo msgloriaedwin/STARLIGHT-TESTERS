@@ -11,10 +11,11 @@ const Layout = ({ children }: LayoutProps) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 3000); // Duration of splash screen
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
+
   return (
     <>
       {showSplash ? (
