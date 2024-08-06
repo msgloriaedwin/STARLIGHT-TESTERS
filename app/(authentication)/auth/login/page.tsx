@@ -16,11 +16,7 @@ const loginSchema = z.object({
 
 type FormData = z.infer<typeof loginSchema>;
 
-interface LoginPageProps {
-  onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
-}
-
-const LoginPage: FC<LoginPageProps> = ({ onSubmit }) => {
+const LoginPage: FC = () => {
   const [formData, setFormData] = useState<FormData>({
     username: "",
     password: "",
@@ -66,8 +62,9 @@ const LoginPage: FC<LoginPageProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (validateForm() && onSubmit) {
-      onSubmit(e);
+    if (validateForm()) {
+      // Form submission logic here
+      console.log("Form submitted successfully!");
     }
   };
 

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import LoginPage from "./page";
 
 describe("LoginPage", () => {
@@ -37,16 +37,16 @@ describe("LoginPage", () => {
     expect(screen.queryByText("Password must be at least 8 characters long")).not.toBeInTheDocument();
   });
 
-  it("handles form submission correctly when all inputs are valid", async () => {
+  it("logs form submission message when all inputs are valid", async () => {
     const user = userEvent.setup();
-    const handleSubmit = vi.fn(); 
-    render(<LoginPage onSubmit={handleSubmit} />);
+    render(<LoginPage />);
 
     await user.type(screen.getByPlaceholderText("Your username"), "testuser");
     await user.type(screen.getByPlaceholderText("Password"), "password123");
 
     await user.click(screen.getByText("Login"));
 
-    expect(handleSubmit).toHaveBeenCalled();
+    // Check for the log message
+    expect(console.log).toHaveBeenCalledWith("Form submitted successfully!");
   });
 });
