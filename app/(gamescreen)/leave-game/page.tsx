@@ -17,7 +17,7 @@ import { UserRound, LogOut} from "lucide-react";
 import Image from "next/image";
 import DeleteLogoutNavbar from "@/app/components/navbars/custom-navbars/DeleteLogoutNavbar";
 
-export default function DeleteAccountPage() {
+export default function LeaveGamePage() {
   const [isLeft, setIsLeft] = useState(false);
 
   const handleLeaveGame = () => {
