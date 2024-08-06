@@ -100,7 +100,7 @@ const LoginPage: FC = () => {
             >
               Forgot Password?
             </Link>
-            <CustomButton size={"lg"} className='w-full p-6' type='submit'>
+            <CustomButton size={"lg"} className='w-full p-6 text-base md:text-lg' type='submit'>
               Log in
             </CustomButton>
 

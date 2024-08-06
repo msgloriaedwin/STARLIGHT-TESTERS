@@ -35,13 +35,13 @@ const ForgotPassword = () => {
               type="email" 
               value={email} 
               onChange={(e) => setEmail(e.target.value)} 
-              className='border border-[#C5C5C5] shadow-md shadow-[#C5C5C5] p-5'
+              className='border border-[#C5C5C5] p-5'
             />
-            <CustomButton size={"lg"} className='w-full p-6' type='submit'>
+            <CustomButton size={"lg"} className='w-full p-6 text-base md:text-lg' type='submit'>
               Reset password
             </CustomButton>
           </form>
-            <Link href={'/auth/login'} className='text-[#00222E] underline flex justify-center mt-10'>Back to sign in</Link>
+            <Link href={'/auth/login'} className='text-[#00222E] text-base md:text-lg underline flex justify-center mt-10'>Back to sign in</Link>
         </FormCard>
     </div>
     </>
