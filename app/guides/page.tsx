@@ -136,7 +136,6 @@ const Guide = () => {
         <div className="flex justify-center my-6">
           <ToggleControl />
         </div>
-
         <div className="flex justify-center my-12">
           <Player username="Olajumoke" avatar="/assets/images/avatar-1.png" />
           <MessageBubble
