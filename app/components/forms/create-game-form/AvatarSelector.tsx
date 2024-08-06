@@ -17,24 +17,22 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      Math.min(prevIndex + 5, avatars.length - 5)
-    );
+    setCurrentIndex((prevIndex) => Math.min(prevIndex + 5, avatars.length - 5));
   };
 
   const handlePrevious = () => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 5, 0));
   };
-  
+
   useEffect(() => {
-    if(carouselRef.current){
+    if (carouselRef.current) {
       const avatarWidth = carouselRef.current.scrollWidth / avatars.length;
       carouselRef.current.scrollTo({
         left: currentIndex * avatarWidth,
-        behavior: "smooth"
-      })
+        behavior: "smooth",
+      });
     }
-  }, [currentIndex, avatars.length])
+  }, [currentIndex, avatars.length]);
 
   return (
     <div>
@@ -77,7 +75,10 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
           </button>
         </div>
       </div>
-      <div ref={carouselRef} className="flex gap-2 sm:gap-4 overflow-x-auto scroll-smooth">
+      <div
+        ref={carouselRef}
+        className="flex gap-2 sm:gap-4 overflow-x-auto scroll-smooth"
+      >
         {avatars.slice(currentIndex, currentIndex + 5).map((avatar) => (
           <div
             key={avatar}
@@ -111,4 +112,4 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   );
 };
 
-export default AvatarSelector
+export default AvatarSelector;

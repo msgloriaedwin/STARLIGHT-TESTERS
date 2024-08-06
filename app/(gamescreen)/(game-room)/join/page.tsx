@@ -1,4 +1,6 @@
+"use client";
 import JoinGameForm from "@/app/components/forms/join-game-form";
+import JoinGameNavbar from "@/app/components/navbars/custom-navbars/JoinGameNavbar";
 
 const Page = () => {
   const avatars = [
@@ -13,7 +15,7 @@ const Page = () => {
     "/assets/images/avatar-9.png",
   ];
   return (
-    <section className="h-screen w-screen bg-body overflow-y-scroll">
+    <section className="w-screen  mt-[130px]">
       <div className="flex items-center justify-center">
         <JoinGameForm avatars={avatars} />
       </div>

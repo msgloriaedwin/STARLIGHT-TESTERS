@@ -1,9 +1,19 @@
+"use client";
 import Image from "next/image";
 import user from "../asset/user.png";
-import { ArrowLeft, ChevronDown, Link, Menu, UserRound } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronDown,
+  Link,
+  Menu,
+  User,
+  UserRound,
+} from "lucide-react";
 import Navbar from "../Navbar";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import CustomButton from "../../button/custombutton";
+import cupIcon from "../../../../public/cup.svg";
 
 type PageProps = {
   handleGoBack: () => void;
@@ -42,26 +52,46 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
           ""
         )}
         <div className="md:flex hidden items-center gap-4">
-          <button
+          <CustomButton
             onClick={() => router.back()}
-            className="flex items-center border rounded-[8px] gap-[.5em] border-textColor-main justify-center py-2 px-4 outline-1"
+            variant="outline"
+            isLeftIconVisible={true}
+            icon={<ArrowLeft color="#00658B" />}
           >
-            <span>
-              <ArrowLeft color="primary-700 " />
-            </span>
-            <span className="text-textColor-main">Back</span>
-          </button>
+            Back
+          </CustomButton>
+        </div>
+        <div className="flex items-center gap-4 justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-3">
+          <Image src={cupIcon} alt="cup" width={37} height={37.6} />
+          <span className="text-[24px] font-[700] text-[#4CAF50]">$350</span>
         </div>
         <div className="flex gap-6 items-center">
-          <button
-            onClick={() => handleShareGameLink()}
-            className="md:flex hidden items-center shadow-custom-inset bg-button-light-main rounded-[8px] gap-2 text-small text-black justify-center py-2 px-4"
+          <div className="flex gap-2">
+            <CustomButton
+              onClick={() => router.back()}
+              variant="subtle"
+              isRightIconVisible={true}
+              icon={<Link size={"14px"} />}
+            >
+              Share Game Invite
+            </CustomButton>
+            <button className="bg-primary-700 shadow-custom-inset text-primary-100 hover:bg-primary-700/90 dark:bg-slate-50 dark:text-primary-100 dark:hover:bg-slate-50/90 flex items-center justify-center gap-3 rounded-[8px] px-4">
+              <User color="#ffffff" />
+              <span>Frieda</span>
+              <ChevronDown color="#ffffff" />
+            </button>
+            <button className="px-4 border-[2px] border-primary-800 border-solid rounded-[8px] text-primary-800">
+              ?
+            </button>
+          </div>
+
+          {/* <CustomButton
+            variant="secondary"
+            isRightIconVisible={true}
+            icon={<Link size={"14px"} />}
           >
-            <span>Share game link</span>
-            <span>
-              <Link size={"14px"} />
-            </span>
-          </button>
+            Button CTA
+          </CustomButton> */}
           <button
             onClick={(e) => {
               e.preventDefault();
