@@ -16,13 +16,16 @@ import Avatar8 from "../../../../public/assets/images/avatar-8.png";
 import Avatar9 from "../../../../public/assets/images/avatar-9.png";
 
 const CreateGamePage: React.FC = () => {
+  console.log("Rendering CreateGamePage");
   const router = useRouter();
 
   const handleGoBack = () => {
+    console.log("handleGoBack called");
     router.back();
   };
 
   const handleShareGameLink = () => {
+    console.log("handleShareGameLink called");
     // Implement share game link functionality
     console.log("Share game link");
   };
@@ -30,13 +33,21 @@ const CreateGamePage: React.FC = () => {
   const handleHowToPlayClick = () => {
     // Implement how to play functionality
     console.log("How to play clicked");
+
+    console.log("handleHowToPlayClick called");
   };
 
-  const handleSubmit = (data: any) => {
+  const handleSubmit = (data: {
+    teamName: string;
+    bingoType: "numbers" | "alphabets";
+    prizeValue: string;
+    avatar: string;
+  }) => {
     console.log("Form submitted:", data);
     // Navigate to game page
-    router.push("/game-screen/game-room/game");
+    router.push("/game");
   };
+
   const avatars = [
     Avatar1,
     Avatar2,
@@ -48,6 +59,9 @@ const CreateGamePage: React.FC = () => {
     Avatar8,
     Avatar9,
   ];
+
+  console.log("Avatars:", avatars);
+
   return (
     <div className="min-h-screen bg-body">
       <GameCustomizeNavBar
@@ -57,7 +71,7 @@ const CreateGamePage: React.FC = () => {
         handleHowToPlayClick={handleHowToPlayClick}
       />
       <main className="container mx-auto px-4 pt-24 pb-8">
-        <h1 className="text-4xl font-bold text-center mb-8 text-primary-900">
+        <h1 className="text-4xl font-bold text-center mt-6 mb-6 text-primary-900">
           Create Game
         </h1>
         <CreateGameForm
