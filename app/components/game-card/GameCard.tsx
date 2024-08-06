@@ -30,7 +30,7 @@ const GameCard = ({value, onCardActivate}: GameCardProps) => {
             ?
             <div className={`font-["dm_sans"] flex`}>
               <div className='relative'>
-                <div onClick={() => !isCardActive && handleCardActive()} className={`z-1 relative cursor-pointer md:min-w-16 max-w-10 w-full max-h-14 md:max-h-20 rounded-tl rounded-tr-none rounded-br rounded-bl-none  box-border overflow-hidden shrink-0 flex flex-col items-center justify-center py-4 md:py-[1.5rem] px-[1rem] text-center text-[1.8rem] md:text-[2.7rem] border-b-[3px] border-solid border-primaryBlue border-l-[3px] text-[#00222e] ${isCardActive ? "bg-green-dirty-green" : "bg-form-blue"}`}>
+                <div onClick={() => !isCardActive && handleCardActive()} className={`z-1 relative cursor-pointer md:min-w-16 max-w-10 w-full max-h-14 md:max-h-20 rounded-tl rounded-tr-none rounded-br rounded-bl-none  box-border overflow-hidden shrink-0 flex flex-col items-center justify-center py-4 md:py-[1.5rem] px-[1rem] text-center text-[1.8rem] md:text-[2.7rem] border-b-[3px] border-solid border-primaryBlue border-l-[3px] text-primary-900 ${isCardActive ? "bg-green-dirty-green" : "bg-form-blue"}`}>
                   <b className="relative leading-[140%]">{value}</b>
                 </div>
                 {

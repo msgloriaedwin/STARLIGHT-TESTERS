@@ -12,7 +12,7 @@ const FormCard = ({
 }) => {
   const bgColors: { [key: string]: string } = {
     primary: "bg-[#FAFAFA]",
-    secondary: "bg-[#ACE8FF]",
+    secondary: "bg-primary-200",
   };
 
   const sizes: { [key: string]: string } = {

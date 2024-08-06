@@ -18,7 +18,7 @@ const CountdownDisplayLoader: React.FC = () => {
       <div className="flex">
         <GameMaster />
         <div className="-ml-16">
-          <div className="flex flex-col w-full max-w-[240px] p-2 border-gray-200  bg-[#D5F3FF] rounded-e-xl rounded-es-xl dark:bg-gray-700">
+          <div className="flex flex-col w-full max-w-[240px] p-2 border-gray-200  bg-primary-100 rounded-e-xl rounded-es-xl dark:bg-gray-700">
             <p className="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
               Bingo card displaying in
               <span className="bg-[#3D8C40] ml-2 rounded-full w-11 px-4 py-2">

@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import FormCard from "../formcard/formCard";
 import RBInput from "../input";
-import RBButton from "../button/button";
+import RBButton from "../button/custombutton";
 import Link from "next/link";
 
 interface PasswordResetFormProps {
@@ -28,7 +28,6 @@ const PasswordResetForm: React.FC<PasswordResetFormProps> = ({
 
   const handleFormSubmit = (data: FormValues) => {
     onSubmit(data);
-    console.log(data, "data");
   };
 
   return (

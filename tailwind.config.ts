@@ -1,12 +1,12 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -19,114 +19,61 @@ const config = {
     },
     extend: {
       backgroundImage: {
-        "body": "linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)",
-        "navbar": "linear-gradient(181deg, #F7EEE7 100%, #F9E9A3 100%, #FD0 100%)"
+        body: "linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)",
+        navbar:
+          "linear-gradient(181deg, #F7EEE7 100%, #F9E9A3 100%, #FD0 100%)",
       },
       boxShadow: {
-        "custom-inset": "2px 2px 0px 0px rgba(255, 255, 255, 0.4) inset, -4px -4px 0px 0px rgba(0, 0, 0, 0.32) inset",
+        "custom-inset":
+          "-2px -2px 0px 0px rgba(0, 0, 0, 0.32) inset, 2px 2px 0px 0px rgba(255, 255, 255, 0.4) inset"
       },
-      fontSize: {
-        "huge": "70px",
-        "large": "50px",
-        "big": "48px",
-        "heading": "36px",
-        "medium": "34px",
-        "small": "16px",
-        "extra-small": "14px",
-      },
+
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        error: "#FF3355",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-          bg: "#f7EEE7",
-          A: {
-            "200":"#ACE8FF",
-            "300": "#82DCFF",
-            "500":"#00A8E8",
-            "600":"#0086BA",
-            "800":"#00435D",
+          DEFAULT: "#FFFAD9",
+          50: "#F1FBFF",
+          100: "#D5F3FF",
+          200: "#ACE8FF",
+          300: "#82DCFF",
+          400: "#58D1FF",
+          500: "#00A8E8",
+          600: "#0086BA",
+          700: "#00658B",
+          800: "#00435D",
+          900: "#00222E",
+          C600: "#FF0057",
+          B900: "#332C00",
+          blue: "#00A8E8",
+          pink: "#FF4081",
+          yellow: {
+            DEFAULT: "#FFDD00",
+            300: "#FFF08C",
+            400: "#FFEB66",
+            500: "#CCB100",
+            700: "#FAD02C",
+            800: "#665800",
+            900: "#332C00",
           },
-          B: {
-            "100":"#FFFAD9",
-            "400": "#FF9A7A",
-            "401": "#FAD02C",
-            "600": "#CCB100",
-          }
-         
-        },
-        yellow: {
-          main: "#FFDD00",
-        },
-        grey: {
-          main: "#c5c5c5",
-        },
-        green: {
-          main: "#4CAF50",
-          "dirty-green": "#AEDCB0"
-        },
-        form: {
-          main: "#FAFAFA",
-          blue: "#ACE8FF"
-        },
-        button: {
-          main: "#FFDD00",
-          "light-main": "#FFF08C",
-          "dark-blue": "#00658B",
-          "dark-blue-text": "#D5F3FF",
-          "light-blue": "#82DCFF",
-          "light-blue-text": "#000000",
-          neutral: "#FFFDFD",
-          danger: "#FF3355"
-        },
-        textColor: {
-          main: "#00658B",
-          neutral: "#9F9F9F",
-          black: "#272626",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-          B: {
-            "400": "#FF9A7A",
-            "800": "#741C00",
-          }
+          DEFAULT: "#1A202C",
+          orange: "#FF5722",
+          green: "#4CAF50",
+          B400: "#FF9A7A",
         },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+        neutral: {
+          DEFAULT: "#1A202C",
+          500: "#9F9F9F",
+          600: "#7F7F7F",
+          800: "#404040",
+          900: "#202020",
         },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-          bg: "#00A8E8",
-          yellow: "#FFEB66",
-          iconColor: "#F7EEE7",
-        },
-      },
-      borderColor: {
-        primaryBlue: "#00A8E8"
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "0.5rem",
+        md: "calc(0.5rem - 2px)",
+        sm: "calc(0.5rem - 4px)",
       },
       keyframes: {
         "accordion-down": {
@@ -145,6 +92,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
