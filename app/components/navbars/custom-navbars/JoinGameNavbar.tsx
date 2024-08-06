@@ -31,7 +31,7 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
     menuIsOpen === false ? setMenuIsOpen(true) : setMenuIsOpen(false);
   };
   const handleHowToPlayClick = () => {
-    //handle form display
+   
   };
 
   return (
@@ -43,6 +43,7 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
             variant="outline"
             isLeftIconVisible={true}
             icon={<ArrowLeft color="#00658B" />}
+            size={"lg"}
           >
             Back
           </CustomButton>{" "}
@@ -66,6 +67,7 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
             variant="outline"
             isLeftIconVisible={true}
             icon={<ArrowLeft color="#00658B" />}
+            size={"lg"}
           >
             Back
           </CustomButton>
@@ -83,6 +85,7 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
               variant="subtle"
               isRightIconVisible={true}
               icon={<Link size={"14px"} />}
+              size={"lg"}
             >
               Share Game Invite
             </CustomButton>
@@ -115,7 +118,6 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
             ) : (
               <button className="rounded-[8px] p-[4px]">
                 <span className="border-[1px] border-solid border-white flex items-center justify-center p-[2px] rounded">
-                  {" "}
                   <X />
                 </span>
               </button>
