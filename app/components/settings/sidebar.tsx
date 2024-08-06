@@ -10,7 +10,7 @@ export function SidebarComp() {
   const links = [
     { href: "/game-settings", label: "Game Settings" },
     { href: "/user-settings", label: "Users Settings" },
-    { href: "/settings/account", label: "Terms & Privacy" },
+    { href: "/terms-and-privacy", label: "Terms & Privacy" },
   ];
 
   const linkClasses = (href: string) =>
