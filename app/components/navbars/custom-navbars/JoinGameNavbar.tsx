@@ -29,16 +29,22 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
   };
   const handleHowToPlayClick = () => {
     //handle form display
-    console.log("clicked how to play");
   };
 
   return (
     <div className="w-full">
       <Navbar className="flex justify-between bg-body z-[999] fixed top-0 left-0">
         <div className="flex md:hidden justify-between items-center bg-transparent">
-          <Image src={user} alt="user" />
+          <CustomButton
+            onClick={() => router.back()}
+            variant="outline"
+            isLeftIconVisible={true}
+            icon={<ArrowLeft color="#00658B" />}
+          >
+            Back
+          </CustomButton>{" "}
         </div>
-        {menuIsOpen === false ? (
+        {/* {menuIsOpen === false ? (
           <button
             onClick={() => handleShareGameLink()}
             className="flex md:hidden items-center shadow-custom-inset bg-button-light-main rounded-[8px] gap-2 text-extra-small text-black justify-center py-[12px] px-4"
@@ -50,8 +56,8 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
           </button>
         ) : (
           ""
-        )}
-        <div className="md:flex hidden items-center gap-4">
+        )} */}
+        <div className="hidden md:flex  items-center gap-4">
           <CustomButton
             onClick={() => router.back()}
             variant="outline"
@@ -61,12 +67,12 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
             Back
           </CustomButton>
         </div>
-        <div className="flex items-center gap-4 justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-3">
+        <div className="hidden md:flex items-center gap-4 justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-3">
           <Image src={cupIcon} alt="cup" width={37} height={37.6} />
           <span className="text-[24px] font-[700] text-[#4CAF50]">$350</span>
         </div>
         <div className="flex gap-6 items-center">
-          <div className="flex gap-2">
+          <div className="hidden md:flex gap-2 ">
             <CustomButton
               onClick={() => router.back()}
               variant="subtle"

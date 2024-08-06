@@ -120,13 +120,11 @@ const JoinGameForm = ({
                 )}
               />
             </div>
-            <div>
-              <AvatarSelector
-                avatars={avatars}
-                selectedAvatar={selectedAvatar}
-                onAvatarSelect={handleAvatarSelect}
-              />
-            </div>
+            <AvatarSelector
+              avatars={avatars}
+              selectedAvatar={selectedAvatar}
+              onAvatarSelect={handleAvatarSelect}
+            />
 
             <CustomButton variant="secondary">Save & Continue</CustomButton>
           </form>

@@ -8,14 +8,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <section className="bg-bo">
+      <body className="h-full ">
+        <section className="">
           <JoinGameNavbar
             handleShareGameLink={() => {}}
             handleGoBack={() => {}}
           />
         </section>
-        {children}
+        <div className="flex items-center justify-center bg-body">
+          {children}
+        </div>
       </body>
     </html>
   );

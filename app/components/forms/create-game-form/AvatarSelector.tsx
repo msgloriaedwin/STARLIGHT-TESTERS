@@ -82,8 +82,10 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
         {avatars.slice(currentIndex, currentIndex + 5).map((avatar) => (
           <div
             key={avatar}
-            className={`relative flex items-center justify-center p-1 border border-button-dark-blue rounded-lg w-[3.875rem] h-[3.875rem] sm:w-24 sm:h-24 ${
-              selectedAvatar === avatar ? "bg-button-dark-blue" : ""
+            className={`relative flex items-center justify-center p-1 border-button-dark-blue rounded-lg w-[3.875rem] h-[3.875rem] sm:w-24 sm:h-24 ${
+              selectedAvatar === avatar
+                ? "bg-primary-700 bg-button-dark-blue"
+                : ""
             }`}
             onClick={() => onAvatarSelect(avatar)}
           >
