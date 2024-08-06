@@ -14,6 +14,9 @@ export default function Home() {
   const handleButtonClick = () => {
     router.push("/guides");
   };
+  const handleHomeButtonClick = () => {
+    router.push("/home");
+  };
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCloseModal = () => {
@@ -40,6 +43,7 @@ export default function Home() {
             alt="Remote Bingo"
           />
           <CustomButton onClick={handleButtonClick}>Style Guides</CustomButton>
+           <CustomButton onClick={handleHomeButtonClick} className='!w-[125px] !px-5'>Home</CustomButton>
         </div>
       </main>
     </Layout>
