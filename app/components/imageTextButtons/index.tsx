@@ -17,7 +17,7 @@ const ImageTextButtons = ({ message, children }: ImageTextButtonsProps) => {
       <p className="max-w-[380px] md:max-w-[570px] text-center font-bold text-neutral-700 font-dm-sans custom-font-features text-[24px] leading-[28px] md:text-[36px] md:leading-[46px]">
         {message}
       </p>
-      <div className="flex justify-center items-center space-x-4 mt-4">
+      <div className="flex flex-col gap-4 md:flex-row w-full md:w-fit justify-center items-center  mt-4">
         {children}
       </div>
     </div>

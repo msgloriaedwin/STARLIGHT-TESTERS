@@ -1,8 +1,6 @@
-
 import "../globals.css";
 import { SidebarComp } from "../components/settings/sidebar";
 import SettingsHeader from "../components/settings/header";
-
 
 export default function SettingsLayout({
   children,

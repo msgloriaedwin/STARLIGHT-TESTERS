@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { FormLabel } from "@/components/ui/form";
 
 interface AvatarSelectorProps {
-  avatars: string[];
-  selectedAvatar: string;
-  onAvatarSelect: (avatar: string) => void;
+  avatars: StaticImageData[];
+  selectedAvatar: StaticImageData;
+  onAvatarSelect: (avatar: StaticImageData) => void;
 }
 
 const AvatarSelector: React.FC<AvatarSelectorProps> = ({
@@ -27,10 +27,7 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   useEffect(() => {
     if (carouselRef.current) {
       const avatarWidth = carouselRef.current.scrollWidth / avatars.length;
-      carouselRef.current.scrollTo({
-        left: currentIndex * avatarWidth,
-        behavior: "smooth",
-      });
+      carouselRef.current.scrollLeft = currentIndex * avatarWidth;
     }
   }, [currentIndex, avatars.length]);
 
@@ -79,20 +76,17 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
         ref={carouselRef}
         className="flex gap-2 sm:gap-4 overflow-x-auto scroll-smooth"
       >
-        {avatars.slice(currentIndex, currentIndex + 5).map((avatar) => (
+        {avatars.slice(currentIndex, currentIndex + 5).map((avatar, index) => (
           <div
-            key={avatar}
-            className={`relative flex items-center justify-center p-1 border-button-dark-blue rounded-lg w-[3.875rem] h-[3.875rem] sm:w-24 sm:h-24 ${
-              selectedAvatar === avatar
-                ? "bg-primary-700 bg-button-dark-blue"
-                : ""
+            key={`${avatar.src}-${index}`}
+            className={`relative flex items-center justify-center p-1 border border-button-dark-blue rounded-lg w-[3.875rem] h-[3.875rem] sm:w-24 sm:h-24 ${
+              selectedAvatar.src === avatar.src ? "bg-primary-700" : ""
             }`}
             onClick={() => onAvatarSelect(avatar)}
           >
             <Image
               src={avatar}
               alt="Avatar"
-              layout="responsive"
               width={50}
               height={50}
               className="rounded-full cursor-pointer w-[3.125rem] h-[3.125rem] sm:w-20 sm:h-20"

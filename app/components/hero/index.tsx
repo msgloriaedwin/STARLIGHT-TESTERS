@@ -4,14 +4,14 @@ import CustomButton from '../button/custombutton';
 import Link from 'next/link';
 import Image from 'next/image'
 const Hero: React.FC = () => {
-  
   return (
     <section className="pt-36 md:pt-[11.5rem] flex items-center flex-col gap-x-6 justify-between max-w-[1200px] mx-auto lg:flex-row pb-20">
       <div className=" mx-auto px-2 sm:px-4 text-center lg:text-start">
         <h1 className="text-[2.25rem] sm:text-[2.5rem] lg:text-[4rem] leading-[1.2] font-bold text-primary-700 mb-4">Engage your team with online bingo!</h1>
         <p className="text-lg text-primary-700 lg:text-black mb-8">
-          Connect, play, and celebrate from anywhere with Remote Bingo! Customize your game or join exciting
-          sessions with friends & colleagues and win!
+          Connect, play, and celebrate from anywhere with Remote Bingo!
+          Customize your game or join exciting sessions with friends &
+          colleagues and win!
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8 w-full px-3 md:px-0">
            <Link href='/create-game' className=' !w-full'>
