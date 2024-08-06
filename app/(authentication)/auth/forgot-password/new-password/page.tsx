@@ -56,13 +56,13 @@ const NewPassword = () => {
           required 
             />
 
-            <CustomButton size={"lg"} className='w-full p-7' type='submit'>
+            <CustomButton size={"lg"} className='w-full p-7 text-base md:text-lg' type='submit'>
               Reset password
             </CustomButton>
           </form>
           <Link
             href={"/auth/login"}
-            className='underline flex justify-center my-4'
+            className='underline flex justify-center mt-10 text-base md:text-lg'
           >
             Back to sign in
           </Link>
