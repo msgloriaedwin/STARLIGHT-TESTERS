@@ -33,7 +33,7 @@ const RBInput = React.forwardRef<HTMLInputElement, InputFieldProps>(
         <Input
           {...rest}
           ref={ref} // Forward the ref here
-          className={`w-full p-4 rounded-md border border-[#C5C5C5] bg-[#FFFDFD] ${rest.className}`}
+          className={`w-full p-4 rounded-md border border-[#C5C5C5] bg-[#FFFDFD] h-12 ${rest.className}`}
           aria-invalid={!!error}
         />
 

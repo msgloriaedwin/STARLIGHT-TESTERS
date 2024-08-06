@@ -135,7 +135,7 @@ const LoginPage: FC = () => {
             </section>
             <p className='text-center text-sm md:text-base'>
               Don&apos;t have an account?{" "}
-              <Link href='/auth/login' className='text-primary-400'>
+              <Link href='/auth/signup' className='text-primary-400'>
                 Sign Up
               </Link>
             </p>

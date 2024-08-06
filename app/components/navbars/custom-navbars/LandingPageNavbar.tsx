@@ -43,19 +43,20 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
             How to play
           </p>
           <div className="flex gap-4 items-center">
-
-            <Link href={'/auth/login'}
+            <Link
+              href={"/auth/login"}
               onClick={() => onLogin()}
               className="bg-primary-yellow-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
             >
               Login
             </Link>
-            <button
+            <Link
+              href={"/auth/signup"}
               onClick={() => onSignup()}
               className="bg-primary-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
             >
               Signup
-            </button>
+            </Link>
           </div>
         </div>
         <button
