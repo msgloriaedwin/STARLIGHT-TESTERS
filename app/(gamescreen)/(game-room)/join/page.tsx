@@ -1,4 +1,6 @@
+"use client";
 import JoinGameForm from "@/app/components/forms/join-game-form";
+<<<<<<< HEAD:app/(gamescreen)/join/page.tsx
 import avatar1 from "@/assets/images/avatar-1.png";
 import avatar2 from "@/assets/images/avatar-2.png";
 import avatar3 from "@/assets/images/avatar-3.png";
@@ -8,6 +10,9 @@ import avatar6 from "@/assets/images/avatar-6.png";
 import avatar7 from "@/assets/images/avatar-7.png";
 import avatar8 from "@/assets/images/avatar-8.png";
 import avatar9 from "@/assets/images/avatar-9.png";
+=======
+import JoinGameNavbar from "@/app/components/navbars/custom-navbars/JoinGameNavbar";
+>>>>>>> upstream/dev:app/(gamescreen)/(game-room)/join/page.tsx
 
 const Page = () => {
   const avatars = [
@@ -22,9 +27,11 @@ const Page = () => {
     avatar9,
   ];
   return (
-    <section className="h-screen w-screen bg-body overflow-y-scroll">
-      <div className="flex items-center justify-center">
-        <JoinGameForm avatars={avatars} />
+    <section className="">
+      <div className="flex items-center justify-center h-full">
+        <div className="md:mt-[8rem] h-screen flex items-center">
+          <JoinGameForm avatars={avatars} />
+        </div>
       </div>
     </section>
   );
