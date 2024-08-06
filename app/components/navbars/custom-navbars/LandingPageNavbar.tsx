@@ -18,8 +18,6 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
     menuIsOpen === false ? setMenuIsOpen(true) : setMenuIsOpen(false);
   };
   const handleHowToPlayClick = () => {
-    //handle form display
-    console.log("clicked how to play");
   };
 
   return (

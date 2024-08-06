@@ -18,8 +18,6 @@ const SignUpNavbar = ({ onLogin }: { onLogin: () => void }) => {
     menuIsOpen === false ? setMenuIsOpen(true) : setMenuIsOpen(false);
   };
   const handleHowToPlayClick = () => {
-    //handle form display
-    console.log("clicked how to play");
   };
   return (
     <div className="w-full">
