@@ -2,7 +2,7 @@
 import { ArrowLeft, Menu } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export default function DeleteLogoutNavbar() {
+export default function ForgotPasswordNavbar() {
   const router = useRouter();
   return (
     <nav className="bg-white px-4 h-16 py-3 flex items-center justify-center relative">

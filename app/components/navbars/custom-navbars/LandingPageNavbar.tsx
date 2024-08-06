@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import logo from "../asset/bingo_logo.png";
 import user from "../asset/user.png";
 import Navbar from "../Navbar";
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import CustomButton from "../../button/custombutton";
 
 type PageProps = {
   onLogin: () => void;
@@ -18,25 +18,29 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
     menuIsOpen === false ? setMenuIsOpen(true) : setMenuIsOpen(false);
   };
   const handleHowToPlayClick = () => {
+    //handle form display
+    console.log("clicked how to play");
   };
 
   return (
     <div className="w-full">
-      <Navbar className="justify-between fixed top-0 left-0 py-6 md:px-20 px-4 flex items-center w-full bg-body z-[999]">
-        <div className=" hidden md:hidden justify-between items-center w-full bg-transparent md:bg-[#fffdfd] px-6 md:px-20 py-6">
+      <Navbar className="justify-between fixed top-0 left-0 md:px-20 px-4 flex items-center w-full bg-body z-[999]">
+        <div className=" hidden md:hidden justify-between items-center w-full bg-transparent md:bg-[#fffdfd] px-6 md:px-20 py-6" >
           <Image src={user} alt="user" />
         </div>
         <div>
           <Image
             className="w-[131px] h-[46.48px]"
-            src={logo}
+            width={100}
+            height={100}
+            src='/bingo-logo.svg'
             alt="Remote Bingo"
           />
         </div>
         <div className="md:flex hidden gap-6 items-center">
           <p
             onClick={handleHowToPlayClick}
-            className="text-textColor-main cursor-pointer hidden md:flex"
+            className="text-primary-700 cursor-pointer hidden md:flex"
           >
             How to play
           </p>
@@ -44,16 +48,19 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
 
             <Link href={'/auth/login'}
               onClick={() => onLogin()}
-              className="bg-primary-yellow-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
+              
             >
-              Login
+              <CustomButton>
+               Login
+              </CustomButton>
+           
             </Link>
-            <button
-              onClick={() => onSignup()}
-              className="bg-primary-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
-            >
-              Signup
-            </button>
+            <CustomButton onClick={() => onSignup()}
+ variant='secondary'>
+           Signup
+            </CustomButton>
+
+            
           </div>
         </div>
         <button
@@ -61,7 +68,7 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
             e.preventDefault();
             handleShowMenu();
           }}
-          className="flex md:hidden items-center bg-button-dark-blue shadow-custom-inset border rounded-[8px] gap-[.5em] text-white justify-center py-[10px] px-4 outline-1"
+          className="flex md:hidden items-center  bg-primary-700  shadow-custom-inset border rounded-[8px] gap-[.5em] text-white justify-center py-[10px] px-4 outline-1"
         >
           <Menu />
         </button>
@@ -74,19 +81,22 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
           >
             How to play
           </p>
-          <div className="flex flex-col gap-4">
-            <button
+          <div className="flex flex-col gap-4 px-8">
+           
+            <Link href={'/auth/login'}
               onClick={() => onLogin()}
-              className="bg-primary-yellow-700 w-[100%] shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
+
             >
-              Login
-            </button>
-            <button
-              onClick={() => onSignup()}
-              className="bg-primary-700 w-[100%] shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
-            >
-              Signup
-            </button>
+              <CustomButton className='!w-full lg:w-auto'>
+               Login
+              </CustomButton>
+
+            </Link>
+            <CustomButton onClick={() => onSignup()}
+            variant='secondary'>
+            Signup
+            </CustomButton>
+
           </div>
         </ul>
       ) : (
