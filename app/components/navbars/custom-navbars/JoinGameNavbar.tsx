@@ -6,15 +6,18 @@ import {
   ChevronDown,
   Link,
   Menu,
+  Settings,
   User,
   UserRound,
+  X,
 } from "lucide-react";
 import Navbar from "../Navbar";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import CustomButton from "../../button/custombutton";
 import cupIcon from "../../../../public/cup.svg";
-
+import infoIcon from "../../../../public/info-circle.svg";
+import { SheetTrigger, Sheet, SheetContent } from "@/components/ui/sheet";
 type PageProps = {
   handleGoBack: () => void;
   handleShareGameLink: () => void;
@@ -33,7 +36,7 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
 
   return (
     <div className="w-full">
-      <Navbar className="flex justify-between bg-body z-[999] fixed top-0 left-0">
+      <Navbar className="flex justify-between bg-body z-[995] fixed top-0 left-0">
         <div className="flex md:hidden justify-between items-center bg-transparent">
           <CustomButton
             onClick={() => router.back()}
@@ -74,7 +77,9 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
         <div className="flex gap-6 items-center">
           <div className="hidden md:flex gap-2 ">
             <CustomButton
-              onClick={() => router.back()}
+              onClick={() => {
+                console.log("Copy link");
+              }}
               variant="subtle"
               isRightIconVisible={true}
               icon={<Link size={"14px"} />}
@@ -105,30 +110,60 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
             }}
             className="flex md:hidden shadow-custom-inset items-center bg-primary-700 border rounded-[8px] gap-[.5em] border-[#00658B] text-white justify-center py-[12px] md:py-[10px] px-4 outline-1"
           >
-            <Menu />
+            {!menuIsOpen ? (
+              <Menu />
+            ) : (
+              <button className="rounded-[8px] p-[4px]">
+                <span className="border-[1px] border-solid border-white flex items-center justify-center p-[2px] rounded">
+                  {" "}
+                  <X />
+                </span>
+              </button>
+            )}
           </button>
         </div>
       </Navbar>
       {menuIsOpen === true ? (
-        <ul className="w-[100%] z-[995] md:hidden fixed top-[85px] flex gap-4 pt-[50px] flex-col min-h-[90vh] bg-white p-4 rounded-lg">
-          <div className="flex flex-col gap-4">
-            <p
-              onClick={handleHowToPlayClick}
-              className="text-textColor-main self-center cursor-pointer flex"
-            >
-              How to play
-            </p>
-            <button
-              onClick={() => handleShareGameLink()}
-              className="flex items-center shadow-custom-inset bg-button-light-main rounded-[8px] gap-2 text-small text-black justify-center py-2 px-4"
-            >
-              <span>Share game link</span>
-              <span>
-                <Link size={"14px"} />
-              </span>
+        <div>
+          <div className="bg-[#FFFDF2] h-screen w-[80%] z-[999] md:hidden fixed top-0 flex gap-4 py-[50px] flex-col min-h-[90vh] p-4 rounded-lg justify-between">
+            <div className="flex flex-col gap-6">
+              <div className="flex justify-start gap-2 items-center border-b-[1px] border-solid border-primary-700 py-4">
+                <User color="#00658B" /> Frieda
+              </div>
+              <CustomButton
+                size={"lg"}
+                onClick={() => {
+                  console.log("Copy link");
+                }}
+                variant="subtle"
+                isRightIconVisible={true}
+                icon={<Link size={"14px"} />}
+              >
+                Share Game Invite
+              </CustomButton>
+              <div>
+                <button
+                  onClick={handleHowToPlayClick}
+                  className="text-textColor-main self-center cursor-pointer flex items-center gap-4 text-primary-700 text-[18px]"
+                >
+                  <Image alt="info-icon" src={infoIcon} />
+                  How to play
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={handleHowToPlayClick}
+                  className="text-textColor-main self-center cursor-pointer flex items-center gap-4 text-primary-700 text-[18px]"
+                >
+                  <Settings color="#292D32" /> Settings
+                </button>
+              </div>
+            </div>
+            <button className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid">
+              Leave Game
             </button>
           </div>
-        </ul>
+        </div>
       ) : (
         ""
       )}
