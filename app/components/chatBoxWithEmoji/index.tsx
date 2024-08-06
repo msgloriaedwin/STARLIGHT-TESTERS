@@ -8,7 +8,6 @@ import createIcon from "../../../public/create.svg";
 import gifIcon from "../../../public/gif.svg";
 import { defaultEmoji } from "./data";
 
-// Dynamically import the EmojiPicker with SSR disabled
 const EmojiPicker = dynamic(() => import("emoji-picker-react"), { ssr: false });
 const ChatInput: React.FC = () => {
   const [showPicker, setShowPicker] = useState<boolean>(false);
@@ -17,7 +16,7 @@ const ChatInput: React.FC = () => {
   const handleSend = () => {
     if (message.trim()) {
       console.log("Text and Emoji:", message);
-      setMessage(""); // Clear the message after sending
+      setMessage("");
     }
   };
 
