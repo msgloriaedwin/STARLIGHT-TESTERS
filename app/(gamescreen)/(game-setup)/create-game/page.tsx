@@ -16,26 +16,15 @@ import Avatar8 from "../../../../public/assets/images/avatar-8.png";
 import Avatar9 from "../../../../public/assets/images/avatar-9.png";
 
 const CreateGamePage: React.FC = () => {
-  console.log("Rendering CreateGamePage");
   const router = useRouter();
 
   const handleGoBack = () => {
-    console.log("handleGoBack called");
     router.back();
   };
 
-  const handleShareGameLink = () => {
-    console.log("handleShareGameLink called");
-    // Implement share game link functionality
-    console.log("Share game link");
-  };
+  const handleShareGameLink = () => {};
 
-  const handleHowToPlayClick = () => {
-    // Implement how to play functionality
-    console.log("How to play clicked");
-
-    console.log("handleHowToPlayClick called");
-  };
+  const handleHowToPlayClick = () => {};
 
   const handleSubmit = (data: {
     teamName: string;
@@ -44,7 +33,6 @@ const CreateGamePage: React.FC = () => {
     avatar: string;
   }) => {
     console.log("Form submitted:", data);
-    // Navigate to game page
     router.push("/game");
   };
 
@@ -59,8 +47,6 @@ const CreateGamePage: React.FC = () => {
     Avatar8,
     Avatar9,
   ];
-
-  console.log("Avatars:", avatars);
 
   return (
     <div className="min-h-screen bg-body">

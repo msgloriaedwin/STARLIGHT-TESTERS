@@ -52,7 +52,6 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
   });
 
   const handleFormSubmit = (data: FormData) => {
-    console.log(data);
     if (onSubmit) {
       onSubmit(data);
     }

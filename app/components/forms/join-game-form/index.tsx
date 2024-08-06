@@ -41,9 +41,7 @@ const JoinGameForm = ({
     resolver: zodResolver(formSchema),
   });
 
-  const handleFormSubmit = (data: FormData) => {
-    console.log(data);
-  };
+  const handleFormSubmit = (data: FormData) => {};
 
   const handleAvatarSelect = (avatar: StaticImageData) => {
     setSelectedAvatar(avatar);
