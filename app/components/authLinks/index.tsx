@@ -16,7 +16,7 @@ const AuthLink = ({ href, src, alt, children }: AuthLinkProps) => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    handleResize(); // Set initial state
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);

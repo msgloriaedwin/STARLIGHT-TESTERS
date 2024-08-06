@@ -2,7 +2,6 @@ import React from "react";
 
 type NavbarProp = {
   className?: string;
-  // userImageUrl?: string,
   children: React.ReactNode;
 };
 
