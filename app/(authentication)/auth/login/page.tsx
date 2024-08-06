@@ -7,7 +7,7 @@ import FormCard from "@/app/components/formcard/formCard";
 import CustomButton from "@/app/components/button/custombutton";
 import Image from "next/image";
 import Link from "next/link";
-import DeleteLogoutNavbar from "@/app/components/navbars/custom-navbars/DeleteLogoutNavbar";
+import ForgotPasswordNavbar from "@/app/components/navbars/custom-navbars/ForgotPasswordNavbar";
 
 const loginSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -70,7 +70,7 @@ const LoginPage: FC = () => {
 
   return (
     <>
-      <DeleteLogoutNavbar />
+      <ForgotPasswordNavbar />
       <div className='bg-body flex justify-center items-center h-screen bg-gray-100'>
         <FormCard variant='primary' size='lg'>
           <form onSubmit={handleSubmit} className='space-y-4'>
