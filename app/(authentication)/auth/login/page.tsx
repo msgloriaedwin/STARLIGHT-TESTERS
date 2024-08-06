@@ -29,10 +29,10 @@ const LoginPage: FC<LoginPageProps> = ({ onSubmit }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
-    });
+    }));
 
     if (name === "username" && value.length > 0) {
       setErrors((prevErrors) => ({
@@ -66,10 +66,8 @@ const LoginPage: FC<LoginPageProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (validateForm()) {
-      if (onSubmit) {
-        onSubmit(e);
-      }
+    if (validateForm() && onSubmit) {
+      onSubmit(e);
     }
   };
 
@@ -114,7 +112,7 @@ const LoginPage: FC<LoginPageProps> = ({ onSubmit }) => {
               >
                 <Image
                   src={"/assets/icons/google.svg"}
-                  alt=''
+                  alt='Google logo'
                   height={24}
                   width={24}
                 />{" "}
@@ -127,7 +125,7 @@ const LoginPage: FC<LoginPageProps> = ({ onSubmit }) => {
               >
                 <Image
                   src={"/assets/icons/facebook2.svg"}
-                  alt=''
+                  alt='Facebook logo'
                   height={24}
                   width={24}
                 />{" "}
