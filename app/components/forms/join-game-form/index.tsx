@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
 import AvatarSelector from "@/app/components/forms/create-game-form/AvatarSelector";
 import CustomButton from "../../button/custombutton";
@@ -30,21 +30,22 @@ const JoinGameForm = ({
   avatars,
   className,
 }: {
-  avatars: string[];
+  avatars: StaticImageData[];
   className?: string;
 }) => {
-  const [selectedAvatar, setSelectedAvatar] = useState<string>(avatars[0]);
+  const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
+    avatars[0]
+  );
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
-  const handleFormSubmit = (data: FormData) => {
-  };
+  const handleFormSubmit = (data: FormData) => {};
 
-  const handleAvatarSelect = (avatar: string) => {
+  const handleAvatarSelect = (avatar: StaticImageData) => {
     setSelectedAvatar(avatar);
-    form.setValue("avatar", avatar);
+    form.setValue("avatar", avatar as unknown as string);
   };
 
   return (
