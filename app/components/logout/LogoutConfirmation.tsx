@@ -11,7 +11,7 @@ const LogoutConfirmation = (props: Props) => {
   const router = useRouter();
 
   const handleBackToSettingsClick = () => {
-    router.back();
+    router.push("/game-settings");
   };
 
   const handleLogout = () => {
@@ -29,10 +29,15 @@ const LogoutConfirmation = (props: Props) => {
       <DeleteLogoutNavbar />
       <div className="flex-grow flex flex-col items-center justify-center p-4">
         <ImageTextButtons message="Are you sure you want to Logout of Remote Bingo?">
-          <CustomButton variant="outline" onClick={handleBackToSettingsClick}>
+          <CustomButton
+            className="w-full"
+            variant="outline"
+            onClick={handleBackToSettingsClick}
+          >
             Back to settings
           </CustomButton>
           <CustomButton
+            className="w-full"
             isLeftIconVisible
             icon={<LogOut size={24} />}
             variant="destructive"
