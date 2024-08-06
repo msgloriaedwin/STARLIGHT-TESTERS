@@ -11,7 +11,7 @@ export function SidebarComp() {
   const links = [
     { href: "/game-settings", label: "Game Settings" },
     { href: "/user-settings", label: "Users Settings" },
-    { href: "/settings/account", label: "Terms & Privacy" },
+    { href: "/terms-and-privacy", label: "Terms & Privacy" },
   ];
 
 
@@ -26,7 +26,6 @@ export function SidebarComp() {
     <>
        {/* MOBILE SIDEBAR */}
      <aside className="block md:hidden">
-
         <Sheet >
           <header className="flex w-full bg-white items-center justify-between px-5 py-3">
              <div className='flex rounded-md text-[#9F9F9F] border border-[#9F9F9F] items-center gap-x-1 py-2 px-3'> <ArrowLeft size={16} /> Back</div>

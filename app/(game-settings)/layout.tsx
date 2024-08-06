@@ -12,7 +12,7 @@ export default function SettingsLayout({
   return (
     <main className='bg-primary'>
        <SettingsHeader />
-       <div className="md:flex gap-3 bg-primary min-h-screen !bg-[#F7EEE7]">
+       <div className="md:flex gap-3 bg-secondary-cream min-h-screen">
 
        <SidebarComp />
          <div className="w-full md:w-3/4 md:!ml-[350px] pt-20">
