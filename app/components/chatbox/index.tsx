@@ -15,17 +15,18 @@ const ChatInput: React.FC = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-bold mt-8 mb-4">Chat Input</h2>
+      {/* <h2 className="text-2xl font-bold mt-8 mb-4">Chat Input</h2> */}
       <div className="flex items-center border border-neutral-600 h-12 pr-2 bg-[#FFFDFD80] rounded-2xl">
         <InputEmoji
           value={text}
           onChange={setText}
-          cleanOnEnter
+          // cleanOnEnter
           borderColor="transparent"
           onEnter={handleSend}
           shouldReturn
           shouldConvertEmojiToImage
           placeholder="Type a message"
+          keepOpened={true}
         />
         <button
           onClick={handleSend}
