@@ -31,7 +31,13 @@ const Hero: React.FC = () => {
         </div>
       </div>
       <div className=" w-full lg:max-w-[50%] mx-auto">
-        <Image src="/bingo-hero.png" alt="Bingo Card" className="mx-auto" />
+        <Image
+          src="/bingo-hero.png"
+          alt="Bingo Card"
+          width={1000}
+          height={1000}
+          className="w-full h-auto mx-auto"
+        />
       </div>
     </section>
   );
