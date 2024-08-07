@@ -5,7 +5,7 @@ import MessageBubble from "../messageBubble/MessageBubble";
 
 interface PlayerProps {
   username: string;
-  avatar: string;
+  avatar: any;
   presenceStatus?: "online" | "offline" | "dormant";
   totalCards?: number;
   correctCards?: number;
@@ -40,9 +40,9 @@ const Player: React.FC<PlayerProps> = ({
   return (
     <div
       className={cn(
-        "w-[9.5rem] flex flex-col items-center justify-center relative",
+        "lg:w-[9.5rem] flex flex-col items-center justify-center relative",
         {
-          "w-[6.5rem]": isGameOver,
+          "min-w-[2rem]": isGameOver,
           "bg-button-dark-blue-text py-[0.875rem] rounded-[0.625rem] shadow-[0px_4px_11.3px_0px_rgba(0,0,0,0.25)]":
             isGameOver && isWinner,
         },
@@ -59,7 +59,9 @@ const Player: React.FC<PlayerProps> = ({
           height={isGameOver || isWinner ? 50 : 80}
           width={isGameOver || isWinner ? 50 : 80}
           alt="player avatar"
-          className={cn("rounded-full")}
+          className={cn(
+            "rounded-full w-[34px] h-[34px] md:w-[80px] md:h-[80px]"
+          )}
         />
 
         <div className="flex gap-2 items-center">

@@ -2,21 +2,21 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ArrowLeft, LogOut, Menu } from "lucide-react";
+import { ArrowLeft, Menu } from "lucide-react";
 import Image from "next/image";
 export function SidebarComp() {
   const path = usePathname();
 
   const links = [
     { href: "/game-settings", label: "Game Settings" },
-    { href: "/user-settings", label: "Users Settings" },
+    { href: "/profile-settings", label: "Users Settings" },
     { href: "/terms-and-privacy", label: "Terms & Privacy" },
   ];
 
   const linkClasses = (href: string) =>
     `block py-2 text-[1rem] mb-3 md:mb-7  whitespace-nowrap text-left pr-20 pl-4 md:pr-10 lg:pr-20 rounded-lg sm:rounded-md   ${
       path === href
-        ? " font-medium text-primary-700 bg-primary-100  pr-20  md:pr-10 lg:pr-20   transition-all duration-300 ease-in delay-200 pl-4 rounded-md border border-[#00A8E8]"
+        ? " font-medium text-button-dark-blue bg-button-dark-blue-text  pr-20  md:pr-10 lg:pr-20 text-primary-700 border border-primary-500 bg-primary-100  transition-all duration-300 ease-in delay-200 pl-4 rounded-md border border-[#00A8E8]"
         : "text-[#5F5F5F]"
     }`;
 
@@ -60,15 +60,18 @@ export function SidebarComp() {
                   </Link>
                 </li>
               ))}
-              <div className='mt-[17rem]'>
-              <li className='text-neutral-700 flex items-center gap-x-3'>
-                 <Image 
-                   src='/assets/icons/logout.svg'
-                   alt='logout'
-                   width={17}
-                   height={17} 
-                    />Logout</li>
-                 <li className='text-error mt-5 whitespace-nowrap'>Delete Account</li></div>
+              <div className="mt-[17rem]">
+                <li className="text-neutral-700 flex items-center gap-x-3">
+                  <Image
+                    src="/assets/icons/logout.svg"
+                    alt="logout"
+                    width={17}
+                    height={17}
+                  />
+                  Logout
+                </li>
+                <li className="text-error mt-5">Delete Account</li>
+              </div>
             </ul>
           </SheetContent>
         </Sheet>
@@ -90,19 +93,43 @@ export function SidebarComp() {
               </li>
             ))}
           </ul>
-         <ul className='flex lg:pl-10 flex-col gap-y-10'>
-           <li className='text-neutral-700 flex items-center gap-x-3'>
-           <Image 
-             src='/assets/icons/logout.svg'
-             alt='logout'
-             width={17}
-             height={17} 
-              />Logout</li>
-           <li className='text-error whitespace-nowrap'>Delete Account</li>
-         </ul>
-            </div>
-        </aside>
-
+          <ul className="flex pl-14 items-start flex-col gap-y-10">
+            <li className="text-neutral-900 flex items-center gap-x-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="21"
+                height="21"
+                viewBox="0 0 21 21"
+                fill="none"
+              >
+                <path
+                  d="M7.91406 6.57754C8.1724 3.57754 9.71406 2.35254 13.0891 2.35254H13.1974C16.9224 2.35254 18.4141 3.84421 18.4141 7.56921V13.0025C18.4141 16.7275 16.9224 18.2192 13.1974 18.2192H13.0891C9.73906 18.2192 8.1974 17.0109 7.9224 14.0609"
+                  stroke="#202020"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12.999 10.2773H3.51562"
+                  stroke="#202020"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M5.3776 7.48535L2.58594 10.277L5.3776 13.0687"
+                  stroke="#FAFAFA"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Logout
+            </li>
+            <li className="text-error">Delete Account</li>
+          </ul>
+        </div>
+      </aside>
     </>
   );
 }

@@ -56,6 +56,6 @@ jobs:
             gunzip bingofe-dev.tar.gz
             docker load < bingofe-dev.tar
             rm -f bingofe-dev.tar
-            cd /home/${{ secrets.USERNAME }}/dev/bingo_fe
+            cd /home/${{ secrets.USERNAME }}/bingofe/dev/bingo_fe
             chmod +x ./scripts/*.sh
             ./scripts/dev_deploy.sh
