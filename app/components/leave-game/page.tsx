@@ -15,7 +15,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { UserRound, LogOut} from "lucide-react";
 import Image from "next/image";
-import DeleteLogoutNavbar from "@/app/components/navbars/custom-navbars/DeleteLogoutNavbar";
 
 export default function LeaveGamePage() {
   const [isLeft, setIsLeft] = useState(false);
@@ -28,9 +27,8 @@ export default function LeaveGamePage() {
 
   if (isLeft) {
     return (
-      <div className="min-h-screen bg-[#faf1e4] flex flex-col">
-      <DeleteLogoutNavbar />
-      <div className="flex-grow flex flex-col items-center justify-center p-4">
+      <div className="max-h-[682px] flex flex-col">
+        <div className="flex-grow flex flex-col items-center justify-center p-4">
         <div className="w-full max-w-[1027px] text-center">
           <div className="text-6xl font-bold mb-2 flex flex-col leading-none justify-center items-center">
             <Image
@@ -65,9 +63,7 @@ export default function LeaveGamePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf1e4] flex flex-col">
-      <DeleteLogoutNavbar />
-
+    <div className="max-h-[682px] flex flex-col">
       <div className="flex-grow flex flex-col items-center justify-center p-4">
         <div className="w-full max-w-[1027px] text-center">
           <div className="text-6xl font-bold mb-2 flex flex-col leading-none justify-center items-center">
