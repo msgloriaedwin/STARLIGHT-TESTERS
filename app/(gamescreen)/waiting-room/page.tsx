@@ -5,7 +5,6 @@ import JoinGameNavbar from "@/app/components/navbars/custom-navbars/JoinGameNavb
 export default function WaitingRoom() {
   return (
     <>
-      {/* <WaitingRoomLayout /> */}
       <JoinGameNavbar showCup={false} />
       <main className="my-4 md:mx-4">
         <WaitingRoomContainer />
