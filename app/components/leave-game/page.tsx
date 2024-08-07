@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { UserRound, LogOut } from "lucide-react";
 import Image from "next/image";
 import DeleteLogoutNavbar from "../navbars/custom-navbars/DeleteLogoutNavbar";
+import Link from "next/link";
 
 export default function LeaveGamePage() {
   const [isLeft, setIsLeft] = useState(false);
@@ -45,19 +46,23 @@ export default function LeaveGamePage() {
               You’re not in any Game Session
             </h2>
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 justify-center">
-              <Button
-                variant="outline"
-                className="border-[#00a8e8] text-[#00a8e8] hover:bg-[#00a8e8] hover:text-white"
-              >
-                Join Game
-              </Button>
-              <Button
-                variant="default"
-                className="bg-primary-yellow-400 hover:bg-primary-yellow-400 flex items-center justify-center text-[#332C00]"
-              >
-                <UserRound className=" mr-2 w-4 h-4" />
-                Create New Game
-              </Button>
+              <Link href="/join">
+                <Button
+                  variant="outline"
+                  className="border-[#00a8e8] text-[#00a8e8] hover:bg-[#00a8e8] hover:text-white"
+                >
+                  Join Game
+                </Button>
+              </Link>
+              <Link href="/create-game">
+                <Button
+                  variant="default"
+                  className="bg-primary-yellow-400 hover:bg-primary-yellow-400 flex items-center justify-center text-[#332C00]"
+                >
+                  <UserRound className=" mr-2 w-4 h-4" />
+                  Create New Game
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

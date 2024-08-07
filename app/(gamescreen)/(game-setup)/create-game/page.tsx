@@ -49,8 +49,8 @@ const CreateGamePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-body">
-      <main className="container mx-auto px-4 pt-24 pb-8">
+    <div className="min-h-screen ">
+      <main className="container mx-auto px-4 pt-4 pb-8">
         <h1 className="text-4xl font-bold text-center mt-6 mb-6 text-primary-900">
           Create Game
         </h1>
