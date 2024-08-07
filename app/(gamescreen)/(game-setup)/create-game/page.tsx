@@ -35,7 +35,7 @@ const CreateGamePage: React.FC = () => {
     avatar: string;
   }) => {
     console.log("Form submitted:", data);
-    router.push("/game");
+    router.push("/waiting-room");
   };
 
   const avatars = [
