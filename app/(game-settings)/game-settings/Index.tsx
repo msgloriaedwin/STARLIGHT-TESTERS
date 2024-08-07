@@ -36,8 +36,8 @@ const Index: React.FC = () => {
                     <div className="flex items-center justify-between">
                         <p className="text-xl font-medium text-primary-700">Notifications</p>
                         <ToggleControl
-                            className="data-[state=checked]:bg-primary-200"
-                            thumbClassName="data-[state=checked]:bg-[#fff]"
+                            className="data-[state=checked]:bg-primary-200 h-9"
+                            thumbClassName="data-[state=checked]:bg-[#fff] h-8"
                             checked={notifications}
                             onCheckedChange={(checked) => setNotifications(checked)}
                         />
@@ -46,8 +46,8 @@ const Index: React.FC = () => {
                     <div className="flex items-center justify-between my-6">
                         <p className="text-xl font-medium text-primary-700">Sound Effects</p>
                         <ToggleControl
-                            className="data-[state=checked]:bg-primary-200"
-                            thumbClassName="data-[state=checked]:bg-[#fff]"
+                            className="data-[state=checked]:bg-primary-200 h-9"
+                            thumbClassName="data-[state=checked]:bg-[#fff] h-8"
                             checked={soundEffects}
                             onCheckedChange={(checked) => setSoundEffects(checked)}
                         />
