@@ -2,8 +2,9 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import GameCustomizeNavBar from "../../../components/navbars/custom-navbars/GameCustomizeNavBar";
 import CreateGameForm from "../../../components/forms/create-game-form/CreateGameForm";
+
+import CreateGameNavbar from "@/app/components/navbars/custom-navbars/CreateGameNavbar";
 
 import Avatar1 from "../../../../public/assets/images/avatar-1.png";
 import Avatar2 from "../../../../public/assets/images/avatar-2.png";
@@ -50,12 +51,8 @@ const CreateGamePage: React.FC = () => {
 
   return (
     <>
-      <GameCustomizeNavBar
-        handleShareGameLink={handleShareGameLink}
-        handleGoBack={handleGoBack}
-        handleHowToPlayClick={handleHowToPlayClick}
-        handleShowMenu={() => {}}
-      />
+      <CreateGameNavbar />
+
       <div className="min-h-screen">
         <main className="container mx-auto px-4 pt-4 pb-8">
           <h1 className="text-4xl font-bold text-center mt-6 mb-6 text-primary-900">
