@@ -4,7 +4,7 @@ const NumberPage = () => {
 	return (
 		<div className="relative ">
 			<GameCardSelectionLobby />
-		</div>s fromthe number gamemode page
+		</div>
 	)
 }
 export default NumberPage
