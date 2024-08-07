@@ -35,7 +35,7 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
 
   return (
     <div className="w-full">
-      <Navbar className="flex justify-between bg-body z-[995] fixed top-0 left-0">
+      <Navbar className="flex justify-between bg-body z-[995]">
         <div className="flex md:hidden justify-between items-center bg-transparent">
           <CustomButton
             onClick={() => router.back()}

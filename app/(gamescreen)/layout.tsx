@@ -15,7 +15,7 @@ export default function RootLayout({
             handleGoBack={() => {}}
           />
         </section>
-        <div className="flex items-center justify-center bg-body px-4">
+        <div className="flex items-center justify-center bg-body px-5 h-screen border ">
           {children}
         </div>
       </body>
