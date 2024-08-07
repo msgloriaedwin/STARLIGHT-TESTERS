@@ -7,11 +7,11 @@ import Image from "next/image";
 import createIcon from "../../../public/create.svg";
 import gifIcon from "../../../public/gif.svg";
 import { defaultEmoji } from "./data";
-
 interface ChatInputProps {
-  sendMessage: (data: string) => void;
-  handleSelectGif: (gifUrl: any) => void;
+  handleSelectGif: (data: any) => void;
+  sendMessage: (data: any) => void;
 }
+
 const EmojiPicker = dynamic(() => import("emoji-picker-react"), { ssr: false });
 const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
   const [showPicker, setShowPicker] = useState<boolean>(false);
@@ -20,11 +20,8 @@ const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
   const [gif, setGif] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
   const handleSend = () => {
-    if (message.trim()) {
-      sendMessage(message);
-      setShowPicker(false);
-      setMessage("");
-    }
+    sendMessage(message);
+    setMessage("");
   };
 
   const handleShowEmoji = () => {
@@ -48,14 +45,14 @@ const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
   }, []);
 
   return (
-    <div className="max-w-[492px] min-w-[200px] md:min-w-[492px] m-auto px-4 fixed bottom-4">
+    <div className="max-w-[492px] min-w-[200px] md:min-w-[492px] m-auto px-4 bottom-4 my-8">
       {showPicker && (
-        <div className="absolute bottom-[4rem] w-full">
+        <div className="absolute bottom-[4rem] w-full max-w-[492px] min-w-[200px] md:min-w-[492px]">
           <EmojiPicker width={"100%"} onEmojiClick={handleSelectEmoji} />
         </div>
       )}
       {showGif && (
-        <div className="absolute bottom-0 h-[15rem] overflow-y-scroll mb-[4rem] w-full scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100 bg-white">
+        <div className="absolute bottom-0 h-[15rem] overflow-y-scroll mb-[4rem] w-full scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100 bg-white max-w-[492px] min-w-[200px] md:min-w-[492px]">
           <div className="grid grid-cols-5 gap-2 p-4">
             {gif.map((g: any, index: number) => {
               return (

@@ -13,10 +13,10 @@ const Page = () => {
       {gif && <Image src={gif} alt="" width={50} height={50} />}
       {message && <p>{message}</p>}
       <ChatInput
-        sendMessage={(data) => {
+        sendMessage={(data: any) => {
           setMessage(data);
         }}
-        handleSelectGif={(data) => {
+        handleSelectGif={(data: any) => {
           setGif(data);
         }}
       />
