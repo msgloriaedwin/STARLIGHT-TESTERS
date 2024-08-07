@@ -27,7 +27,8 @@ jobs:
           version: 9
 
       - name: Add pnpm to PATH
-        run: echo "::add-path::$(pnpm root -g)/pnpm"
+        run: |
+          echo "$(pnpm root -g)/pnpm" >> $GITHUB_PATH
 
       - name: Clean up previous runs if directory exists
         run: |
