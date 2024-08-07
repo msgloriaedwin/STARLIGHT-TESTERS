@@ -61,17 +61,15 @@ export function SidebarComp() {
                 </li>
               ))}
               <div className="mt-[17rem]">
-                <Link href={'/auth/logout-confirmation'}>
-                  <li className="text-neutral-700 flex items-center gap-x-3">
-                    <Image
-                      src="/assets/icons/logout.svg"
-                      alt="logout"
-                      width={17}
-                      height={17}
-                    />
-                    Logout
-                  </li>
-                </Link>
+                <li className="text-neutral-700 flex items-center gap-x-3">
+                  <Image
+                    src="/assets/icons/logout.svg"
+                    alt="logout"
+                    width={17}
+                    height={17}
+                  />
+                  Logout
+                </li>
                 <li className="text-error mt-5">Delete Account</li>
               </div>
             </ul>
@@ -96,40 +94,38 @@ export function SidebarComp() {
             ))}
           </ul>
           <ul className="flex pl-14 items-start flex-col gap-y-10">
-            <Link href={"/auth/logout-confirmation"}>
-              <li className="text-neutral-900 flex items-center gap-x-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21"
-                  height="21"
-                  viewBox="0 0 21 21"
-                  fill="none"
-                >
-                  <path
-                    d="M7.91406 6.57754C8.1724 3.57754 9.71406 2.35254 13.0891 2.35254H13.1974C16.9224 2.35254 18.4141 3.84421 18.4141 7.56921V13.0025C18.4141 16.7275 16.9224 18.2192 13.1974 18.2192H13.0891C9.73906 18.2192 8.1974 17.0109 7.9224 14.0609"
-                    stroke="#202020"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M12.999 10.2773H3.51562"
-                    stroke="#202020"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M5.3776 7.48535L2.58594 10.277L5.3776 13.0687"
-                    stroke="#FAFAFA"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Logout
-              </li>
-            </Link>
+            <li className="text-neutral-900 flex items-center gap-x-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="21"
+                height="21"
+                viewBox="0 0 21 21"
+                fill="none"
+              >
+                <path
+                  d="M7.91406 6.57754C8.1724 3.57754 9.71406 2.35254 13.0891 2.35254H13.1974C16.9224 2.35254 18.4141 3.84421 18.4141 7.56921V13.0025C18.4141 16.7275 16.9224 18.2192 13.1974 18.2192H13.0891C9.73906 18.2192 8.1974 17.0109 7.9224 14.0609"
+                  stroke="#202020"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12.999 10.2773H3.51562"
+                  stroke="#202020"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M5.3776 7.48535L2.58594 10.277L5.3776 13.0687"
+                  stroke="#FAFAFA"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Logout
+            </li>
             <li className="text-error">Delete Account</li>
           </ul>
         </div>
