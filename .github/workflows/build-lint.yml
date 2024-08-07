@@ -8,6 +8,9 @@ jobs:
   build_lint:
     name: Build project
     runs-on: self-hosted
+    concurrency:
+      group: build-and-lint-${{ github.ref }}
+      cancel-in-progress: false
 
     steps:
       - name: Checkout code
@@ -23,8 +26,11 @@ jobs:
         with:
           version: 9
 
-      - name: Clean up previous runs
-        run: rm -rf /home/starlight/setup-pnpm
+      - name: Clean up previous runs if directory exists
+        run: |
+          if [ -d "/home/starlight/setup-pnpm" ]; then
+            rm -rf /home/starlight/setup-pnpm
+          fi
 
       - name: Install dependencies
         run: pnpm install
