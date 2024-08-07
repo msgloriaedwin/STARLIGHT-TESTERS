@@ -22,7 +22,7 @@ const Page = () => {
     avatar9,
   ];
   return (
-    <section className="bg-body">
+    <section className="bg-body h-screen">
       <div className="flex items-center justify-center">
         <JoinGameForm avatars={avatars} />
       </div>
