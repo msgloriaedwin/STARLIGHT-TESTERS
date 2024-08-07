@@ -3,6 +3,8 @@ import { ArrowLeft, Menu } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+import logo from "../../../../public/assets/images/Remote Bingo Logo A.png";
+
 export default function DeleteLogoutNavbar() {
   const router = useRouter();
   return (
@@ -17,7 +19,7 @@ export default function DeleteLogoutNavbar() {
         <Image
           width={120}
           height={40}
-          src="/assets/images/Remote Bingo Logo.svg"
+          src={logo}
           alt="Remote Bingo"
           className="h-10 w-auto object-cover"
         />

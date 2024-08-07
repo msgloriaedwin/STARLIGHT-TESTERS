@@ -11,7 +11,7 @@ const LogoutSuccess = (props: Props) => {
   const router = useRouter();
 
   const handleBackToSettingsClick = () => {
-    router.back();
+    router.push("/game-settings");
   };
 
   const handleSignin = () => {
@@ -22,12 +22,16 @@ const LogoutSuccess = (props: Props) => {
       <DeleteLogoutNavbar />
       <div className="flex-grow flex flex-col items-center justify-center p-4">
         <ImageTextButtons message="Log Out Successful.">
-          <CustomButton variant="outline" onClick={handleBackToSettingsClick}>
+          <CustomButton
+            className="w-full"
+            variant="outline"
+            onClick={handleBackToSettingsClick}
+          >
             Back to settings
           </CustomButton>
           <CustomButton
             variant={"subtle"}
-            className="border-none"
+            className="border-none w-full"
             isLeftIconVisible
             icon={<User size={24} />}
             onClick={handleSignin}

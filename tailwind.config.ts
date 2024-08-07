@@ -61,11 +61,13 @@ const config = {
           orange: "#FF5722",
           green: "#4CAF50",
           B400: "#FF9A7A",
+          cream: "#F7EEE7",
         },
         neutral: {
           DEFAULT: "#1A202C",
           500: "#9F9F9F",
           600: "#7F7F7F",
+          700: "#5F5F5F",
           800: "#404040",
           900: "#202020",
         },

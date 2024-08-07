@@ -10,7 +10,7 @@ export function SidebarComp() {
   const links = [
     { href: "/game-settings", label: "Game Settings" },
     { href: "/profile-settings", label: "Users Settings" },
-    { href: "/settings/account", label: "Terms & Privacy" },
+    { href: "/terms-and-privacy", label: "Terms & Privacy" },
   ];
 
   const linkClasses = (href: string) =>
@@ -93,7 +93,7 @@ export function SidebarComp() {
               </li>
             ))}
           </ul>
-          <ul className="flex pl-14 flex-col gap-y-10">
+          <ul className="flex pl-14 items-start flex-col gap-y-10">
             <li className="text-neutral-900 flex items-center gap-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

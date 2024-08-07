@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 import CustomButton from "../../button/custombutton";
 import cupIcon from "../../../../public/cup.svg";
 import infoIcon from "../../../../public/info-circle.svg";
-import { SheetTrigger, Sheet, SheetContent } from "@/components/ui/sheet";
+import closeIcon from "../../../../public/close-circle.svg";
 type PageProps = {
   handleGoBack: () => void;
   handleShareGameLink: () => void;
@@ -25,47 +25,36 @@ type PageProps = {
 
 const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [showDestopNav, setShowDestopNav] = useState(false);
   const router = useRouter();
 
   const handleShowMenu = () => {
     menuIsOpen === false ? setMenuIsOpen(true) : setMenuIsOpen(false);
   };
-  const handleHowToPlayClick = () => {
-    //handle form display
-  };
+  const handleHowToPlayClick = () => {};
 
   return (
     <div className="w-full">
-      <Navbar className="flex justify-between bg-body z-[995] fixed top-0 left-0">
+      <Navbar className="flex justify-between bg-body z-[995]">
         <div className="flex md:hidden justify-between items-center bg-transparent">
           <CustomButton
             onClick={() => router.back()}
             variant="outline"
             isLeftIconVisible={true}
             icon={<ArrowLeft color="#00658B" />}
+            size={"lg"}
           >
             Back
           </CustomButton>{" "}
         </div>
-        {/* {menuIsOpen === false ? (
-          <button
-            onClick={() => handleShareGameLink()}
-            className="flex md:hidden items-center shadow-custom-inset bg-button-light-main rounded-[8px] gap-2 text-extra-small text-black justify-center py-[12px] px-4"
-          >
-            <span>Share game link</span>
-            <span>
-              <Link size={"14px"} />
-            </span>
-          </button>
-        ) : (
-          ""
-        )} */}
+
         <div className="hidden md:flex  items-center gap-4">
           <CustomButton
             onClick={() => router.back()}
             variant="outline"
             isLeftIconVisible={true}
             icon={<ArrowLeft color="#00658B" />}
+            size={"lg"}
           >
             Back
           </CustomButton>
@@ -75,17 +64,63 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
           <span className="text-[24px] font-[700] text-[#4CAF50]">$350</span>
         </div>
         <div className="flex gap-6 items-center">
+          {showDestopNav && (
+            <div className="hidden md:flex absolute right-[8.5rem] bg-[#FFFDF2] rounded-[8px] p-4 w-[339px]  flex-col gap-4 top-[5rem]">
+              <div>
+                <button
+                  onClick={handleHowToPlayClick}
+                  className="text-textColor-main self-center cursor-pointer flex items-center gap-4 text-primary-700 text-[18px]"
+                >
+                  <Image alt="info-icon" src={infoIcon} />
+                  How to play
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={handleHowToPlayClick}
+                  className="text-textColor-main self-center cursor-pointer flex items-center gap-4 text-primary-700 text-[18px]"
+                >
+                  <Settings color="#292D32" /> Settings
+                </button>
+              </div>
+              <button className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid">
+                Leave Game
+              </button>
+              <button
+                className="flex items-center justify-center gap-2 w-full text-center py-2 rounded-[8px]  text-[#5F5F5F] "
+                onClick={() => {
+                  setShowDestopNav(!showDestopNav);
+                }}
+              >
+                <Image
+                  alt="close-icon"
+                  src={closeIcon}
+                  width={15}
+                  height={15}
+                />{" "}
+                Close
+              </button>
+            </div>
+          )}
+
           <div className="hidden md:flex gap-2 ">
             <CustomButton
               onClick={() => {
+                console.log("Copy link");
               }}
               variant="subtle"
               isRightIconVisible={true}
               icon={<Link size={"14px"} />}
+              size={"lg"}
             >
               Share Game Invite
             </CustomButton>
-            <button className="bg-primary-700 shadow-custom-inset text-primary-100 hover:bg-primary-700/90 dark:bg-slate-50 dark:text-primary-100 dark:hover:bg-slate-50/90 flex items-center justify-center gap-3 rounded-[8px] px-4">
+            <button
+              className="bg-primary-700 shadow-custom-inset text-primary-100 hover:bg-primary-700/90 dark:bg-slate-50 dark:text-primary-100 dark:hover:bg-slate-50/90 flex items-center justify-center gap-3 rounded-[8px] px-4 "
+              onClick={() => {
+                setShowDestopNav(!showDestopNav);
+              }}
+            >
               <User color="#ffffff" />
               <span>Frieda</span>
               <ChevronDown color="#ffffff" />
@@ -95,13 +130,6 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
             </button>
           </div>
 
-          {/* <CustomButton
-            variant="secondary"
-            isRightIconVisible={true}
-            icon={<Link size={"14px"} />}
-          >
-            Button CTA
-          </CustomButton> */}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -132,6 +160,7 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
               <CustomButton
                 size={"lg"}
                 onClick={() => {
+                  console.log("Copy link");
                 }}
                 variant="subtle"
                 isRightIconVisible={true}
