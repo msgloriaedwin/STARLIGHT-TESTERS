@@ -13,8 +13,9 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { UserRound, LogOut} from "lucide-react";
+import { UserRound, LogOut } from "lucide-react";
 import Image from "next/image";
+import DeleteLogoutNavbar from "../navbars/custom-navbars/DeleteLogoutNavbar";
 import Link from "next/link";
 
 export default function LeaveGamePage() {
@@ -29,47 +30,50 @@ export default function LeaveGamePage() {
   if (isLeft) {
     return (
       <div className="max-h-[682px] flex flex-col">
-        <div className="flex-grow flex flex-col items-center justify-center p-4">
-        <div className="w-full max-w-[1027px] text-center">
-          <div className="text-6xl font-bold mb-2 flex flex-col leading-none justify-center items-center">
-            <Image
-              width={120}
-              height={40}
-              src="/assets/images/Remote Bingo Logo.svg"
-              alt="Remote Bingo"
-              className="h-20 w-auto" />
-          </div>
-          <h2 className="text-2xl text-[#4a4a4a] mb-8">
-            You&apos;re not in any Game Session
-          </h2>
-          <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 justify-center">
-            <Link href="/join">
-              <Button
-                variant="outline"
-                className="border-[#00a8e8] text-[#00a8e8] hover:bg-[#00a8e8] hover:text-white"
-              >
-                Join Game
-              </Button>
-            </Link>
-            <Link href="/create-game">
-              <Button
-                variant="default"
-                className="bg-primary-yellow-400 hover:bg-primary-yellow-400 flex items-center justify-center text-[#332C00]"
-              >
-                <UserRound className=" mr-2 w-4 h-4" />
-                Create New Game
-              </Button>
-            </Link>
+        <DeleteLogoutNavbar />
+        <div className="flex-grow flex flex-col items-center justify-center min-h-screen p-4">
+          <div className="w-full max-w-[1027px] text-center">
+            <div className="text-6xl font-bold mb-2 flex flex-col leading-none justify-center items-center">
+              <Image
+                width={120}
+                height={40}
+                src="/assets/images/Remote Bingo Logo.svg"
+                alt="Remote Bingo"
+                className="h-20 w-auto"
+              />
+            </div>
+            <h2 className="text-2xl text-[#4a4a4a] mb-8">
+              You’re not in any Game Session
+            </h2>
+            <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 justify-center">
+              <Link href="/join">
+                <Button
+                  variant="outline"
+                  className="border-[#00a8e8] text-[#00a8e8] hover:bg-[#00a8e8] hover:text-white"
+                >
+                  Join Game
+                </Button>
+              </Link>
+              <Link href="/create-game">
+                <Button
+                  variant="default"
+                  className="bg-primary-yellow-400 hover:bg-primary-yellow-400 flex items-center justify-center text-[#332C00]"
+                >
+                  <UserRound className=" mr-2 w-4 h-4" />
+                  Create New Game
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     );
   }
 
   return (
     <div className="max-h-[682px] flex flex-col">
-      <div className="flex-grow flex flex-col items-center justify-center p-4">
+      <DeleteLogoutNavbar />
+      <div className="flex-grow flex flex-col items-center justify-center  min-h-screen p-4">
         <div className="w-full max-w-[1027px] text-center">
           <div className="text-6xl font-bold mb-2 flex flex-col leading-none justify-center items-center">
             <Image
@@ -81,7 +85,8 @@ export default function LeaveGamePage() {
             />
           </div>
           <h2 className="text-2xl text-[#4a4a4a] mb-8 ">
-          If you leave now all progress gained in this round, would be <br/> lost.
+            If you leave now all progress gained in this round, would be <br />{" "}
+            lost.
           </h2>
           <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 justify-center">
             <Button
@@ -106,7 +111,8 @@ export default function LeaveGamePage() {
                     Are you sure you want to leave game?
                   </AlertDialogTitle>
                   <AlertDialogDescription className="text-center text-[#4a4a4a]">
-                    This action cannot be undone. All your progress will be lost.
+                    This action cannot be undone. All your progress will be
+                    lost.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter className="flex items-center justify-center flex-col">
@@ -128,6 +134,3 @@ export default function LeaveGamePage() {
     </div>
   );
 }
-
-
-
