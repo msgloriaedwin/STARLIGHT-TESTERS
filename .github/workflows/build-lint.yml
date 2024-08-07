@@ -31,6 +31,9 @@ jobs:
         with:
           version: 9
 
+      - name: Clean node_modules directory
+        run: rm -rf node_modules
+
       - name: Install dependencies
         run: pnpm install
 
