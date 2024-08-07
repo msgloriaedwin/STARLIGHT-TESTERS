@@ -6,11 +6,7 @@ on:
 
 jobs:
   build_lint:
-    name: Build project
-    runs-on: self-hosted
-    concurrency:
-      group: build-and-lint-${{ github.ref }}
-      cancel-in-progress: false
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -19,28 +15,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20"
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
-      - name: Add pnpm to PATH
-        run: |
-          echo "$(pnpm root -g)/pnpm" >> $GITHUB_PATH
-
-      - name: Clean up previous runs if directory exists
-        run: |
-          if [ -d "/home/starlight/setup-pnpm" ]; then
-            rm -rf /home/starlight/setup-pnpm
-          fi
+          node-version: "20.9.0"
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Lint code
-        run: pnpm lint
+        run: npm run lint
 
       - name: Build project
-        run: pnpm build
+        run: npm run build
