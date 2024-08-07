@@ -8,11 +8,11 @@ const dm_sans = DM_Sans({
 const TermsAndService = () => {
 	return (
 		<div
-			className={`${dm_sans.className} relative top-[-4rem]  md:top-8 flex flex-col gap-16 font-["dm_sans"] p-6`}>
+			className={`${dm_sans.className} min-h-screen pt-[-4rem]  md:pt-14 flex flex-col gap-16 font-["dm_sans"] p-6`}>
 			<h1 className="text-primary-700 text-[2.25rem] leading-[2.875rem] inline-block">
 				Terms & Privacy
 			</h1>
-			<div className="max-w-[25rem] w-full flex flex-col gap-6 ">
+			<div className="max-w-[26rem] w-full flex flex-col gap-6 ">
 				<div className="flex flex-col gap-2">
 					<h2 className="text-primary-900 font-semibold leading-[120%] text-2xl">
 						Terms & Conditions
