@@ -10,7 +10,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Copy package.json
-COPY package.json ./
+COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
 RUN corepack enable npm && npm install --frozen-lockfile
@@ -29,7 +29,7 @@ RUN corepack enable npm && npm run build
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV staging
 
 RUN addgroup --system --gid 9001 nodejs
 RUN adduser --system --uid 9001 nextjs
