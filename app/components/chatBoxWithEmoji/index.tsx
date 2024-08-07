@@ -20,9 +20,6 @@ const ChatInput = ({ sendMessage }: ChatInputProps) => {
     if (message.trim()) {
       sendMessage(message);
     }
-    // setInterval(() => {
-    //   setMessage("");
-    // }, 5000);
   };
 
   const handleShowEmoji = () => {
