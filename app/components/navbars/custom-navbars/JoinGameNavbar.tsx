@@ -21,9 +21,10 @@ import closeIcon from "../../../../public/close-circle.svg";
 type PageProps = {
   handleGoBack?: () => void;
   handleShareGameLink?: () => void;
+  showCup?: boolean;
 };
 
-const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
+const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [showDestopNav, setShowDestopNav] = useState(false);
   const router = useRouter();
@@ -66,10 +67,15 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
               Back
             </CustomButton>
           </div>
-          <div className="hidden md:flex items-center gap-4 justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-3">
-            <Image src={cupIcon} alt="cup" width={37} height={37.6} />
-            <span className="text-[24px] font-[700] text-[#4CAF50]">$350</span>
-          </div>
+          {showCup && (
+            <div className="hidden md:flex items-center gap-4 justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-3">
+              <Image src={cupIcon} alt="cup" width={37} height={37.6} />
+              <span className="text-[24px] font-[700] text-[#4CAF50]">
+                $350
+              </span>
+            </div>
+          )}
+
           <div className="flex gap-6 items-center">
             {showDestopNav && (
               <div className="hidden md:flex absolute right-[8.5rem] bg-[#FFFDF2] rounded-[8px] p-4 w-[339px]  flex-col gap-4 top-[5rem]">
