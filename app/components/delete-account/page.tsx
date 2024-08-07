@@ -17,6 +17,7 @@ import { ArrowLeft, UserRoundX } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import DeleteLogoutNavbar from "../navbars/custom-navbars/DeleteLogoutNavbar";
+import profileIcons from "@/public/assets/icons/profile-delete.svg";
 
 export default function DeleteAccountPage() {
   const [isDeleted, setIsDeleted] = useState(false);
@@ -47,7 +48,7 @@ export default function DeleteAccountPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf1e4] flex flex-col">
+    <div className="min-h-screen bg-[linear-gradient(181deg,#F7EEE7_0.47%,#F9E9A3_277.67%,#FD0_438.32%)] flex flex-col">
       <DeleteLogoutNavbar />
 
       <div className="flex-grow flex flex-col items-center justify-center p-4">
@@ -61,25 +62,31 @@ export default function DeleteAccountPage() {
               className="h-20 w-auto"
             />
           </div>
-          <h2 className="text-2xl text-[#4a4a4a] mb-8">
+          <h2 className="text-2xl text-[#5F5F5F] mb-8 font-semibold">
             Your adventure may be ending here,
             <br />
             but we hope you had fun
           </h2>
           <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 justify-center">
             <Button
+              size="lg"
               variant="outline"
-              className="border-[#00a8e8] text-[#00a8e8] hover:bg-[#00a8e8] hover:text-white"
+              className="border-[#00658b] hover:bg-transparent border-2 sm:w-[120px] text-[#00658b]"
             >
               Cancel
             </Button>
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button
+                  size="lg"
                   variant="destructive"
-                  className="bg-[#ff4757] hover:bg-[#ff6b81] flex items-center justify-center text-white"
+                  className="bg-[#ff3355] sm:w-[140px] flex items-center justify-center text-white"
                 >
-                  <UserRoundX className="mr-2 w-4 h-4" />
+                  <Image
+                    src={profileIcons}
+                    className="w-4"
+                    alt="profile delete icon"
+                  />
                   Delete Account
                 </Button>
               </AlertDialogTrigger>
