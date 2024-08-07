@@ -77,13 +77,16 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
               </div>
               <div>
                 <button
-                  onClick={handleHowToPlayClick}
+                  onClick={() => router.push("/game-settings")}
                   className="text-textColor-main self-center cursor-pointer flex items-center gap-4 text-primary-700 text-[18px]"
                 >
                   <Settings color="#292D32" /> Settings
                 </button>
               </div>
-              <button className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid">
+              <button
+                className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid"
+                onClick={() => router.push("/leave-game")}
+              >
                 Leave Game
               </button>
               <button
@@ -179,14 +182,17 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
               </div>
               <div>
                 <button
-                  onClick={handleHowToPlayClick}
+                  onClick={() => router.push("/game-settings")}
                   className="text-textColor-main self-center cursor-pointer flex items-center gap-4 text-primary-700 text-[18px]"
                 >
                   <Settings color="#292D32" /> Settings
                 </button>
               </div>
             </div>
-            <button className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid">
+            <button
+              className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid"
+              onClick={() => router.push("/leave-game")}
+            >
               Leave Game
             </button>
           </div>
