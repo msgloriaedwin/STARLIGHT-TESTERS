@@ -10,7 +10,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Copy package.json
-COPY package.json ./
+COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
 RUN corepack enable npm && npm install --frozen-lockfile

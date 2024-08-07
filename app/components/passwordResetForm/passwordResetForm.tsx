@@ -28,7 +28,6 @@ const PasswordResetForm: React.FC<PasswordResetFormProps> = ({
 
   const handleFormSubmit = (data: FormValues) => {
     onSubmit(data);
-    console.log(data, "data");
   };
 
   return (

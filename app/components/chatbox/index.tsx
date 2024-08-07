@@ -8,24 +8,22 @@ const ChatInput: React.FC = () => {
 
   const handleSend = () => {
     if (text.trim()) {
-      console.log("Text and Emoji:", text);
       setText("");
     }
   };
 
   return (
     <>
-      <h2 className="text-2xl font-bold mt-8 mb-4">Chat Input</h2>
       <div className="flex items-center border border-neutral-600 h-12 pr-2 bg-[#FFFDFD80] rounded-2xl">
         <InputEmoji
           value={text}
           onChange={setText}
-          cleanOnEnter
           borderColor="transparent"
           onEnter={handleSend}
           shouldReturn
           shouldConvertEmojiToImage
           placeholder="Type a message"
+          keepOpened={true}
         />
         <button
           onClick={handleSend}

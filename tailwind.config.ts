@@ -25,7 +25,7 @@ const config = {
       },
       boxShadow: {
         "custom-inset":
-          "2px 2px 0px 0px rgba(255, 255, 255, 0.40) inset, -4px -4px 0px 0px rgba(0, 0, 0, 0.32) inset",
+          "-2px -2px 0px 0px rgba(0, 0, 0, 0.32) inset, 2px 2px 0px 0px rgba(255, 255, 255, 0.4) inset"
       },
 
       colors: {
@@ -35,6 +35,7 @@ const config = {
           50: "#F1FBFF",
           100: "#D5F3FF",
           200: "#ACE8FF",
+          300: "#82DCFF",
           400: "#58D1FF",
           500: "#00A8E8",
           600: "#0086BA",
@@ -49,6 +50,8 @@ const config = {
             DEFAULT: "#FFDD00",
             300: "#FFF08C",
             400: "#FFEB66",
+            500: "#CCB100",
+            700: "#FAD02C",
             800: "#665800",
             900: "#332C00",
           },
@@ -58,11 +61,13 @@ const config = {
           orange: "#FF5722",
           green: "#4CAF50",
           B400: "#FF9A7A",
+          cream: "#F7EEE7",
         },
         neutral: {
           DEFAULT: "#1A202C",
           500: "#9F9F9F",
           600: "#7F7F7F",
+          700: "#5F5F5F",
           800: "#404040",
           900: "#202020",
         },

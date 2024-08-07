@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
 import AvatarSelector from "./AvatarSelector";
 
@@ -27,26 +27,39 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const CreateGameForm = ({
+interface CreateGameFormProps {
+  avatars: StaticImageData[];
+  className?: string;
+  onSubmit?: (data: FormData) => void;
+}
+
+const CreateGameForm: React.FC<CreateGameFormProps> = ({
   avatars,
   className,
-}: {
-  avatars: string[];
-  className?: string;
+  onSubmit,
 }) => {
-  const [selectedAvatar, setSelectedAvatar] = useState<string>(avatars[0]);
-
+  const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
+    avatars[0]
+  );
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      teamName: "",
+      bingoType: "numbers",
+      prizeValue: "",
+      avatar: avatars[0].src,
+    },
   });
 
   const handleFormSubmit = (data: FormData) => {
-    console.log(data);
+    if (onSubmit) {
+      onSubmit(data);
+    }
   };
 
-  const handleAvatarSelect = (avatar: string) => {
+  const handleAvatarSelect = (avatar: StaticImageData) => {
     setSelectedAvatar(avatar);
-    form.setValue("avatar", avatar);
+    form.setValue("avatar", avatar.src);
   };
 
   return (
@@ -54,7 +67,7 @@ const CreateGameForm = ({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleFormSubmit)}
-          className="bg-form-blue p-[0.9rem] sm:p-6 rounded-[0.45rem] sm:rounded-[0.75rem] max-sm:border-primary-500 max-sm:border-l-[0.11rem] max-sm:border-b-[0.11rem] flex flex-col gap-[0.9rem] sm:gap-6"
+          className="bg-primary-200 p-[0.9rem] sm:p-6 rounded-[0.45rem] sm:rounded-[0.75rem] max-sm:border-primary-500 max-sm:border-l-[0.11rem] max-sm:border-b-[0.11rem] flex flex-col gap-[0.9rem] sm:gap-6"
         >
           <div>
             <FormField
@@ -103,7 +116,7 @@ const CreateGameForm = ({
                     </FormLabel>
                     <div className="flex flex-row justify-between gap-3">
                       <Button
-                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-button-light-main border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 hover:bg-yellow-300`}
+                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-button-light-main border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 bg-yellow-300`}
                         onClick={() => field.onChange("numbers")}
                       >
                         <Image
@@ -127,7 +140,7 @@ const CreateGameForm = ({
                       </Button>
 
                       <Button
-                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-button-dark-blue-text border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 hover:bg-blue-200`}
+                        className={`flex items-center justify-center py-[0.875rem] hover:bg-primary-100 px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full  border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 bg-primary-200`}
                         onClick={() => field.onChange("alphabets")}
                       >
                         <Image
@@ -179,7 +192,7 @@ const CreateGameForm = ({
                       id="prizeValue"
                       placeholder="Name Prize"
                       {...field}
-                      className="border border-primary-900 focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
+                      className="border border-primary-900   sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
                       required
                     />
                   </FormControl>
@@ -195,7 +208,7 @@ const CreateGameForm = ({
 
           <Button
             type="submit"
-            className="w-full sm:h-14 rounded-[0.5rem] bg-button-dark-blue text-button-dark-blue-text p-2 border border-primary-500 shadow-custom-inset hover:filter hover:brightness-125"
+            className="w-full sm:h-14 rounded-[0.5rem] bg-primary-700 hover:bg-primary-700 text-primary-500 p-2 border border-primary-500 shadow-custom-inset "
           >
             Save & Continue
           </Button>

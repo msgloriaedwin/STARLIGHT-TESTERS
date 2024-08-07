@@ -1,17 +1,26 @@
+"use client";
 import { ArrowLeft, Menu } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import logo from "../../../../public/assets/images/Remote Bingo Logo A.png";
 
 export default function DeleteLogoutNavbar() {
+  const router = useRouter();
   return (
-    <nav className="bg-white px-4 h-20 py-4 flex items-center justify-center relative">
-      <button className="text-neutral-700 flex items-center border border-neutral-700 rounded-md absolute left-4 lg:left-14 top-5 px-3 py-1.5">
+    <nav className="bg-white px-4 h-16 py-3 flex items-center justify-center relative">
+      <button
+        onClick={() => router.back()}
+        className="text-neutral-700 flex items-center border border-neutral-700 rounded-md absolute left-4 lg:left-10 top-3 px-3 py-1.5"
+      >
+
         <ArrowLeft className="mr-2 h-4 w-4" /> Back
       </button>
       <div className="hidden md:flex items-center justify-center">
         <Image
           width={120}
           height={40}
-          src="/assets/images/Remote Bingo Logo.svg"
+          src={logo}
           alt="Remote Bingo"
           className="h-10 w-auto object-cover"
         />

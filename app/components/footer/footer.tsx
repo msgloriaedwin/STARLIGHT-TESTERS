@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -26,15 +27,27 @@ const Footer = () => {
           </div>
           <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
             <p className="text-primary-500 font-bold">Legal</p>
-            <p className="text-primary-700 font-normal pt-6">Privacy Policy</p>
-            <p className="text-primary-700 font-normal pt-4">
-              Terms of Service
-            </p>
+            <div>
+              <Link
+                href={"/terms-and-privacy"}
+                className="text-primary-700 font-normal pt-6"
+              >
+                Privacy Policy
+              </Link>
+            </div>
+            <div>
+              <Link
+                href={"/terms-and-privacy"}
+                className="text-primary-700 font-normal pt-4"
+              >
+                Terms of Service
+              </Link>
+            </div>
           </div>
           <div className="flex justify-center md:justify-start">
             <a
               href=""
-              className="h-11 w-11 bg-[#82dcff] rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out mr-2"
+              className="h-11 w-11 bg-primary-300 rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out mr-2"
             >
               <Image
                 src="/assets/icons/XLogo.svg"
@@ -45,7 +58,7 @@ const Footer = () => {
             </a>
             <a
               href=""
-              className="h-11 w-11 bg-[#82dcff] rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out mr-2"
+              className="h-11 w-11 bg-primary-300 rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out mr-2"
             >
               <Image
                 src="/assets/icons/Instagram Icon.svg"
@@ -56,7 +69,7 @@ const Footer = () => {
             </a>
             <a
               href=""
-              className="h-11 w-11 bg-[#82dcff] rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out"
+              className="h-11 w-11 bg-primary-300 rounded-lg flex justify-center items-center text-xl text-white transition-all duration-400 ease-in-out"
             >
               <Image
                 src="/assets/icons/facebook.svg"
