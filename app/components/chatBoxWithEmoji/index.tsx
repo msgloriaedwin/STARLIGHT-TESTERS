@@ -38,7 +38,7 @@ const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
 
   useEffect(() => {
     fetch(
-      "https://api.giphy.com/v1/stickers/trending?api_key=VkWAdZC1QoyCpTieqC1lCHMoPIIZN1OI"
+      "https://api.giphy.com/v1/gifs/trending?api_key=VkWAdZC1QoyCpTieqC1lCHMoPIIZN1OI"
     )
       .then((response) => response.json())
       .then((content) => {
