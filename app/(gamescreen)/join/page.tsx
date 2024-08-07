@@ -25,7 +25,7 @@ const Page = () => {
   ];
   return (
     <>
-    <JoinGameNavbar/>
+      <JoinGameNavbar showCup={false} />
       <section className="bg-body h-screen flex items-center justify-center  px-5 ">
         <div className="flex items-center justify-center">
           <JoinGameForm avatars={avatars} />
