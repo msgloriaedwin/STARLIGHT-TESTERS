@@ -23,6 +23,9 @@ jobs:
         with:
           version: 9
 
+      - name: Clean up previous runs
+        run: rm -rf /home/starlight/setup-pnpm
+
       - name: Install dependencies
         run: pnpm install
 
