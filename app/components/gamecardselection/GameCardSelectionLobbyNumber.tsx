@@ -88,7 +88,7 @@ const GameCardSelectionLobby = () => {
 											? "border-l-[3px] border-b-[3px] bg-[#D9D9D9] border-[#A8AEB6] rounded-tl-[4px] rounded-br-[4px] shadow[-4px_4px_2px_0px_rgba(180,_180,_180,_0.24)]"
 											: ""
 									}`}>
-									<p className="text-[#404040] cursor-pointer text-[16px] md:text-[24px] font-[700] leading-[33.6px] text-center">
+									<p className="text-[#404040] cursor-pointer text-[16px] md:text-[20px] font-[700] leading-[33.6px] text-center">
 										{info as number}
 									</p>
 								</button>
