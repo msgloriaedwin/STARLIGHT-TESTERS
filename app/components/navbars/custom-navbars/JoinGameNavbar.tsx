@@ -19,8 +19,8 @@ import cupIcon from "../../../../public/cup.svg";
 import infoIcon from "../../../../public/info-circle.svg";
 import closeIcon from "../../../../public/close-circle.svg";
 type PageProps = {
-  handleGoBack: () => void;
-  handleShareGameLink: () => void;
+  handleGoBack?: () => void;
+  handleShareGameLink?: () => void;
 };
 
 const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
@@ -85,7 +85,7 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
               </div>
               <button
                 className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid"
-                onClick={() => router.push("/leave-game")}
+                onClick={() => router.push("/components/leave-game")}
               >
                 Leave Game
               </button>
@@ -191,7 +191,7 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
             </div>
             <button
               className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid"
-              onClick={() => router.push("/leave-game")}
+              onClick={() => router.push("/components/leave-game")}
             >
               Leave Game
             </button>

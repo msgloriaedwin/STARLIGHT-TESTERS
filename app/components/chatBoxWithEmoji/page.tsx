@@ -1,9 +1,27 @@
 "use client";
+import { useState } from "react";
 import React from "react";
 import ChatInput from ".";
+import Image from "next/image";
 
-const page = () => {
-  return <ChatInput sendMessage={() => {}} />;
+const Page = () => {
+  const [gif, setGif] = useState("");
+  const [message, setMessage] = useState("");
+
+  return (
+    <div className="flex items-center justify-center w-screen border-solid border-gray-950">
+      {gif && <Image src={gif} alt="" width={50} height={50} />}
+      {message && <p>{message}</p>}
+      <ChatInput
+        sendMessage={(data) => {
+          setMessage(data);
+        }}
+        handleSelectGif={(data) => {
+          setGif(data);
+        }}
+      />
+    </div>
+  );
 };
 
-export default page;
+export default Page;
