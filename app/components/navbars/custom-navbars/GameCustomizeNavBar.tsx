@@ -159,7 +159,7 @@ const GameCustomizeNavBar = ({
               )}
             </div>
             <button
-              onClick={() => router.push("/game-setting")}
+              onClick={() => router.push("/game-settings")}
               className="flex items-center shadow-custom-inset bg-button-light-main rounded-[8px] gap-2 text-small text-black justify-center py-2 px-4"
             >
               Settings
