@@ -31,12 +31,18 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
   const handleShowMenu = () => {
     menuIsOpen === false ? setMenuIsOpen(true) : setMenuIsOpen(false);
   };
-  const handleHowToPlayClick = () => { };
+  const handleHowToPlayClick = () => {};
 
   return (
-    <div>
+    <div className="">
       <Navbar className="bg-body z-[995]">
-        <div className="container flex justify-between">
+        <div
+          className="container flex justify-between py-4"
+          style={{
+            background:
+              "linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)",
+          }}
+        >
           <div className="flex md:hidden justify-between items-center bg-transparent">
             <CustomButton
               onClick={() => router.back()}
@@ -78,13 +84,20 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
                 </div>
                 <div>
                   <button
-                    onClick={handleHowToPlayClick}
+                    onClick={() => {
+                      router.push("/game-settings");
+                    }}
                     className="text-textColor-main self-center cursor-pointer flex items-center gap-4 text-primary-700 text-[18px]"
                   >
                     <Settings color="#292D32" /> Settings
                   </button>
                 </div>
-                <button className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid">
+                <button
+                  className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid"
+                  onClick={() => {
+                    router.push("components/leave-game");
+                  }}
+                >
                   Leave Game
                 </button>
                 <button
@@ -182,14 +195,21 @@ const JoinGameNavbar = ({ handleShareGameLink }: PageProps) => {
               </div>
               <div>
                 <button
-                  onClick={handleHowToPlayClick}
+                  onClick={() => {
+                    router.push("/game-settings");
+                  }}
                   className="text-textColor-main self-center cursor-pointer flex items-center gap-4 text-primary-700 text-[18px]"
                 >
                   <Settings color="#292D32" /> Settings
                 </button>
               </div>
             </div>
-            <button className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid">
+            <button
+              className="block w-full text-center py-2 rounded-[8px] text-error border-error border-[1px] border-solid"
+              onClick={() => {
+                router.push("components/leave-game");
+              }}
+            >
               Leave Game
             </button>
           </div>

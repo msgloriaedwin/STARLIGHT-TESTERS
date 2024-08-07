@@ -29,7 +29,7 @@ const page = () => {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <ChatInput />
+        <ChatInput sendMessage={() => {}} handleSelectGif={() => {}} />
       </div>
     </section>
   );

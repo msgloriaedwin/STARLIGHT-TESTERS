@@ -9,7 +9,7 @@ type NavbarProp = {
 const Navbar = ({ className, children }: NavbarProp) => {
   return (
     <nav
-      className={`${className} flex items-center w-full bg-transparent md:bg-navbar py-4`}
+      className={`${className} flex items-center w-full bg-transparent md:bg-navbar`}
     >
       {children}
     </nav>
