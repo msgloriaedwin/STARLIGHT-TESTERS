@@ -8,17 +8,14 @@ import createIcon from "../../../public/create.svg";
 import gifIcon from "../../../public/gif.svg";
 import { defaultEmoji } from "./data";
 
-interface ChatInputProps {
-  sendMessage: (data: string) => void;
-}
 const EmojiPicker = dynamic(() => import("emoji-picker-react"), { ssr: false });
-const ChatInput = ({ sendMessage }: ChatInputProps) => {
+const ChatInput: React.FC = () => {
   const [showPicker, setShowPicker] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
   const handleSend = () => {
     if (message.trim()) {
-      sendMessage(message);
+      setMessage("");
     }
   };
 

@@ -3,7 +3,7 @@ import React from "react";
 import ChatInput from ".";
 
 const page = () => {
-  return <ChatInput sendMessage={() => {}} />;
+  return <ChatInput />;
 };
 
 export default page;
