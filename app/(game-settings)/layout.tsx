@@ -10,9 +10,9 @@ export default function SettingsLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className='bg-primary'>
+    <main className='bg-[#F7EEE7]'>
        <SettingsHeader />
-       <div className="md:flex gap-3 bg-primary min-h-screen !bg-[#F7EEE7]">
+       <div className="md:flex gap-3 bg-[#F7EEE7] min-h-screen">
 
        <SidebarComp />
          <div className="w-full md:w-3/4 md:!ml-[350px] pt-20">
