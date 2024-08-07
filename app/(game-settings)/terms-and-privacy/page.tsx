@@ -4,11 +4,10 @@ const dm_sans = DM_Sans({
 	subsets: ["latin"],
 })
 
-
 const TermsAndService = () => {
 	return (
 		<div
-			className={`${dm_sans.className} min-h-screen pt-[-4rem]  md:pt-14 flex flex-col gap-16 font-["dm_sans"] p-6`}>
+			className={`${dm_sans.className} max-h-[680px] pt-[-4rem]  md:pt-14 flex flex-col gap-16 font-["dm_sans"] p-6`}>
 			<h1 className="text-primary-700 text-[2.25rem] leading-[2.875rem] inline-block">
 				Terms & Privacy
 			</h1>
