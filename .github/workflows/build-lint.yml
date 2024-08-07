@@ -26,6 +26,9 @@ jobs:
         with:
           version: 9
 
+      - name: Add pnpm to PATH
+        run: echo "::add-path::$(pnpm root -g)/pnpm"
+
       - name: Clean up previous runs if directory exists
         run: |
           if [ -d "/home/starlight/setup-pnpm" ]; then
