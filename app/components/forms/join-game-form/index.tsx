@@ -125,7 +125,7 @@ const JoinGameForm = ({
               onAvatarSelect={handleAvatarSelect}
             />
             <CustomButton variant="secondary" type="submit">
-              Save & Continue
+              Join Game
             </CustomButton>
           </form>
         </Form>
