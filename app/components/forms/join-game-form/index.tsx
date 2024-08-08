@@ -46,10 +46,7 @@ const JoinGameForm = ({
     },
   });
 
-  const handleFormSubmit = (data: FormData) => {
-    console.log("Submitted Form Data:", data); // Log form data to verify
-    router.push("/waiting-room"); // Redirect after successful form submission
-  };
+  const handleFormSubmit = (data: FormData) => {};
 
   const handleAvatarSelect = (avatar: StaticImageData) => {
     setSelectedAvatar(avatar);
@@ -64,7 +61,10 @@ const JoinGameForm = ({
       <div className={cn("bg-primary-300 rounded-[12px]", className)}>
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(handleFormSubmit)}
+            onSubmit={(e) => {
+              router.push("/waiting-room");
+              form.handleSubmit(handleFormSubmit)(e);
+            }}
             className="bg-form-blue p-[0.9rem] sm:p-6 rounded-[0.45rem] sm:rounded-[0.75rem] flex flex-col gap-[0.9rem] sm:gap-6"
           >
             <FormField
@@ -124,7 +124,7 @@ const JoinGameForm = ({
               selectedAvatar={selectedAvatar}
               onAvatarSelect={handleAvatarSelect}
             />
-            <CustomButton variant="secondary" type="submit" onClick={()=>{router.push('')}}>
+            <CustomButton variant="secondary" type="submit">
               Save & Continue
             </CustomButton>
           </form>
