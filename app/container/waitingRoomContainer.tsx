@@ -36,7 +36,6 @@ export default function WaitingRoomContainer() {
   const [dimension, setDimension] = useState({ height: 0, width: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const size = players.length > 8 ? 100 : players.length > 9 ? 80 : 150;
-  const mediumScreen = window.innerWidth <= 600;
 
   useEffect(() => {
     setDimension({

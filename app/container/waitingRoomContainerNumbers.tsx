@@ -34,15 +34,16 @@ const players = [
 
 export default function WaitingRoomContainerNumbers() {
 	const [dimension, setDimension] = useState({ height: 0, width: 0 })
+    const [mediumScreen, setMediumScreen] = useState<boolean>(true)
 	const containerRef = useRef<HTMLDivElement>(null)
 	const size = players.length > 8 ? 100 : players.length > 9 ? 80 : 150
-	const mediumScreen = window.innerWidth <= 600
 
 	useEffect(() => {
 		setDimension({
 			height: containerRef.current?.offsetHeight || 0,
 			width: containerRef.current?.offsetWidth || 0,
 		})
+        setMediumScreen(window.innerWidth <= 600)
 	}, [])
 
 	return (
