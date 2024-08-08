@@ -22,6 +22,7 @@ const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
   const handleSend = () => {
     sendMessage(message);
     setMessage("");
+    setShowPicker(false);
   };
 
   const handleShowEmoji = () => {
