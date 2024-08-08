@@ -24,7 +24,7 @@ function Index() {
 
   return (
     <div className="px-6 pt-16 bg-[#F7EEE7]">
-     <div className="max-w-[340px]"> {/* Adjusted to fit 4 columns of smaller boxes */}
+     <div className="max-w-[340px]"> 
   <h1 className="text-4xl text-primary-700 mb-8">Change Avatar</h1>
 
   <div className="grid grid-cols-4 gap-1 mb-8 cursor-pointer">
