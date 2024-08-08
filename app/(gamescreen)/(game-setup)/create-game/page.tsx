@@ -15,6 +15,7 @@ import Avatar6 from "../../../../public/assets/images/avatar-6.png";
 import Avatar7 from "../../../../public/assets/images/avatar-7.png";
 import Avatar8 from "../../../../public/assets/images/avatar-8.png";
 import Avatar9 from "../../../../public/assets/images/avatar-9.png";
+import JoinGameNavbar from "@/app/components/navbars/custom-navbars/JoinGameNavbar";
 
 const CreateGamePage: React.FC = () => {
   const router = useRouter();
