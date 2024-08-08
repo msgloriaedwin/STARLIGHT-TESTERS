@@ -62,7 +62,7 @@ const JoinGameForm = ({
         <Form {...form}>
           <form
             onSubmit={(e) => {
-              router.push("/waiting-room");
+              router.push("/numbers");
               form.handleSubmit(handleFormSubmit)(e);
             }}
             className="bg-form-blue p-[0.9rem] sm:p-6 rounded-[0.45rem] sm:rounded-[0.75rem] flex flex-col gap-[0.9rem] sm:gap-6"
