@@ -10,35 +10,56 @@ import {
   User,
   UserRound,
   X,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 import Navbar from "../Navbar";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState, } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import CustomButton from "../../button/custombutton";
 import cupIcon from "../../../../public/cup.svg";
 import infoIcon from "../../../../public/info-circle.svg";
 import closeIcon from "../../../../public/close-circle.svg";
+import { useBackgroundSound } from "@/utils/game-sounds/useBackgroundMusic";
+import BackgroundMusic from "../../sound-effect";
 type PageProps = {
   handleGoBack?: () => void;
   handleShareGameLink?: () => void;
-  showCup?: boolean;
 };
 
-const CreateGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
+const CreateGameNavbar = ({ handleShareGameLink }: PageProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [toggleMusic, setToggleMusic] = useState(true);
   const [showDestopNav, setShowDestopNav] = useState(false);
   const router = useRouter();
-
+  const pathname = usePathname();
+  const {playSound,stopSound} = useBackgroundSound({
+      soundSrc: '/assets/audios/game-music.mp3',
+      enabled: toggleMusic,
+    });
   const handleShowMenu = () => {
     menuIsOpen === false ? setMenuIsOpen(true) : setMenuIsOpen(false);
   };
+
+  const handleToggleMusic = () => {
+    setToggleMusic(!toggleMusic);
+   
+  };
+  useEffect(() => {
+   
+    if ((pathname === '/create-game' || pathname === '/join') && toggleMusic) { 
+      playSound();
+    } else {
+      stopSound();
+    }
+  }, [toggleMusic, playSound, stopSound]);
   const handleHowToPlayClick = () => {};
 
   return (
     <div className="">
       <Navbar className="bg-body z-[995]">
         <div
-          className="container flex justify-between py-2"
+          className="container flex justify-between py-4"
           style={{
             background:
               "linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)",
@@ -66,15 +87,10 @@ const CreateGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
             >
               Back
             </CustomButton>
+
+            <BackgroundMusic toggleMusic={toggleMusic} handleToggleMusic={handleToggleMusic} />
           </div>
-          {showCup && (
-            <div className="hidden md:flex items-center gap-4  justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-2">
-              <Image src={cupIcon} alt="cup" width={20} height={20} />
-              <span className="text-[16px] font-[700] text-[#4CAF50]">
-                $350
-              </span>
-            </div>
-          )}
+
           <div className="flex gap-6 items-center">
             {showDestopNav && (
               <div className="hidden md:flex absolute right-[8.5rem] bg-[#FFFDF2] rounded-[8px] p-4 w-[339px]  flex-col gap-4 top-[5rem]">
