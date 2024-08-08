@@ -22,6 +22,7 @@ const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
   const handleSend = () => {
     sendMessage(message);
     setMessage("");
+    setShowPicker(false);
   };
 
   const handleShowEmoji = () => {
@@ -45,15 +46,15 @@ const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
   }, []);
 
   return (
-    <div className="max-w-[492px] min-w-[200px] md:min-w-[492px] m-auto px-4 bottom-4 my-8">
+    <div className="max-w-[492px] min-w-[200px] md:min-w-[492px] m-auto px-4 bottom-4 my-8 relative">
       {showPicker && (
-        <div className="absolute bottom-[4rem] w-full max-w-[300px] md:max-w-[492px] min-w-[200px] md:min-w-[492px]">
+        <div className="absolute ml-[-1rem]  bottom-[4rem]  md:max-w-[492px] w-full md:min-w-[492px]">
           <EmojiPicker width={"100%"} onEmojiClick={handleSelectEmoji} />
         </div>
       )}
       {showGif && (
-        <div className="absolute bottom-[1rem] h-[15rem] overflow-y-scroll mb-[4rem] w-full scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100 bg-white max-w-[300px] md:max-w-[492px]  min-w-[200px] md:min-w-[492px]">
-          <div className="grid grid-cols-5 gap-2 p-4">
+        <div className="absolute ml-[-1rem] bottom-[1rem] h-[15rem] overflow-y-scroll mb-[4rem] w-full scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100 bg-white  min-w-[200px] md:min-w-[492px]">
+          <div className="grid grid-cols-6 gap-2 p-4">
             {gif.map((g: any, index: number) => {
               return (
                 <div
