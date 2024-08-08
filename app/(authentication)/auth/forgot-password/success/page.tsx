@@ -17,10 +17,11 @@ const PasswordResetSuccess = () => {
           </p>
         </div>
         <FormCard>
+          <Link  href={"/auth/login"}>
           <CustomButton size={"lg"} className='w-full p-7 text-base md:text-lg'>
             Continue
           </CustomButton>
-
+          </Link>
           <Link
             href={"/auth/login"}
             className='underline flex justify-center mt-10 text-base md:text-lg'
