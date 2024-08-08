@@ -13,12 +13,21 @@ const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const generateUniqueRandomLetters = (count: number): string[] => {
   const uniqueLetters = new Set<string>();
 
-  while (uniqueLetters.size < count) {
+  // Generate 26 unique letters
+  while (uniqueLetters.size < 26) {
     const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
     uniqueLetters.add(randomLetter);
   }
 
-  return Array.from(uniqueLetters);
+  const uniqueLettersArray = Array.from(uniqueLetters);
+
+  // Add 10 duplicate letters randomly
+  while (uniqueLettersArray.length < 36) {
+    const randomIndex = Math.floor(Math.random() * uniqueLettersArray.length);
+    uniqueLettersArray.push(uniqueLettersArray[randomIndex]);
+  }
+  console.log("Generated letters:", uniqueLettersArray);
+  return uniqueLettersArray;
 };
 
 export default function LetterCardSelection() {
@@ -57,7 +66,7 @@ export default function LetterCardSelection() {
       >
         <section className="flex flex-col items-center w-full h-fit p-0 md:p-[16px] gap-[24px] md:gap-[8px] rounded-[10px] bg-transparent">
           <h1 className="text-primary-700 font-bold text-5xl mb-4">
-            H _ _ _ _ _ Y
+            H _ _ _ _ Y
           </h1>
           <h2 className="text-[16px] md:text-[24px] font-[700] leading-[28.8px] text-primary-700">
             Select your letters
