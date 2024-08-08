@@ -67,7 +67,7 @@ const GameCardSelectionLobby = () => {
 
   return (
     <div className="w-full h-full flex justify-center">
-      <div className={`flex flex-col w-full max-w-sm md:max-w-[600px] h-fit`}>
+      <div className={`flex flex-col justify-between md:justify-normal w-full gap-3 max-w-sm md:max-w-[600px] h-full md:h-fit`}>
         <section className="flex flex-col items-center w-full h-fit p-0 md:p-[16px] gap-[24px] md:gap-[8px] rounded-[10px] bg-transparent]">
           <h2 className="text-[16px] md:text-[24px] font-[700] leading-[28.8px] text-[#00658B]">
             Select your numbers

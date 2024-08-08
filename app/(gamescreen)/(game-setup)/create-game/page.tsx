@@ -36,7 +36,7 @@ const CreateGamePage: React.FC = () => {
   }) => {
     if (data.bingoType) {
       data.bingoType === "numbers"
-        ? router.push("/waiting-room")
+        ? router.push("/numbers")
         : router.push("/alphabets");
     }
   };

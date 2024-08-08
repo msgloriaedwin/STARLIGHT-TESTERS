@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import ChatInput from "@/app/components/chatBoxWithEmoji";
-import GameCardSelection from "@/app/components/gamecardselection/gamecardselection";
 import Avatars from "../components/avatars-arch/circles/avatar";
 import GameCardSelectionLobby from "../components/gamecardselection/GameCardSelectionLobbyNumber";
 
@@ -48,7 +47,7 @@ export default function WaitingRoomContainer() {
   return (
     <div
       ref={containerRef}
-      className="container relative px-5 overflow-x-hidden"
+      className={`container  relative px-5 overflow-x-hidden`}
       style={{ paddingTop: `${size}px` }}
     >
       <Avatars dimension={dimension} avatars={players} size={size} />
