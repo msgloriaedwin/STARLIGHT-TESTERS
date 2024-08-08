@@ -17,7 +17,7 @@ import { usePathname, useRouter } from "next/navigation";
 import CustomButton from "../../button/custombutton";
 import cupIcon from "../../../../public/cup.svg";
 import { useBackgroundSound } from "@/utils/game-sounds/useBackgroundMusic";
-import BackgroundMusic from "../../sound-effect";
+import BackgroundMusic from "../../sound-effects";
 import infoIcon from "../../../../public/info-circle.svg";
 import closeIcon from "../../../../public/close-circle.svg";
 type PageProps = {

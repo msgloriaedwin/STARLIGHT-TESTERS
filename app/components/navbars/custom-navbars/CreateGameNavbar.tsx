@@ -21,7 +21,7 @@ import cupIcon from "../../../../public/cup.svg";
 import infoIcon from "../../../../public/info-circle.svg";
 import closeIcon from "../../../../public/close-circle.svg";
 import { useBackgroundSound } from "@/utils/game-sounds/useBackgroundMusic";
-import BackgroundMusic from "../../sound-effect";
+import BackgroundMusic from "../../sound-effects";
 type PageProps = {
   handleGoBack?: () => void;
   handleShareGameLink?: () => void;
