@@ -3,7 +3,9 @@ import Image from "next/image";
 interface AvatarProps {
     avatars: {
         username: string;
-        avatar: string
+        avatar: string;
+        comment?: string;
+        timer?: number;
     }[]
     dimension: { height: number; width: number };
     size: number
@@ -13,7 +15,7 @@ interface AvatarProps {
 const Avatars = ({
     avatars = [],
     dimension,
-    size
+    size,
 }: AvatarProps) => {
     const { width, height } = dimension;
 
@@ -53,7 +55,6 @@ const Avatars = ({
                 return (
                     <div
                         key={index}
-                        className="md:flex flex-col items-center hidden"
                         style={{
                             position: "absolute",
                             top: `${y}px`,
@@ -63,15 +64,30 @@ const Avatars = ({
 
                         }}
                     >
-                        <div style={{ width: `${size * 3 / 5}px`, height: `${size * 3 / 5}px`, position: 'relative' }}>
-                            <Image src={avatar.avatar} alt="avatar" layout="fill" objectFit="contain" className={`rounded-full`} />
-                        </div>
-                        <div className="flex items-center gap-3 mt-2">
-                            <div className="bg-secondary-green w-2 h-2 rounded-full"></div>
-                            <p className="text-primary-900">{avatar.username}</p>
-                        </div>
-                        <div className="w-1/4 bg-[#D9D9D9] rounded-full h-1.5 mt-1 dark:bg-gray-700">
-                            <div className="bg-green-600 h-1.5 rounded-full dark:bg-green-500" style={{width: '0%'}}></div>
+                        {avatar.comment && index < firstDivd &&
+                            <div className="absolute w-full text-center mx-2 -top-5 left-3/4 text-[12px] bg-[#FFFAD9] p-1 rounded-xl" >{avatar.comment}</div>
+                        }
+
+                        {avatar.comment && index > topLength && index < nextDivd &&
+                            <div className="absolute w-full text-center mx-2 -bottom-2 text-[12px] bg-[#FFFAD9] p-1 rounded-xl" >{avatar.comment}</div>
+                        }
+
+                        {avatar.comment && index >= nextDivd &&
+                            <div className="absolute w-full text-center mx-2 -top-5 right-3/4 text-[12px] bg-[#FFFAD9] p-1 rounded-xl" >{avatar.comment}</div>
+                        }
+
+
+                        <div className="flex flex-col items-center">
+                            <div style={{ width: `${size * 3 / 5}px`, height: `${size * 3 / 5}px`, position: 'relative' }}>
+                                <Image src={avatar.avatar} alt="avatar" layout="fill" objectFit="contain" className={`rounded-full`} />
+                            </div>
+                            <div className="flex items-center gap-3 mt-2">
+                                <div className="bg-secondary-green w-2 h-2 rounded-full"></div>
+                                <p className="text-primary-900">{avatar.username}</p>
+                            </div>
+                            <div className="w-2/4 bg-[#D9D9D9] rounded-full h-1.5 mt-1 dark:bg-gray-700">
+                                <div className="bg-green-600 h-1.5 rounded-full dark:bg-green-500" style={{ width: `${avatar.timer}%` }}></div>
+                            </div>
                         </div>
                     </div>
                 );
