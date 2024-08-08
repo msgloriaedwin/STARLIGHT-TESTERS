@@ -133,7 +133,7 @@ const SignupForm = () => {
                 Sign Up with Facebook
               </AuthLink>
             </section>
-            <p className="text-center text-sm md:text-base">
+            <p className="text-center text-sm md:text-base flex gap-2 justify-center items-center">
               Have an account?
               <Link href="/auth/login" className="text-primary-400">
                 Sign In
