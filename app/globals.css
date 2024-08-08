@@ -57,16 +57,4 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-
-  body{
-    font-family: theme('fontFamily.dm-sans');
-  }
-}
-
-@layer components{
-  .container{
-    margin: 0 auto;
-    padding: 0 1rem;
-    width: 100%;
-  }
 }

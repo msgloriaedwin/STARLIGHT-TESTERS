@@ -1,6 +1,6 @@
 "use client";
 
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import Lottie from "react-lottie";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import showingCard from "@/public/showing-card.json";
@@ -18,7 +18,7 @@ const animations = [
 export default function AnimatedMaster() {
   const [activeTab, setActiveTab] = useState("Countdown");
   const { playSound, stopSound } = useBackgroundSound({
-    soundSrc: '/assets/audios/win-game.mp3',
+    soundSrc: "/assets/audios/win-game.mp3",
     enabled: true,
   });
 
@@ -33,15 +33,18 @@ export default function AnimatedMaster() {
   const getLottieOptions = (animationData: any) => ({
     loop: true,
     autoplay: true,
-    animationData,
+    animationData: winner,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
   });
-
   return (
     <div>
-      <Tabs defaultValue="Countdown" className="w-[400px]" onValueChange={(value) => setActiveTab(value)}>
+      <Tabs
+        defaultValue="Countdown"
+        className="w-[400px]"
+        onValueChange={(value) => setActiveTab(value)}
+      >
         <TabsList>
           {animations.map((anim) => (
             <TabsTrigger key={anim.name} value={anim.name}>
