@@ -58,7 +58,7 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
     <div className="">
       <Navbar className="bg-body z-[995]">
         <div
-          className="container flex justify-between py-4"
+          className="container flex justify-between md:py-4 min-w-[100vw]"
           style={{
             background:
               "linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)",

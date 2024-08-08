@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react';
-import { ToggleControl } from '@/app/components/ToggleControl/ToggleControl';
+import { ToggleControlSettings } from '@/app/components/ToggleControl/ToggleControlSettings';
 import RadioButton from '@/app/components/radio-button/radio-button';
 import CustomButton from '@/app/components/button/custombutton';
 import Modal from '@/app/components/modal/modal';
@@ -29,9 +29,9 @@ const Index: React.FC = () => {
                 <form onSubmit={handleFormSubmit} className="mt-16">
                     <div className="flex items-center justify-between">
                         <p className="text-xl font-medium text-primary-700">Notifications</p>
-                        <ToggleControl
-                            className="data-[state=checked]:bg-primary-200"
-                            thumbClassName="data-[state=checked]:bg-[#fff]"
+                        <ToggleControlSettings
+                            className="data-[state=checked]:bg-primary-200 h-9"
+                            thumbClassName="data-[state=checked]:bg-[#fff] h-8"
                             checked={notifications}
                             onCheckedChange={(checked) => setNotifications(checked)}
                         />
@@ -39,9 +39,9 @@ const Index: React.FC = () => {
 
                     <div className="flex items-center justify-between my-6">
                         <p className="text-xl font-medium text-primary-700">Sound Effects</p>
-                        <ToggleControl
-                            className="data-[state=checked]:bg-primary-200"
-                            thumbClassName="data-[state=checked]:bg-[#fff]"
+                        <ToggleControlSettings
+                            className="data-[state=checked]:bg-primary-200 h-9"
+                            thumbClassName="data-[state=checked]:bg-[#fff] h-8"
                             checked={soundEffects}
                             onCheckedChange={(checked) => setSoundEffects(checked)}
                         />
