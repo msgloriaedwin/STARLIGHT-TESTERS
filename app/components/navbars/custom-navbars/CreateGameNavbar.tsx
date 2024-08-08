@@ -25,6 +25,7 @@ import BackgroundMusic from "../../sound-effects";
 type PageProps = {
   handleGoBack?: () => void;
   handleShareGameLink?: () => void;
+  showCup?: boolean
 };
 
 const CreateGameNavbar = ({ handleShareGameLink }: PageProps) => {
