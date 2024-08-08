@@ -34,8 +34,11 @@ const CreateGamePage: React.FC = () => {
     prizeValue: string;
     avatar: string;
   }) => {
-    console.log("Form submitted:", data);
-    router.push("/waiting-room");
+    if (data.bingoType) {
+      data.bingoType === "numbers"
+        ? router.push("/waiting-room")
+        : router.push("/alphabets");
+    }
   };
 
   const avatars = [
