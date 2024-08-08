@@ -1,23 +1,61 @@
 name: Dev Deployment
 
 on:
-  workflow_run:
-    workflows: ["Build and Push"]
-    types:
-      - completed
+  push:
+    branches:
+      - dev
 
 jobs:
-  deploy_to_dev:
-    if: github.event.repository.fork == false
-    runs-on: ubuntu-latest
-
+  build:
+    runs-on: self-hosted
     steps:
-      - name: Deploy to dev environment
-        uses: appleboy/ssh-action@v1.0.3
+      - uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: docker build -t hngtechie/bingofe:dev -f docker/development/Dockerfile .
+
+      - name: Save and compress Docker image
+        run: |
+          docker save hngtechie/bingofe:dev > bingofe-dev.tar
+          gzip bingofe-dev.tar
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: docker-image
+          path: bingofe-dev.tar.gz
+
+  deploy-to-dev:
+    needs: build
+    runs-on: self-hosted
+    if: github.event.repository.fork == false
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: docker-image
+          path: .
+
+      - name: Copy to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          source: "bingofe-dev.tar.gz"
+          target: "/tmp/bingofe"
+
+      - name: Deploy on server
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd bingofe/dev/bingo_fe
-            ./scripts/dev_deploy.sh 
+            cd /tmp/bingofe
+            gunzip bingofe-dev.tar.gz
+            docker load < bingofe-dev.tar
+            rm -f bingofe-dev.tar
+            cd /home/${{ secrets.USERNAME }}/bingofe/dev/bingo_fe
+            chmod +x ./scripts/*.sh
+            ./scripts/dev_deploy.sh

@@ -25,7 +25,7 @@ const config = {
       },
       boxShadow: {
         "custom-inset":
-          "2px 2px 0px 0px rgba(255, 255, 255, 0.40) inset, -4px -4px 0px 0px rgba(0, 0, 0, 0.32) inset",
+          "-2px -2px 0px 0px rgba(0, 0, 0, 0.32) inset, 2px 2px 0px 0px rgba(255, 255, 255, 0.4) inset"
       },
 
       colors: {
@@ -61,11 +61,13 @@ const config = {
           orange: "#FF5722",
           green: "#4CAF50",
           B400: "#FF9A7A",
+          cream: "#F7EEE7",
         },
         neutral: {
           DEFAULT: "#1A202C",
           500: "#9F9F9F",
           600: "#7F7F7F",
+          700: "#5F5F5F",
           800: "#404040",
           900: "#202020",
         },

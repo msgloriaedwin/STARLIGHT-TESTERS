@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { ArrowUp } from "lucide-react";
 import emojiIcon from "../../../public/emojiIcon.svg";
@@ -7,33 +7,82 @@ import Image from "next/image";
 import createIcon from "../../../public/create.svg";
 import gifIcon from "../../../public/gif.svg";
 import { defaultEmoji } from "./data";
+interface ChatInputProps {
+  handleSelectGif: (data: any) => void;
+  sendMessage: (data: any) => void;
+}
 
 const EmojiPicker = dynamic(() => import("emoji-picker-react"), { ssr: false });
-const ChatInput: React.FC = () => {
+const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
   const [showPicker, setShowPicker] = useState<boolean>(false);
+  const [showGif, setshowGif] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
+  const [gif, setGif] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
   const handleSend = () => {
-    if (message.trim()) {
-      console.log("Text and Emoji:", message);
-      setMessage("");
-    }
+    sendMessage(message);
+    setMessage("");
   };
 
   const handleShowEmoji = () => {
     setShowPicker(!showPicker);
+    setshowGif(false);
   };
 
   const handleSelectEmoji = (emojiObject: any, event: any) => {
     setMessage((previousData) => previousData + emojiObject.emoji);
   };
 
+  useEffect(() => {
+    fetch(
+      "https://api.giphy.com/v1/gifs/trending?api_key=VkWAdZC1QoyCpTieqC1lCHMoPIIZN1OI"
+    )
+      .then((response) => response.json())
+      .then((content) => {
+        setGif(content.data.map((item: any) => item.images.downsized.url));
+      })
+      .catch((erro) => {});
+  }, []);
+
   return (
-    <div className="max-w-[492px] m-auto px-4">
-      <div className="relative border border-neutral-600 h-12 bg-[#FFFDFD80] rounded-[24px]">
+    <div className="max-w-[492px] min-w-[200px] md:min-w-[492px] m-auto px-4 bottom-4 my-8">
+      {showPicker && (
+        <div className="absolute bottom-[4rem] w-full max-w-[300px] md:max-w-[492px] min-w-[200px] md:min-w-[492px]">
+          <EmojiPicker width={"100%"} onEmojiClick={handleSelectEmoji} />
+        </div>
+      )}
+      {showGif && (
+        <div className="absolute bottom-[1rem] h-[15rem] overflow-y-scroll mb-[4rem] w-full scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100 bg-white max-w-[300px] md:max-w-[492px]  min-w-[200px] md:min-w-[492px]">
+          <div className="grid grid-cols-5 gap-2 p-4">
+            {gif.map((g: any, index: number) => {
+              return (
+                <div
+                  className="cursor-pointer"
+                  key={index}
+                  onClick={() => {
+                    handleSelectGif(g);
+                    setshowGif(false);
+                  }}
+                >
+                  {g && (
+                    <Image
+                      src={g}
+                      alt=""
+                      width={50}
+                      height={50}
+                      className="w-[50px] h-[50px]"
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+      <div className="relative border  rounded-[24px] border-solid flex items-center">
         <input
           placeholder="Type your message"
-          className="w-full h-full rounded-[24px] px-[20px] outline-none text-[14px] placeholder:text-border-neutral-600"
+          className="border-neutral-600 bg-[#FFFDFD80] w-full rounded-[24px] pl-[20px] pr-[7rem] outline-none text-[14px] placeholder:text-border-neutral-600 min-[2rem] flex items-center py-3"
           value={message}
           onChange={(e) => {
             setMessage(e.target.value);
@@ -50,16 +99,14 @@ const ChatInput: React.FC = () => {
             onClick={handleSend}
             disabled={!message.trim()}
             className={`ml-2 p-1 rounded-full ${
-              message.trim()
-                ? "bg-neutral-600 hover:bg-neutral-800"
-                : "bg-neutral-300"
+              message ? "bg-primary-700 hover:bg-neutral-800" : "bg-neutral-300"
             }`}
           >
             <ArrowUp className="text-white" />
           </button>
         </div>
       </div>
-      {!showPicker && (
+      {!showPicker && !showGif && (
         <div className="flex w-full items-center justify-center mt-4">
           <div className="flex gap-[21px] ">
             <div className="hidden lg:flex items-center">
@@ -68,7 +115,11 @@ const ChatInput: React.FC = () => {
               </button>
             </div>
             <div className="flex items-center">
-              <button>
+              <button
+                onClick={() => {
+                  setshowGif(true);
+                }}
+              >
                 <Image alt="create" src={gifIcon} height={17.7} width={27.5} />
               </button>
             </div>
@@ -101,11 +152,6 @@ const ChatInput: React.FC = () => {
               </button>
             </div>
           </div>
-        </div>
-      )}
-      {showPicker && (
-        <div>
-          <EmojiPicker width={"100%"} onEmojiClick={handleSelectEmoji} />
         </div>
       )}
     </div>

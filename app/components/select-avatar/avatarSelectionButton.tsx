@@ -7,20 +7,20 @@ interface AvatarSelectionProps {
   imgSrc: string;
   isSelected: boolean;
   onClick: () => void;
-  size?: number; // Optional prop to customize the size
-  borderColor?: string; // Optional prop to customize the border color
-  selectedBgColor?: string; // Optional prop to customize the background color when selected
-  checkIconColor?: string; // Optional prop to customize the check icon color
+  size?: number;
+  borderColor?: string;
+  selectedBgColor?: string;
+  checkIconColor?: string;
 }
 
 const AvatarSelection = ({
   imgSrc,
   isSelected,
   onClick,
-  size = 60, // Default size
-  borderColor = "primary-700", // Default border color
-  selectedBgColor = "primary-700", // Default background color when selected
-  checkIconColor = "primary-800", // Default check icon color
+  size = 60,
+  borderColor = "primary-700",
+  selectedBgColor = "primary-700",
+  checkIconColor = "primary-800",
 }: AvatarSelectionProps) => {
   return (
     <button

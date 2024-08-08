@@ -1,6 +1,6 @@
 import Index from "./Index";
 
-export default function page() {
+export default function GamesSettingsPage() {
   return (
     <Index/>
   )

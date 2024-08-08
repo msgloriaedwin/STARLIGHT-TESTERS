@@ -10,8 +10,7 @@ const ForgotPasswordForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Email submitted:", email);
+    
   };
 
   return (

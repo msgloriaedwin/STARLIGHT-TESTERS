@@ -18,17 +18,11 @@ const Index: React.FC = () => {
 
     const handleFormSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log('Form Submitted:', {
-            difficulty,
-            notifications,
-            soundEffects,
-        });
-
         setIsModalOpen(true)
     };
 
     return (
-        <div className="px-6 pt-16 bg-[#F7EEE7] h-screen">
+        <div className="px-6 pt-16 bg-[#F7EEE7] max-h-[682px]">
             <div className="max-w-[411px]">
                 <h1 className="text-4xl text-primary-700">Game Settings</h1>
 

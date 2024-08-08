@@ -7,7 +7,7 @@ import FormCard from "@/app/components/formcard/formCard";
 import CustomButton from "@/app/components/button/custombutton";
 import Image from "next/image";
 import Link from "next/link";
-import DeleteLogoutNavbar from "@/app/components/navbars/custom-navbars/DeleteLogoutNavbar";
+import ForgotPasswordNavbar from "@/app/components/navbars/custom-navbars/ForgotPasswordNavbar";
 
 const loginSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -63,14 +63,13 @@ const LoginPage: FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-      // Form submission logic here
-      console.log("Form submitted successfully!");
+      
     }
   };
 
   return (
     <>
-      <DeleteLogoutNavbar />
+      <ForgotPasswordNavbar />
       <div className='bg-body flex justify-center items-center h-screen bg-gray-100'>
         <FormCard variant='primary' size='lg'>
           <form onSubmit={handleSubmit} className='space-y-4'>
@@ -81,6 +80,7 @@ const LoginPage: FC = () => {
               value={formData.username}
               error={errors.username}
               onChange={handleChange}
+              className="p-4"
             />
             <RBInput
               label='Enter Password'
@@ -91,47 +91,50 @@ const LoginPage: FC = () => {
               error={errors.password}
               helperText=''
               onChange={handleChange}
+              className="p-4"
             />
             <Link
-              href={"/auth/login"}
+              href={"/auth/forgot-password"}
               className='text-primary-400 flex justify-end'
             >
               Forgot Password?
             </Link>
-            <CustomButton size={"lg"} className='w-full' type='submit'>
-              Login
+            <CustomButton size={"lg"} className='w-full p-6 text-base md:text-lg' type='submit'>
+              Log in
             </CustomButton>
 
             <section className='social-auth'>
               <Link
                 href={"/auth/login"}
-                className='w-full flex justify-center p-3 border rounded-md border-solid'
+                className='w-full flex justify-center p-4 border rounded-md border-[#C5C5C5]'
               >
                 <Image
                   src={"/assets/icons/google.svg"}
                   alt='Google logo'
                   height={24}
                   width={24}
+                  className="mr-3"
                 />{" "}
                 Sign in with Google
               </Link>
 
               <Link
                 href={"/auth/login"}
-                className='w-full mt-3 flex justify-center p-3 border rounded-md border-solid cursor-pointer'
+                className='w-full mt-3 flex justify-center p-4 border rounded-md border-[#C5C5C5]'
               >
                 <Image
                   src={"/assets/icons/facebook2.svg"}
                   alt='Facebook logo'
                   height={24}
                   width={24}
+                  className="mr-3"
                 />{" "}
                 Sign in with Facebook
               </Link>
             </section>
-            <p className='text-center'>
+            <p className='text-center text-sm md:text-base'>
               Don&apos;t have an account?{" "}
-              <Link href='/auth/login' className='text-primary-400'>
+              <Link href='/auth/signup' className='text-primary-400'>
                 Sign Up
               </Link>
             </p>
