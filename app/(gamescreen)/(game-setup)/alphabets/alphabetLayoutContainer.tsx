@@ -51,7 +51,9 @@ export default function AlphabetLayoutContainer() {
       className="container relative px-5 overflow-x-hidden"
       style={{ paddingTop: `calc(${size}px - 60px)` }}
     >
-      <Avatars dimension={dimension} avatars={players} size={size} />
+      <div className="hidden md:block">
+        <Avatars dimension={dimension} avatars={players} size={size} />
+      </div>
       <LetterCardSelection />
       <ChatInput
         sendMessage={(data: any) => {
