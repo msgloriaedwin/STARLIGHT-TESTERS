@@ -56,13 +56,13 @@ export default function LetterCardSelection() {
         className={`${dm_sans.className} flex flex-col w-full max-w-sm md:max-w-[600px] justify-center h-fit`}
       >
         <section className="flex flex-col items-center w-full h-fit p-0 md:p-[16px] gap-[24px] md:gap-[8px] rounded-[10px] bg-transparent">
-          <h1 className="text-primary-700 font-bold text-5xl mb-5">
+          <h1 className="text-primary-700 font-bold text-5xl mb-4">
             H _ _ _ _ _ Y
           </h1>
           <h2 className="text-[16px] md:text-[24px] font-[700] leading-[28.8px] text-primary-700">
             Select your letters
           </h2>
-          <div className="w-full h-fit pt-[11px] md:pt-[40px] pb-[20px] px-[16px] items-center grid grid-rows-3 grid-cols-12 gap-[12px]">
+          <div className="w-full h-fit pt-[8px] md:pt-[32px] pb-[16px] px-[16px] items-center grid grid-rows-3 grid-cols-12 gap-[12px]">
             {letterArray.map((info, index) => {
               const columnIndex = (index % 12) + 1;
               const isRevealed = revealedIndices.has(index);
@@ -87,7 +87,7 @@ export default function LetterCardSelection() {
             })}
           </div>
         </section>
-        <section className="w-full gap-[11px] bg-transparent flex flex-col mt-[44px] md:mt-[44px]">
+        <section className="w-full gap-[11px] bg-transparent flex flex-col ">
           <h3 className="text-[16px] font-[700] leading-[32px]  text-[#000] text-center">
             Your letters
           </h3>
