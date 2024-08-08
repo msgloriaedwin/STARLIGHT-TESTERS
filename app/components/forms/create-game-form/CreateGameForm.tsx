@@ -120,7 +120,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                           "flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3",
                           field.value === "numbers"
                             ? "bg-yellow-300"
-                            : "bg-primary-200"
+                            : "bg-primary-100"
                         )}
                         onClick={() => field.onChange("numbers")}
                       >
@@ -148,7 +148,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                         className={cn(
                           "flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3",
                           field.value === "numbers"
-                            ? "bg-primary-200"
+                            ? "bg-primary-100"
                             : "bg-yellow-300"
                         )}
                         onClick={() => field.onChange("alphabets")}
