@@ -4,6 +4,8 @@ interface AvatarProps {
   avatars: {
     username: string;
     avatar: string;
+    comment?: string;
+    timer?: number;
   }[];
   dimension: { height: number; width: number };
   size: number;

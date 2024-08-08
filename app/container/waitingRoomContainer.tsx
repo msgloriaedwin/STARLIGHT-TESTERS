@@ -5,30 +5,44 @@ import ChatInput from "@/app/components/chatBoxWithEmoji";
 import Avatars from "../components/avatars-arch/circles/avatar";
 import GameCardSelectionLobby from "../components/gamecardselection/GameCardSelectionLobbyNumber";
 
-const players = [
+const players: {
+  username: string;
+  avatar: string;
+  comment?: string;
+  timer?: number;
+}[] = [
   {
     username: "You",
     avatar: "/assets/images/avatar-1.png",
+    comment: "Girl, stop playing 🤣",
+    timer: 0,
   },
 
   {
     username: "Ebun",
     avatar: "/assets/images/avatar-2.png",
+    timer: 45,
+    comment: "Girl, stop playing 🤣",
   },
 
   {
     username: "i3cia",
     avatar: "/assets/images/avatar-3.png",
+    timer: 60,
   },
 
   {
     username: "Farell",
+    comment: "Yes, that will be me in a few minutes. Watch this space.",
     avatar: "/assets/images/avatar-5.png",
+    timer: 0,
   },
 
   {
     username: "Farell",
     avatar: "/assets/images/avatar-6.png",
+    comment: "Girl, stop playing 🤣",
+    timer: 0,
   },
 ];
 
@@ -47,7 +61,7 @@ export default function WaitingRoomContainer() {
   return (
     <div
       ref={containerRef}
-      className={`container  relative px-5 overflow-x-hidden`}
+      className={`container relative overflow-x-hidden min-h-[85vh]`}
       style={{ paddingTop: `${size}px` }}
     >
       <Avatars dimension={dimension} avatars={players} size={size} />

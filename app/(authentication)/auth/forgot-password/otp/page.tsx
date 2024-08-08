@@ -18,7 +18,7 @@ const OtpComponent: React.FC = () => {
     } else {
       router.push("/auth/forgot-password");
     }
-  }, []);
+  }, [router]);
 
   const censorEmail = (email: string) => {
     const [user, domain] = email.split("@");
