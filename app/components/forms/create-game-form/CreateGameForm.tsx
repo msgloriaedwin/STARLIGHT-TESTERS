@@ -116,7 +116,12 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                     </FormLabel>
                     <div className="flex flex-row justify-between gap-3">
                       <Button
-                        className={`flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full bg-button-light-main border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 bg-yellow-300`}
+                        className={cn(
+                          "flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3",
+                          field.value === "numbers"
+                            ? "bg-yellow-300"
+                            : "bg-primary-200"
+                        )}
                         onClick={() => field.onChange("numbers")}
                       >
                         <Image
@@ -140,7 +145,12 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                       </Button>
 
                       <Button
-                        className={`flex items-center justify-center py-[0.875rem] hover:bg-primary-100 px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full  border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3 bg-primary-200`}
+                        className={cn(
+                          "flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3",
+                          field.value === "numbers"
+                            ? "bg-primary-200"
+                            : "bg-yellow-300"
+                        )}
                         onClick={() => field.onChange("alphabets")}
                       >
                         <Image
@@ -208,7 +218,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
 
           <Button
             type="submit"
-            className="w-full sm:h-14 rounded-[0.5rem] bg-primary-700 hover:bg-primary-700 text-primary-500 p-2 border border-primary-500 shadow-custom-inset "
+            className="w-full sm:h-14 rounded-[0.5rem] bg-primary-700 hover:bg-primary-700 text-primary-100 p-2 border border-primary-500 shadow-custom-inset "
           >
             Save & Continue
           </Button>
