@@ -9,10 +9,17 @@ import Modal from "@/app/components/modal/modal";
 function Index() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [imageError, setImageError] = useState('');
 
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    setIsModalOpen(true)
+
+    if (selectedImage === null) {
+      setImageError('Please select an image');
+    } else {
+      setImageError('');
+      setIsModalOpen(true);
+    }
 };
 
   return (
@@ -59,6 +66,9 @@ function Index() {
       <CustomUploadContainer />
     </div>
   </div>
+  {imageError && (
+        <div className="text-red-500 text-sm mt-2">{imageError}</div>
+      )}
 
   <div className="w-full">
     <Button
