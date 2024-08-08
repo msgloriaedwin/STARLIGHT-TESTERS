@@ -1,15 +1,3 @@
-// export default function RootLayout({
-// 	children,
-// }: Readonly<{
-// 	children: React.ReactNode
-// }>) {
-// 	return (
-// 		<html lang="en">
-// 			<body className={`bg-body`}>{children}</body>
-// 		</html>
-// 	)
-// }
-
 "use client"
 import { useBackgroundSound } from "@/utils/game-sounds/useBackgroundMusic"
 import { useEffect } from "react"
