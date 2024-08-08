@@ -27,21 +27,11 @@ const Footer = () => {
           </div>
           <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
             <p className="text-primary-500 font-bold">Legal</p>
-            <div>
-              <Link
-                href={"/terms-and-privacy"}
-                className="text-primary-700 font-normal pt-6"
-              >
-                Privacy Policy
-              </Link>
+            <div className="text-primary-700 font-normal pt-6">
+              <Link href={"/terms-and-privacy"}>Privacy Policy</Link>
             </div>
-            <div>
-              <Link
-                href={"/terms-and-privacy"}
-                className="text-primary-700 font-normal pt-4"
-              >
-                Terms of Service
-              </Link>
+            <div className="text-primary-700 font-normal pt-4">
+              <Link href={"/terms-and-privacy"}>Terms of Service</Link>
             </div>
           </div>
           <div className="flex justify-center md:justify-start">

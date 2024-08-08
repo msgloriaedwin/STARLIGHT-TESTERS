@@ -49,7 +49,7 @@ const JoinGameForm = ({
   };
 
   return (
-    <section className="max-w-[39rem]">
+    <section className="w-[95%] md:max-w-[39rem] ">
       <h3 className="font-[700] text-[50px] text-center  mb-[37px] hidden md:block">
         Join Game
       </h3>

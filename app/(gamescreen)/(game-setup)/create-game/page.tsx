@@ -2,8 +2,9 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import GameCustomizeNavBar from "../../../components/navbars/custom-navbars/GameCustomizeNavBar";
 import CreateGameForm from "../../../components/forms/create-game-form/CreateGameForm";
+
+import CreateGameNavbar from "@/app/components/navbars/custom-navbars/CreateGameNavbar";
 
 import Avatar1 from "../../../../public/assets/images/avatar-1.png";
 import Avatar2 from "../../../../public/assets/images/avatar-2.png";
@@ -14,6 +15,7 @@ import Avatar6 from "../../../../public/assets/images/avatar-6.png";
 import Avatar7 from "../../../../public/assets/images/avatar-7.png";
 import Avatar8 from "../../../../public/assets/images/avatar-8.png";
 import Avatar9 from "../../../../public/assets/images/avatar-9.png";
+import JoinGameNavbar from "@/app/components/navbars/custom-navbars/JoinGameNavbar";
 
 const CreateGamePage: React.FC = () => {
   const router = useRouter();
@@ -32,8 +34,11 @@ const CreateGamePage: React.FC = () => {
     prizeValue: string;
     avatar: string;
   }) => {
-    console.log("Form submitted:", data);
-    router.push("/game");
+    if (data.bingoType) {
+      data.bingoType === "numbers"
+        ? router.push("/numbers")
+        : router.push("/alphabets");
+    }
   };
 
   const avatars = [
@@ -49,18 +54,22 @@ const CreateGamePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-body">
-      <main className="container mx-auto px-4 pt-24 pb-8">
-        <h1 className="text-4xl font-bold text-center mt-6 mb-6 text-primary-900">
-          Create Game
-        </h1>
-        <CreateGameForm
-          className="mx-auto max-w-[39rem]"
-          avatars={avatars}
-          onSubmit={handleSubmit}
-        />
-      </main>
-    </div>
+    <>
+      <CreateGameNavbar showCup={false} />
+
+      <div className="min-h-screen">
+        <main className="container mx-auto px-4 pt-4 pb-8">
+          <h1 className="text-4xl font-bold text-center mt-6 mb-6 text-primary-900">
+            Create Game
+          </h1>
+          <CreateGameForm
+            className="mx-auto max-w-[39rem]"
+            avatars={avatars}
+            onSubmit={handleSubmit}
+          />
+        </main>
+      </div>
+    </>
   );
 };
 

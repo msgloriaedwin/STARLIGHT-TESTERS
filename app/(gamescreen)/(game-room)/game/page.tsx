@@ -18,7 +18,7 @@ const page = () => {
           <Message right={true} showMessage={true} />
         </div>
         <div className="col-span-2 row-span-3 flex justify-center items-center">
-          Animation here
+          animation
         </div>
         <div className="col-span-1 row-span-3 flex flex-col justify-end items-end ml-[5rem]">
           <div className="flex flex-col justify-end items-end ml-[15rem]">
@@ -29,7 +29,7 @@ const page = () => {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <ChatInput />
+        <ChatInput sendMessage={() => {}} handleSelectGif={() => {}} />
       </div>
     </section>
   );

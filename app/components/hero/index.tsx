@@ -23,8 +23,7 @@ const Hero: React.FC = () => {
             <input
               type="text"
               placeholder="Enter Game Pin/Link"
-              value='234-546-ABC'
-              required
+              //value='234-546-ABC'
               className=" text-sm text-neutral-700 border-0 outline-0 !bg-transparent  max-w-[60%] h-12"
             />
             <Link href='/join'>
