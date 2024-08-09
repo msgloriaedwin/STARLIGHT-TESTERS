@@ -5,7 +5,7 @@ import CustomButton from "../button/custombutton";
 
 export default function SettingsHeader () {
   return (
-  <header className="hidden fixed w-full text-[#00658B] text-sm py-4 px-8 lg:px-16 md:flex z-50 items-center justify-between "style={{ background: 'linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)'}}>
+  <header className="hidden fixed w-full text-[#00658B] text-sm py-4 px-8 md:px-20 md:flex z-50 items-center justify-between "style={{ background: 'linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)'}}>
       <CustomButton variant='outline' className="text-foreground !bg-transparent !border-[#00658B] !text-[#00658B] font-normal flex items-center justify-center gap-x-1 !px-3"><ArrowLeft size={16} />Back</CustomButton>
       <ul className="flex items-center gap-x-7">
         <li>How to play</li>

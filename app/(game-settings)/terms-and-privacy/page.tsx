@@ -13,7 +13,7 @@ const TermsAndService = () => {
 			</h1>
 			<div className="max-w-[26rem] w-full flex flex-col gap-6 ">
 				<div className="flex flex-col gap-2">
-					<h2 className="text-primary-900 font-semibold leading-[120%] text-2xl">
+					<h2 className="text-primary-900 font-bold leading-[120%] text-2xl">
 						Terms & Conditions
 					</h2>
 					<p className="md:text-lg text-base text-neutral-700 leading-[1.875rem] ">
@@ -25,7 +25,7 @@ const TermsAndService = () => {
 					</p>
 				</div>
 				<div className="flex flex-col gap-2">
-					<h2 className="text-primary-900 font-semibold leading-[120%] text-2xl">
+					<h2 className="text-primary-900 font-bold leading-[120%] text-2xl">
 						Privacy Policy
 					</h2>
 					<p className="md:text-lg text-base text-neutral-700 leading-[1.875rem]">

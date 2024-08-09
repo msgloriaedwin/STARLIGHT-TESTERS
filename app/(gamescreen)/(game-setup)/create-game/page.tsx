@@ -34,8 +34,11 @@ const CreateGamePage: React.FC = () => {
     prizeValue: string;
     avatar: string;
   }) => {
-    console.log("Form submitted:", data);
-    router.push("/waiting-room");
+    if (data.bingoType) {
+      data.bingoType === "numbers"
+        ? router.push("/numbers")
+        : router.push("/alphabets");
+    }
   };
 
   const avatars = [
@@ -52,7 +55,7 @@ const CreateGamePage: React.FC = () => {
 
   return (
     <>
-      <CreateGameNavbar />
+      <CreateGameNavbar showCup={false} />
 
       <div className="min-h-screen">
         <main className="container mx-auto px-4 pt-4 pb-8">

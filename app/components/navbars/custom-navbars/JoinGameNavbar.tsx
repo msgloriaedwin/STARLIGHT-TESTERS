@@ -12,10 +12,12 @@ import {
   X,
 } from "lucide-react";
 import Navbar from "../Navbar";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import CustomButton from "../../button/custombutton";
 import cupIcon from "../../../../public/cup.svg";
+import { useBackgroundSound } from "@/utils/game-sounds/useBackgroundMusic";
+import BackgroundMusic from "../../sound-effects";
 import infoIcon from "../../../../public/info-circle.svg";
 import closeIcon from "../../../../public/close-circle.svg";
 type PageProps = {
@@ -27,18 +29,36 @@ type PageProps = {
 const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [showDestopNav, setShowDestopNav] = useState(false);
+  const [toggleMusic, setToggleMusic] = useState(true);
   const router = useRouter();
-
+  const pathname = usePathname();
+  const {playSound,stopSound} = useBackgroundSound({
+      soundSrc: '/assets/audios/game-music.mp3',
+      enabled: toggleMusic,
+    });
   const handleShowMenu = () => {
     menuIsOpen === false ? setMenuIsOpen(true) : setMenuIsOpen(false);
   };
+
+  const handleToggleMusic = () => {
+    setToggleMusic(!toggleMusic);
+
+  };
+  useEffect(() => {
+
+    if ((pathname === '/create-game' || pathname === '/join') && toggleMusic) { 
+      playSound();
+    } else {
+      stopSound();
+    }
+  }, [toggleMusic, playSound, stopSound]);
   const handleHowToPlayClick = () => {};
 
   return (
     <div className="">
       <Navbar className="bg-body z-[995]">
         <div
-          className="container flex justify-between py-4"
+          className="container flex justify-between md:py-4 min-w-[100vw]"
           style={{
             background:
               "linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)",
@@ -54,6 +74,7 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
             >
               Back
             </CustomButton>{" "}
+             <BackgroundMusic toggleMusic={toggleMusic} handleToggleMusic={handleToggleMusic} />
           </div>
 
           <div className="hidden md:flex  items-center gap-4">
@@ -66,6 +87,7 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
             >
               Back
             </CustomButton>
+             <BackgroundMusic toggleMusic={toggleMusic} handleToggleMusic={handleToggleMusic} />
           </div>
           {showCup && (
             <div className="hidden md:flex items-center gap-4 justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-3">
