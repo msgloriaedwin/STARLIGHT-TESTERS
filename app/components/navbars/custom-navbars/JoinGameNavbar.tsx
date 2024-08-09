@@ -64,7 +64,7 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
               "linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)",
           }}
         >
-          <div className="flex md:hidden justify-between items-center bg-transparent">
+          <div className="flex gap-2 md:hidden justify-between items-center bg-transparent">
             <CustomButton
               onClick={() => router.back()}
               variant="outline"
