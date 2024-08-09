@@ -95,15 +95,17 @@ export function SidebarComp() {
 						))}
 					</ul>
 					<ul className="flex pl-4 items-start flex-col gap-y-10">
-						<li className="text-neutral-700 flex items-center gap-x-3">
-							<Image
-								src="/assets/icons/logout.svg"
-								alt="logout"
-								width={17}
-								height={17}
-							/>
-							Logout
-						</li>
+            <Link href="auth/logout-confirmation">
+              <li className="text-neutral-700 flex items-center gap-x-3">
+                <Image
+                  src="/assets/icons/logout.svg"
+                  alt="logout"
+                  width={17}
+                  height={17}
+                />
+                Logout
+              </li>
+            </Link>
 						<Link
 							href="/components/delete-account"
 							className="text-error  whitespace-nowrap">

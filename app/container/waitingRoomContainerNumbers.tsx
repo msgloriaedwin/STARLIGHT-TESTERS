@@ -52,9 +52,13 @@ export default function WaitingRoomContainerNumbers() {
 				ref={containerRef}
 				className={`container box-border relative px-5 overflow-x-hidden h-full`}
 				style={{ paddingTop: mediumScreen ? "40px" : `${size}px` }}>
-				<Avatars dimension={dimension} avatars={players} size={size} />
-				<div className="flex flex-col justify-between h-[100%] md:block md:h-full">
-					<GameCardSelectionLobby />
+				<div className="hidden md:flex">
+					<Avatars dimension={dimension} avatars={players} size={size} />
+				</div>
+				<div className="flex flex-col w-full items-center justify-center lg:w-auto h-[100%] md:h-full">
+					<div className=" md:max-w-[70%] lg:w-full">
+						<GameCardSelectionLobby />
+					</div>
 					<ChatInput
 						sendMessage={(data: any) => {
 							//   setMessage(data);

@@ -3,5 +3,3 @@ services:
     image: hngtechie/bingofe:staging
     ports:
       - 6100:3000
-    volumes:
-      - ../../.env:/app/.env
