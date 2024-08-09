@@ -22,7 +22,7 @@ const Index: React.FC = () => {
     };
 
     return (
-        <div className="px-6 pt-16 bg-[#F7EEE7] max-h-[682px]">
+        <div className="px-6 pt-16 bg-[#F7EEE7]">
             <div className="max-w-[411px]">
                 <h1 className="text-4xl text-primary-700">Game Settings</h1>
 
