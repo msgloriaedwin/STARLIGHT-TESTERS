@@ -24,6 +24,7 @@ jobs:
         with:
           name: docker-image
           path: bingofe-dev.tar.gz
+          retention-days: 5
 
   deploy-to-dev:
     needs: build
