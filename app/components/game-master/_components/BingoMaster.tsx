@@ -1,16 +1,11 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
-
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import React, { useEffect, useMemo, useState } from "react";
 import CallBubble from "./CallBubble";
 import CallMaster from "./CallMaster";
-import "./index.css";
 import CallingCard from "./CallingCard";
 
 const BingoMaster = () => {
-  gsap.registerPlugin(useGSAP);
   const [count, setCount] = useState(3);
 
   useEffect(() => {
@@ -20,44 +15,6 @@ const BingoMaster = () => {
 
     return () => clearInterval(timer);
   }, []);
-
-  useGSAP(
-    () => {
-      const calledCardTl = gsap.timeline({ paused: true });
-
-      calledCardTl
-        .to(".master .arm-down", { autoAlpha: 0, duration: 0.5 })
-        .to(".master .arm-up", { autoAlpha: 1, duration: 1 }, "<")
-        .to(
-          ".master .mouth-full",
-          { autoAlpha: 0, duration: 1, ease: "back.in" },
-          "<"
-        )
-        .to(".master .mouth-wide", { autoAlpha: 1, ease: "back.out" }, "-=0.5");
-
-      const waitingTl = gsap.timeline({ paused: true });
-
-      waitingTl
-        .to(".waiting-master .second-leg", {
-          autoAlpha: 0,
-        })
-        .to(
-          ".waiting-master .right-leg",
-          { autoAlpha: 1, duration: 1 },
-          "-=0.5"
-        )
-        .to(".waiting-master .first-leg", { autoAlpha: 0 }, "<")
-        .to(".waiting-master .left-leg", { autoAlpha: 1, duration: 1 }, "<")
-        .to(
-          ".waiting-master .mouth-full",
-          { autoAlpha: 1, duration: 1 },
-          "-=0.5"
-        );
-
-      count <= 0 ? waitingTl.play() : calledCardTl.play();
-    },
-    { dependencies: [count] }
-  );
 
   const cardMaster = useMemo(() => {
     return <CallingCard />;
@@ -75,7 +32,7 @@ const BingoMaster = () => {
             </span>
           </p>
         </div>
-        <CallMaster className="h-[174px] w-[197px]" />
+        <CallMaster />
       </div>
     );
   }, [count]);

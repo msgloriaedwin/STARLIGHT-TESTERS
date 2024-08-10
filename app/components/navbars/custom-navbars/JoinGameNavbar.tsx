@@ -32,26 +32,24 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
   const [toggleMusic, setToggleMusic] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
-  const {playSound,stopSound} = useBackgroundSound({
-      soundSrc: '/assets/audios/game-music.mp3',
-      enabled: toggleMusic,
-    });
+  const { playSound, stopSound } = useBackgroundSound({
+    soundSrc: "/assets/audios/game-music.mp3",
+    enabled: toggleMusic,
+  });
   const handleShowMenu = () => {
     menuIsOpen === false ? setMenuIsOpen(true) : setMenuIsOpen(false);
   };
 
   const handleToggleMusic = () => {
     setToggleMusic(!toggleMusic);
-
   };
   useEffect(() => {
-
-    if ((pathname === '/create-game' || pathname === '/join') && toggleMusic) { 
+    if ((pathname === "/create-game" || pathname === "/join") && toggleMusic) {
       playSound();
     } else {
       stopSound();
     }
-  }, [toggleMusic, playSound, stopSound]);
+  }, [toggleMusic, playSound, stopSound, pathname]);
   const handleHowToPlayClick = () => {};
 
   return (
@@ -74,7 +72,10 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
             >
               Back
             </CustomButton>{" "}
-             <BackgroundMusic toggleMusic={toggleMusic} handleToggleMusic={handleToggleMusic} />
+            <BackgroundMusic
+              toggleMusic={toggleMusic}
+              handleToggleMusic={handleToggleMusic}
+            />
           </div>
 
           <div className="hidden md:flex max-w-[100vw] items-center gap-4">
@@ -87,7 +88,10 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
             >
               Back
             </CustomButton>
-             <BackgroundMusic toggleMusic={toggleMusic} handleToggleMusic={handleToggleMusic} />
+            <BackgroundMusic
+              toggleMusic={toggleMusic}
+              handleToggleMusic={handleToggleMusic}
+            />
           </div>
           {showCup && (
             <div className="hidden md:flex items-center gap-4 justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-3">
