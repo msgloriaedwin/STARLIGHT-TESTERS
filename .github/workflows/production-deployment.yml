@@ -27,6 +27,7 @@ jobs:
         with:
           name: docker-image
           path: bingofe-prod.tar.gz
+          retention-days: 5
 
   deploy-to-production:
     needs: build
