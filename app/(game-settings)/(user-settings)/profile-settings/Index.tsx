@@ -73,7 +73,7 @@ function Index() {
   return (
     <>
       <div className="px-6 pt-16 bg-[#F7EEE7]">
-        <div className="md:min-w-[389px] max-w-[411px] max-h-[682px]">
+        <div className="md:min-w-[389px] max-w-[411px]">
           <h1 className="text-4xl text-primary-700 mb-8">User Settings</h1>
 
           <div className="flex gap-6 items-center mb-2">

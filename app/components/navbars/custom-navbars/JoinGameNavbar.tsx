@@ -55,16 +55,16 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
   const handleHowToPlayClick = () => {};
 
   return (
-    <div className="">
+    <div className="max-w-[100vw]">
       <Navbar className="bg-body z-[995]">
         <div
-          className="container flex justify-between md:py-4 min-w-[100vw]"
+          className="container flex justify-between md:py-4 max-w-[100vw]"
           style={{
             background:
               "linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)",
           }}
         >
-          <div className="flex md:hidden justify-between items-center bg-transparent">
+          <div className="flex gap-2 md:hidden justify-between items-center bg-transparent">
             <CustomButton
               onClick={() => router.back()}
               variant="outline"
@@ -77,7 +77,7 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
              <BackgroundMusic toggleMusic={toggleMusic} handleToggleMusic={handleToggleMusic} />
           </div>
 
-          <div className="hidden md:flex  items-center gap-4">
+          <div className="hidden md:flex max-w-[100vw] items-center gap-4">
             <CustomButton
               onClick={() => router.back()}
               variant="outline"
