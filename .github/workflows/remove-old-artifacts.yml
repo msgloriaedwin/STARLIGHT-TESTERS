@@ -9,7 +9,11 @@ jobs:
     timeout-minutes: 10
 
     steps:
-    - name: Remove artifacts older than 1 day
-      uses: c-hive/gha-remove-artifacts@v1
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Delete artifact older than 1 day
+      uses: geekyeggo/delete-artifact@v5
       with:
-        age: '1 day' # Removes artifacts older than 1 day
+        name: my-artifact # Replace with your actual artifact name
+        days-old: 1       # Specify the minimum age of artifacts to delete (in days)
