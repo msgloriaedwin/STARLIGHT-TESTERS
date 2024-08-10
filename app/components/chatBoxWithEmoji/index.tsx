@@ -46,7 +46,7 @@ const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
   }, []);
 
   return (
-    <div className="max-w-[492px] min-w-[200px] md:min-w-[492px] m-auto px-4 bottom-4 my-8 relative">
+    <div className="max-w-[492px] min-w-[200px] md:min-w-[492px] m-auto px-4 bottom-4 my-5">
       {showPicker && (
         <div className="absolute ml-[-1rem]  bottom-[4rem]  md:max-w-[492px] w-full md:min-w-[492px]">
           <EmojiPicker width={"100%"} onEmojiClick={handleSelectEmoji} />

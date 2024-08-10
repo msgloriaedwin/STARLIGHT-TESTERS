@@ -25,7 +25,7 @@ const config = {
       },
       boxShadow: {
         "custom-inset":
-          "-2px -2px 0px 0px rgba(0, 0, 0, 0.32) inset, 2px 2px 0px 0px rgba(255, 255, 255, 0.4) inset"
+          "-2px -2px 0px 0px rgba(0, 0, 0, 0.32) inset, 2px 2px 0px 0px rgba(255, 255, 255, 0.4) inset",
       },
 
       colors: {

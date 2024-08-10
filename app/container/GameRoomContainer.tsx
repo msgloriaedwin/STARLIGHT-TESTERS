@@ -3,52 +3,39 @@
 import { useState, useEffect, useRef } from "react";
 import ChatInput from "@/app/components/chatBoxWithEmoji";
 import Avatars from "../components/avatars-arch/circles/avatar";
-import GameCardSelectionLobby from "../components/gamecardselection/GameCardSelectionLobbyNumber";
+import GamePlay from "../components/game-master/_components/GamePlay";
 
-const players: {
-  username: string;
-  avatar: string;
-  comment?: string;
-  timer?: number;
-}[] = [
+const players = [
   {
     username: "You",
     avatar: "/assets/images/avatar-1.png",
-    comment: "Girl, stop playing 🤣",
-    timer: 0,
   },
 
   {
     username: "Ebun",
     avatar: "/assets/images/avatar-2.png",
-    timer: 45,
-    comment: "Girl, stop playing 🤣",
   },
 
   {
     username: "i3cia",
     avatar: "/assets/images/avatar-3.png",
-    timer: 60,
   },
 
   {
     username: "Farell",
-    comment: "Yes, that will be me in a few minutes. Watch this space.",
     avatar: "/assets/images/avatar-5.png",
-    timer: 0,
   },
 
   {
     username: "Farell",
     avatar: "/assets/images/avatar-6.png",
-    comment: "Girl, stop playing 🤣",
-    timer: 0,
   },
 ];
 
-export default function WaitingRoomContainer() {
+export default function GameRoomContainer() {
   const [dimension, setDimension] = useState({ height: 0, width: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
+
+  const containerRef = useRef<HTMLElement>(null);
   const size = players.length > 8 ? 100 : players.length > 9 ? 80 : 150;
 
   useEffect(() => {
@@ -59,13 +46,16 @@ export default function WaitingRoomContainer() {
   }, []);
 
   return (
-    <div
+    <section
       ref={containerRef}
-      className={`container relative overflow-x-hidden min-h-[85vh]`}
+      className="container w-full relative overflow-x-hidden"
       style={{ paddingTop: `${size}px` }}
     >
+      <div
+        className={` min-h-[100%] absolute top-0 left-0 width-[100%] px-5`}
+      ></div>
       <Avatars dimension={dimension} avatars={players} size={size} />
-      <GameCardSelectionLobby />
+      <GamePlay />
       <ChatInput
         sendMessage={(data: any) => {
           //   setMessage(data);
@@ -74,6 +64,6 @@ export default function WaitingRoomContainer() {
           //   setGif(data);
         }}
       />
-    </div>
+    </section>
   );
 }
