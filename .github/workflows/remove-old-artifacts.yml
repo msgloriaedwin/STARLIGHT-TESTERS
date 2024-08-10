@@ -12,6 +12,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Set up GitHub CLI
+      uses: cli/cli-action@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: List and delete artifacts
       run: |
         # List all artifact names
@@ -21,3 +26,5 @@ jobs:
         for artifact in $artifacts; do
           gh artifact delete "$artifact" --confirm
         done
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
