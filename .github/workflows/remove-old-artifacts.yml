@@ -14,7 +14,10 @@ jobs:
 
     - name: List and delete artifacts
       run: |
-        artifacts=$(gh run artifacts --json name --jq '.[].name')
+        # List all artifact names
+        artifacts=$(gh run list --json artifacts --jq '.[].artifacts[].name')
+
+        # Loop through each artifact name and delete it
         for artifact in $artifacts; do
-          gh run delete-artifact $artifact --confirm
+          gh artifact delete "$artifact" --confirm
         done
