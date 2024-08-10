@@ -1,12 +1,9 @@
 name: Dev Deployment
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - dev
-    paths-ignore:
-      - .github/workflows/**
 
 jobs:
   build_and_push:
