@@ -14,11 +14,11 @@ const Hero: React.FC = () => {
           colleagues and win!
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8 w-full px-3 md:px-0">
-           <Link href='/create-game' className=' !w-full'>
-          <CustomButton variant='secondary' className='!h-12 !w-full' >
-            Create a Bingo Game
-          </CustomButton>
-           </Link>
+          <Link href='/create-game' className=' !w-full'>
+            <CustomButton variant='secondary' className='!h-12 !w-full' >
+              Create a Bingo Game
+            </CustomButton>
+          </Link>
           <form onSubmit={(e:any) => e.preventDefault()} className="flex  items-center pl-2 pr-2.5 justify-between border border-primary-700 h-12 bg-white rounded-lg w-full sm:max-w-[50%] ">
             <input
               type="text"
@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
               //value='234-546-ABC'
               className=" text-sm text-neutral-700 border-0 outline-0 !bg-transparent  max-w-[60%] h-12"
             />
-            <Link href='/join'>
+            <Link href='/join-game'>
               <button type='submit' className=" text-primary-700 whitespace-nowrap text-sm">
                 Join Bingo
               </button>

@@ -1,52 +1,38 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import LetterCardSelection from "@/app/components/game-screen/room/lobby/gamecardselection/LetterCardSelection";
+import Avatars from "@/app/components/game-screen/general/avatars-arch/circles/avatar";
 import ChatInput from "@/app/components/game-screen/general/chatBoxWithEmoji";
-import Avatars from "../components/game-screen/general/avatars-arch/circles/avatar";
-import GameCardSelectionLobby from "../components/gamecardselection/GameCardSelectionLobbyNumber";
 
-const players: {
-	username: string;
-	avatar: string;
-	comment?: string;
-	timer?: number;
-}[] = [
+const players = [
 	{
 		username: "You",
 		avatar: "/assets/images/avatar-1.png",
-		comment: "Girl, stop playing 🤣",
-		timer: 0,
 	},
 
 	{
 		username: "Ebun",
 		avatar: "/assets/images/avatar-2.png",
-		timer: 45,
-		comment: "Girl, stop playing 🤣",
 	},
 
 	{
 		username: "i3cia",
 		avatar: "/assets/images/avatar-3.png",
-		timer: 60,
 	},
 
 	{
 		username: "Farell",
-		comment: "Yes, that will be me in a few minutes. Watch this space.",
 		avatar: "/assets/images/avatar-5.png",
-		timer: 0,
 	},
 
 	{
 		username: "Farell",
 		avatar: "/assets/images/avatar-6.png",
-		comment: "Girl, stop playing 🤣",
-		timer: 0,
 	},
 ];
 
-export default function WaitingRoomContainer() {
+export default function AlphabetLayoutContainer() {
 	const [dimension, setDimension] = useState({ height: 0, width: 0 });
 	const containerRef = useRef<HTMLDivElement>(null);
 	const size = players.length > 8 ? 100 : players.length > 9 ? 80 : 150;
@@ -61,10 +47,12 @@ export default function WaitingRoomContainer() {
 	return (
 		<div
 			ref={containerRef}
-			className={`container relative overflow-x-hidden min-h-[85vh]`}
-			style={{ paddingTop: `${size}px` }}>
-			<Avatars dimension={dimension} avatars={players} size={size} />
-			<GameCardSelectionLobby />
+			className="container relative px-5 overflow-x-hidden"
+			style={{ paddingTop: `calc(${size}px - 60px)` }}>
+			<div className="hidden md:block">
+				<Avatars dimension={dimension} avatars={players} size={size} />
+			</div>
+			<LetterCardSelection />
 			<ChatInput
 				sendMessage={(data: any) => {
 					//   setMessage(data);

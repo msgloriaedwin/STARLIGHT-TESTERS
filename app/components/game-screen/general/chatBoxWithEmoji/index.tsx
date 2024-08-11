@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { ArrowUp } from "lucide-react";
-import emojiIcon from "../../../public/emojiIcon.svg";
+import emojiIcon from "@/public/emojiIcon.svg";
 import Image from "next/image";
-import createIcon from "../../../public/create.svg";
-import gifIcon from "../../../public/gif.svg";
+import createIcon from "@/public/create.svg";
+import gifIcon from "@/public/gif.svg";
 import { defaultEmoji } from "./data";
 interface ChatInputProps {
   handleSelectGif: (data: any) => void;

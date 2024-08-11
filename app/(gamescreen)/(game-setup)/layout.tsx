@@ -14,7 +14,7 @@ export default function RootLayout({
 	})
 
 	useEffect(() => {
-		if (pathname === "/create-game" || pathname === "/join") {
+		if (pathname === "/create-game" || pathname === "/join-game") {
 			playSound()
 		} else {
 			stopSound()

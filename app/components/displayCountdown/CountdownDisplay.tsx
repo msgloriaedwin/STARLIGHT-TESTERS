@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import GameMaster from "../gameMaster/gameMaster";
+import GameMaster from '../game-screen/room/in-game/gameMaster/gameMaster';
 
 const CountdownDisplayLoader: React.FC = () => {
   const [count, setCount] = useState(3);

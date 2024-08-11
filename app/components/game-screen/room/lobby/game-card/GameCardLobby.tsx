@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { GameCardProps } from "@/lib/customPropTypes"
-
+import AddCardIcon from "@/public/add-card.svg"
 
 
 
@@ -38,7 +38,7 @@ const GameCardLobby = ({ numberValue, onCardActivate, numberIndex, hiddenNumArrI
 				<div
 					className={`cursor-pointer md:max-w-16 max-w-10 w-full max-h-14 md:max-h-20 relative rounded-tl rounded-tr-none rounded-br rounded-bl-none  box-border overflow-hidden shrink-0 flex flex-col items-center justify-center py-[1.5rem] md:py-[1.3rem] px-[0.4rem] md:px-[0.7rem] text-center text-[1.8rem] md:text-[3rem] border-b-[3px] border-solid border-primary-blue border-l-[3px] bg-primary-200 text-transaprent`}>
 					<Image
-						src="./add-card.svg"
+						src={AddCardIcon}
 						alt="Add card Button"
 						width={60}
 						height={60}

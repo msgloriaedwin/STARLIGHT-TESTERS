@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import GameMaster from "../../../public/GameMaster.svg";
-import GamesMasterHalf from "../../../public/GamesMasterHalf.svg";
-import GamesMasterLeft from "../../../public/GamesMasterLeftRaised.svg";
-import GamesMasterBingo from "../../../public/GamesMasterBingo.svg";
+import GameMaster from "@/public/GameMaster.svg";
+import GamesMasterHalf from "@/public/GamesMasterHalf.svg";
+import GamesMasterLeft from "@/public/GamesMasterLeftRaised.svg";
+import GamesMasterBingo from "@/public/GamesMasterBingo.svg";
 
 interface GameMasterProps {
   src: string;

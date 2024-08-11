@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import TickCircle from "@/public/tick-circle.svg";
+import AddCardIcon from "@/public/add-card.svg"
 
 type OnCardActivateProps = {
   value: string;
@@ -39,7 +41,7 @@ const LetterCard = ({ value, onCardActivate }: LetterCardProps) => {
             {isCardActive ? (
               <Image
                 className="z-[2] absolute top-[-0.6rem] right-[-0.6rem] w-6 md:w-7"
-                src="./tick-circle.svg"
+                src={TickCircle}
                 alt="green circle tick image"
                 width="30"
                 height="30"
@@ -54,7 +56,7 @@ const LetterCard = ({ value, onCardActivate }: LetterCardProps) => {
           className={`cursor-pointer md:max-w-16 max-w-10 w-full max-h-14 md:max-h-20 relative rounded-tl rounded-tr-none rounded-br rounded-bl-none box-border overflow-hidden shrink-0 flex flex-col items-center justify-center py-[1.5rem] md:py-[1.3rem] px-[0.4rem] md:px-[0.7rem] text-center text-[1.8rem] md:text-[3rem] border-b-[3px] border-solid border-primary-blue border-l-[3px] bg-primary-200 text-transparent`}
         >
           <Image
-            src="./add-card.svg"
+            src={AddCardIcon}
             alt="Add card Button"
             width={60}
             height={60}
