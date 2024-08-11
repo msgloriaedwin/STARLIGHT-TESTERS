@@ -1,8 +1,6 @@
 "use client";
 import { Link, Plus } from "lucide-react";
 import CustomButton from "./custombutton";
-import SignUpNavbar from "../navbars/custom-navbars/signUpNavbar";
-import LandingPageNavbar from "../navbars/custom-navbars/LandingPageNavbar";
 
 export default function SampleButtons() {
   //create the following functions
