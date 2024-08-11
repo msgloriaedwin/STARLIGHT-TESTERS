@@ -1,7 +1,6 @@
-//import { Button } from "@/components/ui/button";
-import { ArrowLeft, ChevronDown, User } from "lucide-react";
 
-import CustomButton from "../button/custombutton";
+import { ArrowLeft, ChevronDown, User } from "lucide-react";
+import CustomButton from "../shared/button/custombutton";
 
 export default function SettingsHeader () {
   return (

@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
-import AvatarSelector from "@/app/components/forms/create-game-form/AvatarSelector";
+import AvatarSelector from "@/app/components/shared/forms/create-game-form/AvatarSelector";
 import CustomButton from "../../button/custombutton";
 import { useRouter } from "next/navigation";
 

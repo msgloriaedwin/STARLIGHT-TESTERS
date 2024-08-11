@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import user from "../asset/user.png";
 import {
   ArrowLeft,
   ChevronDown,
@@ -10,26 +9,27 @@ import {
   User,
   UserRound,
   X,
+ 
 } from "lucide-react";
 import Navbar from "../Navbar";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import CustomButton from "../../button/custombutton";
-import cupIcon from "../../../../public/cup.svg";
+import cupIcon from "../../../../../public/cup.svg";
+import infoIcon from "../../../../../public/info-circle.svg";
+import closeIcon from "../../../../../public/close-circle.svg";
 import { useBackgroundSound } from "@/utils/game-sounds/useBackgroundMusic";
 import BackgroundMusic from "../../sound-effects";
-import infoIcon from "../../../../public/info-circle.svg";
-import closeIcon from "../../../../public/close-circle.svg";
 type PageProps = {
   handleGoBack?: () => void;
   handleShareGameLink?: () => void;
-  showCup?: boolean;
+  showCup: boolean;
 };
 
-const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
+const CreateGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [showDestopNav, setShowDestopNav] = useState(false);
   const [toggleMusic, setToggleMusic] = useState(true);
+  const [showDestopNav, setShowDestopNav] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const { playSound, stopSound } = useBackgroundSound({
@@ -53,16 +53,16 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
   const handleHowToPlayClick = () => {};
 
   return (
-    <div className="max-w-[100vw]">
+    <div className="">
       <Navbar className="bg-body z-[995]">
         <div
-          className="container flex justify-between md:py-4 max-w-[100vw]"
+          className="container flex justify-between py-4"
           style={{
             background:
               "linear-gradient(181deg, #F7EEE7 0.47%, #F9E9A3 277.67%, #FD0 438.32%)",
           }}
         >
-          <div className="flex gap-2 md:hidden justify-between items-center bg-transparent">
+          <div className="flex md:hidden justify-between items-center bg-transparent">
             <CustomButton
               onClick={() => router.back()}
               variant="outline"
@@ -72,13 +72,9 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
             >
               Back
             </CustomButton>{" "}
-            <BackgroundMusic
-              toggleMusic={toggleMusic}
-              handleToggleMusic={handleToggleMusic}
-            />
           </div>
 
-          <div className="hidden md:flex max-w-[100vw] items-center gap-4">
+          <div className="hidden md:flex  items-center gap-4">
             <CustomButton
               onClick={() => router.back()}
               variant="outline"
@@ -88,20 +84,20 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
             >
               Back
             </CustomButton>
+
             <BackgroundMusic
               toggleMusic={toggleMusic}
               handleToggleMusic={handleToggleMusic}
             />
           </div>
           {showCup && (
-            <div className="hidden md:flex items-center gap-4 justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-3">
-              <Image src={cupIcon} alt="cup" width={37} height={37.6} />
-              <span className="text-[24px] font-[700] text-[#4CAF50]">
+            <div className="hidden md:flex items-center gap-4  justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-2">
+              <Image src={cupIcon} alt="cup" width={20} height={20} />
+              <span className="text-[16px] font-[700] text-[#4CAF50]">
                 $350
               </span>
             </div>
           )}
-
           <div className="flex gap-6 items-center">
             {showDestopNav && (
               <div className="hidden md:flex absolute right-[8.5rem] bg-[#FFFDF2] rounded-[8px] p-4 w-[339px]  flex-col gap-4 top-[5rem]">
@@ -253,4 +249,4 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
   );
 };
 
-export default JoinGameNavbar;
+export default CreateGameNavbar;

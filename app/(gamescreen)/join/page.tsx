@@ -1,4 +1,4 @@
-import JoinGameForm from "@/app/components/forms/join-game-form";
+import JoinGameForm from "@/app/components/shared/forms/join-game-form";
 
 import avatar1 from "../../../public/assets/images/avatar-1.png";
 import avatar2 from "../../../public/assets/images/avatar-2.png";
@@ -9,7 +9,7 @@ import avatar6 from "../../../public/assets/images/avatar-6.png";
 import avatar7 from "../../../public/assets/images/avatar-7.png";
 import avatar8 from "../../../public/assets/images/avatar-8.png";
 import avatar9 from "../../../public/assets/images/avatar-9.png";
-import JoinGameNavbar from "@/app/components/navbars/custom-navbars/JoinGameNavbar";
+import JoinGameNavbar from "@/app/components/shared/navbars/custom-navbars/JoinGameNavbar";
 
 const Page = () => {
   const avatars = [

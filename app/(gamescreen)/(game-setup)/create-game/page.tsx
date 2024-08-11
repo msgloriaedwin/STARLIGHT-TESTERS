@@ -2,9 +2,9 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import CreateGameForm from "../../../components/forms/create-game-form/CreateGameForm";
+import CreateGameForm from "../../../components/shared/forms/create-game-form/CreateGameForm";
 
-import CreateGameNavbar from "@/app/components/navbars/custom-navbars/CreateGameNavbar";
+import CreateGameNavbar from "@/app/components/shared/navbars/custom-navbars/CreateGameNavbar";
 
 import Avatar1 from "../../../../public/assets/images/avatar-1.png";
 import Avatar2 from "../../../../public/assets/images/avatar-2.png";
@@ -15,7 +15,7 @@ import Avatar6 from "../../../../public/assets/images/avatar-6.png";
 import Avatar7 from "../../../../public/assets/images/avatar-7.png";
 import Avatar8 from "../../../../public/assets/images/avatar-8.png";
 import Avatar9 from "../../../../public/assets/images/avatar-9.png";
-import JoinGameNavbar from "@/app/components/navbars/custom-navbars/JoinGameNavbar";
+
 
 const CreateGamePage: React.FC = () => {
   const router = useRouter();

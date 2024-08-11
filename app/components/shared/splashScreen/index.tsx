@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import logo from "../../../public/assets/images/Remote Bingo Logo A.png";
+import logo from "../../../../public/assets/images/Remote Bingo Logo A.png";
 
 const SplashScreen = () => {
   const [showSplash, setShowSplash] = useState(true);

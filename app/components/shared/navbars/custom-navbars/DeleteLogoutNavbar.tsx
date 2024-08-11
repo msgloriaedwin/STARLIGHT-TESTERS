@@ -3,7 +3,7 @@ import { ArrowLeft, Menu } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import logo from "../../../../public/assets/images/Remote Bingo Logo A.png";
+import logo from "../../../../../public/assets/images/Remote Bingo Logo A.png";
 
 export default function DeleteLogoutNavbar() {
   const router = useRouter();

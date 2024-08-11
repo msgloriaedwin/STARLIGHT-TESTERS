@@ -2,12 +2,12 @@
 
 import React, { useState, FC } from "react";
 import { z } from "zod";
-import RBInput from "@/app/components/input";
-import FormCard from "@/app/components/formcard/formCard";
-import CustomButton from "@/app/components/button/custombutton";
+import RBInput from "@/app/components/shared/input";
+import FormCard from "@/app/components/shared/formcard/formCard";
+import CustomButton from "@/app/components/shared/button/custombutton";
 import Image from "next/image";
 import Link from "next/link";
-import ForgotPasswordNavbar from "@/app/components/navbars/custom-navbars/ForgotPasswordNavbar";
+import ForgotPasswordNavbar from "@/app/components/shared/navbars/custom-navbars/ForgotPasswordNavbar";
 
 const loginSchema = z.object({
   username: z.string().min(1, "Username is required"),

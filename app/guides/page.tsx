@@ -3,21 +3,19 @@ import { ChevronDownCircle, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
 import GettingStarted from "../components/guides/getting-started";
 import ColorScheme from "../components/guides/colorscheme";
-import SampleButtons from "../components/button/page";
+import SampleButtons from "../components/shared/button/page";
 import ChatInput from "../components/chatbox";
-import OtpComponent from "../components/otp/otpcomponent";
-import CustomButton from "../components/button/custombutton";
+import CustomButton from "../components/shared/button/custombutton";
 import GameOverModal from "../components/GameOverModal/GameOverModal";
-import CreateGameForm from "../components/forms/create-game-form/CreateGameForm";
+import CreateGameForm from "../components/shared/forms/create-game-form/CreateGameForm";
 import { ToggleControl } from "../components/ToggleControl/ToggleControl";
 import Player from "../components/player/Player";
 import MessageBubble from "../components/messageBubble/MessageBubble";
 import Slider from "../components/slider";
-import ForgotPasswordForm from "../components/forms/forgotPasswordForm/forgotPassword";
-import PasswordResetForm from "../components/passwordResetForm/passwordResetForm";
+import ForgotPasswordForm from "../components/shared/forms/forgotPasswordForm/forgotPassword";
 import GameCardSelection from "../components/gamecardselection/gamecardselection";
-import Footer from "../components/footer/footer";
-import LandingPageNavbar from "../components/navbars/custom-navbars/LandingPageNavbar";
+import Footer from "../components/shared/footer/footer";
+import LandingPageNavbar from "../components/shared/navbars/custom-navbars/LandingPageNavbar";
 import Avatar1 from "../../public/assets/images/avatar-1.png";
 import Avatar2 from "../../public/assets/images/avatar-2.png";
 import Avatar3 from "../../public/assets/images/avatar-3.png";
@@ -27,6 +25,8 @@ import Avatar6 from "../../public/assets/images/avatar-6.png";
 import Avatar7 from "../../public/assets/images/avatar-7.png";
 import Avatar8 from "../../public/assets/images/avatar-8.png";
 import Avatar9 from "../../public/assets/images/avatar-9.png";
+import OtpComponent from "../components/authentication/otp/otpcomponent";
+import PasswordResetForm from "../components/authentication/passwordResetForm/passwordResetForm";
 
 const players = [
   { name: "Precious", score: "3/5", imageUrl: "/assets/images/modalpic1.png" },

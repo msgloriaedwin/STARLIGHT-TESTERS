@@ -13,11 +13,12 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, UserRoundX } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import DeleteLogoutNavbar from "../navbars/custom-navbars/DeleteLogoutNavbar";
 import profileIcons from "@/public/assets/icons/profile-delete.svg";
+import DeleteLogoutNavbar from "../../shared/navbars/custom-navbars/DeleteLogoutNavbar";
+
 
 export default function DeleteAccountPage() {
   const [isDeleted, setIsDeleted] = useState(false);

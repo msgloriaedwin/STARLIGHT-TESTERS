@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { ToggleControlSettings } from '@/app/components/ToggleControl/ToggleControlSettings';
-import RadioButton from '@/app/components/radio-button/radio-button';
-import CustomButton from '@/app/components/button/custombutton';
+import RadioButton from '@/app/components/shared/radio-button/radio-button';
+import CustomButton from '@/app/components/shared/button/custombutton';
 import Modal from '@/app/components/modal/modal';
 
 const Index: React.FC = () => {

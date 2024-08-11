@@ -1,15 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import SignUpNavbar from "../navbars/custom-navbars/signUpNavbar";
-import Image from "next/image";
 import Link from "next/link";
-import CustomButton from "../button/custombutton";
-import RBInput from "../input";
-import FormCard from "../formcard/formCard";
+
 import { z } from "zod";
 import { signupSchema } from "@/utils/Validation Schema/signupSchema";
-import ForgotPasswordNavbar from "@/app/components/navbars/custom-navbars/ForgotPasswordNavbar";
+
 import AuthLink from "../authLinks";
+import ForgotPasswordNavbar from "../../shared/navbars/custom-navbars/ForgotPasswordNavbar";
+import RBInput from "../../shared/input";
+import FormCard from "../../shared/formcard/formCard";
+import CustomButton from "../../shared/button/custombutton";
 
 type FormData = z.infer<typeof signupSchema>;
 
