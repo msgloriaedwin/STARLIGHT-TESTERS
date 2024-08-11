@@ -48,6 +48,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd bingofe/staging/bingo_fe
+            chmod +x ./scripts/staging_deploy.sh
             ./scripts/staging_deploy.sh
 
 # name: Staging Deployment
