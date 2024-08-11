@@ -6,7 +6,7 @@ import RBInput from '@/app/components/shared/input'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
 import Link from 'next/link'
-import ForgotPasswordNavbar from "@/app/components/shared/navbars/custom-navbars/ForgotPasswordNavbar";
+import Navbar from '@/app/components/shared/navbars/Navbar'
 
 
 const ForgotPassword = () => {
@@ -26,7 +26,7 @@ const ForgotPassword = () => {
 
     return (
         <>
-        <ForgotPasswordNavbar/>
+        <Navbar />
         <div className="bg-body flex flex-col h-screen justify-center items-center">
             <div className="mb-6">
                 <p className='text-2xl md:text-4xl mb-3'>Forgot Password?</p>

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import OtpInputComponent from "./otpinput";
 import { useRouter } from "next/navigation";
-import ForgotPasswordNavbar from "@/app/components/shared/navbars/custom-navbars/ForgotPasswordNavbar";
+import Navbar from "@/app/components/shared/navbars/Navbar";
 
 const OtpComponent: React.FC = () => {
   const [otp, setOtp] = useState(Array(6).fill(""));
@@ -46,7 +46,7 @@ const OtpComponent: React.FC = () => {
 
   return (
     <>
-    <ForgotPasswordNavbar/>
+    <Navbar />
       <div className='bg-body h-screen flex justify-center items-center'>
         <div className='] w-fit text-primary-900 text-center'>
           <h2 className='text-2xl xl:text-3xl mb-2 leading-[130%]'>

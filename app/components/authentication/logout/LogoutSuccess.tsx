@@ -3,8 +3,8 @@
 import { User } from "lucide-react";
 import { useRouter } from "next/navigation";
 import CustomButton from "../../shared/button/custombutton";
-import DeleteLogoutNavbar from "../../shared/navbars/custom-navbars/DeleteLogoutNavbar";
 import ImageTextButtons from "../../shared/imageTextButtons";
+import Navbar from "../../shared/navbars/Navbar";
 
 type Props = {};
 
@@ -20,7 +20,7 @@ const LogoutSuccess = (props: Props) => {
   };
   return (
     <div className="min-h-screen bg-[#faf1e4] flex flex-col">
-      <DeleteLogoutNavbar />
+      <Navbar />
       <div className="flex-grow flex flex-col items-center justify-center p-4">
         <ImageTextButtons message="Log Out Successful.">
           <CustomButton

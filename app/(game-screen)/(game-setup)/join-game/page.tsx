@@ -1,5 +1,6 @@
 import JoinGameForm from "@/app/components/screen/setup/join-game";
 import JoinGameNavbar from "@/app/components/shared/navbars/custom-navbars/JoinGameNavbar";
+import Navbar from "@/app/components/shared/navbars/Navbar";
 import avatar1 from "@/public/assets/images/avatar-1.png";
 import avatar2 from "@/public/assets/images/avatar-2.png";
 import avatar3 from "@/public/assets/images/avatar-3.png";
@@ -24,7 +25,7 @@ const Page = () => {
 	];
 	return (
 		<>
-			<JoinGameNavbar showCup={false} />
+			<Navbar />
 			<section className="bg-body h-screen flex md:items-center justify-center mt-10 md:mt-0  px-5">
 				<div className="flex  justify-center ">
 					<JoinGameForm avatars={avatars} />

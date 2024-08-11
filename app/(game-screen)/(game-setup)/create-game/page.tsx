@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import CreateGameNavbar from "@/app/components/shared/navbars/custom-navbars/CreateGameNavbar";
 import CreateGameForm from "@/app/components/shared/forms/create-game-form/CreateGameForm";
 import Avatar1 from "@/public/assets/images/avatar-1.png";
 import Avatar2 from "@/public/assets/images/avatar-2.png";
@@ -12,6 +11,7 @@ import Avatar6 from "@/public/assets/images/avatar-6.png";
 import Avatar7 from "@/public/assets/images/avatar-7.png";
 import Avatar8 from "@/public/assets/images/avatar-8.png";
 import Avatar9 from "@/public/assets/images/avatar-9.png";
+import Navbar from "@/app/components/shared/navbars/Navbar";
 
 const CreateGamePage: React.FC = () => {
 	const router = useRouter();
@@ -51,8 +51,7 @@ const CreateGamePage: React.FC = () => {
 
 	return (
 		<>
-			<CreateGameNavbar showCup={false} />
-
+			<Navbar />
 			<div className="min-h-screen">
 				<main className="container mx-auto px-4 pt-4 pb-8">
 					<h1 className="text-4xl font-bold text-center mt-6 mb-6 text-primary-900">
