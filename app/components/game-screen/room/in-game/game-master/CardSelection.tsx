@@ -1,6 +1,6 @@
 import { useState } from "react";
-import GameCardLobby from "../../game-card/GameCardLobby";
 import { OnCardValueProps } from "@/lib/customPropTypes";
+import GameCardLobby from "../../lobby/game-card/GameCardLobby";
 
 export default function CardSelection() {
   const [playerCards, setPlayerCards] = useState<string[]>([
