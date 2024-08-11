@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import ChatInput from "@/app/components/chatBoxWithEmoji"
-import Avatars from "../components/avatars-arch/circles/avatar"
-import GameCardSelectionLobby from "../components/gamecardselection/GameCardSelectionLobbyNumber"
+import { useState, useEffect, useRef } from "react";
+import ChatInput from "@/app/components/screen/general/chatBoxWithEmoji";
+import Avatars from "../components/screen/general/avatars-arch/circles/avatar";
+import GameCardSelectionLobby from "../components/screen/room/lobby/gamecardselection/GameCardSelectionLobbyNumber";
 
 const players = [
 	{
@@ -30,21 +30,21 @@ const players = [
 		username: "Farell",
 		avatar: "/assets/images/avatar-6.png",
 	},
-]
+];
 
 export default function WaitingRoomContainerNumbers() {
-	const [dimension, setDimension] = useState({ height: 0, width: 0 })
-    const [mediumScreen, setMediumScreen] = useState<boolean>(true)
-	const containerRef = useRef<HTMLDivElement>(null)
-	const size = players.length > 8 ? 100 : players.length > 9 ? 80 : 150
+	const [dimension, setDimension] = useState({ height: 0, width: 0 });
+	const [mediumScreen, setMediumScreen] = useState<boolean>(true);
+	const containerRef = useRef<HTMLDivElement>(null);
+	const size = players.length > 8 ? 100 : players.length > 9 ? 80 : 150;
 
 	useEffect(() => {
 		setDimension({
 			height: containerRef.current?.offsetHeight || 0,
 			width: containerRef.current?.offsetWidth || 0,
-		})
-        setMediumScreen(window.innerWidth <= 600)
-	}, [])
+		});
+		setMediumScreen(window.innerWidth <= 600);
+	}, []);
 
 	return (
 		<div className="box-border h-[80vh] md:h-auto">
@@ -70,5 +70,5 @@ export default function WaitingRoomContainerNumbers() {
 				</div>
 			</div>
 		</div>
-	)
+	);
 }
