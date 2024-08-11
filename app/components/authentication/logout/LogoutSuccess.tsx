@@ -1,9 +1,10 @@
 "use client";
-import DeleteLogoutNavbar from "../navbars/custom-navbars/DeleteLogoutNavbar";
-import ImageTextButtons from "../imageTextButtons";
-import CustomButton from "../button/custombutton";
+
 import { User } from "lucide-react";
 import { useRouter } from "next/navigation";
+import CustomButton from "../../shared/button/custombutton";
+import DeleteLogoutNavbar from "../../shared/navbars/custom-navbars/DeleteLogoutNavbar";
+import ImageTextButtons from "../../shared/imageTextButtons";
 
 type Props = {};
 

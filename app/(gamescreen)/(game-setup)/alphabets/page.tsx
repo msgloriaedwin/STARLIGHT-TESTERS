@@ -1,5 +1,5 @@
 "use client";
-import CreateGameNavbar from "@/app/components/navbars/custom-navbars/CreateGameNavbar";
+import CreateGameNavbar from "@/app/components/shared/navbars/custom-navbars/CreateGameNavbar";
 import AlphabetLayoutContainer from "./alphabetLayoutContainer";
 
 const page = () => {

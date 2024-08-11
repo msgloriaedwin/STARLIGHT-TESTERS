@@ -1,5 +1,4 @@
-import Image from "next/image";
-import messageIcon from "../../../public/Vector (2).jpg";
+
 import Player from "../player/Player";
 import player1 from "../../../public/assets/images/avatar-1.png";
 interface MessageProps {

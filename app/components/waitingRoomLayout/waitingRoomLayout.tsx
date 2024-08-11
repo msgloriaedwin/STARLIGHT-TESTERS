@@ -1,6 +1,8 @@
 "use client"
 
-import GameCustomizeNavBar from '../navbars/custom-navbars/GameCustomizeNavBar';
+import GameCustomizeNavBar from "../shared/navbars/custom-navbars/GameCustomizeNavBar";
+
+
 
 export default function WaitingRoomLayout() {
     const handleShareGameLink = () => {

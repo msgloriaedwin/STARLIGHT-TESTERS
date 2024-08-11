@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import OtpInputComponent from "./otpinput";
 import { useRouter } from "next/navigation";
-import ForgotPasswordNavbar from "@/app/components/navbars/custom-navbars/ForgotPasswordNavbar";
+import ForgotPasswordNavbar from "@/app/components/shared/navbars/custom-navbars/ForgotPasswordNavbar";
 
 const OtpComponent: React.FC = () => {
   const [otp, setOtp] = useState(Array(6).fill(""));

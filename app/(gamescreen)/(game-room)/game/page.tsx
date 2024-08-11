@@ -1,5 +1,5 @@
 "use client";
-import JoinGameNavbar from "@/app/components/navbars/custom-navbars/JoinGameNavbar";
+import JoinGameNavbar from "@/app/components/shared/navbars/custom-navbars/JoinGameNavbar";
 import GameRoomContainer from "@/app/container/GameRoomContainer";
 const page = () => {
   return (
