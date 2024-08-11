@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import ChatInput from "@/app/components/game-screen/general/chatBoxWithEmoji";
-import Avatars from "../components/game-screen/general/avatars-arch/circles/avatar";
-import GamePlay from "../components/game-screen/room/in-game/game-master/GamePlay";
+import Avatars from "../components/screen/general/avatars-arch/circles/avatar";
+import GamePlay from "../components/screen/room/in-game/game-master/GamePlay";
+import ChatInput from "../components/screen/general/chatBoxWithEmoji";
 
 const players = [
 	{
