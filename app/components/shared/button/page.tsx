@@ -3,8 +3,7 @@ import { Link, Plus } from "lucide-react";
 import CustomButton from "./custombutton";
 
 export default function SampleButtons() {
-  //create the following functions
-  //onLogin, onSignup, handleHowToPlayClick, handleShowMenu
+  // Replace these functions with your own logic when needed
   const onLogin = () => {
   };
   const onSignup = () => {
