@@ -45,6 +45,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd bingofe/dev/bingo_fe
+            chmod +x ./scripts/dev_deploy.sh
             ./scripts/dev_deploy.sh
 # name: Dev Deployment
 
