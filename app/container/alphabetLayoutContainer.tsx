@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import LetterCardSelection from "@/app/components/game-screen/room/lobby/gamecardselection/LetterCardSelection";
-import Avatars from "@/app/components/game-screen/general/avatars-arch/circles/avatar";
-import ChatInput from "@/app/components/game-screen/general/chatBoxWithEmoji";
+import LetterCardSelection from "@/app/components/screen/room/lobby/gamecardselection/LetterCardSelection";
+import Avatars from "@/app/components/screen/general/avatars-arch/circles/avatar";
+import ChatInput from "@/app/components/screen/general/chatBoxWithEmoji";
 
 const players = [
 	{

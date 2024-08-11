@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import CreateGameNavbar from "@/app/components/navbars/custom-navbars/CreateGameNavbar";
-import CreateGameForm from "@/app/components/game-screen/setup/create-game/CreateGameForm";
+import CreateGameNavbar from "@/app/components/shared/navbars/custom-navbars/CreateGameNavbar";
+import CreateGameForm from "@/app/components/shared/forms/create-game-form/CreateGameForm";
 import Avatar1 from "@/public/assets/images/avatar-1.png";
 import Avatar2 from "@/public/assets/images/avatar-2.png";
 import Avatar3 from "@/public/assets/images/avatar-3.png";

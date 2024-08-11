@@ -15,9 +15,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
-import AvatarSelector from "@/app/components/game-screen/setup/create-game/AvatarSelector";
-import CustomButton from "../../../button/custombutton";
+
 import { useRouter } from "next/navigation";
+import AvatarSelector from "../create-game/AvatarSelector";
+import CustomButton from "@/app/components/shared/button/custombutton";
 
 const formSchema = z.object({
 	gameId: z.string().min(1, { message: "Game ID is required" }),

@@ -25,7 +25,7 @@ import Avatar8 from "../../public/assets/images/avatar-8.png";
 import Avatar9 from "../../public/assets/images/avatar-9.png";
 import OtpComponent from "../components/authentication/otp/otpcomponent";
 import PasswordResetForm from "../components/authentication/passwordResetForm/passwordResetForm";
-import ChatInput from "../components/game-screen/general/chatBoxWithEmoji";
+import ChatInput from "../components/screen/general/chatBoxWithEmoji";
 import SelectedGameCardRoom from "../components/game-screen/room/in-game/SelectedGameCardRoom";
 
 const players = [

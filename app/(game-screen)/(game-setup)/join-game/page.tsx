@@ -1,5 +1,5 @@
-import JoinGameNavbar from "@/app/components/navbars/custom-navbars/JoinGameNavbar";
-import JoinGameForm from "@/app/components/game-screen/setup/join-game";
+import JoinGameForm from "@/app/components/screen/setup/join-game";
+import JoinGameNavbar from "@/app/components/shared/navbars/custom-navbars/JoinGameNavbar";
 import avatar1 from "@/public/assets/images/avatar-1.png";
 import avatar2 from "@/public/assets/images/avatar-2.png";
 import avatar3 from "@/public/assets/images/avatar-3.png";

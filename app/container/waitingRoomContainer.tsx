@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import ChatInput from "@/app/components/game-screen/general/chatBoxWithEmoji";
+import ChatInput from "@/app/components/screen/general/chatBoxWithEmoji";
 import Avatars from "../components/game-screen/general/avatars-arch/circles/avatar";
 import GameCardSelectionLobby from "../components/game-screen/room/lobby/gamecardselection/GameCardSelectionLobbyNumber";
 
