@@ -1,5 +1,6 @@
 import Image from "next/image";
-import logo from "../../../public/assets/images/Remote Bingo Logo A.png";
+import logo from "../../../../public/assets/images/Remote Bingo Logo A.png";
+
 
 interface ImageTextButtonsProps {
   message: string;

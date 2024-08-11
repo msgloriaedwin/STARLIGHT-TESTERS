@@ -5,7 +5,7 @@ import {
   DialogOverlay,
 } from "../../../components/ui/dialog";
 import Image from "next/image";
-import RBButton from "../button/custombutton";
+import RBButton from "../shared/button/custombutton";
 
 interface ModalProps {
   isOpen: boolean;

@@ -1,10 +1,10 @@
 'use client'
-import { useRouter } from "next/navigation";
-import Layout from "./components/layout";
+import Layout from "./components/shared/layout";
 import React, { useState } from "react";
-import LandingPageNavbar from "./components/navbars/custom-navbars/LandingPageNavbar";
-import Footer from "./components/footer/footer"
-import Hero from "./components/hero"
+import LandingPageNavbar from "./components/shared/navbars/custom-navbars/LandingPageNavbar";
+import Footer from "./components/shared/footer/footer"
+import Hero from "./components/home/hero";
+
 
 export default function HomeHero(){
 

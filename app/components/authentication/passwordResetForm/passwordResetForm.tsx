@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import FormCard from "../formcard/formCard";
-import RBInput from "../input";
-import RBButton from "../button/custombutton";
+import FormCard from "../../shared/formcard/formCard";
+import RBInput from "../../shared/input";
+import RBButton from "../../shared/button/custombutton";
 import Link from "next/link";
 
 interface PasswordResetFormProps {

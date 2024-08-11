@@ -1,6 +1,6 @@
 
 import React from 'react';
-import CustomButton from '../button/custombutton';
+import CustomButton from '../../shared/button/custombutton';
 import Link from 'next/link';
 import Image from 'next/image'
 const Hero: React.FC = () => {

@@ -15,7 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { UserRound} from "lucide-react";
 import Image from "next/image";
-import DeleteLogoutNavbar from "../navbars/custom-navbars/DeleteLogoutNavbar";
+import DeleteLogoutNavbar from "../shared/navbars/custom-navbars/DeleteLogoutNavbar";
 import Link from "next/link";
 
 export default function LeaveGamePage() {

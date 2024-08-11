@@ -1,5 +1,5 @@
 import WaitingRoomContainerNumbers from "@/app/container/waitingRoomContainerNumbers"
-import JoinGameNavbar from "@/app/components/navbars/custom-navbars/JoinGameNavbar"
+import JoinGameNavbar from "@/app/components/shared/navbars/custom-navbars/JoinGameNavbar"
 
 export default function WaitingRoomNumbers() {
 	return (

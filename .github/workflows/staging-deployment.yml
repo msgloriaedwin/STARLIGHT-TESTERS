@@ -10,7 +10,7 @@ on:
 
 jobs:
   build_and_push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
   deploy_to_staging:
     needs: build_and_push
     if: github.event.repository.fork == false
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Deploy to staging environment
@@ -48,6 +48,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd bingofe/staging/bingo_fe
+            chmod +x ./scripts/staging_deploy.sh
             ./scripts/staging_deploy.sh
 
 # name: Staging Deployment
