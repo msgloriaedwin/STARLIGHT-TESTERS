@@ -9,9 +9,10 @@ import CustomButton from "../../button/custombutton";
 type PageProps = {
   onLogin: () => void;
   onSignup: () => void;
+  hideAuthBtn?: boolean;
 };
 
-const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
+const LandingPageNavbar = ({ onLogin, onSignup, hideAuthBtn }: PageProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   const handleShowMenu = () => {
@@ -25,7 +26,7 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
   return (
     <div className="w-full">
       <Navbar className="justify-between fixed top-0 left-0 md:px-20 px-4 flex items-center w-full bg-body z-[999]">
-        <div className=" hidden md:hidden justify-between items-center w-full bg-transparent md:bg-[#fffdfd] px-6 md:px-20 py-6" >
+        <div className=" hidden md:hidden justify-between items-center w-full bg-transparent md:bg-[#fffdfd] px-6 md:px-20 py-6">
           <Image src={user} alt="user" />
         </div>
         <div>
@@ -33,7 +34,7 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
             className="w-[131px] h-[46.48px]"
             width={100}
             height={100}
-            src='/bingo-logo.svg'
+            src="/bingo-logo.svg"
             alt="Remote Bingo"
           />
         </div>
@@ -44,26 +45,20 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
           >
             How to play
           </p>
-          <div className="flex gap-4 items-center">
-            <Link
-              href={"/auth/login"}
-              onClick={() => onLogin()}
-              
-            >
-              <CustomButton>
-               Login
-              </CustomButton>
-           
-            </Link>
-
-            <Link
-              href={"/auth/signup"}
-              onClick={() => onSignup()}
-              className="bg-primary-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
-            >
-              Signup
-            </Link>
-          </div>
+          {!hideAuthBtn && (
+            <div className="flex gap-4 items-center">
+              <Link href={"/auth/login"} onClick={() => onLogin()}>
+                <CustomButton>Login</CustomButton>
+              </Link>
+              <Link
+                href={"/auth/signup"}
+                onClick={() => onSignup()}
+                className="bg-primary-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
+              >
+                Signup
+              </Link>
+            </div>
+          )}
         </div>
         <button
           onClick={(e) => {
@@ -84,21 +79,12 @@ const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
             How to play
           </p>
           <div className="flex flex-col gap-4 px-8">
-           
-            <Link href={'/auth/login'}
-              onClick={() => onLogin()}
-
-            >
-              <CustomButton className='!w-full lg:w-auto'>
-               Login
-              </CustomButton>
-
+            <Link href={"/auth/login"} onClick={() => onLogin()}>
+              <CustomButton className="!w-full lg:w-auto">Login</CustomButton>
             </Link>
-            <CustomButton onClick={() => onSignup()}
-            variant='secondary'>
-            Signup
+            <CustomButton onClick={() => onSignup()} variant="secondary">
+              Signup
             </CustomButton>
-
           </div>
         </ul>
       ) : (
