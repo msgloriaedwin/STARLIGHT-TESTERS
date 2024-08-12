@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import LandingPageNavbar from "./components/shared/navbars/custom-navbars/LandingPageNavbar";
 import Footer from "./components/shared/footer/footer"
 import Hero from "./components/home/hero";
+import Navbar from "./components/shared/navbars/Navbar";
 
 
 export default function HomeHero(){
@@ -20,7 +21,7 @@ export default function HomeHero(){
     <div>
       <Layout>
         <main className="bg-body">
-       <LandingPageNavbar onLogin={onLogin} onSignup={onSignUp} />
+       <Navbar />
       <Hero/>
       <Footer />
            </main>
