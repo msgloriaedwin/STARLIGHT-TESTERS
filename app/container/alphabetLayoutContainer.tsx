@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Avatars from "../components/screen/general/avatars-arch/circles/avatar";
-import GamePlay from "../components/screen/room/in-game/game-master/GamePlay";
-import ChatInput from "../components/screen/general/chatBoxWithEmoji";
+import LetterCardSelection from "@/app/components/screen/room/lobby/gamecardselection/LetterCardSelection";
+import Avatars from "@/app/components/screen/general/avatars-arch/circles/avatar";
+import ChatInput from "@/app/components/screen/general/chatBoxWithEmoji";
 
 const players = [
 	{
@@ -32,10 +32,9 @@ const players = [
 	},
 ];
 
-export default function GameRoomContainer() {
+export default function AlphabetLayoutContainer() {
 	const [dimension, setDimension] = useState({ height: 0, width: 0 });
-
-	const containerRef = useRef<HTMLElement>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
 	const size = players.length > 8 ? 100 : players.length > 9 ? 80 : 150;
 
 	useEffect(() => {
@@ -46,14 +45,14 @@ export default function GameRoomContainer() {
 	}, []);
 
 	return (
-		<section
+		<div
 			ref={containerRef}
-			className="container w-full relative overflow-x-hidden"
-			style={{ paddingTop: `${size}px` }}>
-			<div
-				className={` min-h-[100%] absolute top-0 left-0 width-[100%] px-5`}></div>
-			<Avatars dimension={dimension} avatars={players} size={size} />
-			<GamePlay />
+			className="container relative px-5 overflow-x-hidden"
+			style={{ paddingTop: `calc(${size}px - 60px)` }}>
+			<div className="hidden md:block">
+				<Avatars dimension={dimension} avatars={players} size={size} />
+			</div>
+			<LetterCardSelection />
 			<ChatInput
 				sendMessage={(data: any) => {
 					//   setMessage(data);
@@ -62,6 +61,6 @@ export default function GameRoomContainer() {
 					//   setGif(data);
 				}}
 			/>
-		</section>
+		</div>
 	);
 }
