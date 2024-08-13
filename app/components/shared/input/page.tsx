@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import RBInputDoc from "./inputDocs";
 import RBInput from ".";
 interface InputField {
