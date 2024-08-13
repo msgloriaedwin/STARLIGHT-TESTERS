@@ -1,5 +1,4 @@
 import { useState } from "react";
-import FAQ from "../FAQ";
 import Faqs from "../FAQ/FAQs";
 import SwitchButton from "../SwitchBtn";
 import ContactUs from "../contactUs";
