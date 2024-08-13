@@ -15,9 +15,10 @@ import {
 type PageProps = {
   onLogin: () => void;
   onSignup: () => void;
+  hideAuthBtn?:boolean;
 };
 
-const LandingPageNavbar = ({ onLogin, onSignup }: PageProps) => {
+const LandingPageNavbar = ({ onLogin, onSignup, hideAuthBtn }: PageProps) => {
   const t = useTranslations('nav');
   const [isOpen, setIsOpen] = useState(false);
 

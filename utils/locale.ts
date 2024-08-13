@@ -1,5 +1,5 @@
 'use server';
-import {cookies} from 'next/headers';
+import { cookies } from "next/headers";
 import {Locale, defaultLocale} from './config';
 const COOKIE_NAME = 'NEXT_LOCALE';
 export async function getUserLocale() {
