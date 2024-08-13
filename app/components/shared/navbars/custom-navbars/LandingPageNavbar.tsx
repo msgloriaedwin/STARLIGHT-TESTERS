@@ -5,6 +5,12 @@ import Navbar from "../Navbar";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import CustomButton from "../../button/custombutton";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 type PageProps = {
   onLogin: () => void;
@@ -25,7 +31,7 @@ const LandingPageNavbar = ({ onLogin, onSignup, hideAuthBtn }: PageProps) => {
 
   return (
     <div className="w-full">
-      <Navbar className="justify-between fixed top-0 left-0 md:px-20 px-4 flex items-center w-full bg-body z-[999]">
+      <nav className="justify-between fixed top-0 left-0 md:px-20 px-4 py-6 flex items-center w-full bg-body z-[50]">
         <div className=" hidden md:hidden justify-between items-center w-full bg-transparent md:bg-[#fffdfd] px-6 md:px-20 py-6">
           <Image src={user} alt="user" />
         </div>
@@ -38,58 +44,67 @@ const LandingPageNavbar = ({ onLogin, onSignup, hideAuthBtn }: PageProps) => {
             alt="Remote Bingo"
           />
         </div>
-        <div className="md:flex hidden gap-6 items-center">
+        <div className="md:flex md:justify-end hidden gap-6 items-center">
           <p
             onClick={handleHowToPlayClick}
             className="text-primary-700 cursor-pointer hidden md:flex"
           >
             How to play
           </p>
-          {!hideAuthBtn && (
-            <div className="flex gap-4 items-center">
-              <Link href={"/auth/login"} onClick={() => onLogin()}>
-                <CustomButton>Login</CustomButton>
-              </Link>
-              <Link
-                href={"/auth/signup"}
-                onClick={() => onSignup()}
-                className="bg-primary-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
-              >
-                Signup
-              </Link>
-            </div>
-          )}
-        </div>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            handleShowMenu();
-          }}
-          className="flex md:hidden items-center  bg-primary-700  shadow-custom-inset border rounded-[8px] gap-[.5em] text-white justify-center py-[10px] px-4 outline-1"
-        >
-          <Menu />
-        </button>
-      </Navbar>
-      {menuIsOpen === true ? (
-        <ul className="w-[100%] z-[995] md:hidden fixed top-[85px] flex gap-4 pt-[50px] flex-col min-h-[90vh] bg-white p-4 rounded-lg">
-          <p
-            onClick={handleHowToPlayClick}
-            className="text-textColor-main self-center cursor-pointer flex"
-          >
-            How to play
-          </p>
-          <div className="flex flex-col gap-4 px-8">
+          <div className="flex gap-4 items-center">
             <Link href={"/auth/login"} onClick={() => onLogin()}>
-              <CustomButton className="!w-full lg:w-auto">Login</CustomButton>
+              <CustomButton>Login</CustomButton>
             </Link>
-            <CustomButton onClick={() => onSignup()} variant="secondary">
+
+            <Link
+              href={"/auth/signup"}
+              onClick={() => onSignup()}
+              className="bg-primary-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
+            >
               Signup
-            </CustomButton>
+            </Link>
           </div>
-        </ul>
-      ) : (
-        ""
-      )}
+        </div>
+        <div className="md:hidden flex">
+          <Sheet>
+            <SheetTrigger asChild>
+              <button className="flex md:hidden items-center  bg-primary-700  shadow-custom-inset border rounded-[8px] gap-[.5em] text-white justify-center py-[10px] px-4 outline-1">
+                <Menu />
+              </button>
+            </SheetTrigger>
+            <SheetContent className="w-[80%] min-h-[calc(100vh-80px)] mr-4 bg-white z-[100]  rounded-r-[10px] ">
+              <section className="w-full flex flex-col pt-20 gap-6 items-start px-6">
+                <SheetClose asChild>
+                  <p
+                    onClick={handleHowToPlayClick}
+                    className="text-primary-700 w-full cursor-pointer flex"
+                  >
+                    How to play
+                  </p>
+                </SheetClose>
+                <div className="flex flex-col w-full gap-4">
+                  <SheetClose>
+                    <Link href={"/auth/login"}>
+                      <CustomButton className="!w-full lg:w-auto">
+                        Login
+                      </CustomButton>
+                    </Link>
+                  </SheetClose>
+                  <SheetClose>
+                    <CustomButton
+                      className="w-full"
+                      onClick={() => onSignup()}
+                      variant="secondary"
+                    >
+                      Signup
+                    </CustomButton>
+                  </SheetClose>
+                </div>
+              </section>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </nav>
     </div>
   );
 };
