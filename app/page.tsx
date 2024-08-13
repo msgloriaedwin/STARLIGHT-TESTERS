@@ -1,4 +1,5 @@
 'use client'
+
 import Layout from "./components/shared/layout";
 import React, { useState } from "react";
 import LandingPageNavbar from "./components/shared/navbars/custom-navbars/LandingPageNavbar";
@@ -7,7 +8,7 @@ import Hero from "./components/home/hero";
 import Navbar from "./components/shared/navbars/Navbar";
 
 
-export default function HomeHero(){
+export default function HomeHero() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -17,15 +18,18 @@ export default function HomeHero(){
   const onLogin = () => {
     setIsModalOpen(false);
   };
+  
   return (
     <div>
+      
+
       <Layout>
         <main className="bg-body">
-       <Navbar />
-      <Hero/>
-      <Footer />
-           </main>
-        </Layout>
+          <Navbar />
+          <Hero />
+          <Footer />
+        </main>
+      </Layout>
 
     </div>
   )
