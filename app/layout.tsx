@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import QueryProvider from "./providers/QueryClientProvider";
 
-
-const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "700"] });  
-
+const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata: Metadata = {
   title: "Bingo",
@@ -18,8 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.className} bg-primary`}>{children}</body>
-
+      <body className={`${dmSans.className} bg-primary`}>
+        <QueryProvider>{children}</QueryProvider>
+      </body>
     </html>
   );
 }
