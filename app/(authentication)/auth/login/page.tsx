@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, FC } from "react";
+import React, { useState, useCallback, FC } from "react";
 import { z } from "zod";
 import RBInput from "@/app/components/shared/input";
 import FormCard from "@/app/components/shared/formcard/formCard";
@@ -8,10 +8,11 @@ import CustomButton from "@/app/components/shared/button/custombutton";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/app/components/shared/navbars/Navbar";
-import axios from "axios";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { CircleCheck, Eye, EyeOff } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import { signUpWithGoogle, loginUser } from "@/utils/auth/authService";
+import { useAuthContext } from "@/context/AuthContext";
 
 const loginSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -35,6 +36,8 @@ const LoginPage: FC = () => {
     password: false,
   });
   const router = useRouter();
+  const { toast } = useToast();
+  const { setUser } = useAuthContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -82,27 +85,57 @@ const LoginPage: FC = () => {
       setIsSubmitting(true);
 
       try {
-        const result = await signIn("credentials", {
-          redirect: false,
-          ...formData,
+        const userContext = await loginUser({
+          username: formData.username,
+          password: formData.password,
         });
 
-        if (result?.error) {
-        } else {
-          window.location.href = "/"; // Example redirection
-        }
+        const userContextWithToken = {
+          ...userContext,
+          access_token: userContext.access_token || "",
+        };
+
+        setUser(userContextWithToken);
+
+        toast({
+          title: "Login successful",
+          description: "You have logged in successfully.",
+        });
+        localStorage.setItem("user", JSON.stringify(userContextWithToken));
+
+        router.push("/");
       } catch (error) {
+        toast({
+          title: "Login failed",
+          description: "An error occurred while logging in.",
+          variant: "destructive",
+        });
       } finally {
         setIsSubmitting(false);
       }
     }
   };
 
-  const handleGoogleLogin = async () => {
-    const googleAuthUrl = `https://api.staging.remote.bingo/api/v1/auth/google`;
-    // await signIn("google", { callbackUrl: "/lobby/test" });
-    window.location.href = googleAuthUrl;
-  };
+  const handleGoogleLogin = useCallback(async () => {
+    try {
+      const userContext = await signUpWithGoogle();
+
+      setUser(userContext);
+
+      toast({
+        title: "Google login successful",
+        description: "You have logged in with Google.",
+      });
+
+      router.push("/");
+    } catch (error) {
+      toast({
+        title: "Google login failed",
+        description: "An error occurred while logging in with Google.",
+        variant: "destructive",
+      });
+    }
+  }, [router, setUser, toast]);
 
   return (
     <>

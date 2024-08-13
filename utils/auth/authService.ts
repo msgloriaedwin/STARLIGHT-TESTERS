@@ -1,39 +1,82 @@
 import axios from 'axios';
+import { UserContext } from '@/context/AuthContext';
+
+const signInUrl = process.env.NEXT_PUBLIC_API_SIGN_IN_URL;
+const signUpUrl = process.env.NEXT_PUBLIC_API_SIGN_UP_URL;
+const googleSignUpUrl = process.env.NEXT_PUBLIC_API_GOOGLE_SIGN_UP_URL;
+
+if (!signInUrl || !signUpUrl || !googleSignUpUrl) {
+  throw new Error('One or more API URLs are not defined in environment variables');
+}
+
+const saveUserDataToLocalStorage = (data: UserContext) => {
+  localStorage.setItem('userContext', JSON.stringify(data));
+};
 
 export const loginUser = async (credentials: { username: string; password: string }) => {
-    try {
-      const response = await axios.post(
-        "https://66f46ns2-5000.euw.devtunnels.ms/api/v1/auth/login",
-        credentials
-      );
-      return response.data; // Return the response data
-    } catch (error) {
-      console.error("Login error:", error);
-      throw error; // Rethrow the error to be handled in the component
-    }
-  };
-
-  export const signInWithCredentials = async (username: string, password: string) => {
-    try {
-      const response = await axios.post("https://api.staging.remote.bingo/api/v1/auth/login", {
-        username,
-        password,
-      });
-      return response.data;
-    } catch (error) {
-      console.error("Failed to sign in with credentials:", error);
-      throw new Error("Failed to sign in with credentials.");
-    }
-  };
-
-export const signUpWithEmail = async (username:string, email: string, password: string) => {
   try {
-    const response = await axios.post('https://api.staging.remote.bingo/api/v1/auth/register', {
-        username,
-        email,
-        password
-      });
-    return response.data;
+    const response = await axios.post(signInUrl, credentials);
+
+
+    const userData = response.data.data?.user;
+
+    if (userData && userData.email) {
+      return userData; 
+    } else {
+      throw new Error("Invalid login response structure");
+    }
+  } catch (error) {
+    console.error("Login error:", error);
+    throw error;
+  }
+};
+
+export const signInWithCredentials = async (username: string, password: string) => {
+  try {
+    const response = await axios.post(signInUrl, {
+      username,
+      password,
+    });
+
+    const { access_token, user } = response.data;
+
+    const userContext: UserContext = {
+      access_token,
+      email: user.email,
+      id: user.id,
+    };
+
+    saveUserDataToLocalStorage(userContext);
+
+    return userContext;
+  } catch (error) {
+    console.error("Failed to sign in with credentials:", error);
+    throw new Error("Failed to sign in with credentials.");
+  }
+};
+
+export const signUpWithEmail = async (username: string, email: string, password: string) => {
+  try {
+    const response = await axios.post(signUpUrl, {
+      username,
+      email,
+      password,
+    });
+
+    const userData = response.data.data?.user; 
+    if (userData && userData.email) {
+      const userContext: UserContext = {
+        access_token: response.data.access_token, 
+        email: userData.email,
+        id: userData.id,
+      };
+
+      saveUserDataToLocalStorage(userContext);
+
+      return userContext;
+    } else {
+      throw new Error("Invalid sign-up response structure");
+    }
   } catch (error) {
     console.error('Failed to sign up with email:', error);
     throw new Error('Failed to sign up with email.');
@@ -42,9 +85,21 @@ export const signUpWithEmail = async (username:string, email: string, password: 
 
 export const signUpWithGoogle = async () => {
   try {
-    const response = await axios.get('https://66f46ns2-5000.euw.devtunnels.ms/api/v1/auth/google');
-    return response.data;
+    const response = await axios.get(googleSignUpUrl);
+
+    const { access_token, user } = response.data;
+
+    const userContext: UserContext = {
+      access_token,
+      email: user.email,
+      id: user.id,
+    };
+
+    saveUserDataToLocalStorage(userContext);
+
+    return userContext;
   } catch (error) {
     throw new Error('Failed to sign up with Google.');
   }
 };
+

@@ -1,11 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useForm, Controller, useWatch } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CircleCheck, Eye, EyeOff, CheckCircle } from "lucide-react";
+import { CircleCheck, Eye, EyeOff } from "lucide-react";
 import CustomButton from "../../shared/button/custombutton";
 import RBInput from "../../shared/input";
 import ExtendedRBInput from "./extendedRBInput";
@@ -14,6 +14,7 @@ import FormCard from "../../shared/formcard/formCard";
 import AuthLink from "../authLinks";
 import { signUpWithEmail, signUpWithGoogle } from "@/utils/auth/authService";
 import { useToast } from "../../../../components/ui/use-toast";
+import { useAuthContext } from "@/context/AuthContext";
 
 const schema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -43,8 +44,10 @@ const SignupForm = () => {
     hasNumber: false,
     hasMinLength: false,
   });
+
   const { toast } = useToast();
   const router = useRouter();
+  const { setUser } = useAuthContext();
 
   const calculatePasswordStrength = (password: string): void => {
     const conditions = {
@@ -61,13 +64,16 @@ const SignupForm = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      await signUpWithEmail(data.username, data.email, data.password);
+      const userContext = await signUpWithEmail(
+        data.username,
+        data.email,
+        data.password
+      );
+      setUser(userContext);
       toast({
         title: "Sign up successful",
         description: "You have registered successfully.",
       });
-      // router.push(`auth/verify-email?email=${encodeURIComponent(data.email)}`);
-      // router.push(`auth/verify-email`);
       router.push(`/auth/login`);
     } catch (error) {
       toast({
@@ -85,14 +91,14 @@ const SignupForm = () => {
     calculatePasswordStrength(value);
   };
 
-  const handleGoogleSignUp = async () => {
+  const handleGoogleSignUp = useCallback(async () => {
     try {
-      await signUpWithGoogle();
+      const userContext = await signUpWithGoogle();
+      setUser(userContext);
       toast({
         title: "Google sign up successful",
         description: "You have signed up with Google.",
       });
-
       router.push("/");
     } catch (error) {
       toast({
@@ -101,7 +107,7 @@ const SignupForm = () => {
         variant: "destructive",
       });
     }
-  };
+  }, [router, toast, setUser]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -268,7 +274,7 @@ const SignupForm = () => {
                 href="#"
                 src="/assets/icons/google.svg"
                 alt="Google logo"
-                // onClick={handleGoogleSignUp}
+                onClick={handleGoogleSignUp}
               >
                 Sign Up with Google
               </AuthLink>
