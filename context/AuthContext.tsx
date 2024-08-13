@@ -32,14 +32,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<UserContext>(defaultUserContext);
 
   useEffect(() => {
-    const storedUserContext = localStorage.getItem("userContext");
+    const storedUserContext = sessionStorage.getItem("userContext");
     if (storedUserContext) {
       setUser(JSON.parse(storedUserContext));
     }
   }, []);
 
   const logout = () => {
-    localStorage.removeItem("userContext");
+    sessionStorage.removeItem("userContext");
     setUser(defaultUserContext);
   };
 

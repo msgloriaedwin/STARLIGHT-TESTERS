@@ -9,8 +9,8 @@ if (!signInUrl || !signUpUrl || !googleSignUpUrl) {
   throw new Error('One or more API URLs are not defined in environment variables');
 }
 
-const saveUserDataToLocalStorage = (data: UserContext) => {
-  localStorage.setItem('userContext', JSON.stringify(data));
+const saveUserDataToSessionStorage = (data: UserContext) => {
+  sessionStorage.setItem('userContext', JSON.stringify(data));
 };
 
 export const loginUser = async (credentials: { username: string; password: string }) => {
@@ -46,7 +46,7 @@ export const signInWithCredentials = async (username: string, password: string) 
       id: user.id,
     };
 
-    saveUserDataToLocalStorage(userContext);
+    saveUserDataToSessionStorage(userContext);
 
     return userContext;
   } catch (error) {
@@ -71,7 +71,7 @@ export const signUpWithEmail = async (username: string, email: string, password:
         id: userData.id,
       };
 
-      saveUserDataToLocalStorage(userContext);
+      saveUserDataToSessionStorage(userContext);
 
       return userContext;
     } else {
@@ -93,9 +93,9 @@ export const signUpWithGoogle = async () => {
       access_token,
       email: user.email,
       id: user.id,
-    };
+    }
 
-    saveUserDataToLocalStorage(userContext);
+    saveUserDataToSessionStorage(userContext);
 
     return userContext;
   } catch (error) {

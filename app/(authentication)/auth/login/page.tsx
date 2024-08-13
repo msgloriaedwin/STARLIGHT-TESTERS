@@ -101,7 +101,7 @@ const LoginPage: FC = () => {
           title: "Login successful",
           description: "You have logged in successfully.",
         });
-        localStorage.setItem("user", JSON.stringify(userContextWithToken));
+        sessionStorage.setItem("user", JSON.stringify(userContextWithToken));
 
         router.push("/");
       } catch (error) {
