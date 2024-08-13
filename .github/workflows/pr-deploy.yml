@@ -1,9 +1,11 @@
 
 name: PR Deploy
+# on:
+#   pull_request:
+#     types: [opened, synchronize, reopened, closed]
 on:
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-
+  workflow_dispatch:
+  
 jobs:
   deploy-pr:
     environment: 
