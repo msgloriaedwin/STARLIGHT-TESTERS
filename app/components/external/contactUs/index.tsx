@@ -34,7 +34,7 @@ const ContactUs = () => {
 
   return (
     <div className="py-8">
-      <div className="md:grid grid-cols-2 gap-6 items-center mb-4">
+      <div className="md:grid grid-cols-2 gap-6 items-center mb-10">
         <TextInput
           label="Name"
           value={formData.name}
@@ -98,7 +98,6 @@ const ContactUs = () => {
           error={requiredFormData.iUseRemoteBingoAsA}
           data={[
             "Remote team",
-            "Name",
             "Family",
             "Student",
             "Educator",
