@@ -1,18 +1,40 @@
-import React from "react";
+'use client'
+import { usePathname } from "next/navigation";
+import LandingPageNavbar from "./custom-navbars/LandingPageNavbar";
+import { useState } from "react";
+import JoinGameNavbar from "./custom-navbars/JoinGameNavbar";
+import ForgotPasswordNavbar from "./custom-navbars/ForgotPasswordNavbar";
+import DeleteLogoutNavbar from "./custom-navbars/DeleteLogoutNavbar";
+import SettingsHeader from "../../settings/header";
 
-type NavbarProp = {
-  className?: string;
-  // userImageUrl?: string,
-  children: React.ReactNode;
-};
+const Navbar = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const pathName = usePathname()
+  const settingsRoutes = ["/game-settings", "/profile-settings", "/terms-and-privacy"];
+  const gameRoutes = ["/waiting-room", "/join-game", "/room/game", "/lobby/alphabets", "/lobby/numbers", "/create-game"];
+  const logoutRoutes = ["/auth/logout-confirmation", "/auth/logout-success"];
+  const authRoutes = ["/auth/login", "/auth/signup", "/auth/forgot-password/new-password", "/auth/forgot-password", "/auth/forgot-password/otp", "/auth/forgot-password/success"];
+  const onSignUp: () => void = () => {
+    setIsModalOpen(false);
+  };
 
-const Navbar = ({ className, children }: NavbarProp) => {
+  const onLogin = () => {
+    setIsModalOpen(false);
+  };
+
+  const isSettingsRoute = settingsRoutes.some(route => pathName === route || pathName.startsWith(route));
+  const isGameRoute = gameRoutes.some(route => pathName === route || pathName.startsWith(route));
+  const isAuthRoute = authRoutes.some(route => pathName === route || pathName.startsWith(route));
+  const isLogoutRoute = logoutRoutes.some(route => pathName === route || pathName.startsWith(route));
+
   return (
-    <nav
-      className={`${className} flex items-center w-full py-3 bg-transparent md:bg-navbar`}
-    >
-      {children}
-    </nav>
+    <div className="w-full">
+      {pathName === "/" && <LandingPageNavbar onLogin={onLogin} onSignup={onSignUp} />}
+      {isSettingsRoute && <SettingsHeader />}
+      {isGameRoute && <JoinGameNavbar />}
+      {isAuthRoute && <ForgotPasswordNavbar />}
+      {isLogoutRoute && <DeleteLogoutNavbar />}
+    </div>
   );
 };
 

@@ -1,9 +1,5 @@
 "use client"
 
-import GameCustomizeNavBar from "../shared/navbars/custom-navbars/GameCustomizeNavBar";
-
-
-
 export default function WaitingRoomLayout() {
     const handleShareGameLink = () => {
         return 
@@ -24,12 +20,12 @@ export default function WaitingRoomLayout() {
 
     return (
         <>
-            <GameCustomizeNavBar
+            {/* <GameCustomizeNavBar
                 handleShareGameLink={handleShareGameLink}
                 handleGoBack={handleGoBack}
                 handleHowToPlayClick={handleHowToPlayClick}
                 handleShowMenu={handleShowMenu}
-            />
+            /> */}
         </>
     )
 }

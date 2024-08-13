@@ -2,13 +2,13 @@ import React from "react";
 import CustomButton from "@/app/components/shared/button/custombutton";
 import FormCard from "@/app/components/shared/formcard/formCard";
 import Link from "next/link";
-import ForgotPasswordNavbar from "@/app/components/shared/navbars/custom-navbars/ForgotPasswordNavbar";
+import Navbar from "@/app/components/shared/navbars/Navbar";
 
 const PasswordResetSuccess = () => {
 
   return (
     <>
-    <ForgotPasswordNavbar/>
+    <Navbar />
       <div className='bg-body flex flex-col h-screen justify-center items-center'>
         <div className='mb-6 text-center'>
           <h3 className='text-2xl md:text-4xl mb-2'>Password Reset</h3>
