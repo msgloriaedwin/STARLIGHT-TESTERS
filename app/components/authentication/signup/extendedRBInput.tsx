@@ -2,7 +2,6 @@ import React, { ReactNode } from "react";
 
 import RBInput from "../../shared/input/index";
 
-// Define the props that RBInput accepts
 interface RBInputProps {
   label?: string;
   placeholder?: string;
@@ -13,10 +12,8 @@ interface RBInputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   type?: string;
-  // Add any other props that RBInput accepts
 }
 
-// Define the props for our ExtendedRBInput, including iconRight
 interface ExtendedRBInputProps extends RBInputProps {
   iconRight?: ReactNode;
 }
