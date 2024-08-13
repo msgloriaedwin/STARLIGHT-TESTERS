@@ -4,7 +4,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-
+import QueryProvider from "./providers/QueryClientProvider";
 
 const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
@@ -27,8 +27,11 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang="en">
-      <body className={`${dmSans.className} bg-primary`}><NextIntlClientProvider messages={messages}>
-        {children}
+      <body className={`${dmSans.className} bg-primary`}>
+        <NextIntlClientProvider messages={messages}>
+          <QueryProvider>
+            {children}
+          </QueryProvider>
       </NextIntlClientProvider></body>
 
     </html>
