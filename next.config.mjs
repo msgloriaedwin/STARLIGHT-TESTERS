@@ -3,6 +3,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   output: "standalone",
   images: {
@@ -14,6 +15,7 @@ const nextConfig = {
       "media1.giphy.com",
     ],
   },
+  
 };
 
 export default withNextIntl(nextConfig);

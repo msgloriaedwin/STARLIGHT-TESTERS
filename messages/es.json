@@ -1,5 +1,51 @@
 {
     "HomePage": {
-      "title": "¡Involucra a tu equipo con bingo online!"
-    }
+      "title": "¡Involucra a tu equipo con bingo online!",
+      "description": "¡Conéctate, juega y celebra desde cualquier lugar con Remote Bingo! Personaliza tu juego o únete a sesiones emocionantes con amigos y colegas y gana.",
+      "inputPlaceholder": "Ingresa el PIN/enlace del juego",
+      "createGameButton": "Crear un juego de Bingo",
+      "joinGameButton": "Unirse al Bingo"
+    },
+    
+    "SplashScreen": {
+      "welcomeMessage": "Bienvenido a Remote Bingo"
+    },
+
+    "Footer": {
+      "companyTitle": "Empresa",
+      "companyAbout": "Acerca de",
+      "companyContact": "Contacto",
+      "resourcesTitle": "Recursos",
+      "resourcesHowToPlay": "Cómo jugar",
+      "resourcesCommunity": "Comunidad",
+      "legalTitle": "Legal",
+      "legalPrivacyPolicy": "Política de privacidad",
+      "legalTermsOfService": "Términos de servicio"
+    },
+
+    "nav": {
+    "howToPlay": "Cómo jugar",
+    "login": "Iniciar sesión",
+    "signup": "Registrarse"
+  },
+
+  "gameSettings": {
+    "title": "Configuración del juego",
+    "notificationsLabel": "Notificaciones",
+    "soundEffectsLabel": "Efectos de sonido",
+    "setDifficultyLevelLabel": "Establecer nivel de dificultad",
+    "difficultyEasyLabel": "Fácil",
+    "difficultyMediumLabel": "Medio",
+    "difficultyHardLabel": "Difícil",
+    "saveChangesButton": "Guardar cambios"
+  },
+  
+  "forgotPassword": {
+    "title": "¿Olvidaste tu contraseña?",
+    "description": "Ingresa tu correo electrónico para recibir un código",
+    "enterEmailLabel": "Ingresa el correo electrónico",
+    "enterEmailPlaceholder": "Tu correo electrónico",
+    "resetPasswordButton": "Restablecer la contraseña",
+    "backToSignIn": "Volver a iniciar sesión"
+  }
   }

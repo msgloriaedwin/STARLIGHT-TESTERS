@@ -2,9 +2,11 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import logo from "../../../../public/assets/images/Remote Bingo Logo A.png";
+import { useTranslations } from 'next-intl';
 
 const SplashScreen = () => {
   const [showSplash, setShowSplash] = useState(true);
+  const t = useTranslations('SplashScreen');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,7 +27,7 @@ const SplashScreen = () => {
         alt="Remote Bingo"
       />
       <p className="text-center font-bold text-primary-900 font-dm-sans custom-font-features text-[27.175px] leading-[34.723px] md:text-[36px] md:leading-[46px]">
-        Welcome to Remote Bingo
+      {t('welcomeMessage')}
       </p>
     </div>
   );
