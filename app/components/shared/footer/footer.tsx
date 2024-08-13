@@ -1,8 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
+import { useRouter } from "next/navigation";
 
 const Footer = () => {
+  const router = useRouter();
+  const t = useTranslations('Footer');
   return (
     <footer className="w-full bg-body">
       <div className="px-6 py-8 md:px-20 md:py-6">
@@ -16,22 +20,27 @@ const Footer = () => {
             />
           </div>
           <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
-            <p className="text-primary-500 font-bold">Company</p>
-            <p className="text-primary-700 font-normal pt-6">About</p>
-            <p className="text-primary-700 font-normal pt-4">Contact</p>
+            <p className="text-primary-500 font-bold">{t('companyTitle')}</p>
+            <p className="text-primary-700 font-normal pt-6"> 
+              <Link href={"/about-us"}>{t('companyAbout')}</Link>
+            </p>
+            <p className="text-primary-700 font-normal pt-4">{t('companyContact')}</p>
           </div>
           <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
-            <p className="text-primary-500 font-bold">Resources</p>
-            <p className="text-primary-700 font-normal pt-6">How to play</p>
-            <p className="text-primary-700 font-normal pt-4">Community</p>
+            <p className="text-primary-500 font-bold">{t('resourcesTitle')}</p>
+
+            <p className="text-primary-700 font-normal pt-6">
+              <Link href="/how-to-play">{t('resourcesHowToPlay')}</Link>
+            </p>
+            <p className="text-primary-700 font-normal pt-4">{t('resourcesCommunity')}</p>
           </div>
           <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
-            <p className="text-primary-500 font-bold">Legal</p>
+            <p className="text-primary-500 font-bold">{t('legalTitle')}</p>
             <div className="text-primary-700 font-normal pt-6">
-              <Link href={"/terms-and-privacy"}>Privacy Policy</Link>
+              <Link href={"/privacy"}>{t('legalPrivacyPolicy')}</Link> 
             </div>
             <div className="text-primary-700 font-normal pt-4">
-              <Link href={"/terms-and-privacy"}>Terms of Service</Link>
+              <Link href={"/terms-of-service"}>{t('legalTermsOfService')}</Link> 
             </div>
           </div>
           <div className="flex justify-center md:justify-start">
