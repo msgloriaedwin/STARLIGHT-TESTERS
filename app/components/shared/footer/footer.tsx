@@ -22,7 +22,9 @@ const Footer = () => {
             <p className="text-primary-700 font-normal pt-6">
               <Link href={"/about-us"}>About</Link>
             </p>
-            <p className="text-primary-700 font-normal pt-4">Contact</p>
+            <p className="text-primary-700 font-normal pt-4">
+              <Link href={"/contact-us-faq"}>Contact</Link>
+            </p>
           </div>
           <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
             <p className="text-primary-500 font-bold">Resources</p>
