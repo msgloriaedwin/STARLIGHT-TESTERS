@@ -27,8 +27,11 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang="en">
-      <body className={`${dmSans.className} bg-primary`}><NextIntlClientProvider messages={messages}>
-        {children}
+      <body className={`${dmSans.className} bg-primary`}>
+        <NextIntlClientProvider messages={messages}>
+          <QueryProvider>
+            {children}
+          </QueryProvider>
       </NextIntlClientProvider></body>
 
     </html>
