@@ -1,9 +1,13 @@
 import axios from 'axios';
 import { UserContext } from '@/context/AuthContext';
 
-const signInUrl = process.env.NEXT_PUBLIC_API_SIGN_IN_URL;
-const signUpUrl = process.env.NEXT_PUBLIC_API_SIGN_UP_URL;
-const googleSignUpUrl = process.env.NEXT_PUBLIC_API_GOOGLE_SIGN_UP_URL;
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+const signInUrl = `${baseUrl}auth/login`;
+const signUpUrl = `${baseUrl}auth/register`;
+const googleSignUpUrl = `${baseUrl}auth/google`;
+
+
 
 if (!signInUrl || !signUpUrl || !googleSignUpUrl) {
   throw new Error('One or more API URLs are not defined in environment variables');
