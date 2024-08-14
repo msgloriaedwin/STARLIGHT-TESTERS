@@ -19,7 +19,7 @@ docker pull hngtechie/bingofe:staging
 export COMPOSE_PROJECT_NAME=staging-bingofe
 
 # Bring up the services with environment variables
-docker compose -f docker/staging/docker-compose.yml up -d
+docker-compose -f docker/staging/docker-compose.yml up -d
 
 
 # set -e
