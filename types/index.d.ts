@@ -82,7 +82,7 @@ export interface User {
 
 export interface CreateGameRoomPayload {
   teamName: string;
-  bingoType: "alphabets" | "numbers";
+  bingoType: "alphabets" | "number";
   avatar: string;
   prizeValue: string;
   token: string;

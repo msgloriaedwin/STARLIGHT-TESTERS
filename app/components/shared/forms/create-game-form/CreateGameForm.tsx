@@ -23,8 +23,15 @@ import appConfig from "@/config/appConfig";
 
 const formSchema = z.object({
   teamName: z.string().min(1, { message: "Team Name is required" }),
-  bingoType: z.enum(["numbers", "alphabets"]),
-  prizeValue: z.string().min(1, { message: "Prize value is required" }),
+  bingoType: z.enum(["number", "alphabets"]),
+  prizeValue: z
+  .string()
+  .refine((val) => !isNaN(Number(val)), {
+    message: "Prize value must be a number",
+  })
+  .refine((val) => Number(val) > 0, {
+    message: "Prize value must be greater than zero",
+  }),
   avatar: z.string(),
 });
 
@@ -51,8 +58,8 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
     resolver: zodResolver(formSchema),
     defaultValues: {
       teamName: "",
-      bingoType: "numbers",
-      prizeValue: "",
+      bingoType: "number",
+      prizeValue: undefined,
       avatar: avatars[0].src,
     },
   });
@@ -62,7 +69,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
     const payload = {
       teamName: data.teamName,
       bingoType: data.bingoType,
-      prizeValue: data.prizeValue,
+      prizeValue: data.prizeValue.toString(),
       avatar: data.avatar,
       token: token,
     };
@@ -147,7 +154,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
             <FormField
               name="bingoType"
               control={form.control}
-              defaultValue="numbers"
+              defaultValue="number"
               render={({ field }) => (
                 <>
                   <FormItem className="flex flex-col">
@@ -161,11 +168,11 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                       <Button
                         className={cn(
                           "flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3",
-                          field.value === "numbers"
+                          field.value === "number"
                             ? "bg-yellow-300"
                             : "bg-primary-100"
                         )}
-                        onClick={() => field.onChange("numbers")}
+                        onClick={() => field.onChange("number")}
                       >
                         <Image
                           src={"assets/icons/numbers.svg"}
@@ -175,7 +182,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                           className="max-sm:hidden"
                         />
                         <span className="ml-2">Numbers</span>
-                        {field.value === "numbers" && (
+                        {field.value === "number" && (
                           <div className="absolute top-1 right-1">
                             <Image
                               src={"assets/icons/Check.svg"}
@@ -190,7 +197,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                       <Button
                         className={cn(
                           "flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3",
-                          field.value === "numbers"
+                          field.value === "number"
                             ? "bg-primary-100"
                             : "bg-yellow-300"
                         )}
