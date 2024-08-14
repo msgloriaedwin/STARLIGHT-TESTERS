@@ -7,7 +7,7 @@ export NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 export GIF_API_KEY=${GIF_API_KEY}
 
 # Navigate to the project directory
-cd /home/starlight-nestjs/remote-bingo/staging
+cd /home/starlight-nestjs/remote-bingo/staging/bingo_fe
 
 # Pull the latest changes from the staging branch
 git pull origin staging
