@@ -26,6 +26,7 @@
     "@tanstack/react-query": "^5.51.23",
     "@types/react-lottie": "^1.2.10",
     "axios": "^1.7.3",
+    "centrifuge": "^5.2.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "emoji-picker-react": "^4.11.1",
@@ -33,8 +34,8 @@
     "howler": "^2.2.4",
     "lucide-react": "^0.417.0",
     "next": "^14.2.5",
-    "next-intl": "^3.17.2",
     "next-auth": "^4.24.7",
+    "next-intl": "^3.17.2",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.52.2",
@@ -42,7 +43,8 @@
     "react-lottie": "^1.2.4",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
