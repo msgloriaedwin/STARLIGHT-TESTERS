@@ -20,6 +20,8 @@ import { useRouter } from "next/navigation";
 import AvatarSelector from "../create-game/AvatarSelector";
 import CustomButton from "@/app/components/shared/button/custombutton";
 import { joinGameRoom } from "@/action";
+import { useToast } from "@/components/ui/use-toast";
+import { JoinGameRoomPayload } from "@/types";
 
 const formSchema = z.object({
   gameId: z.string().min(1, { message: "Game ID is required" }),
@@ -32,9 +34,11 @@ type FormData = z.infer<typeof formSchema>;
 const JoinGameForm = ({
   avatars,
   className,
+  gameId,
 }: {
   avatars: StaticImageData[];
   className?: string;
+  gameId: string;
 }) => {
   const router = useRouter();
   const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
@@ -44,15 +48,20 @@ const JoinGameForm = ({
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      gameId: gameId || "",
+      userName: "",
       avatar: avatars[0].src,
     },
   });
 
+  const { toast } = useToast();
+
   const handleFormSubmit = async (data: FormData) => {
-    const payload = {
-      gameLink: data.gameId, // Assuming gameId is the gameLink
+    const payload: JoinGameRoomPayload = {
+      roomId: data.gameId, // Assuming gameId is the gameLink
       guestSession: {
         guestName: data.userName,
+        avatarUrl: data.avatar,
       },
     };
     console.log("Request Payload:", payload);
@@ -60,10 +69,25 @@ const JoinGameForm = ({
       const response = await joinGameRoom(payload);
 
       console.log("API Response:", response);
+      // Success toast
+      toast({
+        title: "Success",
+        description: "You have successfully joined the game!",
+        variant: "default",
+        duration: 5000,
+      });
 
-    //   router.push("/lobby/numbers");
+      router.push(`/room/game-room?roomId=${data.gameId}`);
     } catch (error) {
       console.error("Failed to join game:", error);
+
+      // Error toast
+      toast({
+        title: "Error",
+        description: "Failed to join the game. Please try again.",
+        variant: "destructive",
+        duration: 5000,
+      });
     }
 
     console.log("Form Data Submitted:", data);
@@ -106,6 +130,7 @@ const JoinGameForm = ({
                       {...field}
                       className="border border-primary-900 focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
                       required
+                      readOnly
                     />
                   </FormControl>
                   <FormMessage className="text-primary-900">

@@ -38,7 +38,7 @@ export const joinGameRoom = async (
     body: JSON.stringify(data),
   });
 
-  const response = await request.json();
+  const response: JoinRoomResponseDTO = await request.json();
   console.log(response);
 
   return response;

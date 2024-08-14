@@ -94,10 +94,11 @@ export interface CreateGameRoomPayload {
 
 export interface GuestSession {
   guestName: string;
+  avatarUrl: string;
 }
 
 export interface JoinGameRoomPayload {
-  gameLink: string;
+  roomId: string;
   guestSession: GuestSession;
 }
 
@@ -112,10 +113,8 @@ export interface JoinRoomResponseDTO {
       created_at: string;
       updated_at: string;
       name: string;
-      qr_code: string;
-      game_link: string;
       game_pin: string;
-      bingo_type: string;
+      bingo_type: BingoType;
       prize_value: number;
     };
     id: string;
