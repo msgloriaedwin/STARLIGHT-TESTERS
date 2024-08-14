@@ -2,24 +2,25 @@
 
 set -e
 
-# Use environment variables
+# Assign environment variables
 export NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 export GIF_API_KEY=${GIF_API_KEY}
 
-# Navigate to the root of the repository
-cd "$(git rev-parse --show-toplevel)"
-git stash
+# Navigate to the project directory
+cd /home/starlight-nestjs/remote-bingo/staging
+
+# Pull the latest changes from the staging branch
 git pull origin staging
-docker pull hngtechie/bingofe:staging
 
-# Bring up the services with environment variables
-docker-compose --project-name staging-bingofe -f docker/staging/docker-compose.yml up -d
+# Install production dependencies
+corepack enable pnpm
+pnpm install --production
 
+# Build the application (if you haven't built it in the GitHub Action)
+pnpm run build
 
-# set -e
+# Start or restart the application using PM2 (or another process manager)
+pm2 start --name "bingo-staging" -- -p 6001
 
-# cd "$(git rev-parse --show-toplevel)"
-# git stash
-# git pull origin staging
-# docker pull hngtechie/bingofe:staging
-# docker compose --project-name staging-bingofe -f docker/staging/docker-compose.yml up -d
+# Use the following command if you want to restart an existing PM2 process
+# pm2 restart bingo-staging
