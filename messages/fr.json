@@ -102,6 +102,13 @@
     "passwordChangedSuccess": "Mot de passe changé avec succès",
     "passwordsDoNotMatchError": "Les mots de passe ne correspondent pas"
   },
+  "passwordResetSuccess": {
+    "navbar": "Barre de navigation",
+    "passwordResetTitle": "Réinitialisation du mot de passe",
+    "passwordResetDescription": "Votre mot de passe a été réinitialisé avec succès. Cliquez ci-dessous pour accéder au jeu",
+    "continueButton": "Continuer",
+    "backToSignInLink": "Retour à la connexion"
+  },
   "otpComponent": {
     "navbar": "Navbar",
     "passwordResetTitle": "Réinitialisation du mot de passe",

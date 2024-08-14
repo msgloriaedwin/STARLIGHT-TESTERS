@@ -118,6 +118,15 @@
     "verifyButtonText": "Verificar",
     "otpResentAlert": "El OTP ha sido reenviado"
   },
+  
+  "passwordResetSuccess": {
+    "navbar": "Barra de navegación",
+    "passwordResetTitle": "Restablecimiento de contraseña",
+    "passwordResetDescription": "Su contraseña ha sido restablecida con éxito. Haga clic a continuación para proceder al juego",
+    "continueButton": "Continuar",
+    "backToSignInLink": "Volver a iniciar sesión"
+  },
+  
   "aboutRemoteBingo": {
   "aboutRemoteBingoTitle": "Acerca de Remote Bingo",
   "remoteBingo": "Remote Bingo",

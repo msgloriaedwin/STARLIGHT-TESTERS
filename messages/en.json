@@ -120,6 +120,13 @@
     "verifyButtonText": "Verify",
     "otpResentAlert": "OTP has been resent"
   },
+  "passwordResetSuccess": {
+    "navbar": "Navbar",
+    "passwordResetTitle": "Password Reset",
+    "passwordResetDescription": "Your password has been successfully reset. Click below to proceed to the game",
+    "continueButton": "Continue",
+    "backToSignInLink": "Back to sign in"
+  },
      "aboutRemoteBingo": {
       "aboutRemoteBingoTitle": "About Remote Bingo",
       "remoteBingo": "Remote Bingo",

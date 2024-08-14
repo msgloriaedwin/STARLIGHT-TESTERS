@@ -7,6 +7,7 @@ import ChangeAvatar from "../change-avatar/page";
 import Modal from "@/app/components/modal/modal";
 import { useTranslations } from 'next-intl';
 
+
 function Index() {
   const [showChangeAvatar, setShowChangeAvatar] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
