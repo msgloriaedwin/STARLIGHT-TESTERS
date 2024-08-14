@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import React from 'react';
 import CustomButton from '../../shared/button/custombutton';
 import Link from 'next/link';
-import Image from 'next/image'
+import Image from 'next/image';
 const Hero: React.FC = () => {
   const t = useTranslations('HomePage');
   return (

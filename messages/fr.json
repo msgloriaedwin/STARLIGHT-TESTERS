@@ -35,7 +35,8 @@
     "difficultyEasyLabel": "Facile",
     "difficultyMediumLabel": "Moyen",
     "difficultyHardLabel": "Difficile",
-    "saveChangesButton": "Enregistrer"
+    "saveChangesButton": "Enregistrer",
+    "languageChange":"Sélectionnez votre langue par défaut"
   },
   "forgotPassword": {
     "title": "Mot de passe oublié ?",
@@ -44,5 +45,115 @@
     "enterEmailPlaceholder": "Votre email",
     "resetPasswordButton": "Réinitialiser le mot de passe",
     "backToSignIn": "Retour à la connexion"
-  }
+  },
+  "aboutRemoteBingo": {
+    "aboutRemoteBingoTitle": "À propos de Remote Bingo",
+    "remoteBingo": "Remote Bingo",
+    "aboutRemoteBingoSection1": " est une version moderne en ligne du jeu classique de bingo, conçue pour rassembler les gens dans des environnements virtuels. Que vous travailliez à distance, que vous rattrapiez le temps avec votre famille ou que vous donniez un cours, Remote Bingo offre une manière amusante et engageante de se connecter et d'interagir.",
+    "aboutRemoteBingoSection2": "Remote Bingo est plus que simplement crier \"Bingo !\"—c'est une plateforme qui favorise l'esprit d'équipe, renforce les relations et promeut l'apprentissage, le tout à travers un jeu familier et agréable. Joué en temps réel via des outils comme Zoom et Slack, c'est parfait pour les équipes distantes, les familles et les enseignants cherchant à ajouter une étincelle à leurs réunions virtuelles.",
+    "aboutRemoteBingoSection3": "À une époque où les interactions virtuelles sont essentielles, Remote Bingo offre une manière excitante de créer des liens et de collaborer. Il s'intègre facilement aux outils existants, est accessible sur n'importe quel appareil et offre un mélange de plaisir, d'éducation et de connexion sociale. Que vous cherchiez à renforcer le moral de l'équipe, à engager des étudiants ou simplement à passer un bon moment avec vos proches, Remote Bingo est votre solution idéale.",
+    "keyBenefitsTitle": "Avantages clés",
+    "teamBonding": "Cohésion d'équipe : Renforcez les équipes distantes avec une activité agréable et engageante.",
+    "educationalValue": "Valeur éducative : Idéal pour les enseignants qui souhaitent créer des leçons interactives.",
+    "easeOfUse": "Facilité d'utilisation : S'intègre parfaitement avec Zoom, Slack et d'autres plateformes.",
+    "anytimeAnywhere": "À tout moment, n'importe où : Jouez depuis n'importe quel appareil, quand vous le souhaitez.",
+    "socialConnectivity": "Connectivité sociale : Rejoignez une communauté mondiale de joueurs et profitez d'une interaction en temps réel.",
+    "whyItMattersTitle": "Pourquoi c'est important",
+    "whyItMattersDescription": "Remote Bingo donne vie aux réunions virtuelles en améliorant la communication, en augmentant l'engagement et en créant un sentiment d'unité. C'est un moyen idéal de briser la routine, de célébrer des étapes importantes et de se connecter avec les autres, le tout grâce à la simple joie du bingo."
+ },
+ "contactus": {
+    "nameLabel": "Nom",
+    "namePlaceholder": "Entrez votre nom",
+    "emailAddressLabel": "Adresse e-mail",
+    "emailAddressPlaceholder": "Entrez l'adresse e-mail",
+    "iUseRemoteBingoAsALabel": "J'utilise Remote Bingo comme :",
+    "subjectLabel": "Sujet",
+    "subjectPlaceholder": "Entrez le sujet",
+    "descriptionLabel": "Description",
+    "submitButton": "Soumettre",
+    "remoteTeam": "Équipe à distance",
+    "family": "Famille",
+    "student": "Étudiant",
+    "educator": "Éducateur",
+    "socialGroup": "Groupe social",
+    "other": "Autre"
+  },
+  "contactInput": {
+    "errorText": "ne peut pas être vide !"
+  },
+  "contactUs": {
+    "headerContact": "Contactez-nous",
+    "headerFaqs": "Questions Fréquemment Posées",
+    "contactButtonText": "Contactez notre équipe de support",
+    "faqsButtonText": "Questions Fréquemment Posées"
+  },
+  "faq": {
+    "question": "Qu'est-ce que le bingo à distance et comment ça fonctionne ?",
+    "answer": "Le Bingo à Distance est une adaptation numérique du jeu de bingo classique, conçu pour les équipes distantes, les familles et les éducateurs. Il permet aux joueurs de participer à des jeux de bingo en temps réel via des plateformes comme Slack et Zoom, favorisant la connexion, le travail d'équipe et le plaisir."
+  },
+  
+    "howToPlay": {
+      "title": "Comment jouer au Bingo à distance",
+      "section1Heading": "1. Premiers pas : Créer ou rejoindre un jeu",
+      "teamLeadersHostsTitle": "Pour les leaders d'équipe/organisateurs :",
+      "createGame": "Créer un jeu : En tant que leader d'équipe, vous pouvez créer un jeu en sélectionnant un modèle ou en personnalisant le vôtre. Choisissez des paramètres tels que la taille des cartes, la durée du jeu et les thèmes pour adapter l'expérience à votre groupe.",
+      "sendInvitations": "Envoyer des invitations : Invitez les participants par e-mail, Slack ou Microsoft Teams. Une fois invités, les participants reçoivent un lien pour rejoindre le jeu.",
+      "manageGame": "Gérer le jeu : En tant qu'hôte, vous avez un contrôle total. Vous pouvez mettre en pause, reprendre ou mettre fin au jeu à tout moment en utilisant le tableau de bord du jeu, qui vous permet également de surveiller la participation et l'engagement.",
+      "remoteWorkersFriendsFamilyTitle": "Pour les travailleurs à distance, amis ou membres de la famille :",
+      "joinGame": "Rejoindre un jeu : Une fois que vous recevez un lien d'invitation par e-mail, Slack ou une autre plateforme prise en charge, cliquez sur le lien pour rejoindre le jeu. Vous pouvez également trouver des jeux publics dans le hall du jeu.",
+      "spectatorMode": "Mode Spectateur : Si vous préférez regarder plutôt que jouer, vous pouvez rejoindre le jeu en 'Mode Spectateur' et profiter du divertissement sans participer activement.",
+      "forTeachers": "Pour les enseignants :",
+      "educationalBingo": "Bingo éducatif : Créez un jeu de bingo personnalisé avec un contenu éducatif adapté à votre plan de leçon. Invitez les élèves avec des liens d'accès ou des codes et définissez des limites de temps pour chaque tour.",
+      "section2Heading": "2. Jouabilité : Comment le jeu fonctionne",
+      "automatedSetupTitle": "Configuration automatique :",
+      "automatedSetupDescription": "Une fois le jeu commencé, Remote Bingo générera automatiquement des cartes de bingo et commencera à appeler les numéros ou les éléments. Chaque joueur reçoit une carte de bingo virtuelle unique affichée sur son écran.",
+      "markingYourCardTitle": "Marquer votre carte :",
+      "markingYourCardDescription": "Au fur et à mesure que les numéros ou les invites sont appelés, marquez les cases correspondantes sur votre carte de bingo. Le jeu est entièrement automatisé, donc vous n'avez pas besoin de suivre manuellement— concentrez-vous simplement sur le remplissage de votre carte !",
+      "realTimeInteractionTitle": "Interaction en temps réel :",
+      "realTimeInteractionDescription": "Interagissez avec les autres joueurs via le chat ou réagissez aux événements du jeu au fur et à mesure qu'ils se produisent. Les fonctionnalités interactives du jeu facilitent le maintien de la connexion avec tous les participants.",
+      "winningTheGameTitle": "Gagner le jeu :",
+      "winningTheGameDescription": "Le premier joueur à compléter une ligne, une colonne, une diagonale ou un motif spécial sur sa carte crie 'Bingo !'. Le jeu vérifiera automatiquement le gagnant et affichera les résultats.",
+      "gameSettingsTitle": "Paramètres du jeu :",
+      "gameSettingsDescription": "Les joueurs peuvent accéder et personnaliser les paramètres tels que les thèmes visuels, les paramètres audio, les préférences de langue et la vitesse du jeu. Vous pouvez même choisir la voix du caller de bingo !"
+    },
+    "privacyPolicy": {
+      "title": "Politique de Confidentialité ",
+      "introwelcome": "Bienvenue sur Remote Bingo! ",
+      "introintroText": "Votre vie privée est importante pour nous. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations personnelles lorsque vous utilisez notre plateforme. En accédant à ou en utilisant Remote Bingo, vous acceptez les termes de cette politique de confidentialité.",
+      "section1heading": "1. Informations que Nous Collectons",
+      "personalInformationtitle": "Informations Personnelles",
+      "personalInformationdetails": "Lorsque vous vous inscrivez ou utilisez Remote Bingo, nous pouvons collecter des informations personnelles telles que votre nom, adresse e-mail, photo de profil et autres coordonnées.",
+      "thirdPartyIntegrations": "Si vous utilisez des intégrations tierces (par exemple, Slack, Zoom), nous pouvons collecter des informations provenant de ces services comme autorisé par vos paramètres de confidentialité.",
+      "usageDatatitle": "Données d'Utilisation",
+      "details": "Nous collectons des informations sur la façon dont vous interagissez avec Remote Bingo, y compris la participation aux jeux, les préférences de configuration, les informations sur l'appareil, l'adresse IP, le type de navigateur et le système d'exploitation.",
+      "paymentInformationtitle": "Informations de Paiement",
+      "paymentInformationdetails": "Si vous achetez un abonnement ou effectuez d'autres paiements, nous collectons les détails de paiement, qui sont traités de manière sécurisée par nos partenaires de passerelle de paiement. Nous ne stockons pas les informations complètes des cartes de crédit sur nos serveurs.",
+      "paymentInformationdetails2": "Si vous utilisez des intégrations tierces (par exemple, Slack, Zoom), nous pouvons collecter des informations provenant de ces services comme autorisé par vos paramètres de confidentialité.",
+      "section2heading": "2. Comment Nous Utilisons Vos Informations",
+      "serviceImprovementtitle": "Pour Fournir et Améliorer Nos Services",
+      "serviceImprovementdetails": "Nous utilisons vos informations personnelles pour créer et gérer votre compte, faciliter la création et la participation aux jeux, et améliorer l'expérience utilisateur globale.",
+      "communicationtitle": "Pour Communiquer avec Vous",
+      "communicationdetails": "Nous pouvons utiliser votre adresse e-mail pour vous envoyer des mises à jour importantes, des newsletters et des offres promotionnelles. Vous pouvez vous désinscrire des communications marketing à tout moment.",
+      "analyticstitle": "Pour les Analyses et les Rapports",
+      "analyticsdetails": "Nous analysons les données d'utilisation pour comprendre comment les utilisateurs interagissent avec notre plateforme, améliorer nos services, et générer des rapports pour les hôtes et les chefs d'équipe.",
+      "securitytitle": "Pour Assurer la Sécurité",
+      "securitydetails": "Nous utilisons vos informations pour surveiller et protéger la sécurité de notre plateforme, prévenir la fraude et appliquer nos conditions de service.",
+      "section3heading": "3. Comment Nous Partageons Vos Informations",
+      "thirdPartyProviderstitle": "Avec des Prestataires de Services Tiers",
+      "thirdPartyProvidersdetails": "Nous pouvons partager vos informations avec des prestataires de services tiers qui nous aident à exploiter et améliorer Remote Bingo. Ces prestataires sont contractuellement obligés de protéger vos informations.",
+      "integratedServicestitle": "Avec des Services Intégrés",
+      "integratedServicesdetails": "Si vous choisissez de connecter Remote Bingo à des services tiers (par exemple, Slack, Zoom), nous pouvons partager des informations avec ces services comme nécessaire pour fournir l'intégration.",
+      "legalCompliancetitle": "Pour la Conformité Légale",
+      "legalCompliancedetails": "Nous pouvons divulguer vos informations si la loi l'exige ou en réponse à des procédures légales, telles qu'une ordonnance du tribunal ou une assignation.",
+      "section4heading": "4. Sécurité des Données",
+      "section4details": "Nous pouvons partager vos informations avec des prestataires de services tiers qui nous aident à exploiter et améliorer Remote Bingo. Ces prestataires sont contractuellement obligés de protéger vos informations.",
+      "section5heading": "5. Vos Droits et Choix",
+      "accessUpdatetitle": "Accéder à et Mettre à Jour Vos Informations",
+      "accessUpdatedetails": "Vous pouvez accéder à et mettre à jour vos informations personnelles via les paramètres de votre compte. Si vous avez besoin d'aide, veuillez nous contacter à [adresse e-mail de contact].",
+      "optOuttitle": "Se Désinscrire des Communications Marketing",
+      "optOutdetails": "Vous pouvez vous désinscrire de la réception des e-mails promotionnels en suivant les instructions dans ces e-mails ou en nous contactant directement.",
+      "deleteAccounttitle": "Supprimer Votre Compte",
+      "deleteAccountdetails": "Si vous souhaitez supprimer votre compte, veuillez nous contacter à [adresse e-mail de contact]. Veuillez noter que certaines informations peuvent rester dans nos archives même après la suppression de votre compte."
+    }
+  
   }
