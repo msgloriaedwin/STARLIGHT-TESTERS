@@ -1,9 +1,12 @@
 import { ChevronUp, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
+import { useTranslations } from 'next-intl';
+
 const FAQ = () => {
   const faqRef: any = useRef();
   const [showAnsser, setAnsShow] = useState(false);
+  const t = useTranslations('faq');
 
   const handlerShowAnser = () => {
     setAnsShow(!showAnsser);
@@ -33,15 +36,12 @@ const FAQ = () => {
           handlerShowAnser();
         }}
       >
-        <p>What is remote bingo and how does it work?</p>
+        <p>{t('question')}</p>
         {showAnsser ? <ChevronUp /> : <ChevronDown />}
       </div>
       {showAnsser && (
         <p className="p-3 w-full border-[#1A1A1A] border-[1px] border-solid rounded-sm mt-1">
-          Remote Bingo is a digital adaptation of the classic bingo game
-          designed for remote teams, families, and educators. It allows players
-          to engage in real-time bingo games through platforms like Slack and
-          Zoom, fostering connection, teamwork, and fun.{" "}
+       {t('answer')}{" "}
         </p>
       )}
     </div>

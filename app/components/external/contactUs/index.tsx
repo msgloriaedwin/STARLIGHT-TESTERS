@@ -4,8 +4,10 @@ import SelectInput from "../SelectInput";
 import TextArea from "../textArea";
 import validator from "../validate";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from 'next-intl';
 
 const ContactUs = () => {
+  const t = useTranslations('contactus');
   const [formData, setFormData] = useState({
     name: "",
     emailEddress: "",
@@ -36,7 +38,7 @@ const ContactUs = () => {
     <div className="py-8">
       <div className="md:grid grid-cols-2 gap-6 items-center mb-10">
         <TextInput
-          label="Name"
+          label={t('nameLabel')}
           value={formData.name}
           setValue={(data) => {
             setFormData((prevData) => {
@@ -52,11 +54,11 @@ const ContactUs = () => {
               });
             }
           }}
-          placeholder="Enter your name"
+          placeholder={t('namePlaceholder')}
           error={requiredFormData.name}
         />
         <TextInput
-          label="Email address"
+          label={t('emailAddressLabel')}
           value={formData.emailEddress}
           setValue={(data) => {
             setFormData((prevData) => {
@@ -72,13 +74,13 @@ const ContactUs = () => {
               });
             }
           }}
-          placeholder="Enter email address"
+          placeholder={t('emailAddressPlaceholder')}
           error={requiredFormData.emailEddress}
         />
       </div>
       <div className="md:grid  grid-cols-2 gap-6 mb-4">
         <SelectInput
-          label="I use remote bingo as a:"
+          label={t('iUseRemoteBingoAsALabel')}
           value={formData.iUseRemoteBingoAsA}
           setValue={(data) => {
             setFormData((prevData) => {
@@ -97,16 +99,16 @@ const ContactUs = () => {
           placeholder=""
           error={requiredFormData.iUseRemoteBingoAsA}
           data={[
-            "Remote team",
-            "Family",
-            "Student",
-            "Educator",
-            "Social group",
-            "Other",
+            t('remoteTeam'),
+            t('family'),
+            t('student'),
+            t('educator'),
+            t('socialGroup'),
+            t('other'),
           ]}
         />
         <TextInput
-          label="Subject"
+          label={t('subjectLabel')}
           value={formData.subject}
           setValue={(data) => {
             setFormData((prevData) => {
@@ -122,13 +124,13 @@ const ContactUs = () => {
               });
             }
           }}
-          placeholder="Enter subject"
+          placeholder={t('subjectPlaceholder')}
           error={requiredFormData.subject}
         />
       </div>
       <div className="md:grid  grid-cols-2 gap-6 mb-4">
         <TextArea
-          label="Description"
+          label={t('descriptionLabel')}
           value={formData.description}
           setValue={(data) => {
             setFormData((prevData) => {
@@ -154,7 +156,7 @@ const ContactUs = () => {
             type="submit"
             className="w-full sm:h-14 rounded-[0.5rem] bg-primary-700 hover:bg-primary-700 text-primary-100  border border-primary-500 shadow-custom-inset "
           >
-            Submit
+           {t('submitButton')}
           </Button>
         </div>
       </div>

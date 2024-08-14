@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 interface TextInputProps {
   label: string;
   error: boolean;
@@ -13,6 +15,7 @@ const TextInput = ({
   value,
   placeholder,
 }: TextInputProps) => {
+  const t = useTranslations('contactInput');
   return (
     <div className="my-3 relative">
       <label className="font-light my-2 text-dark text-primary-500">
@@ -32,7 +35,7 @@ const TextInput = ({
       ></input>
       {error && (
         <p className="text-error text-[14px] font-[400]">
-          {label} cannot be empty!
+          {label} {t('errorText')}
         </p>
       )}
     </div>
