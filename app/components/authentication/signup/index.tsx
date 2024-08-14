@@ -282,7 +282,6 @@ const SignupForm = () => {
                 href="/auth/login"
                 src="/assets/icons/facebook2.svg"
                 alt="Facebook logo"
-                onClick={handleGoogleSignUp}
               >
                 Sign Up with Facebook
               </AuthLink>

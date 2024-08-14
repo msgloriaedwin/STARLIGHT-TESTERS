@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback, FC } from "react";
+import React, { useState, useEffect, useCallback, FC } from "react";
 import { z } from "zod";
 import RBInput from "@/app/components/shared/input";
 import FormCard from "@/app/components/shared/formcard/formCard";
@@ -11,6 +11,7 @@ import Navbar from "@/app/components/shared/navbars/Navbar";
 import { useRouter } from "next/navigation";
 import { CircleCheck, Eye, EyeOff } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 import { signUpWithGoogle, loginUser } from "@/utils/auth/authService";
 import { useAuthContext } from "@/context/AuthContext";
 
@@ -31,6 +32,7 @@ const LoginPage: FC = () => {
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [triggerGoogleLogin, setTriggerGoogleLogin] = useState(false);
   const [showCheckmarks, setShowCheckmarks] = useState({
     username: false,
     password: false,
@@ -96,7 +98,6 @@ const LoginPage: FC = () => {
         };
 
         setUser(userContextWithToken);
-
         toast({
           title: "Login successful",
           description: "You have logged in successfully.",
@@ -116,29 +117,39 @@ const LoginPage: FC = () => {
     }
   };
 
-  const handleGoogleLogin = useCallback(async () => {
-    try {
-      const userContext = await signUpWithGoogle();
+  const handleGoogleLoginClick = useCallback(() => {
+    setTriggerGoogleLogin(true);
+  }, []);
 
-      setUser(userContext);
+  useEffect(() => {
+    const performGoogleLogin = async () => {
+      if (triggerGoogleLogin) {
+        try {
+          const userContext = await signUpWithGoogle();
+          setUser(userContext);
+          toast({
+            title: "Google login successful",
+            description: "You have logged in with Google.",
+          });
+          window.location.href = "/";
+        } catch (error) {
+          toast({
+            title: "Google login failed",
+            description: "An error occurred while logging in with Google.",
+            variant: "destructive",
+          });
+        } finally {
+          setTriggerGoogleLogin(false);
+        }
+      }
+    };
 
-      toast({
-        title: "Google login successful",
-        description: "You have logged in with Google.",
-      });
-
-      router.push("/");
-    } catch (error) {
-      toast({
-        title: "Google login failed",
-        description: "An error occurred while logging in with Google.",
-        variant: "destructive",
-      });
-    }
-  }, [router, setUser, toast]);
+    performGoogleLogin();
+  }, [triggerGoogleLogin, setUser, router, toast]);
 
   return (
     <>
+      <Toaster />
       <Navbar />
       <div className="bg-body flex justify-center items-center h-screen bg-gray-100">
         <FormCard variant="primary" size="lg">
@@ -221,7 +232,7 @@ const LoginPage: FC = () => {
             <section className="social-auth">
               <button
                 type="button"
-                onClick={handleGoogleLogin}
+                onClick={handleGoogleLoginClick}
                 className="w-full flex justify-center p-4 border rounded-md border-[#C5C5C5]"
               >
                 <Image

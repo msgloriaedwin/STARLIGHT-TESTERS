@@ -18,8 +18,9 @@ export const loginUser = async (credentials: { username: string; password: strin
     const response = await axios.post(signInUrl, credentials);
 
 
-    const userData = response.data.data?.user;
+    const userData = {access_token:response.data.access_token, ...response.data.data.user};
 
+    console.log(userData)
     if (userData && userData.email) {
       return userData; 
     } else {
