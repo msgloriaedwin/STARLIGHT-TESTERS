@@ -10,14 +10,13 @@ export GIF_API_KEY=${GIF_API_KEY}
 cd /home/starlight-nestjs/remote-bingo/staging/bingo_fe
 
 # Pull the latest changes from the staging branch
-git stash
 git pull origin staging
 
 # Ensure pnpm is installed locally
 npm install -g pnpm
 
 # Install production dependencies
-pnpm install 
+pnpm install --prod
 
 # Clear any previous build artifacts
 rm -rf .next
