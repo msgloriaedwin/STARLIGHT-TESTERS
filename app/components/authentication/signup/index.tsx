@@ -1,130 +1,283 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { signupSchema } from "@/utils/Validation Schema/signupSchema";
-
-import AuthLink from "../authLinks";
-import ForgotPasswordNavbar from "../../shared/navbars/custom-navbars/ForgotPasswordNavbar";
-import RBInput from "../../shared/input";
-import FormCard from "../../shared/formcard/formCard";
+import { CircleCheck, Eye, EyeOff } from "lucide-react";
 import CustomButton from "../../shared/button/custombutton";
+import RBInput from "../../shared/input";
+import ExtendedRBInput from "./extendedRBInput";
+import ForgotPasswordNavbar from "../../shared/navbars/custom-navbars/ForgotPasswordNavbar";
+import FormCard from "../../shared/formcard/formCard";
+import AuthLink from "../authLinks";
+import { signUpWithEmail, signUpWithGoogle } from "@/utils/auth/authService";
+import { useToast } from "../../../../components/ui/use-toast";
+import { useAuthContext } from "@/context/AuthContext";
 
-type FormData = z.infer<typeof signupSchema>;
+const schema = z.object({
+  username: z.string().min(1, "Username is required"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(8, "Invalid Password"),
+});
+
+type FormData = z.infer<typeof schema>;
 
 const SignupForm = () => {
-  const [formData, setFormData] = useState<FormData>({
-    username: "",
-    email: "",
-    password: "",
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+    setValue,
+    getValues,
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
   });
 
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
-    {}
-  );
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState(0);
+  const [passwordConditions, setPasswordConditions] = useState({
+    hasUppercase: false,
+    hasNumber: false,
+    hasMinLength: false,
+  });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+  const { toast } = useToast();
+  const router = useRouter();
+  const { setUser } = useAuthContext();
 
-    if (name === "username" && value.length > 0) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        username: undefined,
-      }));
-    }
+  const calculatePasswordStrength = (password: string): void => {
+    const conditions = {
+      hasUppercase: /[A-Z]/.test(password),
+      hasNumber: /\d/.test(password),
+      hasMinLength: password.length >= 8,
+    };
+    setPasswordConditions(conditions);
 
-    if (name === "email" && value.length > 0) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        email: undefined,
-      }));
-    }
-
-    if (name === "password" && value.length >= 8) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        password: undefined,
-      }));
-    }
+    const strength = Object.values(conditions).filter(Boolean).length;
+    setPasswordStrength(strength);
   };
 
-  const validateForm = () => {
-    const result = signupSchema.safeParse(formData);
-    if (!result.success) {
-      const newErrors: Partial<Record<keyof FormData, string>> = {};
-      result.error.errors.forEach((err) => {
-        if (err.path[0] === "username") newErrors.username = err.message;
-        if (err.path[0] === "email") newErrors.email = err.message;
-        if (err.path[0] === "password") newErrors.password = err.message;
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    try {
+      const userContext = await signUpWithEmail(
+        data.username,
+        data.email,
+        data.password
+      );
+      setUser(userContext);
+      toast({
+        title: "Sign up successful",
+        description: "You have registered successfully.",
       });
-      setErrors(newErrors);
-      return false;
+      router.push(`/auth/login`);
+    } catch (error) {
+      toast({
+        title: "Sign up failed",
+        description: "An error occurred while signing up.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-    setErrors({});
-    return true;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (validateForm()) {
-      console.log("Form submitted successfully!");
-    }
+  const handlePasswordChange = (value: string) => {
+    setValue("password", value);
+    calculatePasswordStrength(value);
   };
+
+  const handleGoogleSignUp = useCallback(async () => {
+    try {
+      const userContext = await signUpWithGoogle();
+      setUser(userContext);
+      toast({
+        title: "Google sign up successful",
+        description: "You have signed up with Google.",
+      });
+      router.push("/");
+    } catch (error) {
+      toast({
+        title: "Google sign up failed",
+        description: "An error occurred while signing up with Google.",
+        variant: "destructive",
+      });
+    }
+  }, [router, toast, setUser]);
+
   return (
     <div className="flex flex-col min-h-screen">
       <ForgotPasswordNavbar />
       <div className="bg-body w-full flex-grow flex flex-col items-center justify-center px-9 bg-gray-100">
         <FormCard variant="primary" size="lg">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <RBInput
-              label="Enter username"
-              placeholder="Your username"
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <Controller
               name="username"
-              value={formData.username}
-              error={errors.username}
-              onChange={handleChange}
-              className="p-4"
+              control={control}
+              render={({ field }) => (
+                <RBInput
+                  label="Enter username"
+                  placeholder="Your username"
+                  {...field}
+                  error={errors.username?.message}
+                  className="p-4"
+                />
+              )}
             />
-            <RBInput
-              label="Enter Email"
-              type="email"
-              placeholder="Your Email"
+            <Controller
               name="email"
-              value={formData.email}
-              error={errors.email}
-              onChange={handleChange}
-              className="p-4"
+              control={control}
+              render={({ field }) => (
+                <RBInput
+                  label="Enter Email"
+                  type="email"
+                  placeholder="Your Email"
+                  {...field}
+                  error={errors.email?.message}
+                  className="p-4"
+                />
+              )}
             />
-            <RBInput
-              label="Choose Password"
-              type="password"
-              placeholder="Password"
+            <Controller
               name="password"
-              value={formData.password}
-              error={errors.password}
-              helperText=""
-              onChange={handleChange}
-              className="p-4"
+              control={control}
+              render={({ field }) => (
+                <ExtendedRBInput
+                  label="Choose Password"
+                  type={passwordVisible ? "text" : "password"}
+                  placeholder="Password"
+                  {...field}
+                  onChange={(e) => handlePasswordChange(e.target.value)}
+                  error={errors.password?.message}
+                  iconRight={
+                    <button
+                      type="button"
+                      onClick={() => setPasswordVisible(!passwordVisible)}
+                      className="absolute right-4 top-1/2 transform-translate-y-1/2"
+                    >
+                      {passwordVisible ? (
+                        <Eye className="h-5 w-5 text-gray-400" />
+                      ) : (
+                        <EyeOff className="h-5 w-5 text-gray-400" />
+                      )}
+                    </button>
+                  }
+                />
+              )}
             />
 
-            <CustomButton size={"lg"} className="w-full p-6" type="submit">
-              Sign up
-            </CustomButton>
+            <div className="flex space-x-2">
+              {Array.from({ length: 3 }, (_, index) => (
+                <div
+                  key={index}
+                  className={`h-1 w-[60px] rounded-full ${
+                    index < passwordStrength
+                      ? passwordStrength === 1
+                        ? "bg-red-500"
+                        : passwordStrength === 2
+                        ? "bg-yellow-500"
+                        : "bg-green-500"
+                      : "bg-gray-300"
+                  }`}
+                ></div>
+              ))}
+            </div>
+            <p
+              className={`text-sm mt-2 ${
+                passwordStrength === 1
+                  ? "text-red-500"
+                  : passwordStrength === 2
+                  ? "text-yellow-500"
+                  : passwordStrength === 3
+                  ? "text-green-500"
+                  : "text-gray-400"
+              }`}
+            >
+              {passwordStrength === 1
+                ? "Password too weak"
+                : passwordStrength === 2
+                ? "Medium Password strength"
+                : passwordStrength === 3
+                ? "Strong Password"
+                : ""}
+            </p>
 
+            <div className="space-y-1 text-sm text-gray-600">
+              <div
+                className={`flex items-center space-x-2 ${
+                  passwordConditions.hasUppercase
+                    ? "text-green-500"
+                    : errors.password && getValues("password") !== ""
+                    ? "text-red-500"
+                    : "text-gray-400"
+                }`}
+              >
+                <CircleCheck className="h-4 w-4" />
+                <span>Password must have at least 1 uppercase</span>
+              </div>
+              <div
+                className={`flex items-center space-x-2 ${
+                  passwordConditions.hasNumber
+                    ? "text-green-500"
+                    : errors.password && getValues("password") !== ""
+                    ? "text-red-500"
+                    : "text-gray-400"
+                }`}
+              >
+                <CircleCheck className="h-4 w-4" />
+                <span>Password must have at least 1 number</span>
+              </div>
+              <div
+                className={`flex items-center space-x-2 ${
+                  passwordConditions.hasMinLength
+                    ? "text-green-500"
+                    : errors.password && getValues("password") !== ""
+                    ? "text-red-500"
+                    : "text-gray-400"
+                }`}
+              >
+                <CircleCheck className="h-4 w-4" />
+                <span>Password must have at least 8 characters</span>
+              </div>
+            </div>
+            <CustomButton size={"lg"} className="w-full p-6" type="submit">
+              {isSubmitting ? (
+                <div role="status">
+                  <svg
+                    aria-hidden="true"
+                    className="w-4 h-4 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600"
+                    viewBox="0 0 100 101"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                      fill="currentFill"
+                    />
+                  </svg>
+                  <span className="sr-only">Loading...</span>
+                </div>
+              ) : (
+                "Sign Up"
+              )}
+            </CustomButton>
             <section className="social-auth space-y-4">
               <AuthLink
-                href="/auth/login"
+                href="#"
                 src="/assets/icons/google.svg"
                 alt="Google logo"
+                onClick={handleGoogleSignUp}
               >
                 Sign Up with Google
               </AuthLink>
-
               <AuthLink
                 href="/auth/login"
                 src="/assets/icons/facebook2.svg"

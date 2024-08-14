@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import RBInputLabel from "./InputLabel";
 import { Input, InputProps } from "@/components/ui/input";
 import RBInputErrorMessage from "./InputErrorMessage";
@@ -11,6 +11,8 @@ interface InputFieldProps extends InputProps {
   labelClassName?: string;
   errorClassName?: string;
   helperTextClassName?: string;
+
+  iconRight?: ReactNode;
 }
 
 const RBInput = React.forwardRef<HTMLInputElement, InputFieldProps>(
