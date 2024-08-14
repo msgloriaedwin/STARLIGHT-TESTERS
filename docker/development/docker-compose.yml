@@ -1,5 +1,0 @@
-services:
-  frontend:
-    image: hngtechie/bingofe:dev
-    ports:
-      - 6101:3000
