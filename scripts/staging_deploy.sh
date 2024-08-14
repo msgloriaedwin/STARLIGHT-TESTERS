@@ -13,10 +13,9 @@ cd /home/starlight-nestjs/remote-bingo/staging/bingo_fe
 # Pull the latest changes from the staging branch
 git pull origin staging
 
-# Ensure pnpm is installed locally
-npm install -g pnpm
 
 # Install production dependencies
+pnpm add tailwindcss postcss autoprefixer
 pnpm install --prod
 
 # Clear any previous build artifacts
