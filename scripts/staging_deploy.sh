@@ -13,14 +13,17 @@ cd /home/starlight-nestjs/remote-bingo/staging/bingo_fe
 git stash
 git pull origin staging
 
-# Install production dependencies
-pnpm install --production
+# Ensure pnpm is installed locally
+npm install -g pnpm
 
-# Build the application (if needed)
+# Install production dependencies
+pnpm install 
+
+# Clear any previous build artifacts
+rm -rf .next
+
+# Build the application
 pnpm run build
 
 # Start or restart the application using PM2
-pm2 start --name "bingo-staging" -- -p 6001
-
-# Use the following command if you want to restart an existing PM2 process
-# pm2 restart bingo-staging
+pm2 start ecosystem.config.js --env production
