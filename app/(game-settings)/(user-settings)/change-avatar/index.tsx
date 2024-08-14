@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import Image from "Next/image";
+import Image from "next/image";
 import CustomUploadContainer from "./upload";
 import Modal from "@/app/components/modal/modal";
 
