@@ -5,7 +5,7 @@ import FormCard from '@/app/components/shared/formcard/formCard'
 import RBInput from '@/app/components/shared/input'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation';
-import Link from 'next/link'
+import Link from 'next/link';
 import Navbar from '@/app/components/shared/navbars/Navbar'
 import { useTranslations } from 'next-intl';
 
@@ -41,7 +41,7 @@ const ForgotPassword = () => {
                     placeholder={t('enterEmailPlaceholder')}
                     type="email" 
                     value={email} 
-                    onChange={(e) => {
+                    onChange={(e: { target: { value: React.SetStateAction<string> } }) => {
                         setEmail(e.target.value);
                         setError(false);
                     }} 
