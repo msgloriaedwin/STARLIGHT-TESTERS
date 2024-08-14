@@ -7,6 +7,7 @@ interface AuthLinkProps {
   src: string;
   alt: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
 const AuthLink = ({ href, src, alt, children }: AuthLinkProps) => {
