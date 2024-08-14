@@ -7,22 +7,24 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/app/components/shared/navbars/Navbar";
+import { useTranslations } from 'next-intl';
 
 
 const NewPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const router = useRouter();
+  const t = useTranslations('newPassword');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password.length < 8) {
-      alert("Password must be at least 8 characters");
+      alert(t('passwordTooShortError'));
     } else if (password === confirmPassword) {
-      alert("Password changed successfully");
+      alert(t('passwordChangedSuccess'));
       router.push("/auth/forgot-password/success");
     } else {
-      alert("Passwords do not match");
+      alert(t('passwordsDoNotMatchError'));
     }
   };
 
@@ -32,15 +34,15 @@ const NewPassword = () => {
     <Navbar />
       <div className='bg-body flex flex-col h-screen justify-center items-center'>
         <div className='mb-6 text-center'>
-          <h3 className='text-2xl md:text-4xl mb-2 text-primary-900 '>Set New Password</h3>
+          <h3 className='text-2xl md:text-4xl mb-2 text-primary-900 '>{t('setNewPasswordTitle')}</h3>
           <p className='text-sm md:text-lg text-primary-900'>
-            Your new password must be different from the previous password
+           {t('setNewPasswordDescription')}
           </p>
         </div>
         <FormCard>
           <form onSubmit={handleSubmit} className='space-y-4'>
             <RBInput
-              label='New Password'
+              label={t('newPasswordLabel')}
               placeholder='********'
               type='password'
               value={password}
@@ -49,7 +51,7 @@ const NewPassword = () => {
             />
 
             <RBInput
-              label='Confirm Password'
+              label={t('confirmPasswordLabel')}
               placeholder='********'
               type="password" 
           value={confirmPassword} 
@@ -58,14 +60,14 @@ const NewPassword = () => {
             />
 
             <CustomButton size={"lg"} className='w-full p-7 text-base md:text-lg' type='submit'>
-              Reset password
+              {t('resetPasswordButton')}
             </CustomButton>
           </form>
           <Link
             href={"/auth/login"}
             className='underline flex justify-center mt-10 text-base md:text-lg'
           >
-            Back to sign in
+           {t('backToSignInLink')}
           </Link>
         </FormCard>
       </div>

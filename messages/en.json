@@ -29,6 +29,21 @@
     "signup": "Signup"
   },
   
+  "settingsHeader": {
+    "howToPlay": "How to play",
+    "back": "Back",
+   "friends": "Friends"
+  },
+
+  "sidebar": {
+    "backButton": "Back",
+    "logout": "Logout",
+    "deleteAccount": "Delete Account",
+    "gameSettings": "Game Settings",
+    "usersSettings": "Users Settings",
+    "termsAndPrivacy": "Terms & Privacy"
+  },
+
     "gameSettings": {
       "title": "Game Settings",
       "notificationsLabel": "Notifications",
@@ -41,6 +56,38 @@
       "languageChange":"Select your default language"
     },
 
+    "changeAvatar": {
+    "title": "Change Avatar",
+    "saveChangesButton": "Save Changes",
+    "imageError": "Please select an image",
+    "altTextPrefix": "Profile"
+  },
+  "userSettings": {
+    "title": "User Settings",
+    "usernameLabel": "Username",
+    "usernamePlaceholder": "Username",
+    "usernameErrorEmpty": "Username cannot be empty.",
+    "usernameErrorSpaces": "Username cannot have spaces.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "hng*************@hng.tech",
+    "emailErrorEmpty": "Email cannot be empty.",
+    "emailErrorInvalid": "Please enter a valid email address.",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••••••",
+    "passwordErrorEmpty": "Password cannot be empty.",
+    "saveChangesButton": "Save Changes",
+    "changeAvatarButton": "Change Avatar",
+    "imageAltText": "Remote Bingo"
+  },
+
+"termsAndService": {
+    "title": "Terms & Privacy",
+    "termsAndConditionsTitle": "Terms & Conditions",
+    "termsAndConditionsContent": "By using Bingo Game Website, you agree to these terms. Key points: You must be 16+ years old. Use services fairly and follow rules. We own all content and IP. Privacy Policy applies. We can suspend or terminate accounts for violations. Services are \"as is\" without warranties. Contact us: customercare@bingo.com.",
+    "privacyPolicyTitle": "Privacy Policy",
+    "privacyPolicyContent": "Welcome to Bingo Game Website! We value your privacy. We collect and use data to improve services, share with consent, and comply with laws. Contact us at customercare@bingo.com with questions."
+  },
+
     "forgotPassword": {
       "title": "Forgot Password?",
       "description": "Enter your Email to receive a code",
@@ -49,6 +96,30 @@
       "resetPasswordButton": "Reset password",
       "backToSignIn": "Back to sign in"
     },
+    "newPassword": {
+    "navbar": "Navbar",
+    "setNewPasswordTitle": "Set New Password",
+    "setNewPasswordDescription": "Your new password must be different from the previous password",
+    "newPasswordLabel": "New Password",
+    "confirmPasswordLabel": "Confirm Password",
+    "resetPasswordButton": "Reset password",
+    "backToSignInLink": "Back to sign in",
+    "passwordTooShortError": "Password must be at least 8 characters",
+    "passwordChangedSuccess": "Password changed successfully",
+    "passwordsDoNotMatchError": "Passwords do not match"
+  },
+  "otpComponent": {
+    "navbar": "Navbar",
+    "passwordResetTitle": "Password Reset",
+    "codeSentToEmailMessage": "We have sent a code to ",
+    "enterCodePrompt": "Enter password reset code here",
+    "noCodeReceivedMessage": "Didn’t receive a code?",
+    "resendingStatus": "Resending...",
+    "resendLinkText": "Resend",
+    "invalidOtpError": "Invalid OTP",
+    "verifyButtonText": "Verify",
+    "otpResentAlert": "OTP has been resent"
+  },
      "aboutRemoteBingo": {
       "aboutRemoteBingoTitle": "About Remote Bingo",
       "remoteBingo": "Remote Bingo",

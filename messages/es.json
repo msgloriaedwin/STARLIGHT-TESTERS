@@ -29,6 +29,12 @@
     "signup": "Registrarse"
   },
 
+  "settingsHeader": {
+    "howToPlay": "Cómo jugar",
+     "back": "Volver",
+     "friends": "Amigos"
+  },
+
   "gameSettings": {
     "title": "Configuración del juego",
     "notificationsLabel": "Notificaciones",
@@ -40,6 +46,45 @@
     "saveChangesButton": "Guardar cambios",
     "languageChange":"Selecciona tu idioma predeterminado"
   },
+"changeAvatar": {
+    "title": "Cambiar Avatar",
+    "saveChangesButton": "Guardar Cambios",
+    "imageError": "Por favor, seleccione una imagen",
+    "altTextPrefix": "Perfil"
+  },
+  "userSettings": {
+    "title": "Configuración de usuario",
+    "usernameLabel": "Nombre de usuario",
+    "usernamePlaceholder": "Nombre de usuario",
+    "usernameErrorEmpty": "El nombre de usuario no puede estar vacío.",
+    "usernameErrorSpaces": "El nombre de usuario no puede tener espacios.",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "hng*************@hng.tech",
+    "emailErrorEmpty": "El correo electrónico no puede estar vacío.",
+    "emailErrorInvalid": "Por favor, introduce una dirección de correo electrónico válida.",
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "••••••••••••",
+    "passwordErrorEmpty": "La contraseña no puede estar vacía.",
+    "saveChangesButton": "Guardar cambios",
+    "changeAvatarButton": "Cambiar avatar",
+    "imageAltText": "Bingo remoto"
+  },
+  "termsAndService": {
+    "title": "Términos y Privacidad",
+    "termsAndConditionsTitle": "Términos y Condiciones",
+    "termsAndConditionsContent": "Al utilizar el sitio web de Bingo Game, aceptas estos términos. Puntos clave: Debes tener 16 años o más. Usa los servicios de manera justa y sigue las reglas. Poseemos todo el contenido y la propiedad intelectual. Se aplica la política de privacidad. Podemos suspender o cancelar cuentas por violaciones. Los servicios se proporcionan \"tal cual\" sin garantías. Contáctanos en: customercare@bingo.com.",
+    "privacyPolicyTitle": "Política de Privacidad",
+    "privacyPolicyContent": "¡Bienvenido al sitio web de Bingo Game! Valoramos tu privacidad. Recopilamos y usamos datos para mejorar los servicios, compartir con consentimiento y cumplir con las leyes. Contáctanos en customercare@bingo.com si tienes preguntas."
+  },
+  "sidebar": {
+    "backButton": "Atrás",
+    "logout": "Cerrar sesión",
+    "deleteAccount": "Eliminar cuenta",
+    "gameSettings": "Configuración del juego",
+    "usersSettings": "Configuración de usuarios",
+    "termsAndPrivacy": "Términos y privacidad"
+  },
+
   
   "forgotPassword": {
     "title": "¿Olvidaste tu contraseña?",
@@ -48,6 +93,30 @@
     "enterEmailPlaceholder": "Tu correo electrónico",
     "resetPasswordButton": "Restablecer la contraseña",
     "backToSignIn": "Volver a iniciar sesión"
+  },
+  "newPassword": {
+    "navbar": "Navbar",
+    "setNewPasswordTitle": "Establecer nueva contraseña",
+    "setNewPasswordDescription": "Su nueva contraseña debe ser diferente de la contraseña anterior",
+    "newPasswordLabel": "Nueva contraseña",
+    "confirmPasswordLabel": "Confirmar contraseña",
+    "resetPasswordButton": "Restablecer contraseña",
+    "backToSignInLink": "Volver a iniciar sesión",
+    "passwordTooShortError": "La contraseña debe tener al menos 8 caracteres",
+    "passwordChangedSuccess": "Contraseña cambiada con éxito",
+    "passwordsDoNotMatchError": "Las contraseñas no coinciden"
+  },
+  "otpComponent": {
+    "navbar": "Navbar",
+    "passwordResetTitle": "Restablecimiento de contraseña",
+    "codeSentToEmailMessage": "Hemos enviado un código a {censoredEmail}",
+    "enterCodePrompt": "Ingrese el código de restablecimiento de contraseña aquí",
+    "noCodeReceivedMessage": "¿No recibió un código?",
+    "resendingStatus": "Reenviando...",
+    "resendLinkText": "Reenviar",
+    "invalidOtpError": "OTP inválido",
+    "verifyButtonText": "Verificar",
+    "otpResentAlert": "El OTP ha sido reenviado"
   },
   "aboutRemoteBingo": {
   "aboutRemoteBingoTitle": "Acerca de Remote Bingo",

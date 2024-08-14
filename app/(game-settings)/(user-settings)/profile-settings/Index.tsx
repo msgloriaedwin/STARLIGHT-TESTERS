@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import ChangeAvatar from "../change-avatar/page";
 import Modal from "@/app/components/modal/modal";
+import { useTranslations } from 'next-intl';
 
 function Index() {
   const [showChangeAvatar, setShowChangeAvatar] = useState(false);
@@ -13,6 +14,7 @@ function Index() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isFormSubmitted, setIsFormSubmitted] = useState<boolean>(false);
+  const t = useTranslations('userSettings');
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -28,10 +30,10 @@ function Index() {
 
     const usernameValue = usernameInput?.value.trim();
     if (!usernameValue) {
-      setUsernameError("Username cannot be empty.");
+      setUsernameError(t('usernameErrorEmpty'));
       hasError = true;
     } else if (usernameValue.includes(" ")) {
-      setUsernameError("Username cannot have spaces.");
+      setUsernameError(t('usernameErrorSpaces'));
       hasError = true;
     } else {
       setUsernameError("");
@@ -39,12 +41,12 @@ function Index() {
 
     const emailValue = emailInput?.value.trim();
     if (!emailValue) {
-      setEmailError("Email cannot be empty.");
+      setEmailError(t('passwordErrorEmpty'));
       hasError = true;
     } else if (
       !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailValue)
     ) {
-      setEmailError("Please enter a valid email address.");
+      setEmailError(t('emailErrorInvalid'));
       hasError = true;
     } else {
       setEmailError("");
@@ -52,7 +54,7 @@ function Index() {
 
     const passwordValue = passwordInput?.value.trim();
     if (!passwordValue) {
-      setPasswordError("Password cannot be empty.");
+      setPasswordError(t('passwordErrorEmpty'));
       hasError = true;
     } else {
       setPasswordError("");
@@ -74,7 +76,7 @@ function Index() {
     <>
       <div className="px-6 pt-16 bg-[#F7EEE7]">
         <div className="md:min-w-[389px] max-w-[411px]">
-          <h1 className="text-4xl text-primary-700 mb-8">User Settings</h1>
+          <h1 className="text-4xl text-primary-700 mb-8">{t('title')}</h1>
 
           <div className="flex gap-6 items-center mb-2">
             <div className="w-[94px] h-[94px] rounded-full">
@@ -91,7 +93,7 @@ function Index() {
               onClick={() => setShowChangeAvatar(true)}
               className="border-[#00a8e8] text-primary-100 hover:bg-[#00a8e8] hover:text-white"
             >
-              Change Avatar
+              {t('changeAvatarButton')}
             </Button>
           </div>
 
@@ -105,13 +107,13 @@ function Index() {
                 className="block text-neutral-600 text-[18px] leading-8 "
                 htmlFor="username"
               >
-                Username
+              {t('usernameLabel')}
               </label>
               <input
                 className="shadow appearance-none bg-[#FFFDFD] border border-primary-900 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
                 id="username"
                 type="text"
-                placeholder="Username"
+                placeholder={t('usernamePlaceholder')}
               ></input>
               {usernameError && (
                 <div className="text-red-500 text-sm p-0 m-0">
@@ -125,13 +127,13 @@ function Index() {
                 className="block text-neutral-600 text-[18px] leading-8"
                 htmlFor="email"
               >
-                Email
+                {t('emailLabel')}
               </label>
               <input
                 className="shadow appearance-none bg-[#FFFDFD] border border-primary-900 rounded w-full py-2 px-3 text-neutral-600 leading-tight focus:outline-none focus:shadow-outline"
                 id="email"
                 type="email"
-                placeholder="hng*************@hng.tech"
+                placeholder={t('emailPlaceholder')}
               ></input>
               {emailError && (
                 <div className="text-red-500 text-sm p-0 m-0">{emailError}</div>
@@ -143,7 +145,7 @@ function Index() {
                 className="block text-neutral-600 text-[18px] leading-8 "
                 htmlFor="password"
               >
-                Password
+                 {t('passwordLabel')}
               </label>
               <input
                 className="shadow appearance-none bg-[#FFFDFD] border border-primary-900 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -163,7 +165,7 @@ function Index() {
                 variant="default"
                 className=" w-full border-x-primary-B800 bg-primary-yellow text-primary-B900 hover:bg-primary-yellow-400 hover:text-primary-B900"
               >
-                Save Changes
+                {t('saveChangesButton')}
               </Button>
             </div>
           </form>
