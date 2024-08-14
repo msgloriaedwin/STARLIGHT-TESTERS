@@ -29,7 +29,7 @@ RUN corepack enable pnpm && pnpm run build
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV staging
+ENV NODE_ENV=staging
 
 RUN addgroup --system --gid 9001 nodejs
 RUN adduser --system --uid 9001 nextjs
@@ -47,7 +47,7 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
+ENV PORT=3000
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output

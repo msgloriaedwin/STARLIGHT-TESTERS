@@ -47,6 +47,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
+            export NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
             cd bingofe/staging/bingo_fe
             chmod +x ./scripts/staging_deploy.sh
             ./scripts/staging_deploy.sh
