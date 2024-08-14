@@ -2,4 +2,10 @@ services:
   frontend:
     image: hngtechie/bingofe:staging
     ports:
-      - 6100:3000
+      - "6100:3000"
+    environment:
+      NEXT_PUBLIC_API_GOOGLE_SIGN_UP_URL: ${NEXT_PUBLIC_API_GOOGLE_SIGN_UP_URL}
+      NEXT_PUBLIC_API_SIGN_IN_URL: ${NEXT_PUBLIC_API_SIGN_IN_URL}
+      NEXT_PUBLIC_API_SIGN_UP_URL: ${NEXT_PUBLIC_API_SIGN_UP_URL}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+      GIF_API_KEY: ${GIF_API_KEY}
