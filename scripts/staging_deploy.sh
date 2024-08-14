@@ -15,11 +15,8 @@ git stash
 git pull origin staging
 docker pull hngtechie/bingofe:staging
 
-# Set the project name for Docker Compose (optional)
-export COMPOSE_PROJECT_NAME=staging-bingofe
-
 # Bring up the services with environment variables
-docker-compose -f docker/staging/docker-compose.yml up -d
+docker-compose --project-name staging-bingofe -f docker/staging/docker-compose.yml up -d
 
 
 # set -e
