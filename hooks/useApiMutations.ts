@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { joinRoom, leaveRoom, sendMessage } from "@/actions";
-import { SendMessagePayload } from "@/types";
+import { createGameRoom, joinGameRoom, leaveRoom, sendMessage } from "@/actions";
+import { CreateGameRoomPayload, CreateRoomResponseDTO, JoinGameRoomPayload, SendMessagePayload } from "@/types";
 
 export const useSendMessage = () => {
     const queryClient = useQueryClient();
@@ -13,8 +13,8 @@ export const useSendMessage = () => {
 // Join room mutation
 export const useJoinRoom = () => {
   const queryClient = useQueryClient();
-  return useMutation<any, Error, { token: string; roomId: string }>({
-    mutationFn: ({ token, roomId }) => joinRoom(token, roomId),
+  return useMutation<any, Error, JoinGameRoomPayload>({
+    mutationFn: (data: JoinGameRoomPayload) => joinGameRoom(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["room"] });
     },
@@ -30,3 +30,13 @@ export const useLeaveRoom = () => {
     },
   });
 };
+
+export const useCreateGameRoom = () => {
+    const queryClient = useQueryClient();
+    return useMutation<CreateRoomResponseDTO, Error, CreateGameRoomPayload>({
+      mutationFn: (payload: CreateGameRoomPayload) => createGameRoom(payload),
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ["room"] });
+      },
+    });
+  };

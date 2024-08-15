@@ -1,6 +1,5 @@
 "use client";
 
-import { createGameRoom } from "@/actions";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -11,7 +10,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useAuthContext } from "@/context/AuthContext";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image, { StaticImageData } from "next/image";
@@ -20,8 +18,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import AvatarSelector from "./AvatarSelector";
+import { useCreateGameRoom } from "@/hooks/useApiMutations";
 
 const formSchema = z.object({
+  userName: z.string().min(1, { message: "Username is required" }),
   teamName: z.string().min(1, { message: "Team Name is required" }),
   bingoType: z.enum(["number", "alphabets"]),
   prizeValue: z
@@ -34,14 +34,11 @@ const formSchema = z.object({
     }),
   avatar: z.string(),
 });
-
 type FormData = z.infer<typeof formSchema>;
-
 interface CreateGameFormProps {
   avatars: StaticImageData[];
   className?: string;
 }
-
 const CreateGameForm: React.FC<CreateGameFormProps> = ({
   avatars,
   className,
@@ -49,11 +46,10 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
   const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
     avatars[0]
   );
-
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessages, setErrorMessage] = useState("");
   const router = useRouter();
-  const { user } = useAuthContext();
+  const createGameMutation = useCreateGameRoom();
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -66,54 +62,34 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
   });
 
   const handleFormSubmit = async (data: FormData) => {
-    let token = user.access_token || "";
-
     const payload = {
+      userName: data.userName,
       teamName: data.teamName,
       bingoType: data.bingoType,
       prizeValue: data.prizeValue.toString(),
       avatar: data.avatar,
-      token: token,
     };
 
-    setIsLoading(true);
-    setErrorMessage("");
-
-    try {
-      const response = await createGameRoom(payload);
-      
-
-      if (response.status_code === 401) {
-        setErrorMessage("Please log in to create a game.");
-        router.push("/auth/login");
-        return;
-      }
-
-      if (response.status_code === 201) {
-        const bingoType = response.data.bingo_type;
-        const roomId = response.data.id;
-        const url = `${process.env.NEXT_PUBLIC_URL}/lobby`;
-
-        if (bingoType === "alphabets") {
-          router.push(`${url}/alphabets?roomId=${roomId}`);
+    createGameMutation.mutate(payload, {
+      onSuccess: (response) => {
+        if (response.status_code === 201) {
+          router.push(`room/game-room?roomId=${response.data.id}`);
         } else {
-          router.push(`${url}/numbers?roomId=${roomId}`);
+          setErrorMessage(response.message || "An unexpected error occurred.");
         }
-      } else {
-        setErrorMessage(response.message || "An unexpected error occurred.");
-      }
-    } catch (error: any) {
-      setErrorMessage(error.message || "An unexpected error occurred.");
-    } finally {
-      setIsLoading(false);
-    }
+      },
+      onError: (error: any) => {
+        setErrorMessage(
+          error.message || "An error occurred. Please try again."
+        );
+      },
+    });
   };
 
   const handleAvatarSelect = (avatar: StaticImageData) => {
     setSelectedAvatar(avatar);
     form.setValue("avatar", avatar.src);
   };
-
   return (
     <section className={cn("max-w-[39rem]", className)}>
       <Form {...form}>
@@ -121,6 +97,36 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
           onSubmit={form.handleSubmit(handleFormSubmit)}
           className="bg-primary-200 p-[0.9rem] sm:p-6 rounded-[0.45rem] sm:rounded-[0.75rem] max-sm:border-primary-500 max-sm:border-l-[0.11rem] max-sm:border-b-[0.11rem] flex flex-col gap-[0.9rem] sm:gap-6"
         >
+          <div>
+            <FormField
+              control={form.control}
+              name="userName"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel
+                    htmlFor="Username"
+                    className="font-normal text-[0.6rem] max-sm:leading-3 sm:text-[1rem]"
+                  >
+                    User Name
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      id="userName"
+                      placeholder="User Name"
+                      {...field}
+                      className="border border-primary-900 focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
+                      required
+                    />
+                  </FormControl>
+                  {form.formState.errors && (
+                    <FormMessage className="text-primary-900">
+                      {form.formState.errors.userName?.message}
+                    </FormMessage>
+                  )}
+                </FormItem>
+              )}
+            />
+          </div>
           <div>
             <FormField
               control={form.control}
@@ -151,7 +157,6 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
               )}
             />
           </div>
-
           <div>
             <FormField
               name="bingoType"
@@ -195,7 +200,6 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                           </div>
                         )}
                       </Button>
-
                       <Button
                         className={cn(
                           "flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3",
@@ -230,13 +234,11 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
               )}
             />
           </div>
-
           <AvatarSelector
             avatars={avatars}
             selectedAvatar={selectedAvatar}
             onAvatarSelect={handleAvatarSelect}
           />
-
           <div>
             <FormField
               control={form.control}
@@ -247,7 +249,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                     htmlFor="prizeValue"
                     className="font-normal text-[0.6rem] max-sm:leading-3 sm:text-[1rem]"
                   >
-                    What&apos;s the Prize? 🏆
+                    What&apos;s the Prize? :trophy:
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -267,13 +269,11 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
               )}
             />
           </div>
-
-          {errorMessages && (
+          {createGameMutation.isError && (
             <p className="font-normal sm:text-[1rem] text-[0.6rem] max-sm:leading-3">
-              {"An error occurred. Please try again."}
+              {createGameMutation.error?.message || "An error occurred. Please try again."}
             </p>
           )}
-
           <Button
             type="submit"
             className="w-full sm:h-14 rounded-[0.5rem] bg-primary-700 hover:bg-primary-700 text-primary-100 p-2 border border-primary-500 shadow-custom-inset "

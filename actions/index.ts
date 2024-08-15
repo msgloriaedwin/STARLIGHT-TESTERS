@@ -4,6 +4,8 @@ import {
   CreateGameRoomPayload,
   CreateRoomResponseDTO,
   GetTokenResponseType,
+  JoinGameRoomPayload,
+  JoinRoomResponseDTO,
   SendMessagePayload,
 } from "@/types";
 
@@ -13,29 +15,28 @@ export const createGameRoom = async (
   data: CreateGameRoomPayload
 ): Promise<CreateRoomResponseDTO> => {
   const requestPayload = {
+    userName: data.userName,
     avatar: data.avatar,
     bingoType: data.bingoType,
     teamName: data.teamName,
     prizeValue: data.prizeValue,
   };
-  const request = await fetch(`${API_URL}/rooms`, {
+  const request = await fetch(`${API_URL}rooms`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${data.token}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify(requestPayload),
   });
-
   let response: CreateRoomResponseDTO = await request.json();
-
+  console.log(response);
   return response;
 };
 
 export async function getCentrifugeToken(
   token: string
 ): Promise<GetTokenResponseType> {
-  const request = await fetch(`${API_URL}/auth/token`, {
+  const request = await fetch(`${API_URL}auth/token`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -52,33 +53,28 @@ export async function getChannelSubscriptionToken({
   channel: string;
   token: string;
 }): Promise<string> {
-
-  const payload = { channel: channel};
+  const payload = { channel: channel };
   console.log(channel);
 
-  const request = await fetch(
-    `${API_URL}/auth/subscribe`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(payload),
-    }
-  );
+  const request = await fetch(`${API_URL}auth/subscribe`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
 
   const response = await request.json();
   console.log(response);
   return response.token;
 }
 
-
 export async function getRoom(token: string, id: string) {
-  const request = await fetch(`${API_URL}/rooms`, {
+  const request = await fetch(`${API_URL}rooms`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({id: id})
+    body: JSON.stringify({ id: id }),
   });
   const response = await request.json();
   console.log(response);
@@ -86,22 +82,9 @@ export async function getRoom(token: string, id: string) {
 }
 
 export async function leaveRoom(token: string, roomId: string) {
-  const request = await fetch(`${API_URL}/rooms/${roomId}/leave`, {
+  const request = await fetch(`${API_URL}rooms/${roomId}/leave`, {
     headers: {
       Authorization: `Bearer ${token}`,
-    },
-    method: "POST",
-  });
-  const response = await request.json();
-  console.log(response);
-  return response;
-}
-
-export async function joinRoom(token: string, roomId: string) {
-  const request = await fetch(`${API_URL}/rooms/${roomId}/join`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
     },
     method: "POST",
   });
@@ -111,8 +94,8 @@ export async function joinRoom(token: string, roomId: string) {
 }
 
 export async function sendMessage(payload: SendMessagePayload) {
-  console.log(payload)
-  const request = await fetch(`${API_URL}/rooms/${payload.roomId}/message`, {
+  console.log(payload);
+  const request = await fetch(`${API_URL}rooms/${payload.roomId}/message`, {
     headers: {
       Authorization: `Bearer ${payload.token}`,
       "Content-Type": "application/json",
@@ -123,3 +106,20 @@ export async function sendMessage(payload: SendMessagePayload) {
   const response = await request.json();
   return response;
 }
+
+export const joinGameRoom = async (
+  data: JoinGameRoomPayload
+): Promise<JoinRoomResponseDTO> => {
+  const request = await fetch(`${API_URL}rooms/join/link`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const response: JoinRoomResponseDTO = await request.json();
+  console.log(response);
+
+  return response;
+};
