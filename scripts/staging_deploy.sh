@@ -5,7 +5,8 @@ set -e
 # Assign environment variables
 export NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 export GIF_API_KEY=${GIF_API_KEY}
-export GIF_API_KEY=${API_URL}
+export API_URL=${API_URL}  # This was overwriting GIF_API_KEY
+
 export PORT=6001
 
 # Navigate to the project directory
@@ -15,8 +16,7 @@ cd /home/bingofe/remote-bingo/staging/bingo_fe
 git stash
 git pull origin staging
 
-
-# Install production dependencies
+# Install dependencies
 pnpm install 
 
 # Clear any previous build artifacts
@@ -26,7 +26,7 @@ rm -rf .next
 pnpm run build
 
 # Define the PM2 application name
-APP_NAME="nextjs-app"
+APP_NAME="bingofe-staging"
 
 # Check if the application is already running and restart it
 if pm2 list | grep -q $APP_NAME; then
