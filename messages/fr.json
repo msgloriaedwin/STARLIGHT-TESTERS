@@ -27,6 +27,11 @@
     "login": "Se connecter",
     "signup": "S'inscrire"
   },
+  "settingsHeader": {
+    "howToPlay": "Comment jouer",
+     "back": "Retour",
+   "friends": "Amis"
+  },
   "gameSettings": {
     "title": "Paramètres du jeu",
     "notificationsLabel": "Notifications",
@@ -38,6 +43,45 @@
     "saveChangesButton": "Enregistrer",
     "languageChange":"Sélectionnez votre langue par défaut"
   },
+  "userSettings": {
+    "title": "Paramètres utilisateur",
+    "usernameLabel": "Nom d'utilisateur",
+    "usernamePlaceholder": "Nom d'utilisateur",
+    "usernameErrorEmpty": "Le nom d'utilisateur ne peut pas être vide.",
+    "usernameErrorSpaces": "Le nom d'utilisateur ne peut pas contenir d'espaces.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "hng*************@hng.tech",
+    "emailErrorEmpty": "L'email ne peut pas être vide.",
+    "emailErrorInvalid": "Veuillez entrer une adresse e-mail valide.",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "••••••••••••",
+    "passwordErrorEmpty": "Le mot de passe ne peut pas être vide.",
+    "saveChangesButton": "Enregistrer les modifications",
+    "changeAvatarButton": "Changer d'avatar",
+    "imageAltText": "Bingo à distance"
+  },
+  "termsAndService": {
+    "title": "Conditions et Confidentialité",
+    "termsAndConditionsTitle": "Conditions Générales",
+    "termsAndConditionsContent": "En utilisant le site Web Bingo Game, vous acceptez ces conditions. Points clés : Vous devez avoir 16 ans ou plus. Utilisez les services de manière équitable et suivez les règles. Nous possédons tout le contenu et la propriété intellectuelle. La politique de confidentialité s'applique. Nous pouvons suspendre ou résilier les comptes en cas de violation. Les services sont fournis \"en l'état\" sans garanties. Contactez-nous : customercare@bingo.com.",
+    "privacyPolicyTitle": "Politique de Confidentialité",
+    "privacyPolicyContent": "Bienvenue sur le site Web de Bingo Game ! Nous valorisons votre vie privée. Nous collectons et utilisons des données pour améliorer les services, partager avec consentement et respecter les lois. Contactez-nous à customercare@bingo.com pour toute question."
+  },
+  "changeAvatar": {
+    "title": "Changer d'Avatar",
+    "saveChangesButton": "Enregistrer",
+    "imageError": "Veuillez sélectionner une image",
+    "altTextPrefix": "Profil"
+  },
+
+  "sidebar": {
+    "backButton": "Retour",
+    "logout": "Se déconnecter",
+    "deleteAccount": "Supprimer le compte",
+    "gameSettings": "Paramètres du jeu",
+    "usersSettings": "Paramètres des utilisateurs",
+    "termsAndPrivacy": "Conditions et confidentialité"
+  },
   "forgotPassword": {
     "title": "Mot de passe oublié ?",
     "description": "Entrez votre email pour recevoir un code",
@@ -45,6 +89,37 @@
     "enterEmailPlaceholder": "Votre email",
     "resetPasswordButton": "Réinitialiser le mot de passe",
     "backToSignIn": "Retour à la connexion"
+  },
+  "newPassword": {
+    "navbar": "Navbar",
+    "setNewPasswordTitle": "Définir un nouveau mot de passe",
+    "setNewPasswordDescription": "Votre nouveau mot de passe doit être différent de l'ancien mot de passe",
+    "newPasswordLabel": "Nouveau mot de passe",
+    "confirmPasswordLabel": "Confirmer le mot de passe",
+    "resetPasswordButton": "Réinitialiser le mot de passe",
+    "backToSignInLink": "Retour à la connexion",
+    "passwordTooShortError": "Le mot de passe doit comporter au moins 8 caractères",
+    "passwordChangedSuccess": "Mot de passe changé avec succès",
+    "passwordsDoNotMatchError": "Les mots de passe ne correspondent pas"
+  },
+  "passwordResetSuccess": {
+    "navbar": "Barre de navigation",
+    "passwordResetTitle": "Réinitialisation du mot de passe",
+    "passwordResetDescription": "Votre mot de passe a été réinitialisé avec succès. Cliquez ci-dessous pour accéder au jeu",
+    "continueButton": "Continuer",
+    "backToSignInLink": "Retour à la connexion"
+  },
+  "otpComponent": {
+    "navbar": "Navbar",
+    "passwordResetTitle": "Réinitialisation du mot de passe",
+    "codeSentToEmailMessage": "Nous avons envoyé un code à {censoredEmail}",
+    "enterCodePrompt": "Entrez le code de réinitialisation du mot de passe ici",
+    "noCodeReceivedMessage": "Vous n'avez pas reçu de code ?",
+    "resendingStatus": "Renvoi en cours...",
+    "resendLinkText": "Renvoyer",
+    "invalidOtpError": "Code OTP invalide",
+    "verifyButtonText": "Vérifier",
+    "otpResentAlert": "Le code OTP a été renvoyé"
   },
   "aboutRemoteBingo": {
     "aboutRemoteBingoTitle": "À propos de Remote Bingo",

@@ -1,11 +1,11 @@
+import { UserContext } from '../../context/AuthContext';
 import axios from 'axios';
-import { UserContext } from '@/context/AuthContext';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const signInUrl = `${baseUrl}auth/login`;
-const signUpUrl = `${baseUrl}auth/register`;
-const googleSignUpUrl = `${baseUrl}auth/google`;
+const signInUrl = `${baseUrl}/auth/login`;
+const signUpUrl = `${baseUrl}/auth/register`;
+const googleSignUpUrl = `${baseUrl}/auth/google`;
 
 
 
@@ -107,4 +107,3 @@ export const signUpWithGoogle = async () => {
     throw new Error('Failed to sign up with Google.');
   }
 };
-
