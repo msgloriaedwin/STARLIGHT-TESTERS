@@ -6,14 +6,20 @@ export interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 3000);
+    const splashShown = localStorage.getItem("splashShown");
 
-    return () => clearTimeout(timer);
+    if (!splashShown) {
+      setShowSplash(true);
+      const timer = setTimeout(() => {
+        setShowSplash(false);
+        localStorage.setItem("splashShown", "true");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (

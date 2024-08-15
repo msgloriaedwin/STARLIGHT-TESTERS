@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useTranslations } from 'next-intl';
 interface SelectInputProps {
   value: string;
   placeholder: string;
@@ -18,6 +19,7 @@ const SelectInput = ({
 }: SelectInputProps) => {
   const [showDropDown, setShowDropDown] = useState(false);
   const dropDownRef: any = useRef();
+  const t = useTranslations('contactInput');
 
   return (
     <div className={` w-full  my-2 relative`}>
@@ -48,7 +50,7 @@ const SelectInput = ({
         </div>
         {error && (
           <p className="text-error text-[14px] font-[400]">
-            {label} cannot be empty!
+            {label} {t('errorText')}
           </p>
         )}
       </div>

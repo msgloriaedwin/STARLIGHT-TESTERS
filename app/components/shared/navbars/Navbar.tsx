@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { usePathname } from "next/navigation";
 import LandingPageNavbar from "./custom-navbars/LandingPageNavbar";
 import { useState } from "react";
@@ -9,11 +9,30 @@ import SettingsHeader from "../../settings/header";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const pathName = usePathname()
-  const settingsRoutes = ["/game-settings", "/profile-settings", "/terms-and-privacy"];
-  const gameRoutes = ["/waiting-room", "/join-game", "/room/game", "/lobby/alphabets", "/lobby/numbers", "/create-game"];
+  const pathName = usePathname();
+  const mainRoutes = ["/", "/join-as-guest"];
+  const settingsRoutes = [
+    "/game-settings",
+    "/profile-settings",
+    "/terms-and-privacy",
+  ];
+  const gameRoutes = [
+    "/waiting-room",
+    "/join-game",
+    "/room/game",
+    "/lobby/alphabets",
+    "/lobby/numbers",
+    "/create-game",
+  ];
   const logoutRoutes = ["/auth/logout-confirmation", "/auth/logout-success"];
-  const authRoutes = ["/auth/login", "/auth/signup", "/auth/forgot-password/new-password", "/auth/forgot-password", "/auth/forgot-password/otp", "/auth/forgot-password/success"];
+  const authRoutes = [
+    "/auth/login",
+    "/auth/signup",
+    "/auth/forgot-password/new-password",
+    "/auth/forgot-password",
+    "/auth/forgot-password/otp",
+    "/auth/forgot-password/success",
+  ];
   const onSignUp: () => void = () => {
     setIsModalOpen(false);
   };
@@ -22,14 +41,27 @@ const Navbar = () => {
     setIsModalOpen(false);
   };
 
-  const isSettingsRoute = settingsRoutes.some(route => pathName === route || pathName.startsWith(route));
-  const isGameRoute = gameRoutes.some(route => pathName === route || pathName.startsWith(route));
-  const isAuthRoute = authRoutes.some(route => pathName === route || pathName.startsWith(route));
-  const isLogoutRoute = logoutRoutes.some(route => pathName === route || pathName.startsWith(route));
+  const isMainRoute = mainRoutes.some(
+    (route) => pathName === route || pathName.startsWith(route)
+  );
+  const isSettingsRoute = settingsRoutes.some(
+    (route) => pathName === route || pathName.startsWith(route)
+  );
+  const isGameRoute = gameRoutes.some(
+    (route) => pathName === route || pathName.startsWith(route)
+  );
+  const isAuthRoute = authRoutes.some(
+    (route) => pathName === route || pathName.startsWith(route)
+  );
+  const isLogoutRoute = logoutRoutes.some(
+    (route) => pathName === route || pathName.startsWith(route)
+  );
 
   return (
     <div className="w-full">
-      {pathName === "/" && <LandingPageNavbar onLogin={onLogin} onSignup={onSignUp} />}
+      {isMainRoute && (
+        <LandingPageNavbar onLogin={onLogin} onSignup={onSignUp} />
+      )}
       {isSettingsRoute && <SettingsHeader />}
       {isGameRoute && <JoinGameNavbar />}
       {isAuthRoute && <ForgotPasswordNavbar />}

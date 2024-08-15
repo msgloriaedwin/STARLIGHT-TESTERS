@@ -2,14 +2,16 @@ import { useState } from "react";
 import Faqs from "../FAQ/FAQs";
 import SwitchButton from "../SwitchBtn";
 import ContactUs from "../contactUs";
+import { useTranslations } from 'next-intl';
 
 const ContactUsAndFAq = () => {
   const [screen, setScreen] = useState("faqs");
+  const t = useTranslations('contactUs');
   return (
     <div className="pt-[4rem] px-4 md:px-20 mt-10">
       <h2 className="text-primary-500 font-bold text-[24px] md:text-[40px] my-8">
-        {screen === "contact" && " Contact Us"}
-        {screen === "faqs" && "Faqs"}
+        {screen === "contact" && t('headerContact')}
+        {screen === "faqs" && t('headerFaqs')}
       </h2>
       <div>
         <div
@@ -19,7 +21,7 @@ const ContactUsAndFAq = () => {
           <div className="w-[284px] md:w-full">
             <SwitchButton
               active={screen === "contact" ? true : false}
-              text="Contact Our Support Team"
+              text= {t('contactButtonText')}
               clickHandler={() => {
                 setScreen("contact");
               }}
@@ -28,7 +30,7 @@ const ContactUsAndFAq = () => {
           <div className="w-[284px] md:w-full">
             <SwitchButton
               active={screen === "faqs" ? true : false}
-              text="Frequently Asked Questions"
+              text={t('faqsButtonText')}
               clickHandler={() => {
                 setScreen("faqs");
               }}
