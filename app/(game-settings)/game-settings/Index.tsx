@@ -1,10 +1,9 @@
-"use client";
+"use client"
 
 import { useEffect, useState } from "react";
 import { ToggleControlSettings } from "@/app/components/ToggleControl/ToggleControlSettings";
 import CustomButton from "@/app/components/shared/button/custombutton";
 import Modal from "@/app/components/modal/modal";
-import LocaleSwitcher from "./switcher";
 import { useTranslations } from "next-intl";
 import axios from "axios";
 import { useAuthContext } from "@/context/AuthContext";
@@ -15,70 +14,87 @@ interface GameSettings {
   is_sound: boolean;
 }
 
+const defaultSettings: GameSettings = {
+  is_notification: false,
+  is_sound: false,
+};
+
 const Index: React.FC = () => {
   const t = useTranslations("gameSettings");
   const { user } = useAuthContext();
-  const [settings, setSettings] = useState<GameSettings>({
-    is_notification: true,
-    is_sound: true,
-  });
-  const [localSettings, setLocalSettings] = useState<GameSettings>({
-    is_notification: true,
-    is_sound: true,
-  });
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [settings, setSettings] = useState<GameSettings>(defaultSettings);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
-    if (!user.access_token) {
-      router.push("/auth/login");
-    } else {
-      fetchGameSettings();
+    const storedSettings = localStorage.getItem('gameSettings');
+    if (storedSettings) {
+      setSettings(JSON.parse(storedSettings));
     }
-  }, [user.access_token, router]);
+    if (user && user.access_token) {
+      fetchGameSettings();
+    } else {
+      setIsLoading(false);
+    }
+  }, [user]);
 
   const fetchGameSettings = async () => {
     try {
+      setIsLoading(true);
       const response = await axios.get(`${baseUrl}game-settings/me`, {
         headers: {
           Authorization: `Bearer ${user.access_token}`,
         },
       });
       const fetchedSettings = response.data.data.game_settings;
-      console.log("Fetched settings:", fetchedSettings);
       setSettings(fetchedSettings);
-      setLocalSettings(fetchedSettings);
+      localStorage.setItem('gameSettings', JSON.stringify(fetchedSettings));
     } catch (error) {
       console.error("Failed to fetch game settings:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleSettingChange = (key: keyof GameSettings, value: boolean) => {
-    setLocalSettings(prev => ({ ...prev, [key]: value }));
+    const newSettings = { ...settings, [key]: value };
+    setSettings(newSettings);
+    localStorage.setItem('gameSettings', JSON.stringify(newSettings));
   };
 
   const handleFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
- 
+  
+    // Only send the necessary fields to the backend
+    const payload = {
+      is_notification: settings.is_notification,
+      is_sound: settings.is_sound,
+    };
+  
     try {
-      const response = await axios.patch(
+      await axios.patch(
         `${baseUrl}game-settings/me`,
-        localSettings,
+        payload,
         {
           headers: {
             Authorization: `Bearer ${user.access_token}`,
+            'Content-Type': 'application/json',
           },
         }
       );
-      console.log("Form submission response:", response.data);
-      setSettings(localSettings);
       setIsModalOpen(true);
     } catch (error) {
-      console.error("Failed to update game settings:", error);
+      console.error("Failed to update settings:", error);
     }
   };
   
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="px-6 pt-16 bg-[#F7EEE7]">
       <div className="max-w-[411px]">
@@ -92,7 +108,7 @@ const Index: React.FC = () => {
             <ToggleControlSettings
               className="data-[state=checked]:bg-primary-200 h-9"
               thumbClassName="data-[state=checked]:bg-[#fff] h-8"
-              checked={localSettings.is_notification}
+              checked={settings.is_notification}
               onCheckedChange={(checked) => handleSettingChange("is_notification", checked)}
             />
           </div>
@@ -104,7 +120,7 @@ const Index: React.FC = () => {
             <ToggleControlSettings
               className="data-[state=checked]:bg-primary-200 h-9"
               thumbClassName="data-[state=checked]:bg-[#fff] h-8"
-              checked={localSettings.is_sound}
+              checked={settings.is_sound}
               onCheckedChange={(checked) => handleSettingChange("is_sound", checked)}
             />
           </div>
