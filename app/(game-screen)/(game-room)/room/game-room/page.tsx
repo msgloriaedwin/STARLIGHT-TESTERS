@@ -1,6 +1,19 @@
 "use client";
-import JoinGameNavbar from "@/app/components/shared/navbars/custom-navbars/JoinGameNavbar";
-import GameRoomContainer from "@/app/container/GameRoomContainer";
+import dynamic from "next/dynamic";
+
+const JoinGameNavbar = dynamic(
+  () => import("@/app/components/shared/navbars/custom-navbars/JoinGameNavbar"),
+  {
+    ssr: false,
+  }
+);
+const GameRoomContainer = dynamic(
+  () => import("@/app/container/GameRoomContainer"),
+  {
+    ssr: false,
+  }
+);
+
 const page = () => {
   return (
     <>

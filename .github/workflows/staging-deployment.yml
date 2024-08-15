@@ -5,23 +5,17 @@ on:
   push:
     branches:
       - staging
-    paths-ignore:
-      - .github/workflows/**
 
 jobs:
-  deploy_to_staging:
+  deploy-staging:
     runs-on: bingo-server
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Deploy to Staging Server
-        uses: mholt/ssh-action@v1.2.0
+      - name: Deploy on server
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}  # Use the password for SSH authentication
+          password: ${{ secrets.PASSWORD }}
           script: |
             export NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
             export GIF_API_KEY=${{ secrets.GIF_API_KEY }}
