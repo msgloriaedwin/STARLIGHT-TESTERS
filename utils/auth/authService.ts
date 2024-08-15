@@ -20,12 +20,10 @@ const saveUserDataToSessionStorage = (data: UserContext) => {
 export const loginUser = async (credentials: { username: string; password: string }) => {
   try {
     const response = await axios.post(signInUrl, credentials);
-
-
-    const userData = {access_token:response.data.access_token, ...response.data.data.user};
-
-    console.log(userData)
+    const userData = {access_token: response.data.access_token, ...response.data.data.user};
+    
     if (userData && userData.email) {
+      saveUserDataToSessionStorage(userData);
       return userData; 
     } else {
       throw new Error("Invalid login response structure");
