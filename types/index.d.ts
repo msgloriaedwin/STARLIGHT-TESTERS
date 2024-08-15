@@ -13,6 +13,11 @@ enum BingoType {
 }
 
 // DTO Interfaces
+export interface GetTokenResponseType {
+  status_code: number;
+  message: string;
+  token: string;
+}
 export interface CreateRoomResponseDTO {
   message: string;
   status: string;
@@ -31,17 +36,12 @@ export interface CreateRoomResponseDataDto {
   avatar_url: string;
 }
 
-export interface CreateRoomResponseDataDto {
-  prize_value: number;
-  avatar_url: string;
-}
-
 export interface CreateGameRoomPayload {
+  userName: string;
   teamName: string;
   bingoType: "alphabets" | "number";
   avatar: string;
   prizeValue: string;
-  token: string;
 }
 
 export interface CreateUserDTO {
@@ -262,4 +262,10 @@ export interface JoinRoomResponseDTO {
     created_at: string;
     updated_at: string;
   };
+}
+
+export interface SendMessagePayload {
+  message: string;
+  token: string;
+  roomId: string;
 }
