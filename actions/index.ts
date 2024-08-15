@@ -1,23 +1,29 @@
 "use server";
 
-import appConfig from "@/config/appConfig";
 import { CreateGameRoomPayload, CreateRoomResponseDTO } from "@/types";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-const API_URL = appConfig.API_BASE_URL;
+export const createGameRoom = async (
+  data: CreateGameRoomPayload
+): Promise<CreateRoomResponseDTO> => {
 
-export const createGameRoom = async (data: CreateGameRoomPayload): Promise<CreateRoomResponseDTO> => {
+  const requestPayload = {
+    avatar: data.avatar,
+    bingoType: data.bingoType,
+    teamName: data.teamName,
+    prizeValue: data.prizeValue
+  }
   const request = await fetch(`${API_URL}/rooms`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${data.token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-  })
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${data.token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(requestPayload),
+  });
 
-  let response: CreateRoomResponseDTO = await request.json()
-  console.log(response);
- 
- return response
-}
+  let response: CreateRoomResponseDTO = await request.json();
+
+  return response;
+};  

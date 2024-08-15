@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { createGameRoom } from "@/actions";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,26 +10,28 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Image, { StaticImageData } from "next/image";
+import { useAuthContext } from "@/context/AuthContext";
 import { cn } from "@/lib/utils";
-import AvatarSelector from "./AvatarSelector";
-import { createGameRoom } from "@/actions";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
-import appConfig from "@/config/appConfig";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import AvatarSelector from "./AvatarSelector";
 
 const formSchema = z.object({
   teamName: z.string().min(1, { message: "Team Name is required" }),
   bingoType: z.enum(["number", "alphabets"]),
   prizeValue: z
-  .string()
-  .refine((val) => !isNaN(Number(val)), {
-    message: "Prize value must be a number",
-  })
-  .refine((val) => Number(val) > 0, {
-    message: "Prize value must be greater than zero",
-  }),
+    .string()
+    .refine((val) => !isNaN(Number(val)), {
+      message: "Prize value must be a number",
+    })
+    .refine((val) => Number(val) > 0, {
+      message: "Prize value must be greater than zero",
+    }),
   avatar: z.string(),
 });
 
@@ -53,6 +53,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessages, setErrorMessage] = useState("");
   const router = useRouter();
+  const { user } = useAuthContext();
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -65,7 +66,8 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
   });
 
   const handleFormSubmit = async (data: FormData) => {
-    let token = "";
+    let token = user.access_token || "";
+
     const payload = {
       teamName: data.teamName,
       bingoType: data.bingoType,
@@ -76,10 +78,9 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
 
     setIsLoading(true);
     setErrorMessage("");
-    
+
     try {
       const response = await createGameRoom(payload);
-      console.log(response)
 
       if (response.status_code === 401) {
         setErrorMessage("Please log in to create a game.");
@@ -87,10 +88,10 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
         return;
       }
 
-      if (response.status_code === 200) {
+      if (response.status_code === 201) {
         const bingoType = response.data.bingo_type;
         const roomId = response.data.id;
-        const url = `${appConfig.BASE_URL}/lobby`;
+        const url = `${process.env.NEXT_PUBLIC_URL}/lobby`;
 
         if (bingoType === "alphabets") {
           router.push(`${url}/alphabets?roomId=${roomId}`);
@@ -265,7 +266,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
               )}
             />
           </div>
-          
+
           {errorMessages && (
             <p className="font-normal sm:text-[1rem] text-[0.6rem] max-sm:leading-3">
               {"An error occurred. Please try again."}
@@ -279,7 +280,6 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
           >
             Save & Continue
           </Button>
-          
         </form>
       </Form>
     </section>
