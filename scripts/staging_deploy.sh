@@ -8,7 +8,7 @@ export GIF_API_KEY=${GIF_API_KEY}
 export PORT=6001
 
 # Navigate to the project directory
-cd /home/starlight-nestjs/remote-bingo/staging/bingo_fe
+cd /home/bingofe/remote-bingo/staging/bingo_fe
 
 # Pull the latest changes from the staging branch
 git stash

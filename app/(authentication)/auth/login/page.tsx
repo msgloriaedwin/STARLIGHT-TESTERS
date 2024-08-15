@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, FC } from "react";
+
 import { z } from "zod";
 import RBInput from "@/app/components/shared/input";
 import FormCard from "@/app/components/shared/formcard/formCard";
@@ -21,6 +22,20 @@ const loginSchema = z.object({
 });
 
 type FormData = z.infer<typeof loginSchema>;
+
+declare global {
+  interface Window {
+    google?: {
+      accounts: {
+        id: {
+          initialize: (config: any) => void;
+          renderButton: (element: HTMLElement, config: any) => void;
+          prompt: () => void;
+        };
+      };
+    };
+  }
+}
 
 const LoginPage: FC = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -117,9 +132,46 @@ const LoginPage: FC = () => {
     }
   };
 
-  const handleGoogleLoginClick = useCallback(() => {
-    setTriggerGoogleLogin(true);
-  }, []);
+  // const handleGoogleLoginClick = useCallback(() => {
+  //   setTriggerGoogleLogin(true);
+  // }, []);
+
+  // useEffect(() => {
+  //   const performGoogleLogin = async () => {
+  //     if (triggerGoogleLogin) {
+  //       try {
+  //         const userContext = await signUpWithGoogle();
+  //         setUser(userContext);
+  //         toast({
+  //           title: "Google login successful",
+  //           description: "You have logged in with Google.",
+  //         });
+  //         window.location.href = "/";
+  //       } catch (error) {
+  //         toast({
+  //           title: "Google login failed",
+  //           description: "An error occurred while logging in with Google.",
+  //           variant: "destructive",
+  //         });
+  //       } finally {
+  //         setTriggerGoogleLogin(false);
+  //       }
+  //     }
+  //   };
+
+  //   performGoogleLogin();
+  // }, [triggerGoogleLogin, setUser, router, toast]);
+  // useEffect(() => {
+  //   if (session) {
+  //     router.push("/");
+  //   }
+  // }, [session, router]);
+
+  const handleGoogleLoginClick = async (event: any) => {
+    event.preventDefault();
+    window.location.href =
+      "https://api.staging.remote.bingo/api/v1/auth/google/callback";
+  };
 
   useEffect(() => {
     const performGoogleLogin = async () => {
