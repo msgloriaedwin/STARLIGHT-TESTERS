@@ -14,6 +14,7 @@ export default function RootLayout({
         onLogin={() => {}}
         onSignup={() => {}}
         hideAuthBtn={true}
+        hideHowToPlay={true}
       />
       <div className="bg-body">{children}</div>
       <Footer />

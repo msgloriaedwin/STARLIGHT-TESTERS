@@ -23,7 +23,7 @@ const TextInput = ({
       </label>
       <input
         type="text"
-        className={`py-3 px-2 w-full border-solid border-[1.5px] bg-transparent text-dark  placeholder-gray-950
+        className={`py-3 px-2 w-full border-solid border-[1.5px] bg-transparent text-dark  placeholder-gray-400
         focus:outline-none focus:border-primary-500 ${
           error ? "border-error" : "border-gray-950"
         } border-gray-2 rounded overflow-hidden  placeholder:font-300 `}
