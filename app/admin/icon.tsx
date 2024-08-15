@@ -85,3 +85,9 @@ export const ClipboardIcon = () => {
         </svg>
     )
 }
+
+export default function Icon() {
+    return (
+        <div></div>
+    )
+}
