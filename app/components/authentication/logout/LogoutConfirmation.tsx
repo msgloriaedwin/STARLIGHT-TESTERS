@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import CustomButton from "../../shared/button/custombutton";
 import ImageTextButtons from "../../shared/imageTextButtons";
 import Navbar from "../../shared/navbars/Navbar";
+import { useAuthContext } from "@/context/AuthContext";
 
 type Props = {};
 
@@ -15,11 +16,12 @@ const LogoutConfirmation = (props: Props) => {
     router.push("/game-settings");
   };
 
+  const { logout } = useAuthContext();
   const handleLogout = () => {
     // API call to terminate session
 
     // Clear session tokens or cookies here
-    localStorage.removeItem("sessionToken");
+    logout();
     document.cookie = "sessionToken=; Max-Age=0; path=/; domain=yourdomain.com";
 
     router.push("/auth/logout-success");

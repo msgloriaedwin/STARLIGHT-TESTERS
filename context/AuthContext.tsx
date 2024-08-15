@@ -42,7 +42,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     sessionStorage.removeItem("userContext");
     setUser(defaultUserContext);
+    window.location.href = "/";
   };
+
 
   return (
     <AuthContext.Provider value={{ user, setUser, logout }}>

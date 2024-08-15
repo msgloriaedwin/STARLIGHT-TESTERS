@@ -1,11 +1,13 @@
 import { UserContext } from '../../context/AuthContext';
 import axios from 'axios';
+import { signIn } from 'next-auth/react';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const signInUrl = `${baseUrl}/auth/login`;
-const signUpUrl = `${baseUrl}/auth/register`;
-const googleSignUpUrl = `${baseUrl}/auth/google`;
+
+const signInUrl = `${baseUrl}auth/login`;
+const signUpUrl = `${baseUrl}auth/register`;
+const googleSignUpUrl = `${baseUrl}auth/google/callback`;
 
 
 
@@ -20,12 +22,10 @@ const saveUserDataToSessionStorage = (data: UserContext) => {
 export const loginUser = async (credentials: { username: string; password: string }) => {
   try {
     const response = await axios.post(signInUrl, credentials);
-
-
-    const userData = {access_token:response.data.access_token, ...response.data.data.user};
-
-    console.log(userData)
+    const userData = {access_token: response.data.access_token, ...response.data.data.user};
+    
     if (userData && userData.email) {
+      saveUserDataToSessionStorage(userData);
       return userData; 
     } else {
       throw new Error("Invalid login response structure");
@@ -87,6 +87,9 @@ export const signUpWithEmail = async (username: string, email: string, password:
     throw new Error('Failed to sign up with email.');
   }
 };
+
+
+
 
 export const signUpWithGoogle = async () => {
   try {

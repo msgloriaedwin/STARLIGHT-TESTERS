@@ -15,13 +15,15 @@ import AuthLink from "../authLinks";
 import { signUpWithEmail, signUpWithGoogle } from "@/utils/auth/authService";
 import { useToast } from "../../../../components/ui/use-toast";
 import { useAuthContext } from "@/context/AuthContext";
+import Image from "next/image";
 
 const schema = z.object({
   username: z.string().min(1, "Username is required"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(8, "Invalid Password"),
 });
-
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+const googleSignUpUrl = `${baseUrl}auth/google`;
 type FormData = z.infer<typeof schema>;
 
 const SignupForm = () => {
@@ -74,7 +76,7 @@ const SignupForm = () => {
         title: "Sign up successful",
         description: "You have registered successfully.",
       });
-      router.push(`/auth/login`);
+      router.push(`/auth/verify-email`);
     } catch (error) {
       toast({
         title: "Sign up failed",
@@ -91,23 +93,28 @@ const SignupForm = () => {
     calculatePasswordStrength(value);
   };
 
-  const handleGoogleSignUp = useCallback(async () => {
-    try {
-      const userContext = await signUpWithGoogle();
-      setUser(userContext);
-      toast({
-        title: "Google sign up successful",
-        description: "You have signed up with Google.",
-      });
-      router.push("/");
-    } catch (error) {
-      toast({
-        title: "Google sign up failed",
-        description: "An error occurred while signing up with Google.",
-        variant: "destructive",
-      });
-    }
-  }, [router, toast, setUser]);
+  // const handleGoogleSignUp = useCallback(async () => {
+  //   try {
+  //     const userContext = await signUpWithGoogle();
+  //     setUser(userContext);
+  //     toast({
+  //       title: "Google sign up successful",
+  //       description: "You have signed up with Google.",
+  //     });
+  //     router.push("/");
+  //   } catch (error) {
+  //     toast({
+  //       title: "Google sign up failed",
+  //       description: "An error occurred while signing up with Google.",
+  //       variant: "destructive",
+  //     });
+  //   }
+  // }, [router, toast, setUser]);
+  const handleGoogleLoginClick = useCallback(() => {
+    // signUpWithGoogle();
+    window.location.href = googleSignUpUrl;
+    console.log("MEssage");
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -270,14 +277,20 @@ const SignupForm = () => {
               )}
             </CustomButton>
             <section className="social-auth space-y-4">
-              <AuthLink
-                href="#"
-                src="/assets/icons/google.svg"
-                alt="Google logo"
-                onClick={handleGoogleSignUp}
+              <button
+                type="button"
+                onClick={handleGoogleLoginClick}
+                className="w-full flex justify-center p-4 border rounded-md border-[#C5C5C5]"
               >
-                Sign Up with Google
-              </AuthLink>
+                <Image
+                  src={"/assets/icons/google.svg"}
+                  alt="Google logo"
+                  height={24}
+                  width={24}
+                  className="mr-3"
+                />{" "}
+                Sign in with Google
+              </button>
               <AuthLink
                 href="/auth/login"
                 src="/assets/icons/facebook2.svg"

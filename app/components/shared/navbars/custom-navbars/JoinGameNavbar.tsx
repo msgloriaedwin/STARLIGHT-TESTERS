@@ -16,8 +16,6 @@ import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import CustomButton from "../../button/custombutton";
 import cupIcon from "../asset/cup.svg";
-import { useBackgroundSound } from "@/utils/game-sounds/useBackgroundMusic";
-import BackgroundMusic from "../../sound-effects";
 import infoIcon from "../asset/info-circle.svg";
 import closeIcon from "../asset/close-circle.svg";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -31,24 +29,9 @@ type PageProps = {
 const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [showDestopNav, setShowDestopNav] = useState(false);
-  const [toggleMusic, setToggleMusic] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
-  const { playSound, stopSound } = useBackgroundSound({
-    soundSrc: "/assets/audios/game-music.mp3",
-    enabled: toggleMusic,
-  });
 
-  const handleToggleMusic = () => {
-    setToggleMusic(!toggleMusic);
-  };
-  useEffect(() => {
-    if ((pathname === "/create-game" || pathname === "/join") && toggleMusic) {
-      playSound();
-    } else {
-      stopSound();
-    }
-  }, [toggleMusic, playSound, stopSound, pathname]);
   const handleHowToPlayClick = () => { };
 
   return (
@@ -70,10 +53,6 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
           >
             Back
           </CustomButton>{" "}
-          <BackgroundMusic
-            toggleMusic={toggleMusic}
-            handleToggleMusic={handleToggleMusic}
-          />
         </div>
 
         <div className="hidden md:flex max-w-[100vw] items-center gap-4">
@@ -86,10 +65,6 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
           >
             Back
           </CustomButton>
-          <BackgroundMusic
-            toggleMusic={toggleMusic}
-            handleToggleMusic={handleToggleMusic}
-          />
         </div>
         {showCup && (
           <div className="hidden md:flex items-center gap-4 justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-3">
