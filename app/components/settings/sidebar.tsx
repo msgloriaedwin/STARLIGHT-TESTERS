@@ -4,13 +4,16 @@ import Link from "next/link"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ArrowLeft, Menu } from "lucide-react"
 import Image from "next/image"
+import { useTranslations } from 'next-intl';
+
 export function SidebarComp() {
+	const t = useTranslations('sidebar');
 	const path = usePathname()
 
 	const links = [
-		{ href: "/game-settings", label: "Game Settings" },
-		{ href: "/profile-settings", label: "Users Settings" },
-		{ href: "/terms-and-privacy", label: "Terms & Privacy" },
+		{ href: "/game-settings", label: t('gameSettings') },
+		{ href: "/profile-settings", label: t('usersSettings') },
+		{ href: "/terms-and-privacy", label: t('termsAndPrivacy') },
 	]
 
 	const linkClasses = (href: string) =>
@@ -28,7 +31,7 @@ export function SidebarComp() {
 					<header className="flex w-full bg-white items-center justify-between px-5 py-3">
 						<div className="flex rounded-md text-[#9F9F9F] border border-[#9F9F9F] items-center gap-x-1 py-2 px-3">
 							{" "}
-							<ArrowLeft size={16} /> Back
+							<ArrowLeft size={16} /> {t('backButton')}
 						</div>
 						<div>
 							<SheetTrigger asChild>
@@ -66,12 +69,12 @@ export function SidebarComp() {
 										width={17}
 										height={17}
 									/>
-									Logout
+									{t('logout')}
 								</li>
 								<Link
 									href="/components/delete-account"
 									className="text-error  whitespace-nowrap">
-									Delete Account
+									{t('deleteAccount')}
 								</Link>
 							</div>
 						</ul>
@@ -103,13 +106,13 @@ export function SidebarComp() {
                   width={17}
                   height={17}
                 />
-                Logout
+                {t('logout')}
               </li>
             </Link>
 						<Link
 							href="/components/delete-account"
 							className="text-error  whitespace-nowrap">
-							Delete Account
+							{t('deleteAccount')}
 						</Link>
 					</ul>
 				</div>

@@ -18,7 +18,8 @@ export default function HomeHero() {
   const onLogin = () => {
     setIsModalOpen(false);
   };
-  
+
+
   return (
     <div>
       

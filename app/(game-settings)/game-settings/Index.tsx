@@ -77,7 +77,7 @@ const Index: React.FC = () => {
                         </div>
                     </div>
                     <div className="gap-4">
-                        <p className="text-xl font-medium text-neutral-600 mt-6 mb-3">Select your default language</p>
+                        <p className="text-xl font-medium text-neutral-600 mt-6 mb-3">{t('languageChange')} </p>
                         <LocaleSwitcher/>
                     </div>
                     

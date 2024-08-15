@@ -29,6 +29,12 @@
     "signup": "Registrarse"
   },
 
+  "settingsHeader": {
+    "howToPlay": "Cómo jugar",
+     "back": "Volver",
+     "friends": "Amigos"
+  },
+
   "gameSettings": {
     "title": "Configuración del juego",
     "notificationsLabel": "Notificaciones",
@@ -37,8 +43,48 @@
     "difficultyEasyLabel": "Fácil",
     "difficultyMediumLabel": "Medio",
     "difficultyHardLabel": "Difícil",
-    "saveChangesButton": "Guardar cambios"
+    "saveChangesButton": "Guardar cambios",
+    "languageChange":"Selecciona tu idioma predeterminado"
   },
+"changeAvatar": {
+    "title": "Cambiar Avatar",
+    "saveChangesButton": "Guardar Cambios",
+    "imageError": "Por favor, seleccione una imagen",
+    "altTextPrefix": "Perfil"
+  },
+  "userSettings": {
+    "title": "Configuración de usuario",
+    "usernameLabel": "Nombre de usuario",
+    "usernamePlaceholder": "Nombre de usuario",
+    "usernameErrorEmpty": "El nombre de usuario no puede estar vacío.",
+    "usernameErrorSpaces": "El nombre de usuario no puede tener espacios.",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "hng*************@hng.tech",
+    "emailErrorEmpty": "El correo electrónico no puede estar vacío.",
+    "emailErrorInvalid": "Por favor, introduce una dirección de correo electrónico válida.",
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "••••••••••••",
+    "passwordErrorEmpty": "La contraseña no puede estar vacía.",
+    "saveChangesButton": "Guardar cambios",
+    "changeAvatarButton": "Cambiar avatar",
+    "imageAltText": "Bingo remoto"
+  },
+  "termsAndService": {
+    "title": "Términos y Privacidad",
+    "termsAndConditionsTitle": "Términos y Condiciones",
+    "termsAndConditionsContent": "Al utilizar el sitio web de Bingo Game, aceptas estos términos. Puntos clave: Debes tener 16 años o más. Usa los servicios de manera justa y sigue las reglas. Poseemos todo el contenido y la propiedad intelectual. Se aplica la política de privacidad. Podemos suspender o cancelar cuentas por violaciones. Los servicios se proporcionan \"tal cual\" sin garantías. Contáctanos en: customercare@bingo.com.",
+    "privacyPolicyTitle": "Política de Privacidad",
+    "privacyPolicyContent": "¡Bienvenido al sitio web de Bingo Game! Valoramos tu privacidad. Recopilamos y usamos datos para mejorar los servicios, compartir con consentimiento y cumplir con las leyes. Contáctanos en customercare@bingo.com si tienes preguntas."
+  },
+  "sidebar": {
+    "backButton": "Atrás",
+    "logout": "Cerrar sesión",
+    "deleteAccount": "Eliminar cuenta",
+    "gameSettings": "Configuración del juego",
+    "usersSettings": "Configuración de usuarios",
+    "termsAndPrivacy": "Términos y privacidad"
+  },
+
   
   "forgotPassword": {
     "title": "¿Olvidaste tu contraseña?",
@@ -47,5 +93,149 @@
     "enterEmailPlaceholder": "Tu correo electrónico",
     "resetPasswordButton": "Restablecer la contraseña",
     "backToSignIn": "Volver a iniciar sesión"
+  },
+  "newPassword": {
+    "navbar": "Navbar",
+    "setNewPasswordTitle": "Establecer nueva contraseña",
+    "setNewPasswordDescription": "Su nueva contraseña debe ser diferente de la contraseña anterior",
+    "newPasswordLabel": "Nueva contraseña",
+    "confirmPasswordLabel": "Confirmar contraseña",
+    "resetPasswordButton": "Restablecer contraseña",
+    "backToSignInLink": "Volver a iniciar sesión",
+    "passwordTooShortError": "La contraseña debe tener al menos 8 caracteres",
+    "passwordChangedSuccess": "Contraseña cambiada con éxito",
+    "passwordsDoNotMatchError": "Las contraseñas no coinciden"
+  },
+  "otpComponent": {
+    "navbar": "Navbar",
+    "passwordResetTitle": "Restablecimiento de contraseña",
+    "codeSentToEmailMessage": "Hemos enviado un código a {censoredEmail}",
+    "enterCodePrompt": "Ingrese el código de restablecimiento de contraseña aquí",
+    "noCodeReceivedMessage": "¿No recibió un código?",
+    "resendingStatus": "Reenviando...",
+    "resendLinkText": "Reenviar",
+    "invalidOtpError": "OTP inválido",
+    "verifyButtonText": "Verificar",
+    "otpResentAlert": "El OTP ha sido reenviado"
+  },
+  
+  "passwordResetSuccess": {
+    "navbar": "Barra de navegación",
+    "passwordResetTitle": "Restablecimiento de contraseña",
+    "passwordResetDescription": "Su contraseña ha sido restablecida con éxito. Haga clic a continuación para proceder al juego",
+    "continueButton": "Continuar",
+    "backToSignInLink": "Volver a iniciar sesión"
+  },
+  
+  "aboutRemoteBingo": {
+  "aboutRemoteBingoTitle": "Acerca de Remote Bingo",
+  "remoteBingo": "Remote Bingo",
+  "aboutRemoteBingoSection1": " es una versión moderna en línea del clásico juego de bingo, diseñado para unir a las personas en entornos virtuales. Ya sea que estés trabajando de forma remota, poniéndote al día con la familia o enseñando una clase, Remote Bingo ofrece una forma divertida y atractiva de conectarse e interactuar.",
+  "aboutRemoteBingoSection2": "Remote Bingo es más que solo gritar \"¡Bingo!\"—es una plataforma que fomenta el espíritu de equipo, fortalece las relaciones y promueve el aprendizaje, todo a través de un juego familiar y agradable. Jugado en tiempo real a través de herramientas como Zoom y Slack, es perfecto para equipos remotos, familias y educadores que buscan agregar un toque especial a sus reuniones virtuales.",
+  "aboutRemoteBingoSection3": "En una era en la que las interacciones virtuales son clave, Remote Bingo ofrece una forma emocionante de unir y colaborar. Es fácil de integrar con herramientas existentes, accesible en cualquier dispositivo y ofrece una mezcla de diversión, educación y conexión social. Ya sea que busques aumentar la moral del equipo, involucrar a los estudiantes o simplemente pasar un buen rato con tus seres queridos, Remote Bingo es tu solución ideal.",
+  "keyBenefitsTitle": "Beneficios Clave",
+  "teamBonding": "Cohesión del equipo: Fortalece a los equipos remotos con una actividad agradable y atractiva.",
+  "educationalValue": "Valor Educativo: Ideal para que los maestros creen lecciones interactivas.",
+  "easeOfUse": "Facilidad de Uso: Se integra perfectamente con Zoom, Slack y otras plataformas.",
+  "anytimeAnywhere": "En cualquier momento y lugar: Juega desde cualquier dispositivo, cuando quieras.",
+  "socialConnectivity": "Conectividad Social: Únete a una comunidad global de jugadores y disfruta de la interacción en tiempo real.",
+  "whyItMattersTitle": "Por qué es importante",
+  "whyItMattersDescription": "Remote Bingo da vida a las reuniones virtuales mejorando la comunicación, aumentando la participación y creando un sentido de unidad. Es una manera ideal de romper la rutina, celebrar hitos y conectarse con otros, todo a través del simple placer del bingo."
+ },
+ "contactus": {
+    "nameLabel": "Nombre",
+    "namePlaceholder": "Introduce tu nombre",
+    "emailAddressLabel": "Dirección de correo electrónico",
+    "emailAddressPlaceholder": "Introduce la dirección de correo electrónico",
+    "iUseRemoteBingoAsALabel": "Utilizo Remote Bingo como:",
+    "subjectLabel": "Asunto",
+    "subjectPlaceholder": "Introduce el asunto",
+    "descriptionLabel": "Descripción",
+    "submitButton": "Enviar",
+    "remoteTeam": "Equipo remoto",
+    "family": "Familia",
+    "student": "Estudiante",
+    "educator": "Educador",
+    "socialGroup": "Grupo social",
+    "other": "Otro"
+  },
+  "contactInput": {
+    "errorText": "¡no puede estar vacío!"
+  },
+  "contactUs": {
+    "headerContact": "Contáctanos",
+    "headerFaqs": "Preguntas Frecuentes",
+    "contactButtonText": "Contacta a nuestro equipo de soporte",
+    "faqsButtonText": "Preguntas Frecuentes"
+  },
+  "faq": {
+    "question": "¿Qué es el bingo remoto y cómo funciona?",
+    "answer": "El Bingo Remoto es una adaptación digital del juego clásico de bingo, diseñado para equipos remotos, familias y educadores. Permite a los jugadores participar en juegos de bingo en tiempo real a través de plataformas como Slack y Zoom, fomentando la conexión, el trabajo en equipo y la diversión."
+  },
+  
+    "howToPlay": {
+      "title": "Cómo jugar al Bingo a distancia",
+      "section1Heading": "1. Comenzando: Crear o unirse a un juego",
+      "teamLeadersHostsTitle": "Para líderes de equipo/anfitriones:",
+      "createGame": "Crear un juego: Como líder de equipo, puedes crear un juego seleccionando una plantilla o personalizando la tuya. Elige configuraciones como el tamaño de las tarjetas, la duración del juego y los temas para adaptar la experiencia a tu grupo.",
+      "sendInvitations": "Enviar invitaciones: Invita a los participantes por correo electrónico, Slack o Microsoft Teams. Una vez invitados, los participantes recibirán un enlace para unirse al juego.",
+      "manageGame": "Gestionar el juego: Como anfitrión, tienes control total. Puedes pausar, reanudar o terminar el juego en cualquier momento utilizando el panel de control del juego, que también te permite monitorear la participación y el compromiso.",
+      "remoteWorkersFriendsFamilyTitle": "Para trabajadores remotos, amigos o miembros de la familia:",
+      "joinGame": "Unirse a un juego: Una vez que recibas un enlace de invitación por correo electrónico, Slack u otra plataforma compatible, haz clic en el enlace para unirte al juego. También puedes encontrar juegos públicos en el vestíbulo del juego.",
+      "spectatorMode": "Modo Espectador: Si prefieres ver en lugar de jugar, puedes unirte al juego en 'Modo Espectador' y disfrutar de la diversión sin participar activamente.",
+      "forTeachers": "Para maestros:",
+      "educationalBingo": "Bingo educativo: Crea un juego de bingo personalizado con contenido educativo adaptado a tu plan de lección. Invita a los estudiantes con enlaces de acceso o códigos y establece límites de tiempo para cada ronda.",
+      "section2Heading": "2. Jugabilidad: Cómo funciona el juego",
+      "automatedSetupTitle": "Configuración automatizada:",
+      "automatedSetupDescription": "Una vez que comience el juego, Remote Bingo generará automáticamente tarjetas de bingo y comenzará a llamar números o elementos. Cada jugador recibe una tarjeta de bingo virtual única que se muestra en su pantalla.",
+      "markingYourCardTitle": "Marcar tu tarjeta:",
+      "markingYourCardDescription": "A medida que se llamen números o indicaciones, marca los espacios correspondientes en tu tarjeta de bingo. El juego está completamente automatizado, por lo que no necesitas llevar un registro manualmente; ¡simplemente concédele atención a llenar tu tarjeta!",
+      "realTimeInteractionTitle": "Interacción en tiempo real:",
+      "realTimeInteractionDescription": "Interactúa con otros jugadores a través del chat o reacciona a los eventos del juego a medida que ocurren. Las funciones interactivas del juego facilitan mantenerse conectado con todos los involucrados.",
+      "winningTheGameTitle": "Ganar el juego:",
+      "winningTheGameDescription": "El primer jugador en completar una fila, columna, diagonal o patrón especial en su tarjeta grita '¡Bingo!'. El juego verificará automáticamente al ganador y mostrará los resultados.",
+      "gameSettingsTitle": "Configuración del juego:",
+      "gameSettingsDescription": "Los jugadores pueden acceder y personalizar configuraciones como temas visuales, ajustes de audio, preferencias de idioma y velocidad del juego. ¡Incluso puedes elegir la voz del locutor del bingo!"
+    },
+    "privacyPolicy": {
+    "title": "Política de Privacidad",
+    "introwelcome": "¡Bienvenido a Remote Bingo! ",
+    "introintroText": "Tu privacidad es importante para nosotros. Esta Política de Privacidad explica cómo recopilamos, usamos y protegemos tu información personal cuando utilizas nuestra plataforma. Al acceder o usar Remote Bingo, aceptas los términos de esta Política de Privacidad.",
+    "section1heading": "1. Información que Recopilamos",
+    "personalInformationtitle": "Información Personal",
+    "personalInformationdetails": "Cuando te registras o usas Remote Bingo, podemos recopilar información personal como tu nombre, dirección de correo electrónico, foto de perfil y otros detalles de contacto.",
+    "thirdPartyIntegrations": "Si utilizas integraciones de terceros (por ejemplo, Slack, Zoom), podemos recopilar información de esos servicios según lo permitido por tu configuración de privacidad.",
+    "usageDatatitle": "Datos de Uso",
+    "details": "Recopilamos información sobre cómo interactúas con Remote Bingo, incluyendo la participación en juegos, preferencias de configuración, información del dispositivo, dirección IP, tipo de navegador y sistema operativo.",
+    "paymentInformationtitle": "Información de Pago",
+    "paymentInformationdetails": "Si compras una suscripción o realizas otros pagos, recopilamos detalles de pago, que son procesados de manera segura por nuestros socios de pasarela de pago. No almacenamos la información completa de las tarjetas de crédito en nuestros servidores.",
+    "paymentInformationdetails2": "Si utilizas integraciones de terceros (por ejemplo, Slack, Zoom), podemos recopilar información de esos servicios según lo permitido por tu configuración de privacidad.",
+    "section2heading": "2. Cómo Usamos tu Información",
+    "serviceImprovementtitle": "Para Proporcionar y Mejorar Nuestros Servicios",
+    "serviceImprovementdetails": "Utilizamos tu información personal para crear y gestionar tu cuenta, facilitar la creación y participación en juegos, y mejorar la experiencia del usuario en general.",
+    "communicationtitle": "Para Comunicarnos Contigo",
+    "communicationdetails": "Podemos utilizar tu dirección de correo electrónico para enviarte actualizaciones importantes, boletines y ofertas promocionales. Puedes darte de baja de las comunicaciones de marketing en cualquier momento.",
+    "analyticstitle": "Para Análisis e Informes",
+    "analyticsdetails": "Analizamos los datos de uso para comprender cómo interactúan los usuarios con nuestra plataforma, mejorar nuestros servicios y generar informes para anfitriones y líderes de equipo.",
+    "securitytitle": "Para Garantizar la Seguridad",
+    "securitydetails": "Utilizamos tu información para monitorear y proteger la seguridad de nuestra plataforma, prevenir fraudes y hacer cumplir nuestros Términos de Servicio.",
+    "section3heading": "3. Cómo Compartimos tu Información",
+    "thirdPartyProviderstitle": "Con Proveedores de Servicios Terceros",
+    "thirdPartyProvidersdetails": "Podemos compartir tu información con proveedores de servicios externos que nos ayudan a operar y mejorar Remote Bingo. Estos proveedores están contractualmente obligados a proteger tu información.",
+    "integratedServicestitle": "Con Servicios Integrados",
+    "integratedServicesdetails": "Si eliges conectar Remote Bingo con servicios de terceros (por ejemplo, Slack, Zoom), podemos compartir información con esos servicios según sea necesario para proporcionar la integración.",
+    "legalCompliancetitle": "Para Cumplimiento Legal",
+    "legalCompliancedetails": "Podemos divulgar tu información si es requerido por la ley o en respuesta a procesos legales, como una orden judicial o citación.",
+    "section4heading": "4. Seguridad de los Datos",
+    "section4details": "Podemos compartir tu información con proveedores de servicios externos que nos ayudan a operar y mejorar Remote Bingo. Estos proveedores están contractualmente obligados a proteger tu información.",
+    "section5heading": "5. Tus Derechos y Opciones",
+    "accessUpdatetitle": "Acceder y Actualizar tu Información",
+    "accessUpdatedetails": "Puedes acceder y actualizar tu información personal a través de la configuración de tu cuenta. Si necesitas ayuda, contáctanos en [correo electrónico de contacto].",
+    "optOuttitle": "Darse de Baja de las Comunicaciones de Marketing",
+    "optOutdetails": "Puedes darte de baja de la recepción de correos electrónicos promocionales siguiendo las instrucciones en esos correos o contactándonos directamente.",
+    "deleteAccounttitle": "Eliminar tu Cuenta",
+    "deleteAccountdetails": "Si deseas eliminar tu cuenta, contáctanos en [correo electrónico de contacto]. Ten en cuenta que alguna información puede permanecer en nuestros archivos incluso después de que se elimine tu cuenta."
   }
+  
+  
   }

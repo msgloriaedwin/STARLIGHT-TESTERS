@@ -11,7 +11,12 @@ import avatar7 from "@/public/assets/images/avatar-7.png";
 import avatar8 from "@/public/assets/images/avatar-8.png";
 import avatar9 from "@/public/assets/images/avatar-9.png";
 
-const Page = () => {
+type PageProps = {
+	searchParams: { [key: string]: string | undefined };
+  };
+
+const Page = ({searchParams}: PageProps) => {
+	const gameId = searchParams.gameId || "";
 	const avatars = [
 		avatar1,
 		avatar2,
@@ -26,9 +31,9 @@ const Page = () => {
 	return (
 		<>
 			<Navbar />
-			<section className="bg-body h-screen flex md:items-center justify-center mt-10 md:mt-0  px-5">
+			<section className="bg-body h-screen flex items-center justify-center mt-10 md:mt-0  px-5">
 				<div className="flex  justify-center ">
-					<JoinGameForm avatars={avatars} />
+					<JoinGameForm avatars={avatars} gameId={gameId as string} />
 				</div>
 			</section>
 		</>
