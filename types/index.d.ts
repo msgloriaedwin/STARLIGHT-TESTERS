@@ -232,3 +232,34 @@ export interface GameSettings {
 export interface CreateAlphabetBingoCard {
   letters: string[];
 }
+
+export interface GuestSession2 {
+  guestName: string;
+  avatarUrl: string;
+}
+
+export interface JoinGameRoomPayload {
+  roomId: string;
+  guestSession: GuestSession2;
+}
+
+export interface JoinRoomResponseDTO {
+  status_code: number;
+  message: string;
+  session: {
+    guestId: string;
+    guestName: string;
+    room: {
+      id: string;
+      created_at: string;
+      updated_at: string;
+      name: string;
+      game_pin: string;
+      bingo_type: BingoType;
+      prize_value: number;
+    };
+    id: string;
+    created_at: string;
+    updated_at: string;
+  };
+}

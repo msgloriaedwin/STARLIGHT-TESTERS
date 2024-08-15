@@ -9,11 +9,18 @@ const Layout = ({ children }: LayoutProps) => {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 3000);
+    const splashShown = localStorage.getItem("splashShown");
 
-    return () => clearTimeout(timer);
+    if (!splashShown) {
+      const timer = setTimeout(() => {
+        setShowSplash(false);
+        localStorage.setItem("splashShown", "true");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    } else {
+      setShowSplash(false);
+    }
   }, []);
 
   return (

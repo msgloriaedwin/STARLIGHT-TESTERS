@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import AvatarSelector from "../create-game/AvatarSelector";
 import CustomButton from "@/app/components/shared/button/custombutton";
-import { joinGameRoom } from "@/action";
+import { joinGameRoom } from "@/actions";
 import { useToast } from "@/components/ui/use-toast";
 import { JoinGameRoomPayload } from "@/types";
 
@@ -44,6 +44,7 @@ const JoinGameForm = ({
   const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
     avatars[0]
   );
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -68,20 +69,33 @@ const JoinGameForm = ({
     try {
       const response = await joinGameRoom(payload);
 
-      console.log("API Response:", response);
-      // Success toast
-      toast({
-        title: "Success",
-        description: "You have successfully joined the game!",
-        variant: "default",
-        duration: 5000,
-      });
+      if (response && response.status_code === 201) {
+        // Success toast
+        toast({
+          title: "Success",
+          description: "You have successfully joined the game!",
+          variant: "default",
+          duration: 5000,
+        });
 
-      router.push(`/room/game-room?roomId=${data.gameId}`);
+        // Route to the game room
+        router.push(`/room/game-room?roomId=${data.gameId}`);
+        setErrorMessage(null); // Clear any previous error messages
+      } else {
+        // Handle unexpected status codes
+        setErrorMessage("Unexpected response from the server.");
+        toast({
+          title: "Error",
+          description: "Unexpected response from the server.",
+          variant: "destructive",
+          duration: 5000,
+        });
+      }
     } catch (error) {
       console.error("Failed to join game:", error);
 
-      // Error toast
+      // Set error message and show toast
+      setErrorMessage("Failed to join the game. Please try again.");
       toast({
         title: "Error",
         description: "Failed to join the game. Please try again.",
@@ -90,7 +104,7 @@ const JoinGameForm = ({
       });
     }
 
-    console.log("Form Data Submitted:", data);
+    // console.log("Form Data Submitted:", data);
   };
 
   const handleAvatarSelect = (avatar: StaticImageData) => {
@@ -173,6 +187,9 @@ const JoinGameForm = ({
             <CustomButton variant="secondary" type="submit">
               Join Game
             </CustomButton>
+            {errorMessage && (
+              <p className="text-red-500 text-center mt-2">{errorMessage}</p>
+            )}
           </form>
         </Form>
       </div>
