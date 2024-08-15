@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+"use client";
+import React, {useEffect, useState} from "react";
 import SplashScreen from "../splashScreen";
 
 export interface LayoutProps {
   children: React.ReactNode;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({children}: LayoutProps) => {
   const [showSplash, setShowSplash] = useState(false);
 
   useEffect(() => {

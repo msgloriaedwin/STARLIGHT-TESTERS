@@ -1,15 +1,13 @@
-'use client'
+"use client";
 
 import Layout from "./components/shared/layout";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import LandingPageNavbar from "./components/shared/navbars/custom-navbars/LandingPageNavbar";
-import Footer from "./components/shared/footer/footer"
+import Footer from "./components/shared/footer/footer";
 import Hero from "./components/home/hero";
 import Navbar from "./components/shared/navbars/Navbar";
 
-
 export default function HomeHero() {
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onSignUp = () => {
@@ -19,11 +17,8 @@ export default function HomeHero() {
     setIsModalOpen(false);
   };
 
-
   return (
     <div>
-      
-
       <Layout>
         <main className="bg-body">
           <Navbar />
@@ -31,7 +26,6 @@ export default function HomeHero() {
           <Footer />
         </main>
       </Layout>
-
     </div>
-  )
+  );
 }
