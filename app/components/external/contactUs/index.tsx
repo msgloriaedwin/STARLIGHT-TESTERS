@@ -3,11 +3,16 @@ import TextInput from "../contactInput";
 import SelectInput from "../SelectInput";
 import TextArea from "../textArea";
 import validator from "../validate";
-import { Button } from "@/components/ui/button";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
+import { contactUs } from "../ContactUsAndFaq/contactUs";
+import CustomButton from "../../shared/button/custombutton";
+import { useToast } from "@/components/ui/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 const ContactUs = () => {
-  const t = useTranslations('contactus');
+  const { toast } = useToast();
+  const t = useTranslations("contactus");
+  const [isloading, setIsloading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     emailEddress: "",
@@ -24,9 +29,30 @@ const ContactUs = () => {
     description: false,
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const { status, data } = validator(formData, requiredFormData);
     if (status) {
+      setIsloading(true);
+      const response: any = await contactUs(formData);
+      if (response.data.status_code == 201) {
+        toast({
+          title: "Submitted successful",
+          description: response?.data.message,
+        });
+        setFormData({
+          name: "",
+          emailEddress: "",
+          iUseRemoteBingoAsA: "",
+          subject: "",
+          description: "",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Error occured",
+        });
+      }
+      response && setIsloading(false);
     } else {
       setRequiredFormData((prevData) => {
         return { ...prevData, ...data };
@@ -36,9 +62,10 @@ const ContactUs = () => {
 
   return (
     <div className="py-8">
-      <div className="md:grid grid-cols-2 gap-6 items-center mb-10">
+      <Toaster />
+      <div className="md:grid grid-cols-2 gap-6 items-center mb-4">
         <TextInput
-          label={t('nameLabel')}
+          label={t("nameLabel")}
           value={formData.name}
           setValue={(data) => {
             setFormData((prevData) => {
@@ -54,11 +81,11 @@ const ContactUs = () => {
               });
             }
           }}
-          placeholder={t('namePlaceholder')}
+          placeholder={t("namePlaceholder")}
           error={requiredFormData.name}
         />
         <TextInput
-          label={t('emailAddressLabel')}
+          label={t("emailAddressLabel")}
           value={formData.emailEddress}
           setValue={(data) => {
             setFormData((prevData) => {
@@ -74,13 +101,13 @@ const ContactUs = () => {
               });
             }
           }}
-          placeholder={t('emailAddressPlaceholder')}
+          placeholder={t("emailAddressPlaceholder")}
           error={requiredFormData.emailEddress}
         />
       </div>
-      <div className="md:grid  grid-cols-2 gap-6 mb-4">
+      <div className="md:grid  grid-cols-2 gap-6 mb-2">
         <SelectInput
-          label={t('iUseRemoteBingoAsALabel')}
+          label={t("iUseRemoteBingoAsALabel")}
           value={formData.iUseRemoteBingoAsA}
           setValue={(data) => {
             setFormData((prevData) => {
@@ -99,16 +126,16 @@ const ContactUs = () => {
           placeholder=""
           error={requiredFormData.iUseRemoteBingoAsA}
           data={[
-            t('remoteTeam'),
-            t('family'),
-            t('student'),
-            t('educator'),
-            t('socialGroup'),
-            t('other'),
+            t("remoteTeam"),
+            t("family"),
+            t("student"),
+            t("educator"),
+            t("socialGroup"),
+            t("other"),
           ]}
         />
         <TextInput
-          label={t('subjectLabel')}
+          label={t("subjectLabel")}
           value={formData.subject}
           setValue={(data) => {
             setFormData((prevData) => {
@@ -124,13 +151,13 @@ const ContactUs = () => {
               });
             }
           }}
-          placeholder={t('subjectPlaceholder')}
+          placeholder={t("subjectPlaceholder")}
           error={requiredFormData.subject}
         />
       </div>
       <div className="md:grid  grid-cols-2 gap-6 mb-4">
         <TextArea
-          label={t('descriptionLabel')}
+          label={t("descriptionLabel")}
           value={formData.description}
           setValue={(data) => {
             setFormData((prevData) => {
@@ -151,13 +178,39 @@ const ContactUs = () => {
         />
       </div>
       <div className="flex items-center md:justify-end w-full">
-        <div className="md:w-[10rem]">
-          <Button
+        <div className="md:w-[10rem] w-full">
+          <CustomButton
+            onClick={handleSubmit}
+            variant="secondary"
+            size={"lg"}
+            className="w-full p-6 text-base md:text-lg"
             type="submit"
-            className="w-full sm:h-14 rounded-[0.5rem] bg-primary-700 hover:bg-primary-700 text-primary-100  border border-primary-500 shadow-custom-inset "
+            isDisabled={isloading}
           >
-           {t('submitButton')}
-          </Button>
+            {isloading ? (
+              <div role="status">
+                <svg
+                  aria-hidden="true"
+                  className="w-4 h-4 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600"
+                  viewBox="0 0 100 101"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="currentFill"
+                  />
+                </svg>
+                <span className="sr-only">Loading...</span>
+              </div>
+            ) : (
+              "Submit"
+            )}
+          </CustomButton>
         </div>
       </div>
     </div>
