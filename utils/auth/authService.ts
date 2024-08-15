@@ -23,7 +23,6 @@ export const loginUser = async (credentials: { username: string; password: strin
   try {
     const response = await axios.post(signInUrl, credentials);
 
-
     const userData = {access_token:response.data.access_token, ...response.data.data.user};
 
     console.log(userData)
