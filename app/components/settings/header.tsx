@@ -1,3 +1,4 @@
+"use client"
 
 import { ArrowLeft, ChevronDown, User } from "lucide-react";
 import CustomButton from "../shared/button/custombutton";
