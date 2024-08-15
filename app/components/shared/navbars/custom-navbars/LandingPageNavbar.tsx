@@ -18,9 +18,15 @@ type PageProps = {
   onLogin: () => void;
   onSignup: () => void;
   hideAuthBtn?: boolean;
+  hideHowToPlay?: boolean;
 };
 
-const LandingPageNavbar = ({ onLogin, onSignup, hideAuthBtn }: PageProps) => {
+const LandingPageNavbar = ({
+  onLogin,
+  onSignup,
+  hideAuthBtn,
+  hideHowToPlay,
+}: PageProps) => {
   const t = useTranslations("nav");
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useAuthContext();
@@ -47,12 +53,14 @@ const LandingPageNavbar = ({ onLogin, onSignup, hideAuthBtn }: PageProps) => {
         </div>
 
         <div className="hidden md:flex justify-self-center">
-          <p
-            onClick={handleHowToPlayClick}
-            className="text-primary-700 cursor-pointer"
-          >
-            {t("howToPlay")}
-          </p>
+          {!hideHowToPlay && (
+            <p
+              onClick={handleHowToPlayClick}
+              className="text-primary-700 cursor-pointer"
+            >
+              {t("howToPlay")}
+            </p>
+          )}
         </div>
 
         <div className="md:flex md:justify-end hidden gap-6 items-center">
