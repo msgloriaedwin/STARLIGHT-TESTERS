@@ -5,17 +5,19 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import CustomUploadContainer from "./upload";
 import Modal from "@/app/components/modal/modal";
+import { useTranslations } from 'next-intl';
 
 function Index() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [imageError, setImageError] = useState('');
+  const t = useTranslations('changeAvatar');
 
   const handleFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
     if (selectedImage === null) {
-      setImageError('Please select an image');
+      setImageError(t('imageError'));
     } else {
       setImageError('');
       setIsModalOpen(true);
@@ -25,7 +27,7 @@ function Index() {
   return (
     <div className="px-6 pt-16 bg-[#F7EEE7]">
      <div className="max-w-[340px]"> 
-  <h1 className="text-4xl text-primary-700 mb-8">Change Avatar</h1>
+  <h1 className="text-4xl text-primary-700 mb-8">{t('title')}</h1>
 
   <div className="grid grid-cols-4 gap-1 mb-8 cursor-pointer">
     {[...Array(15)].map((_, index) => (
@@ -40,7 +42,7 @@ function Index() {
           width={60}
           height={60}
           src={`/pfp${index + 1}.jpeg`}
-          alt={`Profile ${index + 1}`}
+          alt={`t('altTextPrefix) ${index + 1}`}
           className="h-[60px] w-[60px] rounded-full"
         />
         {selectedImage === index && (
@@ -76,7 +78,7 @@ function Index() {
       onClick={handleFormSubmit}
       className="w-full border-x-primary-B800 bg-primary-yellow text-primary-B900 hover:bg-primary-yellow-400 hover:text-primary-B900"
     >
-      Save Changes
+      {t('saveChangesButton')}
     </Button>
   </div>
 </div>

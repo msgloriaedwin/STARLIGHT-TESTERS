@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { createGameRoom } from "@/actions";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,16 +10,28 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Image, { StaticImageData } from "next/image";
+import { useAuthContext } from "@/context/AuthContext";
 import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import AvatarSelector from "./AvatarSelector";
 
 const formSchema = z.object({
   teamName: z.string().min(1, { message: "Team Name is required" }),
-  bingoType: z.enum(["numbers", "alphabets"]),
-  prizeValue: z.string().min(1, { message: "Prize value is required" }),
+  bingoType: z.enum(["number", "alphabets"]),
+  prizeValue: z
+    .string()
+    .refine((val) => !isNaN(Number(val)), {
+      message: "Prize value must be a number",
+    })
+    .refine((val) => Number(val) > 0, {
+      message: "Prize value must be greater than zero",
+    }),
   avatar: z.string(),
 });
 
@@ -30,30 +40,71 @@ type FormData = z.infer<typeof formSchema>;
 interface CreateGameFormProps {
   avatars: StaticImageData[];
   className?: string;
-  onSubmit?: (data: FormData) => void;
 }
 
 const CreateGameForm: React.FC<CreateGameFormProps> = ({
   avatars,
   className,
-  onSubmit,
 }) => {
   const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
     avatars[0]
   );
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessages, setErrorMessage] = useState("");
+  const router = useRouter();
+  const { user } = useAuthContext();
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       teamName: "",
-      bingoType: "numbers",
-      prizeValue: "",
+      bingoType: "number",
+      prizeValue: undefined,
       avatar: avatars[0].src,
     },
   });
 
-  const handleFormSubmit = (data: FormData) => {
-    if (onSubmit) {
-      onSubmit(data);
+  const handleFormSubmit = async (data: FormData) => {
+    let token = user.access_token || "";
+
+    const payload = {
+      teamName: data.teamName,
+      bingoType: data.bingoType,
+      prizeValue: data.prizeValue.toString(),
+      avatar: data.avatar,
+      token: token,
+    };
+
+    setIsLoading(true);
+    setErrorMessage("");
+
+    try {
+      const response = await createGameRoom(payload);
+
+      if (response.status_code === 401) {
+        setErrorMessage("Please log in to create a game.");
+        router.push("/auth/login");
+        return;
+      }
+
+      if (response.status_code === 201) {
+        const bingoType = response.data.bingo_type;
+        const roomId = response.data.id;
+        const url = `${process.env.NEXT_PUBLIC_URL}/lobby`;
+
+        if (bingoType === "alphabets") {
+          router.push(`${url}/alphabets?roomId=${roomId}`);
+        } else {
+          router.push(`${url}/numbers?roomId=${roomId}`);
+        }
+      } else {
+        setErrorMessage(response.message || "An unexpected error occurred.");
+      }
+    } catch (error: any) {
+      setErrorMessage(error.message || "An unexpected error occurred.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -104,7 +155,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
             <FormField
               name="bingoType"
               control={form.control}
-              defaultValue="numbers"
+              defaultValue="number"
               render={({ field }) => (
                 <>
                   <FormItem className="flex flex-col">
@@ -118,11 +169,11 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                       <Button
                         className={cn(
                           "flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3",
-                          field.value === "numbers"
+                          field.value === "number"
                             ? "bg-yellow-300"
                             : "bg-primary-100"
                         )}
-                        onClick={() => field.onChange("numbers")}
+                        onClick={() => field.onChange("number")}
                       >
                         <Image
                           src={"assets/icons/numbers.svg"}
@@ -132,7 +183,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                           className="max-sm:hidden"
                         />
                         <span className="ml-2">Numbers</span>
-                        {field.value === "numbers" && (
+                        {field.value === "number" && (
                           <div className="absolute top-1 right-1">
                             <Image
                               src={"assets/icons/Check.svg"}
@@ -147,7 +198,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                       <Button
                         className={cn(
                           "flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3",
-                          field.value === "numbers"
+                          field.value === "number"
                             ? "bg-primary-100"
                             : "bg-yellow-300"
                         )}
@@ -216,9 +267,16 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
             />
           </div>
 
+          {errorMessages && (
+            <p className="font-normal sm:text-[1rem] text-[0.6rem] max-sm:leading-3">
+              {"An error occurred. Please try again."}
+            </p>
+          )}
+
           <Button
             type="submit"
             className="w-full sm:h-14 rounded-[0.5rem] bg-primary-700 hover:bg-primary-700 text-primary-100 p-2 border border-primary-500 shadow-custom-inset "
+            disabled={isLoading}
           >
             Save & Continue
           </Button>

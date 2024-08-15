@@ -1,11 +1,13 @@
+import { UserContext } from '../../context/AuthContext';
 import axios from 'axios';
-import { UserContext } from '@/context/AuthContext';
+import { signIn } from 'next-auth/react';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
+
 const signInUrl = `${baseUrl}auth/login`;
 const signUpUrl = `${baseUrl}auth/register`;
-const googleSignUpUrl = `${baseUrl}auth/google`;
+const googleSignUpUrl = `${baseUrl}auth/google/callback`;
 
 
 
@@ -86,6 +88,9 @@ export const signUpWithEmail = async (username: string, email: string, password:
   }
 };
 
+
+
+
 export const signUpWithGoogle = async () => {
   try {
     const response = await axios.get(googleSignUpUrl);
@@ -105,4 +110,3 @@ export const signUpWithGoogle = async () => {
     throw new Error('Failed to sign up with Google.');
   }
 };
-
