@@ -66,8 +66,6 @@ const Index: React.FC = () => {
 
   const handleFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    // Only send the necessary fields to the backend
     const payload = {
       is_notification: settings.is_notification,
       is_sound: settings.is_sound,
