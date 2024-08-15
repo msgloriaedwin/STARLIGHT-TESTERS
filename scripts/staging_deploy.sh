@@ -5,6 +5,7 @@ set -e
 # Assign environment variables
 export NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 export GIF_API_KEY=${GIF_API_KEY}
+export GIF_API_KEY=${API_URL}
 export PORT=6001
 
 # Navigate to the project directory
