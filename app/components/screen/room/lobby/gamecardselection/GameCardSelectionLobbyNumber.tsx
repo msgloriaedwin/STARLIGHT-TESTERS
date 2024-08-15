@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import GameCardLobby from "../game-card/GameCardLobby";
 import { initialNumbers } from "@/data/data";
 import { OnCardValueProps } from "@/lib/customPropTypes";
+import { playSound } from "@/utils/sound-effects/soundManager";
 
 const GameCardSelectionLobby = () => {
   const [numberArray, setNumberArray] = useState<(number | string)[]>([]);
@@ -33,6 +34,8 @@ const GameCardSelectionLobby = () => {
   }, [revealedIndices, hiddenNumbersArray, numberArray]);
 
   const revealNumber = (index: number, info: number | string) => {
+		playSound('pickCard.mp3')
+    
     if (numberArray[index] === " ") {
       return;
     }
