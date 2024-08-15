@@ -81,6 +81,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
 
     try {
       const response = await createGameRoom(payload);
+      
 
       if (response.status_code === 401) {
         setErrorMessage("Please log in to create a game.");
