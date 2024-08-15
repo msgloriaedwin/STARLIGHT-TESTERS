@@ -5,6 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+
   images: {
     remotePatterns: [
       {
@@ -36,6 +37,30 @@ const nextConfig = {
         hostname: "media1.giphy.com",
         port: "",
         pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+      },
+      {
+        protocol: "https",
+        hostname: "encrypted-tbn0.gstatic.com",
+      },
+      {
+        protocol: "https",
+        hostname: "media.licdn.com",
+      },
+      {
+        protocol: "https",
+        hostname: "qrius.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.jaqueslondon.co.uk",
+      },
+      {
+        protocol: "https",
+        hostname: "m.media-amazon.com",
       },
     ],
   },
