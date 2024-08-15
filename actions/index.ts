@@ -69,13 +69,8 @@ export async function getChannelSubscriptionToken({
   return response.token;
 }
 
-export async function getRoom(token: string, id: string) {
-  const request = await fetch(`${API_URL}rooms`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ id: id }),
-  });
+export async function getRoom(id: string) {
+  const request = await fetch(`${API_URL}rooms/${id}`)
   const response = await request.json();
   console.log(response);
   return response;

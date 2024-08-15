@@ -16,7 +16,7 @@ type PageProps = {
   };
 
 const Page = ({searchParams}: PageProps) => {
-	const gameId = searchParams.gameId || "";
+	const gameId = searchParams.roomId || "";
 	const avatars = [
 		avatar1,
 		avatar2,

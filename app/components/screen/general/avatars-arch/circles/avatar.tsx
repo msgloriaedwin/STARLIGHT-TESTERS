@@ -23,7 +23,7 @@ const Avatars = ({ avatars = [], dimension, size }: AvatarProps) => {
   const spaceX = (xWidth - size * topLength) / topLength + size;
 
   return (
-    <div>
+    <div className="w-screen min-h-screen">
       {avatars.map((avatar, index) => {
         const x =
           index < firstDivd
