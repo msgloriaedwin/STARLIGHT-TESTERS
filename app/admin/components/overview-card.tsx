@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { MoreVertsIcon, TrendupIcon } from "../icon";
+import { MoreVertsIcon, TrendupIcon } from "./icons";
 import { bangers } from "@/lib/fonts";
 
 interface OverviewCardProperties {

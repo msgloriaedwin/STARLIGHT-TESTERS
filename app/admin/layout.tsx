@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { ExpandMoreIcon, UserIcon } from "./icon";
+import { ExpandMoreIcon, UserIcon } from "./components/icons";
 import { adminSideNavLinks } from "./data";
 import Link from "next/link";
 import { cn } from "@/lib/utils";

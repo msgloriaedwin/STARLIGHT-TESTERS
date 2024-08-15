@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ExpandMoreIcon, UserIcon } from "../icon";
+import { ExpandMoreIcon, UserIcon } from "./icons";
 
 export default function AdminNavbar() {
 

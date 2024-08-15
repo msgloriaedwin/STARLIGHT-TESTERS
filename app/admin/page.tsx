@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { CalenderIcon, ClipboardIcon, ExpandMoreIcon, MoreVertsIcon, TrendupIcon } from "./icon";
+import { CalenderIcon, ClipboardIcon, ExpandMoreIcon, MoreVertsIcon, TrendupIcon } from "./components/icons";
 import { bangers, dmSans } from "@/lib/fonts";
 import { gamesData, overviewData } from "./data";
 import OverviewCard from "./components/overview-card";
