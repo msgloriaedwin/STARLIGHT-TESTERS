@@ -6,6 +6,7 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "./providers/QueryClientProvider";
 import { AuthProvider } from "@/context/AuthContext";
+import { Toaster } from "@/components/ui/toaster";
 
 const dmSans = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
@@ -29,6 +30,7 @@ export default async function RootLayout({
             <QueryProvider>{children}</QueryProvider>
           </NextIntlClientProvider>
         </AuthProvider>
+        <Toaster/>
       </body>
     </html>
   );

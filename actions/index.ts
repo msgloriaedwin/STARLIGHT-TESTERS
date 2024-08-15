@@ -35,7 +35,7 @@ export const createGameRoom = async (
 export const joinGameRoom = async (
   data: JoinGameRoomPayload
 ): Promise<JoinRoomResponseDTO> => {
-  const request = await fetch(`${API_URL}/rooms/join/link`, {
+  const request = await fetch(`${API_URL}rooms/join/link`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

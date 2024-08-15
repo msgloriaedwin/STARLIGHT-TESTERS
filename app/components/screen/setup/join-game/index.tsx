@@ -15,13 +15,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
-
 import { useRouter } from "next/navigation";
 import AvatarSelector from "../create-game/AvatarSelector";
 import CustomButton from "@/app/components/shared/button/custombutton";
-import { joinGameRoom } from "@/actions";
 import { useToast } from "@/components/ui/use-toast";
-import { JoinGameRoomPayload } from "@/types";
+import { JoinGameRoomPayload, JoinRoomResponseDTO } from "@/types";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { joinGameRoom } from "@/actions";
 
 const formSchema = z.object({
   gameId: z.string().min(1, { message: "Game ID is required" }),
@@ -44,7 +44,8 @@ const JoinGameForm = ({
   const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
     avatars[0]
   );
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const { toast } = useToast();
+  const joinRoomMutation = useJoinRoom();
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -55,56 +56,50 @@ const JoinGameForm = ({
     },
   });
 
-  const { toast } = useToast();
-
   const handleFormSubmit = async (data: FormData) => {
     const payload: JoinGameRoomPayload = {
-      roomId: data.gameId, // Assuming gameId is the gameLink
+      roomId: data.gameId,
       guestSession: {
         guestName: data.userName,
         avatarUrl: data.avatar,
       },
     };
-    console.log("Request Payload:", payload);
-    try {
-      const response = await joinGameRoom(payload);
+    console.log("Submitting payload:", payload);
 
-      if (response && response.status_code === 201) {
-        // Success toast
-        toast({
-          title: "Success",
-          description: "You have successfully joined the game!",
-          variant: "default",
-          duration: 5000,
-        });
+    joinRoomMutation.mutate(payload, {
+      onSuccess: (response: JoinRoomResponseDTO) => {
+        console.log("Server response:", response);
+        if (response && response.status_code === 201) {
+          toast({
+            title: "Success",
+            description: "You have successfully joined the game!",
+            className:
+              "bg-green-100 text-green-800 border border-green-300 rounded-lg p-4 shadow-md",
+            duration: 5000,
+          });
 
-        // Route to the game room
-        router.push(`/room/game-room?roomId=${data.gameId}`);
-        setErrorMessage(null); // Clear any previous error messages
-      } else {
-        // Handle unexpected status codes
-        setErrorMessage("Unexpected response from the server.");
+          router.push(`/room/game-room?roomId=${data.gameId}`);
+        } else {
+          toast({
+            title: "Error",
+            description: "Unexpected response from the server.",
+            className:
+              "bg-red-100 text-red-800 border border-red-300 rounded-lg p-4 shadow-md",
+            duration: 5000,
+          });
+        }
+      },
+      onError: (error: any) => {
+        console.error("Failed to join game:", error);
         toast({
           title: "Error",
-          description: "Unexpected response from the server.",
-          variant: "destructive",
+          description: "Failed to join the game. Please try again.",
+          className:
+            "bg-red-100 text-red-800 border border-red-300 rounded-lg p-4 shadow-md",
           duration: 5000,
         });
-      }
-    } catch (error) {
-      console.error("Failed to join game:", error);
-
-      // Set error message and show toast
-      setErrorMessage("Failed to join the game. Please try again.");
-      toast({
-        title: "Error",
-        description: "Failed to join the game. Please try again.",
-        variant: "destructive",
-        duration: 5000,
-      });
-    }
-
-    // console.log("Form Data Submitted:", data);
+      },
+    });
   };
 
   const handleAvatarSelect = (avatar: StaticImageData) => {
@@ -113,17 +108,14 @@ const JoinGameForm = ({
   };
 
   return (
-    <section className="w-[95%] md:max-w-[39rem] ">
+    <section className="w-[95%] md:max-w-[39rem]">
       <h3 className="font-[700] text-[50px] text-center mb-[37px]">
         Join Game
       </h3>
       <div className={cn("bg-primary-300 rounded-[12px]", className)}>
         <Form {...form}>
           <form
-            onSubmit={(e) => {
-              // router.push("/lobby/numbers");
-              form.handleSubmit(handleFormSubmit)(e);
-            }}
+            onSubmit={form.handleSubmit(handleFormSubmit)}
             className="bg-form-blue p-[0.9rem] sm:p-6 rounded-[0.45rem] sm:rounded-[0.75rem] flex flex-col gap-[0.9rem] sm:gap-6"
           >
             <FormField
@@ -192,11 +184,19 @@ const JoinGameForm = ({
               selectedAvatar={selectedAvatar}
               onAvatarSelect={handleAvatarSelect}
             />
-            <CustomButton variant="secondary" type="submit">
-              Join Game
+            <CustomButton
+              variant="secondary"
+              type="submit"
+              isDisabled={joinRoomMutation.isPending}
+            >
+              {joinRoomMutation.isPending ? "Joining..." : "Join Game"}
             </CustomButton>
-            {errorMessage && (
-              <p className="text-red-500 text-center mt-2">{errorMessage}</p>
+            {joinRoomMutation.isError && (
+              <p className="text-red-500 text-center mt-2">
+                {
+                // joinRoomMutation.error?.message ||
+                  "An error occurred while joining the game."}
+              </p>
             )}
           </form>
         </Form>
@@ -206,3 +206,13 @@ const JoinGameForm = ({
 };
 
 export default JoinGameForm;
+
+export const useJoinRoom = () => {
+  const queryClient = useQueryClient();
+  return useMutation<any, Error, JoinGameRoomPayload>({
+    mutationFn: (data: JoinGameRoomPayload) => joinGameRoom(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["room"] });
+    },
+  });
+};
