@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy_to_staging:
-    runs-on: self-hosted
+    runs-on: bingo-server
 
     steps:
       - name: Checkout
@@ -25,7 +25,7 @@ jobs:
           script: |
             export NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
             export GIF_API_KEY=${{ secrets.GIF_API_KEY }}
-            cd /home/starlight-nestjs/remote-bingo/staging/bingo_fe
+            cd /home/bingofe/remote-bingo/staging/bingo_fe
             git pull origin staging
             chmod +x ./scripts/staging_deploy.sh
             ./scripts/staging_deploy.sh
