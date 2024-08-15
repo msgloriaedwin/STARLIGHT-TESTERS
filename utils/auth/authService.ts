@@ -1,11 +1,13 @@
 import { UserContext } from '../../context/AuthContext';
 import axios from 'axios';
+import { signIn } from 'next-auth/react';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const signInUrl = `${baseUrl}/auth/login`;
-const signUpUrl = `${baseUrl}/auth/register`;
-const googleSignUpUrl = `${baseUrl}/auth/google`;
+
+const signInUrl = `${baseUrl}auth/login`;
+const signUpUrl = `${baseUrl}auth/register`;
+const googleSignUpUrl = `${baseUrl}auth/google/callback`;
 
 
 
@@ -87,6 +89,9 @@ export const signUpWithEmail = async (username: string, email: string, password:
     throw new Error('Failed to sign up with email.');
   }
 };
+
+
+
 
 export const signUpWithGoogle = async () => {
   try {

@@ -2,28 +2,30 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 import CustomButton from "../../button/custombutton";
 import LocaleSwitcher from "@/app/components/locale-switcher";
+import LogoutButton from "../../button/logOutButton";
 import {
   Sheet,
   SheetClose,
   SheetContent,
   SheetTrigger,
-} from "@/components/ui/sheet"
+} from "@/components/ui/sheet";
+import { useAuthContext } from "@/context/AuthContext";
 
 type PageProps = {
   onLogin: () => void;
   onSignup: () => void;
-  hideAuthBtn?:boolean;
+  hideAuthBtn?: boolean;
 };
 
 const LandingPageNavbar = ({ onLogin, onSignup, hideAuthBtn }: PageProps) => {
-  const t = useTranslations('nav');
+  const t = useTranslations("nav");
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useAuthContext();
 
   const handleHowToPlayClick = () => {
-    console.log("clicked how to play");
     setIsOpen(false);
   };
 
@@ -33,46 +35,48 @@ const LandingPageNavbar = ({ onLogin, onSignup, hideAuthBtn }: PageProps) => {
 
   return (
     <div className="w-full">
-     <nav className="grid grid-cols-2 md:grid-cols-3 fixed top-0 left-0 md:px-20 px-4 py-6 items-center w-full bg-body z-[50] ">
-     <div>
-    <Image
-      className="w-[131px] h-[46.48px]"
-      width={100}
-      height={100}
-      src='/bingo-logo.svg'
-      alt="Remote Bingo"
-    />
-  </div>
-  
-  
-  <div className="hidden md:flex justify-self-center">
-    <p
-      onClick={handleHowToPlayClick}
-      className="text-primary-700 cursor-pointer"
-    >
-      {t('howToPlay')}
-    </p>
-  </div>
-  
-  <div className="md:flex md:justify-end hidden gap-6 items-center">
-    <LocaleSwitcher/>
-    <div className="flex gap-4 items-center">
-      <Link href={"/auth/login"} onClick={onLogin}>
-        <CustomButton>
-          {t('login')}
-        </CustomButton>
-      </Link>
-      <Link
-        href={"/auth/signup"}
-        onClick={onSignup}
-        className="bg-primary-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
-      >
-        {t('signup')}
-      </Link>
-    </div>
-  </div>
-        
-        {/* Mobile menu */}
+      <nav className="grid grid-cols-2 md:grid-cols-3 fixed top-0 left-0 md:px-20 px-4 py-6 items-center w-full bg-body z-[50] ">
+        <div>
+          <Image
+            className="w-[131px] h-[46.48px]"
+            width={100}
+            height={100}
+            src="/bingo-logo.svg"
+            alt="Remote Bingo"
+          />
+        </div>
+
+        <div className="hidden md:flex justify-self-center">
+          <p
+            onClick={handleHowToPlayClick}
+            className="text-primary-700 cursor-pointer"
+          >
+            {t("howToPlay")}
+          </p>
+        </div>
+
+        <div className="md:flex md:justify-end hidden gap-6 items-center">
+          <LocaleSwitcher />
+          {user.access_token ? (
+            <LogoutButton />
+          ) : (
+            !hideAuthBtn && (
+              <div className="flex gap-4 items-center">
+                <Link href={"/auth/login"} onClick={onLogin}>
+                  <CustomButton>{t("login")}</CustomButton>
+                </Link>
+                <Link
+                  href={"/auth/signup"}
+                  onClick={onSignup}
+                  className="bg-primary-700 shadow-custom-inset text-white py-2 px-4 rounded-[8px]"
+                >
+                  {t("signup")}
+                </Link>
+              </div>
+            )
+          )}
+        </div>
+
         <div className="md:hidden flex justify-end">
           <Sheet open={isOpen} onOpenChange={handleSheetOpenChange}>
             <SheetTrigger asChild>
@@ -87,7 +91,7 @@ const LandingPageNavbar = ({ onLogin, onSignup, hideAuthBtn }: PageProps) => {
                     onClick={handleHowToPlayClick}
                     className="text-primary-700 w-full cursor-pointer flex"
                   >
-                    {t('howToPlay')}
+                    {t("howToPlay")}
                   </p>
                 </SheetClose>
                 <SheetClose asChild>
@@ -96,22 +100,41 @@ const LandingPageNavbar = ({ onLogin, onSignup, hideAuthBtn }: PageProps) => {
                   </div>
                 </SheetClose>
                 <div className="flex flex-col w-full gap-4">
-                  <SheetClose asChild>
-                    <Link href={'/auth/login'} onClick={() => { onLogin(); setIsOpen(false); }}>
-                      <CustomButton className='!w-full lg:w-auto'>
-                        {t('login')}
-                      </CustomButton>
-                    </Link>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <CustomButton 
-                      className="w-full" 
-                      onClick={() => { onSignup(); setIsOpen(false); }}
-                      variant='secondary'
-                    >
-                      {t('signup')}
-                    </CustomButton>
-                  </SheetClose>
+                  {user.access_token ? (
+                    <SheetClose asChild>
+                      <LogoutButton />
+                    </SheetClose>
+                  ) : (
+                    !hideAuthBtn && (
+                      <>
+                        <SheetClose asChild>
+                          <Link
+                            href={"/auth/login"}
+                            onClick={() => {
+                              onLogin();
+                              setIsOpen(false);
+                            }}
+                          >
+                            <CustomButton className="!w-full lg:w-auto">
+                              {t("login")}
+                            </CustomButton>
+                          </Link>
+                        </SheetClose>
+                        <SheetClose asChild>
+                          <CustomButton
+                            className="w-full"
+                            onClick={() => {
+                              onSignup();
+                              setIsOpen(false);
+                            }}
+                            variant="secondary"
+                          >
+                            {t("signup")}
+                          </CustomButton>
+                        </SheetClose>
+                      </>
+                    )
+                  )}
                 </div>
               </section>
             </SheetContent>
