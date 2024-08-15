@@ -1,6 +1,5 @@
 import { UserContext } from '../../context/AuthContext';
 import axios from 'axios';
-import { UserContext } from '@/context/AuthContext';
 import { signIn } from 'next-auth/react';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
