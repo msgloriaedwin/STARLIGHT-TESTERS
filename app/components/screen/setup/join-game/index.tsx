@@ -142,8 +142,12 @@ const JoinGameForm = ({
                       id="gameId"
                       placeholder="Enter game ID"
                       {...field}
-                      className="border border-primary-900 focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
-                      required
+                      className={cn(
+                        "border focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5",
+                        form.formState.errors.gameId
+                          ? "border-red-500"
+                          : "border-primary-900"
+                      )}
                       readOnly
                     />
                   </FormControl>
@@ -169,8 +173,12 @@ const JoinGameForm = ({
                       id="userName"
                       placeholder="Enter username"
                       {...field}
-                      className="border border-primary-900 focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5"
-                      required
+                      className={cn(
+                        "border focus:outline-none focus:ring-0 sm:h-14 text-[0.9rem] sm:text-[1.5rem] px-3 sm:px-5",
+                        form.formState.errors.userName
+                          ? "border-red-500"
+                          : "border-primary-900"
+                      )}
                     />
                   </FormControl>
                   <FormMessage className="text-primary-900">
