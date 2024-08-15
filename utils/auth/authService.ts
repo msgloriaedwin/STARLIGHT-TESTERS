@@ -91,13 +91,6 @@ export const signUpWithEmail = async (username: string, email: string, password:
 };
 
 
-// export const signUpWithGoogle = () => {
-//   try {
-//     signIn('google', { callbackUrl: '/' }); 
-//   } catch (error) {
-//     console.error('Google Sign-in failed:', error);
-//   }
-// };
 
 
 export const signUpWithGoogle = async () => {
