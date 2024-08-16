@@ -16,20 +16,36 @@ const players = [
 		avatar: "/assets/images/avatar-2.png",
 	},
 
-	{
-		username: "i3cia",
-		avatar: "/assets/images/avatar-3.png",
-	},
+	// {
+	// 	username: "i3cia",
+	// 	avatar: "/assets/images/avatar-3.png",
+	// },
 
-	{
-		username: "Farell",
-		avatar: "/assets/images/avatar-5.png",
-	},
+	// {
+	// 	username: "Farell",
+	// 	avatar: "/assets/images/avatar-5.png",
+	// },
 
-	{
-		username: "Farell",
-		avatar: "/assets/images/avatar-6.png",
-	},
+	// {
+	// 	username: "Farell",
+	// 	avatar: "/assets/images/avatar-6.png",
+	// },
+	// {
+	// 	username: "Farell",
+	// 	avatar: "/assets/images/avatar-6.png",
+	// },
+	// {
+	// 	username: "Farell",
+	// 	avatar: "/assets/images/avatar-6.png",
+	// },
+	// {
+	// 	username: "Farell",
+	// 	avatar: "/assets/images/avatar-6.png",
+	// },
+	// {
+	// 	username: "Farell",
+	// 	avatar: "/assets/images/avatar-6.png",
+	// },
 ];
 
 export default function WaitingRoomContainerNumbers() {
@@ -49,10 +65,10 @@ export default function WaitingRoomContainerNumbers() {
 	return (
 		<div className="box-border h-[80vh] md:h-auto">
 			<div
-				ref={containerRef}
+
 				className={`container box-border relative px-5 overflow-x-hidden h-full`}
 				style={{ paddingTop: mediumScreen ? "40px" : `${size}px` }}>
-				<div className="hidden md:flex">
+				<div ref={containerRef} className="absolute top-0 left-0 hidden md:flex w-full h-[85vh]">
 					<Avatars dimension={dimension} avatars={players} size={size} />
 				</div>
 				<div className="flex flex-col w-full items-center justify-center lg:w-auto h-[100%] md:h-full">

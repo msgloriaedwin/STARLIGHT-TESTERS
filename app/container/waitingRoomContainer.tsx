@@ -18,32 +18,32 @@ const players: {
 		timer: 0,
 	},
 
-	{
-		username: "Ebun",
-		avatar: "/assets/images/avatar-2.png",
-		timer: 45,
-		comment: "Girl, stop playing 🤣",
-	},
+	// {
+	// 	username: "Ebun",
+	// 	avatar: "/assets/images/avatar-2.png",
+	// 	timer: 45,
+	// 	comment: "Girl, stop playing 🤣",
+	// },
 
-	{
-		username: "i3cia",
-		avatar: "/assets/images/avatar-3.png",
-		timer: 60,
-	},
+	// {
+	// 	username: "i3cia",
+	// 	avatar: "/assets/images/avatar-3.png",
+	// 	timer: 60,
+	// },
 
-	{
-		username: "Farell",
-		comment: "Yes, that will be me in a few minutes. Watch this space.",
-		avatar: "/assets/images/avatar-5.png",
-		timer: 0,
-	},
+	// {
+	// 	username: "Farell",
+	// 	comment: "Yes, that will be me in a few minutes. Watch this space.",
+	// 	avatar: "/assets/images/avatar-5.png",
+	// 	timer: 0,
+	// },
 
-	{
-		username: "Farell",
-		avatar: "/assets/images/avatar-6.png",
-		comment: "Girl, stop playing 🤣",
-		timer: 0,
-	},
+	// {
+	// 	username: "Farell",
+	// 	avatar: "/assets/images/avatar-6.png",
+	// 	comment: "Girl, stop playing 🤣",
+	// 	timer: 0,
+	// },
 ];
 
 export default function WaitingRoomContainer() {
