@@ -76,7 +76,7 @@ const SignupForm = () => {
         title: "Sign up successful",
         description: "You have registered successfully.",
       });
-      router.push(`/auth/verify-email`);
+      router.push(`/auth/login`);
     } catch (error) {
       toast({
         title: "Sign up failed",
