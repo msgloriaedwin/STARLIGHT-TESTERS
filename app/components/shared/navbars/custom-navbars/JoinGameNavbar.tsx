@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import user from "../asset/user.png";
 import {
   ArrowLeft,
   ChevronDown,
@@ -8,10 +7,8 @@ import {
   Menu,
   Settings,
   User,
-  UserRound,
-  X,
+
 } from "lucide-react";
-import Navbar from "../Navbar";
 import {useEffect, useState} from "react";
 import {usePathname, useRouter} from "next/navigation";
 import CustomButton from "../../button/custombutton";

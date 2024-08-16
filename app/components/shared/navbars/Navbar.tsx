@@ -63,7 +63,7 @@ const Navbar = () => {
         <LandingPageNavbar onLogin={onLogin} onSignup={onSignUp} />
       )}
       {isSettingsRoute && <SettingsHeader />}
-      {isGameRoute && <JoinGameNavbar />}
+      {isGameRoute && <JoinGameNavbar isCopied />}
       {isAuthRoute && <ForgotPasswordNavbar />}
       {isLogoutRoute && <DeleteLogoutNavbar />}
     </div>

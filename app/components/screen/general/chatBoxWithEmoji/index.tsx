@@ -10,7 +10,7 @@ import { defaultEmoji } from "./data";
 interface ChatInputProps {
   handleSelectGif: (data: any) => void;
   sendMessage: (data: any) => void;
-  message: string;
+  message?: string;
   setMessage: (data: string) => void;
 }
 
@@ -100,7 +100,7 @@ const ChatInput = ({ sendMessage, handleSelectGif, message, setMessage }: ChatIn
           </button>
           <button
             onClick={handleSend}
-            disabled={!message.trim()}
+            disabled={!message?.trim()}
             className={`ml-2 p-1 rounded-full ${
               message ? "bg-primary-700 hover:bg-neutral-800" : "bg-neutral-300"
             }`}

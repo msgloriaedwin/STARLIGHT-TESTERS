@@ -18,7 +18,7 @@ const GameRoomContainer = dynamic(
 const page = () => {
   return (
     <>
-      <JoinGameNavbar showCup={false} />
+      <JoinGameNavbar isCopied showCup={false} />
       <section className="pt-6">
         <GameRoomContainer />
       </section>

@@ -69,6 +69,7 @@ export default function WaitingRoomContainer() {
 				sendMessage={(data: any) => {
 					//   setMessage(data);
 				}}
+				setMessage={() => {}}
 				handleSelectGif={(data: any) => {
 					//   setGif(data);
 				}}
