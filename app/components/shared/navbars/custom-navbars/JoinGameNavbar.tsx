@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import user from "../asset/user.png";
 import {
   ArrowLeft,
   ChevronDown,
@@ -8,10 +7,8 @@ import {
   Menu,
   Settings,
   User,
-  UserRound,
-  X,
+
 } from "lucide-react";
-import Navbar from "../Navbar";
 import {useEffect, useState} from "react";
 import {usePathname, useRouter} from "next/navigation";
 import CustomButton from "../../button/custombutton";
@@ -26,12 +23,13 @@ import {
 } from "@/components/ui/sheet";
 
 type PageProps = {
+  isCopied: boolean;
   handleGoBack?: () => void;
   handleShareGameLink?: () => void;
   showCup?: boolean;
 };
 
-const JoinGameNavbar = ({handleShareGameLink, showCup}: PageProps) => {
+const JoinGameNavbar = ({handleShareGameLink, isCopied, showCup}: PageProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [showDestopNav, setShowDestopNav] = useState(false);
   const router = useRouter();
@@ -134,15 +132,13 @@ const JoinGameNavbar = ({handleShareGameLink, showCup}: PageProps) => {
 
           <div className="hidden md:flex gap-2 ">
             <CustomButton
-              onClick={() => {
-                console.log("Copy link");
-              }}
+              onClick={handleShareGameLink}
               variant="subtle"
               isRightIconVisible={true}
               icon={<Link size={"14px"} />}
               size={"lg"}
             >
-              Share Game Invite
+              {isCopied ? "Copied!" : "Share Game"}
             </CustomButton>
             <button
               className="bg-primary-700 shadow-custom-inset text-primary-100 hover:bg-primary-700/90 dark:bg-slate-50 dark:text-primary-100 dark:hover:bg-slate-50/90 flex items-center justify-center gap-3 rounded-[8px] px-4 "
