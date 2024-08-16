@@ -34,7 +34,9 @@ const Footer = () => {
             <p className="text-primary-700 font-normal pt-6">
               <Link href="/how-to-play">{t("resourcesHowToPlay")}</Link>
             </p>
-            <p className="text-primary-700 font-normal pt-4">Blog</p>
+            <Link href="/blogs" className="text-primary-700 font-normal pt-4">
+              Blog
+            </Link>
           </div>
           <div className="mb-8 md:mb-0 md:mr-8 text-center md:text-left">
             <p className="text-primary-500 font-bold">{t("legalTitle")}</p>
