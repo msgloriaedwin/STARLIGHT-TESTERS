@@ -11,7 +11,8 @@ export const useBackgroundSound = ({ soundSrc }: { soundSrc: string }) => {
   const soundRef = useRef<Howl | null>(null);
 
   useEffect(() => {
-    const enabled = localStorage.getItem('soundEnabled') === 'true';
+    const gameSettings = JSON.parse(localStorage.getItem('gameSettings') || '{}');
+    const enabled = gameSettings.is_sound;
     if (enabled && !soundRef.current) {
       soundRef.current = new Howl({
         src: [soundSrc],
@@ -29,7 +30,8 @@ export const useBackgroundSound = ({ soundSrc }: { soundSrc: string }) => {
   }, [soundSrc]);
 
   const playSound = useCallback(() => {
-    const enabled = localStorage.getItem('soundEnabled') === 'true';
+    const gameSettings = JSON.parse(localStorage.getItem('gameSettings') || '{}');
+    const enabled = gameSettings.is_sound;
     if (enabled && soundRef.current && !isPlaying) {
       soundRef.current.play();
       setIsPlaying(true);

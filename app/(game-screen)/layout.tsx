@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useBackgroundSound } from "@/utils/game-sounds/useBackgroundMusic";
-import { useAuthContext } from '@/context/AuthContext';
-import axios from 'axios';
+import { useAuthContext } from "@/context/AuthContext";
+import axios from "axios";
 
 export default function GameLayout({
   children,
@@ -28,7 +28,14 @@ export default function GameLayout({
           });
           const settings = response.data.data.game_settings;
           setIsSoundEnabled(settings.is_sound);
-          localStorage.setItem('soundEnabled', settings.is_sound.toString());
+          localStorage.setItem("gameSettings", JSON.stringify(settings));
+
+          // Update sound based on fetched setting
+          if (settings.is_sound) {
+            playSound();
+          } else {
+            stopSound();
+          }
         } catch (error) {
           console.error("Failed to fetch game settings:", error);
         }
@@ -36,31 +43,49 @@ export default function GameLayout({
     };
 
     fetchSoundSettings();
-  }, [user.access_token, baseUrl]);
+  }, [user.access_token, baseUrl, playSound, stopSound]);
 
   useEffect(() => {
     const handleUserInteraction = () => {
-      const soundEnabled = localStorage.getItem('soundEnabled') === 'true';
+      const gameSettings = JSON.parse(
+        localStorage.getItem("gameSettings") || "{}"
+      );
+      const soundEnabled = gameSettings.is_sound;
       if (soundEnabled) {
         playSound();
       } else {
         stopSound();
       }
-      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener("click", handleUserInteraction);
     };
 
     if (isSoundEnabled !== null) {
-      window.addEventListener('click', handleUserInteraction);
+      window.addEventListener("click", handleUserInteraction);
     }
 
     return () => {
-      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener("click", handleUserInteraction);
     };
   }, [isSoundEnabled, playSound, stopSound]);
 
-  return (
-    <div className="bg-body">
-      {children}
-    </div>
-  );
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const gameSettings = JSON.parse(
+        localStorage.getItem("gameSettings") || "{}"
+      );
+      setIsSoundEnabled(gameSettings.is_sound);
+      if (gameSettings.is_sound) {
+        playSound();
+      } else {
+        stopSound();
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, [playSound, stopSound]);
+
+  return <div className='bg-body'>{children}</div>;
 }
