@@ -31,11 +31,11 @@ const JoinGameForm = ({
   avatars,
   className,
 }: {
-  avatars: StaticImageData[];
+  avatars: string[];
   className?: string;
 }) => {
   const router = useRouter();
-  const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
+  const [selectedAvatar, setSelectedAvatar] = useState<string>(
     avatars[0]
   );
 
@@ -48,7 +48,7 @@ const JoinGameForm = ({
 
   const handleFormSubmit = (data: FormData) => {};
 
-  const handleAvatarSelect = (avatar: StaticImageData) => {
+  const handleAvatarSelect = (avatar: string) => {
     setSelectedAvatar(avatar);
     form.setValue("avatar", avatar as unknown as string);
   };

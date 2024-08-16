@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ToggleControlSettings } from "@/app/components/ToggleControl/ToggleControlSettings";
 import CustomButton from "@/app/components/shared/button/custombutton";
 import Modal from "@/app/components/modal/modal";
@@ -28,19 +28,7 @@ const Index: React.FC = () => {
   const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  useEffect(() => {
-    const storedSettings = localStorage.getItem("gameSettings");
-    if (storedSettings) {
-      setSettings(JSON.parse(storedSettings));
-    }
-    if (user && user.access_token) {
-      fetchGameSettings();
-    } else {
-      setIsLoading(false);
-    }
-  }, [user]);
-
-  const fetchGameSettings = async () => {
+  const fetchGameSettings = useCallback(async () => {
     try {
       setIsLoading(true);
       const response = await axios.get(`${baseUrl}game-settings/me`, {
@@ -56,7 +44,21 @@ const Index: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  },[baseUrl, user.access_token]);
+
+  useEffect(() => {
+    const storedSettings = localStorage.getItem("gameSettings");
+    if (storedSettings) {
+      setSettings(JSON.parse(storedSettings));
+    }
+    if (user && user.access_token) {
+      fetchGameSettings();
+    } else {
+      setIsLoading(false);
+    }
+  }, [user, fetchGameSettings]);
+
+  
 
   const handleSettingChange = (key: keyof GameSettings, value: boolean) => {
     const newSettings = { ...settings, [key]: value };

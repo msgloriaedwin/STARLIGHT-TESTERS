@@ -3,13 +3,15 @@ import Image, { StaticImageData } from "next/image";
 import { FormLabel } from "@/components/ui/form";
 
 interface AvatarSelectorProps {
-  avatars: StaticImageData[];
-  selectedAvatar: StaticImageData;
-  onAvatarSelect: (avatar: StaticImageData) => void;
+  avatars: string[];
+  selectedAvatar: string;
+  onAvatarSelect: (avatar: string) => void;
 }
 
+const avatarUrl = "https://api.staging.remote.bingo/avatars"
+
 const AvatarSelector: React.FC<AvatarSelectorProps> = ({
-  avatars,
+  avatars = [],
   selectedAvatar,
   onAvatarSelect,
 }) => {
@@ -29,7 +31,7 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
       const avatarWidth = carouselRef.current.scrollWidth / avatars.length;
       carouselRef.current.scrollLeft = currentIndex * avatarWidth;
     }
-  }, [currentIndex, avatars.length]);
+  }, [currentIndex, avatars?.length]);
 
   return (
     <div>
@@ -56,12 +58,12 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
           </button>
           <button
             onClick={handleNext}
-            disabled={currentIndex + 5 >= avatars.length}
+            disabled={currentIndex + 5 >= avatars?.length}
             className="focus:outline-none"
           >
             <Image
               src={
-                currentIndex + 5 >= avatars.length
+                currentIndex + 5 >= avatars?.length
                   ? "/assets/icons/arrow-right-disabled.svg"
                   : "/assets/icons/arrow-right.svg"
               }
@@ -76,33 +78,35 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
         ref={carouselRef}
         className="flex gap-2 sm:gap-4 overflow-x-auto scroll-smooth"
       >
-        {avatars.slice(currentIndex, currentIndex + 5).map((avatar, index) => (
-          <div
-            key={`${avatar.src}-${index}`}
-            className={`relative flex items-center justify-center p-1 border border-primary-700 rounded-lg w-[3.875rem] h-[3.875rem] sm:w-24 sm:h-24 ${
-              selectedAvatar.src === avatar.src ? "bg-primary-700" : ""
-            }`}
-            onClick={() => onAvatarSelect(avatar)}
-          >
-            <Image
-              src={avatar}
-              alt="Avatar"
-              width={50}
-              height={50}
-              className="rounded-full cursor-pointer w-[3.125rem] h-[3.125rem] sm:w-20 sm:h-20"
-            />
-            {selectedAvatar === avatar && (
-              <div className="absolute top-0 right-0 p-1 bg-white rounded-full">
-                <Image
-                  src="/assets/icons/Check.svg"
-                  alt="Selected"
-                  width={10}
-                  height={10}
-                />
-              </div>
-            )}
-          </div>
-        ))}
+        {avatars.slice(currentIndex, currentIndex + 5).map((avatar, index) => {
+         
+          return (
+            <div
+              key={`${avatar}-${index}`}
+              className={`relative flex items-center justify-center p-1 border border-primary-700 rounded-lg w-[3.875rem] h-[3.875rem] sm:w-24 sm:h-24 ${
+                selectedAvatar === avatar ? "bg-primary-700" : ""
+              }`}
+              onClick={() => onAvatarSelect(avatar)}
+            >
+              <Image
+                src={`${avatarUrl}/${avatar}`}
+                alt="Avatar"
+                width={50}
+                height={50}
+                className="rounded-full cursor-pointer w-[3.125rem] h-[3.125rem] sm:w-20 sm:h-20"
+              />
+              {selectedAvatar === avatar && (
+                <div className="absolute top-0 right-0 p-1 bg-white rounded-full">
+                  <Image
+                    src="/assets/icons/Check.svg"
+                    alt="Selected"
+                    width={10}
+                    height={10}
+                  />
+                </div>
+              )}
+            </div>  
+        )})}
       </div>
     </div>
   );
