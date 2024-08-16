@@ -1,12 +1,14 @@
-import { useState, useEffect, useRef } from "react";
-import Image, { StaticImageData } from "next/image";
-import { FormLabel } from "@/components/ui/form";
+"use client"
 
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import { FormLabel } from "@/components/ui/form";
 interface AvatarSelectorProps {
-  avatars: StaticImageData[];
-  selectedAvatar: StaticImageData;
-  onAvatarSelect: (avatar: StaticImageData) => void;
+  avatars: string[];
+  selectedAvatar: string;
+  onAvatarSelect: (avatar: string) => void;
 }
+const avatarUrl = "https://api.staging.remote.bingo/avatars"
 
 const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   avatars,
@@ -15,22 +17,19 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement | null>(null);
-
+  
   const handleNext = () => {
     setCurrentIndex((prevIndex) => Math.min(prevIndex + 5, avatars.length - 5));
   };
-
   const handlePrevious = () => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 5, 0));
   };
-
   useEffect(() => {
     if (carouselRef.current) {
       const avatarWidth = carouselRef.current.scrollWidth / avatars.length;
       carouselRef.current.scrollLeft = currentIndex * avatarWidth;
     }
   }, [currentIndex, avatars.length]);
-
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
@@ -76,16 +75,19 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
         ref={carouselRef}
         className="flex gap-2 sm:gap-4 overflow-x-auto scroll-smooth"
       >
-        {avatars.slice(currentIndex, currentIndex + 5).map((avatar, index) => (
+        {avatars.slice(currentIndex, currentIndex + 5).map((avatar, index) => {
+          
+          
+          return (
           <div
-            key={`${avatar.src}-${index}`}
+            key={`${avatar}-${index}`}
             className={`relative flex items-center justify-center p-1 border border-primary-700 rounded-lg w-[3.875rem] h-[3.875rem] sm:w-24 sm:h-24 ${
-              selectedAvatar.src === avatar.src ? "bg-primary-700" : ""
+              selectedAvatar === avatar ? "bg-primary-700" : ""
             }`}
             onClick={() => onAvatarSelect(avatar)}
           >
             <Image
-              src={avatar}
+              src={`${avatarUrl}/${avatar}`}
               alt="Avatar"
               width={50}
               height={50}
@@ -102,10 +104,9 @@ const AvatarSelector: React.FC<AvatarSelectorProps> = ({
               </div>
             )}
           </div>
-        ))}
+        )})}
       </div>
     </div>
   );
 };
-
 export default AvatarSelector;

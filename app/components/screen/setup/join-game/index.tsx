@@ -13,7 +13,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import AvatarSelector from "../create-game/AvatarSelector";
@@ -22,40 +21,35 @@ import { useToast } from "@/components/ui/use-toast";
 import { JoinGameRoomPayload, JoinRoomResponseDTO } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { joinGameRoom } from "@/actions";
-
 const formSchema = z.object({
   gameId: z.string().min(1, { message: "Game ID is required" }),
   userName: z.string().min(1, { message: "Username is required" }),
   avatar: z.string(),
 });
-
 type FormData = z.infer<typeof formSchema>;
-
 const JoinGameForm = ({
   avatars,
   className,
   gameId,
 }: {
-  avatars: StaticImageData[];
+  avatars: string[];
   className?: string;
   gameId: string;
 }) => {
   const router = useRouter();
-  const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
-    avatars[0]
+  const [selectedAvatar, setSelectedAvatar] = useState<string>(
+    avatars?.length > 0 ? avatars[0] : ""
   );
   const { toast } = useToast();
   const joinRoomMutation = useJoinRoom();
-
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       gameId: gameId || "",
       userName: "",
-      avatar: avatars[0].src,
+      avatar: avatars?.length > 0 ? avatars[0] : ""
     },
   });
-
   const handleFormSubmit = async (data: FormData) => {
     const payload: JoinGameRoomPayload = {
       roomId: data.gameId,
@@ -65,7 +59,6 @@ const JoinGameForm = ({
       },
     };
     console.log("Submitting payload:", payload);
-
     joinRoomMutation.mutate(payload, {
       onSuccess: (response: JoinRoomResponseDTO) => {
         console.log("Server response:", response);
@@ -77,7 +70,6 @@ const JoinGameForm = ({
               "bg-green-100 text-green-800 border border-green-300 rounded-lg p-4 shadow-md",
             duration: 5000,
           });
-            
           router.push(`/room/game-room?roomId=${data.gameId}`);
         } else {
           toast({
@@ -101,12 +93,10 @@ const JoinGameForm = ({
       },
     });
   };
-
-  const handleAvatarSelect = (avatar: StaticImageData) => {
+  const handleAvatarSelect = (avatar: string) => {
     setSelectedAvatar(avatar);
-    form.setValue("avatar", avatar.src);
+    form.setValue("avatar", avatar);
   };
-
   return (
     <section className="w-[95%] md:max-w-[39rem]">
       <h3 className="font-[700] text-[50px] text-center mb-[37px]">
@@ -194,7 +184,7 @@ const JoinGameForm = ({
             {joinRoomMutation.isError && (
               <p className="text-red-500 text-center mt-2">
                 {
-                // joinRoomMutation.error?.message ||
+                  // joinRoomMutation.error?.message ||
                   "An error occurred while joining the game."}
               </p>
             )}
@@ -204,9 +194,7 @@ const JoinGameForm = ({
     </section>
   );
 };
-
 export default JoinGameForm;
-
 export const useJoinRoom = () => {
   const queryClient = useQueryClient();
   return useMutation<any, Error, JoinGameRoomPayload>({

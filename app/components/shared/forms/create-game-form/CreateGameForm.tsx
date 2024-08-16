@@ -38,15 +38,15 @@ const formSchema = z.object({
 });
 type FormData = z.infer<typeof formSchema>;
 interface CreateGameFormProps {
-  avatars: StaticImageData[];
+  avatars: string[];
   className?: string;
 }
 const CreateGameForm: React.FC<CreateGameFormProps> = ({
   avatars,
   className,
 }) => {
-  const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
-    avatars[0]
+  const [selectedAvatar, setSelectedAvatar] = useState<string>(
+    avatars?.length ? avatars[0] : ""
   );
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessages, setErrorMessage] = useState("");
@@ -60,7 +60,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
       teamName: "",
       bingoType: "number",
       prizeValue: undefined,
-      avatar: avatars[0].src,
+      avatar: avatars?.length ? avatars[0] : "",
     },
   });
 
@@ -97,9 +97,9 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
     });
   };
 
-  const handleAvatarSelect = (avatar: StaticImageData) => {
+  const handleAvatarSelect = (avatar: string) => {
     setSelectedAvatar(avatar);
-    form.setValue("avatar", avatar.src);
+    form.setValue("avatar", avatar);
   };
   return (
     <>

@@ -1,4 +1,4 @@
-import { getRoom } from "@/actions";
+import { getAvatar, getRoom } from "@/actions";
 import { useQuery } from "@tanstack/react-query";
 
 export const useRoom = (roomId: string) => {
@@ -7,3 +7,10 @@ export const useRoom = (roomId: string) => {
     queryFn: () => getRoom(roomId),
   });
 };
+
+export const useGetAvatars = () => {
+  return useQuery<any, Error>({
+    queryKey: ['avatar'],
+    queryFn: () => getAvatar()
+  })
+}

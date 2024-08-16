@@ -118,3 +118,12 @@ export const joinGameRoom = async (
 
   return response;
 };
+
+export const getAvatar = async() => {
+  const request = await fetch(`${API_URL}avatars`)
+  const response = await request.json()
+  // console.log({API_URL, response});
+  const avatarsArr = response?.data?.slice(7, 17)
+  // console.log(avatarsArr);
+  return avatarsArr
+}
