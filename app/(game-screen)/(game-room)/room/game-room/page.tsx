@@ -128,7 +128,7 @@ const GameRoomPage = ({
       <JoinGameNavbar showCup={false} />
       <div
         ref={containerRef}
-        className={`flex flex-col item-center min-h-[calc(100vh-80px)]`}
+        className={`flex flex-col item-center min-h-[calc(100vh-160px)] overflow-hidden pb-10`}
         style={{paddingTop: `30px`}}
       >
         <div className="relative w-screen !max-h-[calc(80vh-80px)]">

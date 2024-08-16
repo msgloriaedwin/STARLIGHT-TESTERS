@@ -14,7 +14,7 @@ interface AvatarProps {
 const Avatars = ({ avatars = [], dimension, size }: AvatarProps) => {
   const { width, height } = dimension;
 
-  const firstDivd = Math.round(avatars.length / 3);
+  const firstDivd = Math.ceil(avatars.length / 3);
   const nextDivd = avatars.length - firstDivd;
   const topLength = nextDivd - firstDivd;
   const spaceY = (height - size * firstDivd) / firstDivd + size;
@@ -22,8 +22,11 @@ const Avatars = ({ avatars = [], dimension, size }: AvatarProps) => {
   const xMid = width / 2 - size / 2;
   const spaceX = (xWidth - size * topLength) / topLength + size;
 
+  console.log({firstDivd, topLength, nextDivd, height});
+  
+
   return (
-    <div className="w-screen min-h-screen">
+    <div className="">
       {avatars.map((avatar, index) => {
         const x =
           index < firstDivd
@@ -35,6 +38,7 @@ const Avatars = ({ avatars = [], dimension, size }: AvatarProps) => {
             : xWidth - size - (index - firstDivd) * spaceX;
 
         const y =
+          avatars.length < 3 ? (height - size) / 2 :
           index === 0 || index === avatars.length - 1
             ? height - size
             : index < firstDivd

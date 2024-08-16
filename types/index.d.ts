@@ -20,6 +20,7 @@ export interface GetTokenResponseType {
 }
 export interface CreateRoomResponseDTO {
   message: string;
+  error: string;
   status: string;
   status_code: number;
   data: CreateRoomResponseDataDto;

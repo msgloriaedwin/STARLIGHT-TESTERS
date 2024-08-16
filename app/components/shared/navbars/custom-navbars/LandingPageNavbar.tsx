@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Image from "next/image";
-import { Menu } from "lucide-react";
+import {Menu} from "lucide-react";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import {useTranslations} from "next-intl";
 import CustomButton from "../../button/custombutton";
 import LocaleSwitcher from "@/app/components/locale-switcher";
 import LogoutButton from "../../button/logOutButton";
@@ -12,7 +12,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { useAuthContext } from "@/context/AuthContext";
+import {useAuthContext} from "@/context/AuthContext";
 
 type PageProps = {
   onLogin: () => void;
@@ -29,7 +29,7 @@ const LandingPageNavbar = ({
 }: PageProps) => {
   const t = useTranslations("nav");
   const [isOpen, setIsOpen] = useState(false);
-  const { user } = useAuthContext();
+  const {user} = useAuthContext();
 
   const handleHowToPlayClick = () => {
     setIsOpen(false);
@@ -42,7 +42,7 @@ const LandingPageNavbar = ({
   return (
     <div className="w-full">
       <nav className="grid grid-cols-2 md:grid-cols-3 fixed top-0 left-0 md:px-20 px-4 py-6 items-center w-full bg-body z-[50] ">
-        <div>
+        <Link href={"/"}>
           <Image
             className="w-[131px] h-[46.48px]"
             width={100}
@@ -50,7 +50,7 @@ const LandingPageNavbar = ({
             src="/bingo-logo.svg"
             alt="Remote Bingo"
           />
-        </div>
+        </Link>
 
         <div className="hidden md:flex justify-self-center">
           {!hideHowToPlay && (
