@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -14,32 +13,28 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import AvatarSelector from "./AvatarSelector";
-
 const formSchema = z.object({
   teamName: z.string().min(1, { message: "Team Name is required" }),
   bingoType: z.enum(["numbers", "alphabets"]),
   prizeValue: z.string().min(1, { message: "Prize value is required" }),
   avatar: z.string(),
 });
-
 type FormData = z.infer<typeof formSchema>;
-
 interface CreateGameFormProps {
-  avatars: StaticImageData[];
+  avatars: string[];
   className?: string;
   onSubmit?: (data: FormData) => void;
 }
-
 const CreateGameForm: React.FC<CreateGameFormProps> = ({
   avatars,
   className,
   onSubmit,
 }) => {
-  const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
-    avatars[0]
+  const [selectedAvatar, setSelectedAvatar] = useState<string>(
+    avatars?.length > 0 ? avatars[0] : ""
   );
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -47,21 +42,18 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
       teamName: "",
       bingoType: "numbers",
       prizeValue: "",
-      avatar: avatars[0].src,
+      avatar: avatars[0],
     },
   });
-
   const handleFormSubmit = (data: FormData) => {
     if (onSubmit) {
       onSubmit(data);
     }
   };
-
-  const handleAvatarSelect = (avatar: StaticImageData) => {
+  const handleAvatarSelect = (avatar: string) => {
     setSelectedAvatar(avatar);
-    form.setValue("avatar", avatar.src);
+    form.setValue("avatar", avatar);
   };
-
   return (
     <section className={cn("max-w-[39rem]", className)}>
       <Form {...form}>
@@ -99,7 +91,6 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
               )}
             />
           </div>
-
           <div>
             <FormField
               name="bingoType"
@@ -143,7 +134,6 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                           </div>
                         )}
                       </Button>
-
                       <Button
                         className={cn(
                           "flex items-center justify-center py-[0.875rem] px-3 sm:px-6 sm:py-5 cursor-pointer rounded-md w-full border border-primary-900 text-inherit sm:h-14 relative max-sm:text-[0.61rem] max-sm:leading-3",
@@ -178,13 +168,11 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
               )}
             />
           </div>
-
           <AvatarSelector
             avatars={avatars}
             selectedAvatar={selectedAvatar}
             onAvatarSelect={handleAvatarSelect}
           />
-
           <div>
             <FormField
               control={form.control}
@@ -195,7 +183,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
                     htmlFor="prizeValue"
                     className="font-normal text-[0.6rem] max-sm:leading-3 sm:text-[1rem]"
                   >
-                    What&apos;s the Prize? 🏆
+                    What&apos;s the Prize? :trophy:
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -215,7 +203,6 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
               )}
             />
           </div>
-
           <Button
             type="submit"
             className="w-full sm:h-14 rounded-[0.5rem] bg-primary-700 hover:bg-primary-700 text-primary-100 p-2 border border-primary-500 shadow-custom-inset "
@@ -227,5 +214,4 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
     </section>
   );
 };
-
 export default CreateGameForm;
