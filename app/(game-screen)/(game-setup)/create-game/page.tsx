@@ -1,6 +1,8 @@
 "use client";
+const CreateGameForm = dynamic(
+  () => import("@/app/components/shared/forms/create-game-form/CreateGameForm")
+);
 
-import CreateGameForm from "@/app/components/shared/forms/create-game-form/CreateGameForm";
 import Navbar from "@/app/components/shared/navbars/Navbar";
 import Avatar1 from "@/public/assets/images/avatar-1.png";
 import Avatar2 from "@/public/assets/images/avatar-2.png";
@@ -11,7 +13,8 @@ import Avatar6 from "@/public/assets/images/avatar-6.png";
 import Avatar7 from "@/public/assets/images/avatar-7.png";
 import Avatar8 from "@/public/assets/images/avatar-8.png";
 import Avatar9 from "@/public/assets/images/avatar-9.png";
-import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
+import {useRouter} from "next/navigation";
 
 const CreateGamePage: React.FC = () => {
   const router = useRouter();
