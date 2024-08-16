@@ -10,13 +10,14 @@ import { defaultEmoji } from "./data";
 interface ChatInputProps {
   handleSelectGif: (data: any) => void;
   sendMessage: (data: any) => void;
+  message: string;
+  setMessage: (data: string) => void;
 }
 
 const EmojiPicker = dynamic(() => import("emoji-picker-react"), { ssr: false });
-const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
+const ChatInput = ({ sendMessage, handleSelectGif, message, setMessage }: ChatInputProps) => {
   const [showPicker, setShowPicker] = useState<boolean>(false);
   const [showGif, setshowGif] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
   const [gif, setGif] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
   const handleSend = () => {
@@ -31,7 +32,7 @@ const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
   };
 
   const handleSelectEmoji = (emojiObject: any, event: any) => {
-    setMessage((previousData) => previousData + emojiObject.emoji);
+    // setMessage((previousData) => previousData + emojiObject.emoji);
   };
 
   useEffect(() => {
@@ -87,6 +88,7 @@ const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
           value={message}
           onChange={(e) => {
             setMessage(e.target.value);
+            console.log(message);
           }}
           onFocus={() => {
             setShowPicker(false);
@@ -107,7 +109,7 @@ const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
           </button>
         </div>
       </div>
-      {!showPicker && !showGif && (
+      {/* {!showPicker && !showGif && (
         <div className="flex w-full items-center justify-center mt-4">
           <div className="flex gap-[21px] ">
             <div className="hidden lg:flex items-center">
@@ -154,7 +156,7 @@ const ChatInput = ({ sendMessage, handleSelectGif }: ChatInputProps) => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

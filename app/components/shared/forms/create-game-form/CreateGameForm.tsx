@@ -72,11 +72,12 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
       prizeValue: data.prizeValue.toString(),
       avatar: data.avatar,
     };
-
+    setIsLoading(true)
     createGameMutation.mutate(payload, {
       onSuccess: (response) => {
         if (response.status_code === 201) {
           router.push(`room/game-room?roomId=${response.data.id}`);
+          setIsLoading(false)
         } else {
           toast({
             title: "Failed to create a room",
@@ -292,7 +293,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
               className="w-full sm:h-14 rounded-[0.5rem] bg-primary-700 hover:bg-primary-700 text-primary-100 p-2 border border-primary-500 shadow-custom-inset "
               disabled={isLoading}
             >
-              Save & Continue
+              {isLoading ? 'Loading...' : 'Save & Continue'}
             </Button>
           </form>
         </Form>

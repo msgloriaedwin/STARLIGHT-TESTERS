@@ -1,20 +1,20 @@
 "use client";
 
-import React, {useState, useEffect, useCallback, FC} from "react";
+import React, { useState, useEffect, useCallback, FC } from "react";
 
-import {z} from "zod";
+import { z } from "zod";
 import RBInput from "@/app/components/shared/input";
 import FormCard from "@/app/components/shared/formcard/formCard";
 import CustomButton from "@/app/components/shared/button/custombutton";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/app/components/shared/navbars/Navbar";
-import {useRouter} from "next/navigation";
-import {CircleCheck, Eye, EyeOff} from "lucide-react";
-import {useToast} from "@/components/ui/use-toast";
-import {Toaster} from "@/components/ui/toaster";
-import {signUpWithGoogle, loginUser} from "@/utils/auth/authService";
-import {useAuthContext} from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+import { CircleCheck, Eye, EyeOff } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import { Toaster } from "@/components/ui/toaster";
+import { signUpWithGoogle, loginUser } from "@/utils/auth/authService";
+import { useAuthContext } from "@/context/AuthContext";
 
 const loginSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -53,11 +53,11 @@ const LoginPage: FC = () => {
     password: false,
   });
   const router = useRouter();
-  const {toast} = useToast();
-  const {setUser} = useAuthContext();
+  const { toast } = useToast();
+  const { setUser } = useAuthContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
@@ -68,7 +68,7 @@ const LoginPage: FC = () => {
         ...prevErrors,
         username: undefined,
       }));
-      setShowCheckmarks((prev) => ({...prev, username: true}));
+      setShowCheckmarks((prev) => ({ ...prev, username: true }));
     }
 
     if (name === "password" && value.length >= 8) {
@@ -76,7 +76,7 @@ const LoginPage: FC = () => {
         ...prevErrors,
         password: undefined,
       }));
-      setShowCheckmarks((prev) => ({...prev, password: true}));
+      setShowCheckmarks((prev) => ({ ...prev, password: true }));
     }
   };
 
@@ -89,7 +89,7 @@ const LoginPage: FC = () => {
         if (err.path[0] === "password") newErrors.password = err.message;
       });
       setErrors(newErrors);
-      setShowCheckmarks({username: false, password: false});
+      setShowCheckmarks({ username: false, password: false });
       return false;
     }
     setErrors({});
@@ -123,7 +123,9 @@ const LoginPage: FC = () => {
       } catch (error: any) {
         toast({
           title: "Login failed",
-          description: error.response.data.error,
+          className:
+            "bg-red-100 text-red-800 border border-red-300 rounded-lg p-4 shadow-md",
+          description: 'An error occurred while logging in.',
           variant: "destructive",
         });
       } finally {
