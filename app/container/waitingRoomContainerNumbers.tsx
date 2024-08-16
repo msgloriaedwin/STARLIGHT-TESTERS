@@ -16,36 +16,10 @@ const players = [
 		avatar: "/assets/images/avatar-2.png",
 	},
 
-	// {
-	// 	username: "i3cia",
-	// 	avatar: "/assets/images/avatar-3.png",
-	// },
-
-	// {
-	// 	username: "Farell",
-	// 	avatar: "/assets/images/avatar-5.png",
-	// },
-
-	// {
-	// 	username: "Farell",
-	// 	avatar: "/assets/images/avatar-6.png",
-	// },
-	// {
-	// 	username: "Farell",
-	// 	avatar: "/assets/images/avatar-6.png",
-	// },
-	// {
-	// 	username: "Farell",
-	// 	avatar: "/assets/images/avatar-6.png",
-	// },
-	// {
-	// 	username: "Farell",
-	// 	avatar: "/assets/images/avatar-6.png",
-	// },
-	// {
-	// 	username: "Farell",
-	// 	avatar: "/assets/images/avatar-6.png",
-	// },
+	{
+		username: "i3cia",
+		avatar: "/assets/images/avatar-3.png",
+	},
 ];
 
 export default function WaitingRoomContainerNumbers() {
