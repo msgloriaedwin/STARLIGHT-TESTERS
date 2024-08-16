@@ -30,7 +30,6 @@ export default function GameLayout({
           setIsSoundEnabled(settings.is_sound);
           localStorage.setItem("gameSettings", JSON.stringify(settings));
 
-          // Update sound based on fetched setting
           if (settings.is_sound) {
             playSound();
           } else {
