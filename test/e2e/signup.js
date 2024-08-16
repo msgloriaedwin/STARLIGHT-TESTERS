@@ -8,5 +8,6 @@ describe('User Signup Test Suite', () => {
       cy.get('input[name="password"]').type('Edwin1@kels');
       cy.get('button[type="submit"]').click();
     });
+  
   });
   

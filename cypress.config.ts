@@ -15,4 +15,3 @@ export default defineConfig({
 });
 
 
-// https://github.com/hngprojects/hng_boilerplate_nextjs.git
