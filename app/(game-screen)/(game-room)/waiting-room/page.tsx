@@ -4,7 +4,7 @@ import JoinGameNavbar from "@/app/components/shared/navbars/custom-navbars/JoinG
 export default function WaitingRoom() {
   return (
     <>
-      <JoinGameNavbar showCup={false} />
+      <JoinGameNavbar isCopied showCup={false} />
       <main className="md:px-3">
         <WaitingRoomContainer />
       </main>

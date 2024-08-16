@@ -16,6 +16,7 @@ const Page = () => {
         sendMessage={(data: any) => {
           setMessage(data);
         }}
+        setMessage={() => {}}
         handleSelectGif={(data: any) => {
           setGif(data);
         }}

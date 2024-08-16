@@ -46,6 +46,7 @@ import { useRouter } from "next/navigation";
 import { useSendMessage } from "@/hooks/useApiMutations";
 import { toast } from "@/components/ui/use-toast";
 import MessageBubble from "@/app/components/messageBubble/MessageBubble";
+import { replaceSpacesWithUnderscores } from "@/lib/utils";
 
 const players: {
   username: string;
@@ -201,6 +202,7 @@ const GameRoomPage = ({
   // Initialize new centrifugo connection
   useEffect(() => {
     let centrifuge: Centrifuge | null = null;
+
     const init = async () => {
       centrifuge = new Centrifuge(`${process.env.NEXT_PUBLIC_WEBSOCKET_URL}`, {
         debug: true,
@@ -258,7 +260,8 @@ const GameRoomPage = ({
         centrifuge?.disconnect();
       }
     };
-  }, []);
+
+  });
 
   useEffect(() => {
     setDimension({
@@ -338,8 +341,3 @@ const GameRoomPage = ({
 };
 
 export default GameRoomPage;
-
-
-export function replaceSpacesWithUnderscores(input: string) {
-  return input?.replace(/ /g, '_');
-}
