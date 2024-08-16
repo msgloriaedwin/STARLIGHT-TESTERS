@@ -19,7 +19,7 @@ type BlogData = {
 
 const BlogPage = async ({ params }: BlogPageProps) => {
   const slug = params.slug;
-  const response = await fetch(`${process.env.API_URL}/blogs/${slug}`);
+  const response = await fetch(`${process.env.API_URL}blogs/${slug}`);
   const blogData: BlogData = await response.json();
 
   return (
