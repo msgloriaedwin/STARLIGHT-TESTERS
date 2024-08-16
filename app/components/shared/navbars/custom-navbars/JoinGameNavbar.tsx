@@ -12,13 +12,18 @@ import {
   X,
 } from "lucide-react";
 import Navbar from "../Navbar";
-import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import {useEffect, useState} from "react";
+import {usePathname, useRouter} from "next/navigation";
 import CustomButton from "../../button/custombutton";
 import cupIcon from "../asset/cup.svg";
 import infoIcon from "../asset/info-circle.svg";
 import closeIcon from "../asset/close-circle.svg";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 type PageProps = {
   handleGoBack?: () => void;
@@ -26,13 +31,20 @@ type PageProps = {
   showCup?: boolean;
 };
 
-const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
+const JoinGameNavbar = ({handleShareGameLink, showCup}: PageProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [showDestopNav, setShowDestopNav] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const [user, setUser] = useState<any>();
 
-  const handleHowToPlayClick = () => { };
+  useEffect(() => {
+    const user: any = sessionStorage.getItem("user");
+    const userData = JSON.parse(user);
+    setUser(userData);
+  }, []);
+
+  const handleHowToPlayClick = () => {};
 
   return (
     <nav className="bg-body z-[50] w-full flex items-center justify-between">
@@ -69,9 +81,7 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
         {showCup && (
           <div className="hidden md:flex items-center gap-4 justify-center border-solid border-[2px] rounded-[8px] border-[#7F7F7F] p-3">
             <Image src={cupIcon} alt="cup" width={37} height={37.6} />
-            <span className="text-[24px] font-[700] text-[#4CAF50]">
-              $350
-            </span>
+            <span className="text-[24px] font-[700] text-[#4CAF50]">$350</span>
           </div>
         )}
 
@@ -141,7 +151,7 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
               }}
             >
               <User color="#ffffff" />
-              <span>Frieda</span>
+              <span>{user ? user.username : ""}</span>
               <ChevronDown color="#ffffff" />
             </button>
             <button className="px-4 border-[2px] border-primary-800 border-solid rounded-[8px] text-primary-800">
@@ -153,8 +163,7 @@ const JoinGameNavbar = ({ handleShareGameLink, showCup }: PageProps) => {
       <div className="md:hidden flex">
         <Sheet>
           <SheetTrigger asChild>
-            <button className="flex md:hidden items-center mr-4 bg-primary-700  shadow-custom-inset border rounded-[8px] text-white justify-center py-[10px] px-4 outline-1"
-            >
+            <button className="flex md:hidden items-center mr-4 bg-primary-700  shadow-custom-inset border rounded-[8px] text-white justify-center py-[10px] px-4 outline-1">
               <Menu />
             </button>
           </SheetTrigger>
