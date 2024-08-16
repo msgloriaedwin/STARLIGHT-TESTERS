@@ -56,6 +56,7 @@ export default function WaitingRoomContainerNumbers() {
 						handleSelectGif={(data: any) => {
 							//   setGif(data);
 						}}
+						setMessage={() => {}}
 					/>
 				</div>
 			</div>

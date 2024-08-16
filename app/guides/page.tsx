@@ -14,15 +14,6 @@ import Slider from "../components/slider";
 import ForgotPasswordForm from "../components/shared/forms/forgotPasswordForm/forgotPassword";
 import Footer from "../components/shared/footer/footer";
 import LandingPageNavbar from "../components/shared/navbars/custom-navbars/LandingPageNavbar";
-import Avatar1 from "../../public/assets/images/avatar-1.png";
-import Avatar2 from "../../public/assets/images/avatar-2.png";
-import Avatar3 from "../../public/assets/images/avatar-3.png";
-import Avatar4 from "../../public/assets/images/avatar-4.png";
-import Avatar5 from "../../public/assets/images/avatar-5.png";
-import Avatar6 from "../../public/assets/images/avatar-6.png";
-import Avatar7 from "../../public/assets/images/avatar-7.png";
-import Avatar8 from "../../public/assets/images/avatar-8.png";
-import Avatar9 from "../../public/assets/images/avatar-9.png";
 import OtpComponent from "../components/authentication/otp/otpcomponent";
 import PasswordResetForm from "../components/authentication/passwordResetForm/passwordResetForm";
 import ChatInput from "../components/screen/general/chatBoxWithEmoji";
@@ -33,18 +24,6 @@ const players = [
 	{ name: "Oluwole", score: "2/5", imageUrl: "/assets/images/modalpic3.png" },
 	{ name: "Sandra", score: "5/5", imageUrl: "/assets/images/modalpic4.png" },
 	{ name: "Farrell", score: "4/5", imageUrl: "/assets/images/modalpic2.png" },
-];
-
-const avatars = [
-	Avatar1,
-	Avatar2,
-	Avatar3,
-	Avatar4,
-	Avatar5,
-	Avatar6,
-	Avatar7,
-	Avatar8,
-	Avatar9,
 ];
 
 const Guide = () => {
@@ -123,6 +102,7 @@ const Guide = () => {
 						sendMessage={(data: any) => {
 							//   setMessage(data);
 						}}
+						setMessage={() => {}}
 						handleSelectGif={(data: any) => {
 							//   setGif(data);
 						}}
@@ -144,7 +124,7 @@ const Guide = () => {
 				</div>
 
 				<div className="flex justify-center my-6">
-					<CreateGameForm avatars={avatars} />
+					<CreateGameForm avatars={[]} />
 				</div>
 				<div className="flex justify-center my-6">
 					<ToggleControl />

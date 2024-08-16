@@ -2,43 +2,13 @@
 const CreateGameForm = dynamic(
   () => import("@/app/components/shared/forms/create-game-form/CreateGameForm")
 );
-
 import Navbar from "@/app/components/shared/navbars/Navbar";
-import Avatar1 from "@/public/assets/images/avatar-1.png";
-import Avatar2 from "@/public/assets/images/avatar-2.png";
-import Avatar3 from "@/public/assets/images/avatar-3.png";
-import Avatar4 from "@/public/assets/images/avatar-4.png";
-import Avatar5 from "@/public/assets/images/avatar-5.png";
-import Avatar6 from "@/public/assets/images/avatar-6.png";
-import Avatar7 from "@/public/assets/images/avatar-7.png";
-import Avatar8 from "@/public/assets/images/avatar-8.png";
-import Avatar9 from "@/public/assets/images/avatar-9.png";
+import { useGetAvatars } from "@/hooks/useApiQueries";
 import dynamic from "next/dynamic";
 import {useRouter} from "next/navigation";
-
 const CreateGamePage: React.FC = () => {
   const router = useRouter();
-
-  const handleGoBack = () => {
-    router.back();
-  };
-
-  const handleShareGameLink = () => {};
-
-  const handleHowToPlayClick = () => {};
-
-  const avatars = [
-    Avatar1,
-    Avatar2,
-    Avatar3,
-    Avatar4,
-    Avatar5,
-    Avatar6,
-    Avatar7,
-    Avatar8,
-    Avatar9,
-  ];
-
+  const { data: avatars } =  useGetAvatars()
   return (
     <>
       <Navbar />
@@ -53,5 +23,4 @@ const CreateGamePage: React.FC = () => {
     </>
   );
 };
-
 export default CreateGamePage;

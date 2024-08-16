@@ -10,7 +10,7 @@ interface BlogPost {
 }
 
 async function fetchBlogs(): Promise<BlogPost[]> {
-  const response = await fetch(`${process.env.API_URL}/blogs`);
+  const response = await fetch(`${process.env.API_URL}blogs`);
   const { data } = await response.json();
   return data;
 }

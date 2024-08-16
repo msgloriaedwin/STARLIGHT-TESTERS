@@ -38,15 +38,15 @@ const formSchema = z.object({
 });
 type FormData = z.infer<typeof formSchema>;
 interface CreateGameFormProps {
-  avatars: StaticImageData[];
+  avatars: string[];
   className?: string;
 }
 const CreateGameForm: React.FC<CreateGameFormProps> = ({
   avatars,
   className,
 }) => {
-  const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(
-    avatars[0]
+  const [selectedAvatar, setSelectedAvatar] = useState<string>(
+    avatars?.length ? avatars[0] : ""
   );
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessages, setErrorMessage] = useState("");
@@ -60,7 +60,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
       teamName: "",
       bingoType: "number",
       prizeValue: undefined,
-      avatar: avatars[0].src,
+      avatar: avatars?.length ? avatars[0] : "",
     },
   });
 
@@ -72,11 +72,12 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
       prizeValue: data.prizeValue.toString(),
       avatar: data.avatar,
     };
-
+    setIsLoading(true)
     createGameMutation.mutate(payload, {
       onSuccess: (response) => {
         if (response.status_code === 201) {
           router.push(`room/game-room?roomId=${response.data.id}`);
+          setIsLoading(false)
         } else {
           toast({
             title: "Failed to create a room",
@@ -97,9 +98,9 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
     });
   };
 
-  const handleAvatarSelect = (avatar: StaticImageData) => {
+  const handleAvatarSelect = (avatar: string) => {
     setSelectedAvatar(avatar);
-    form.setValue("avatar", avatar.src);
+    form.setValue("avatar", avatar);
   };
   return (
     <>
@@ -292,7 +293,7 @@ const CreateGameForm: React.FC<CreateGameFormProps> = ({
               className="w-full sm:h-14 rounded-[0.5rem] bg-primary-700 hover:bg-primary-700 text-primary-100 p-2 border border-primary-500 shadow-custom-inset "
               disabled={isLoading}
             >
-              Save & Continue
+              {isLoading ? 'Loading...' : 'Save & Continue'}
             </Button>
           </form>
         </Form>
