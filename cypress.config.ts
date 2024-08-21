@@ -6,9 +6,9 @@ export default defineConfig({
     supportFile: 'test/support/e2e.ts',
     fixturesFolder: 'test/fixtures',
     baseUrl: 'https://staging.remote.bingo',
-    reporter: 'cypress-mochawesome-reporter',  // Add the reporter
+    reporter: 'cypress-mochawesome-reporter',  
     reporterOptions: {
-      reportDir: 'cypress/reports',            // Directory to save the reports
+      reportDir: 'test/reports',            
       overwrite: false,
       html: true,
       json: false,
