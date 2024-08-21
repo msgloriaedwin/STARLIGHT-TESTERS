@@ -1,6 +1,11 @@
 # REMOTE_BINGO_FE
 
-## Overview
+# Testing
+
+All the test and reports are in the test folder.
+All the configurations are in the cypress.config.ts
+To run a test use 'npx cypress run'
+
 
 [remote bingo frontend]
 
