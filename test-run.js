@@ -1,9 +1,9 @@
-import { CronJob } from "cron";
-import { spawn } from "child_process";
-import fs from "fs";
-import axios from "axios";
+const { CronJob } = require("cron");
+const { spawn } = require("node:child_process");
+const fs = require("node:fs");
+const axios = require("axios");
 
-const [newManReportPath, cypressReportPath, url] = process.argv.slice(2, 5);
+const [newManReportPath, cypressReportPath, url] = process.argv.slice(2, 4);
 
 const runProcess = (command, args) => {
   return new Promise((resolve, reject) => {
