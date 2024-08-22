@@ -3,7 +3,8 @@ const { spawn } = require("node:child_process");
 const fs = require("node:fs");
 const axios = require("axios");
 
-const [cypressReportPath, url] = process.argv.slice(2, 4);
+const { BOILERPLATE_URL, BOILERPLATE_ENV, BINGO_ENV, BINGO_URL } = process.env;
+const url = process.env.STATUS_IO_URL;
 
 const runProcess = (command, args) => {
   return new Promise((resolve, reject) => {
@@ -46,26 +47,37 @@ const sendTestReport = async (reportPath, statusIoUrl) => {
 };
 
 const testRun = async () => {
-  const { API_KEY } = process.env;
   try {
-    const newManArgs = [
+    const boilerplateReportPath = "boilerplate-postman-report.json";
+    const bingoReportPath = "bingo-postman-report.json";
+    const newManArgs1 = [
       "run",
-      `https://api.getpostman.com/collections/37678338-b29374aa-a7b1-43e9-bdc8-fc3bcf39871b?apikey=${API_KEY}`,
+      BOILERPLATE_URL,
       "-e",
-      `https://api.getpostman.com/environments/37678787-5f6cbeff-c9d9-44c3-b670-7887cf48fc12?apikey=${API_KEY}`,
+      BOILERPLATE_ENV,
       "-r",
-      "html",
+      "json",
       "--reporter-html-export",
-      "test/postman/report_postman.html",
+      boilerplateReportPath,
     ];
-    const cypressArgs = ["cypress", "run"];
 
-    await runProcess("newman", newManArgs);
-    await runProcess("npx", cypressArgs);
+    const newManArgs2 = [
+      "run",
+      BINGO_URL,
+      "-e",
+      BINGO_ENV,
+      "-r",
+      "json",
+      "--reporter-json-export",
+      bingoReportPath,
+    ];
+
+    await runProcess("newman", newManArgs1);
+    await runProcess("newman", newManArgs2);
     console.log("Both tests completed successfully.");
 
-    await sendTestReport("test/postman/report_postman.html", url);
-    await sendTestReport(cypressReportPath, url);
+    await sendTestReport(boilerplateReportPath, url);
+    await sendTestReport(bingoReportPath, url);
     console.log("Reports sent to status.io.");
   } catch (err) {
     console.error("Error running tests:", err);
