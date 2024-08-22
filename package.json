@@ -7,7 +7,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"test:report": "node ./test-run.js ./reports ./test/reports status.remote.bingo",
+		"test:report": "node ./test-run.js ./test/reports status.remote.bingo",
 		"test:ui": "vitest --ui"
 	},
 	"dependencies": {
