@@ -4,7 +4,8 @@ const fs = require("node:fs");
 const axios = require("axios");
 
 const { BOILERPLATE_URL, BOILERPLATE_ENV, BINGO_ENV, BINGO_URL } = process.env;
-const url = process.env.STATUS_IO_URL;
+const boilerPlateUrl = process.env.BOILERPLATE_URL;
+const bingoUrl = process.env.BINGO_URL;
 
 const runProcess = (command, args) => {
   return new Promise((resolve, reject) => {
@@ -76,8 +77,8 @@ const testRun = async () => {
     await runProcess("newman", newManArgs2);
     console.log("Both tests completed successfully.");
 
-    await sendTestReport(boilerplateReportPath, url);
-    await sendTestReport(bingoReportPath, url);
+    await sendTestReport(boilerplateReportPath, boilerPlateUrl);
+    await sendTestReport(bingoReportPath, bingoUrl);
     console.log("Reports sent to status.io.");
   } catch (err) {
     console.error("Error running tests:", err);
