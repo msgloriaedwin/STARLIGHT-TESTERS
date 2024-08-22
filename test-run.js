@@ -46,7 +46,7 @@ const sendTestReport = async (reportPath, statusIoUrl) => {
 };
 
 const testRun = async () => {
-  const { API_KEY } = process.env
+  const { API_KEY } = process.env;
   try {
     const newManArgs = [
       "run",
